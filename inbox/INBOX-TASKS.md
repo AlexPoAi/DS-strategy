@@ -287,6 +287,17 @@ created: 2026-03-04
   - Репо: VK-offee (PACK-park-development)
   - Бюджет: ~2h
 
+- [pending] 2026-03-14: Переключить extractor на Haiku когда починится доступ к модели
+  - Контекст: Временно переключили на Sonnet из-за API 503 "model_not_found" для claude-haiku-4-5-20251001
+  - Приоритет: low
+  - Действия:
+    1. Дождаться восстановления доступа к Haiku через API
+    2. Изменить в FMT-exocortex-template/roles/extractor/scripts/extractor.sh строку 25: `--model claude-haiku-4-5` вместо `--model claude-sonnet-4-6`
+    3. Протестировать extractor.sh inbox-check
+  - Цель: Снизить расход токенов на фоновые задачи экстрактора
+  - Репо: FMT-exocortex-template
+  - Бюджет: ~5 мин
+
 ## Новые задачи W09 (2026-03-09)
 
 - [pending] 2026-03-09: Проработать решение ведения Instagram с помощью AI
