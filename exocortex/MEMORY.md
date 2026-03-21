@@ -132,3 +132,4 @@
 | **Архитектура экзокортекса** | `memory/architecture.md` |
 | **Натуральные триггеры старта сессии** | `memory/feedback-natural-session-start.md` |
 | **Русский статус и цветовая индикация** | `memory/feedback-russian-status-language.md` |
+| **Только русский язык и термин «мозг»** | `memory/feedback-russian-thinking-and-brain-term.md` |
