@@ -69,3 +69,29 @@ DS-strategy (current/)
 - Дождаться `claude /login` от пользователя
 - Обновить SESSION-CONTEXT и WeekPlan W12
 - Запустить агентов вручную
+
+## Лог сессии 22 марта 2026 — helper-only cleanup
+
+### Что сделано
+- Подтверждено, что `~/.claude/settings.json` использует только `apiKeyHelper=/Users/alexander/.config/aist/anthropic_auth_helper.sh` и хранит `ANTHROPIC_BASE_URL` в `env`
+- Подтверждено, что токен живёт только в `~/.config/aist/env`, а helper корректно его читает
+- Удалены shell-хвосты auth из `~/.zprofile`: `ANTHROPIC_BASE_URL` больше не экспортируется из shell
+- `~/.zshrc` оставлен без auth-настроек, только алиасы выбора модели
+- Остановлены зависшие диа��ностические процессы `claude`/`bash`, которые подвешивали проверку
+- Проверено, что proxy `https://dev.aiprime.store/api/v1/models` отвечает `200 OK`
+- Проверено пользователем: `claude` в обычном терминале снова запускается без ошибок
+
+### Итоговая схема доступа
+1. `~/.claude/settings.json` → `apiKeyHelper`
+2. `~/.config/aist/anthropic_auth_helper.sh` → читает `~/.config/aist/env`
+3. `~/.config/aist/env` → хранит `ANTHROPIC_AUTH_TOKEN`
+4. Shell и VS Code не должны экспортировать `ANTHROPIC_AUTH_TOKEN` напрямую
+
+### Что осталось
+- Полностью закрыть VS Code и открыть заново, чтобы сбросить старое окружение процесса
+- Проверить запуск Claude внутри VS Code после полного restart
+- Если после restart ошибка останется: проверить runtime-хвосты VS Code / launchctl и выбор модели в VS Code
+
+### Как восстановить контекст после перезапуска
+- Прочитать этот файл: `~/Github/DS-strategy/inbox/WP-20-agent-recovery-and-monitoring.md`
+- Короткий статус: терминал уже починен, helper-only схема очищена, следующий шаг — полный restart VS Code и повторная проверка Claude внутри VS Code
