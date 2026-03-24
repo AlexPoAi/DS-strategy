@@ -10,9 +10,10 @@
 | FPF (навигация, принципы) | `memory/fpf-reference.md` |
 | Правила по типам репо | `memory/repo-type-rules.md` |
 | Чеклисты | `memory/checklists.md` |
-| SOTA-практики (18 шт.) | `memory/sota-reference.md` |
-| Протокол Open (WP Gate, Ритуал) | `memory/protocol-open.md` |
-| Протокол Close (чеклист, шаблон) | `memory/protocol-close.md` |
+| SOTA-практики (18 шт.) | `sota-reference.md` |
+| Протокол Open (backup snapshot) | `protocol-open.md` |
+| Протокол Work (backup snapshot) | `protocol-work.md` |
+| Протокол Close (backup snapshot) | `protocol-close.md` |
 | Нулевые принципы + иерархия | `ZP/README.md` |
 | Кодирование сущностей | `SPF/spec/SPF.SPEC.001-entity-coding.md` |
 | Масштабируемость Pack | `SPF/spec/SPF.SPEC.003-pack-scalability.md` |
