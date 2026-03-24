@@ -113,6 +113,7 @@ deadline: 2026-03-24
 - Экстрактор больше не зависит от жёстко прошитой модели `claude-sonnet-4-6`; выбор модели вынесен в runtime-конфигурацию
 - В strategist исправлена семантика lock-collision: scheduler больше не должен считать занятый lock успешным выполнением сценария
 - В status layer убрана ложная зелень: `health-check`, `daily-report` и `scheduler status` различают актуальный success и `stale`-статус из предыдущего окна
+- Исправлена bash-совместимость scheduler evidence layer: `scheduler.sh` больше не использует `mapfile`, отсутствующий в системном bash 3.2 на macOS; ложные `failed` после `exit_code=0` для `synchronizer-code-scan` устранены, точечная проверка `run_task` вернула `STATUS=success`, `EVIDENCE_STATUS=verified`
 - Зафиксировано отдельное follow-up действие: после завершения нового truthful close/readiness пакета сравнить локальную реализацию с решением Церена и исправить регрессии только если локально получилось хуже
 
 ### Разделение контуров после развилки работ
