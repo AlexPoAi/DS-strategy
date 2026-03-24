@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-03-24 23:28
+**Последнее обновление:** 2026-03-24 23:30
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-25: зафиксирован пакет safeguards для сквозного контроля экзокортекса — stale lock, stuck queue, bounded retry, canaries, escalation ladder и защита от partial execution для перехода к WP-26
+**Статус:** задача закрыта — WP-26: задан truthful observability layer для экзокортекса — наблюдаемые очереди, backlog visibility, stuck/stale/partial/blocked visibility в AGENTS-STATUS, SESSION-OPEN, SchedulerReport и status store для перехода к WP-27
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:28] Сессия закрыта
+- 🔒 [23:30] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -75,6 +75,7 @@
 ---
 
 ## Что сделано сегодня (2026-03-24)
+- ✅ [2026-03-24 23:30] WP-26: задан truthful observability layer для экзокортекса — наблюдаемые очереди, backlog visibility, stuck/stale/partial/blocked visibility в AGENTS-STATUS, SESSION-OPEN, SchedulerReport и status store для перехода к WP-27
 - ✅ [2026-03-24 23:28] WP-25: зафиксирован пакет safeguards для сквозного контроля экзокортекса — stale lock, stuck queue, bounded retry, canaries, escalation ladder и защита от partial execution для перехода к WP-26
 - ✅ [2026-03-24 23:24] WP-24: задана failure state machine и truthful status semantics для runtime-контура экзокортекса, определены states, transitions и условия зелёного verdict для перехода к WP-25
 - ✅ [2026-03-24 23:21] WP-23: собрана end-to-end карта экосистемы экзокортекса, зафиксированы source-of-truth по стадиям и основные failure modes для перехода к WP-24
