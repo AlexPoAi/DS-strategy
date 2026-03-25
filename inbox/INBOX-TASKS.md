@@ -17,8 +17,47 @@ created: 2026-03-04
 
 ---
 
+- [pending] 2026-03-25: Адаптировать DS-agent-workspace: структура workspace, роли extractor/scheduler/scout/strategist/verifier
+  - Контекст: Форк github.com/alexpoaiagent-sudo/DS-agent-workspace содержит продвинутую структуру workspace для автономных агентов. Нужно адаптировать под нашу экосистему
+  - Приоритет: high
+  - Что нужно сделать:
+    - Проанализировать структуру DS-agent-workspace (роли, артефакты, процессы)
+    - Сопоставить с текущей структурой FMT-exocortex-template
+    - Определить что взять: новые роли (scout, verifier), улучшенные процессы, workspace patterns
+    - Спроектировать миграцию без breaking changes
+    - Обновить документацию и PROCESSES.md
+  - Артефакт: План адаптации + обновлённая структура workspace
+  - Репо: FMT-exocortex-template
+  - Бюджет: 3-4h
+
+- [pending] 2026-03-25: Интегрировать agency-agents: реестр 75+ специализированных ролей и orchestration
+  - Контекст: Форк github.com/alexpoaiagent-sudo/agency-agents содержит 75+ профессиональных ролей агентов (orchestrator, MCP builder, architect и др.). Нужно создать реестр ролей для нашей системы
+  - Приоритет: medium
+  - Что нужно сделать:
+    - Извлечь все роли из agency-agents
+    - Определить какие роли нужны для VK-offee и экосистемы
+    - Создать реестр ролей в FMT-exocortex-template/roles/
+    - Разработать механизм orchestration (как роли взаимодействуют)
+    - Интегрировать с существующими ролями (extractor, strategist, author)
+  - Артефакт: Реестр ролей + orchestration protocol
+  - Репо: FMT-exocortex-template
+  - Бюджет: 2-3h
+
+- [pending] 2026-03-25: Подключить opendataloader-pdf: PDF ingestion для документов кофейни и парка
+  - Контекст: Форк github.com/alexpoaiagent-sudo/opendataloader-pdf — инструмент для извлечения данных из PDF. Нужен для обработки документов парка (ГПЗУ, договоры, сканы)
+  - Приоритет: high
+  - Что нужно сделать:
+    - Установить и настроить opendataloader-pdf
+    - Интегрировать с extractor pipeline
+    - Настроить автоматическую обработку PDF из PACK-park-development
+    - Конвертировать PDF → MD карточки с метаданными
+    - Обновить RAG-бот для индексации извлечённых данных
+  - Артефакт: PDF ingestion pipeline + обработанные документы парка
+  - Репо: VK-offee / FMT-exocortex-template
+  - Бюджет: 2-3h
+
 - [pending] 2026-03-25: Связка Claude + Nana Banana для сайта, Telegram-бот и MCP/БД в изолированной среде
-  - Контекст: пользователь хочет собрать рабочую связку Claude + Nana Banana для работы сайта, поднять Telegram-бота, создать MCP-сервер для непрерывной работы и подключить БД; отдельно рассматривается запуск бота в изолированной среде через Claude Code
+  - Контекст: пользователь хочет собрать рабочую связку Claude + Nana Banana для работы сайта, поднять Telegram-бота, создать MCP-сервер для непрерывной работы и подключить БД; отдельно рассматривается запуск бота в изолированной с��еде через Claude Code
   - Приоритет: high
   - Что нужно сделать:
     - Определить архитектуру связки Claude + Nana Banana для задач сайта
