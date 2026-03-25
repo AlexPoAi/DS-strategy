@@ -108,7 +108,12 @@
 | **VK-offee** | Pack | База знаний кофейни (рецепты, процессы, люди) | ~/Github/VK-offee |
 | **creativ-convector** | Downstream | Творческий конвейер (заметки → черновики → Pack) | ~/Github/creativ-convector |
 | **DS-strategy** | Governance | Стратегический хаб (планы, отчёты, inbox) | ~/Github/DS-strategy |
-| **FMT-exocortex-template** | Format | Шаблон системы (только чтение) | ~/Github/FMT-exocortex-template |
+| **FMT-exocortex-template** | Format | Шаблон системы, форк от Церена | ~/Github/FMT-exocortex-template |
+
+**Upstream Церена (эталон):** `https://github.com/TserenTserenov/FMT-exocortex-template`
+- Когда пользователь говорит «посмотри у Церена» → читать через `git show upstream/main:<путь>`
+- Перед чтением: `git fetch upstream` чтобы получить свежую версию
+- Upstream = рабочий эталон. При проблемах с агентами — сначала сравнивать с ним.
 
 ## Интеграция
 
