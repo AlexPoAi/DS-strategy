@@ -17,7 +17,7 @@ created: 2026-03-04
 
 ---
 
-- [pending] 2026-03-26: Переработка архитектуры базы знаний VK-offee — domain-contract для всех PACK
+- [in_progress] 2026-03-26: Переработка архитектуры базы знаний VK-offee — domain-contract для всех PACK
   - Контекст: FPF-инспекция выявила что PACK-cafe-operations = контейнер домена «кофейня», остальные PACK (bar, kitchen, service, management, hr) = поддомены. Точки Самокиша/Тургенева/Луговая = объекты-экземпляры типа «кофейная точка» внутри PACK-cafe-operations. PACK-kitchen = отдельный PACK, связан через объекты еды.
   - Приоритет: high
   - Что нужно сделать:
