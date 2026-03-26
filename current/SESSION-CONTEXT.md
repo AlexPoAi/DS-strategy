@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-03-26 18:29
+**Последнее обновление:** 2026-03-26 19:27
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-29: artifact-gated atomicity — WeekPlan gate, SESSION-CONTEXT gate, атомарная ротация scheduler-report, фикс gh credential разъезда
+**Статус:** задача закрыта — Обновление экзокортекса до v0.16.2 от Церена: 175 коммитов, новые skills, caffeinate, day-close, verifier + WP-29 atomicity поверх + cloud-scheduler с Telegram
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [18:30] Сессия закрыта
+- 🔒 [19:27] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -116,6 +116,7 @@
 ---
 
 ## Что сделано сегодня (2026-03-26)
+- ✅ [2026-03-26 19:27] Обновление экзокортекса до v0.16.2 от Церена: 175 коммитов, новые skills, caffeinate, day-close, verifier + WP-29 atomicity поверх + cloud-scheduler с Telegram
 - ✅ [2026-03-26 18:29] WP-29: artifact-gated atomicity — WeekPlan gate, SESSION-CONTEXT gate, атомарная ротация scheduler-report, фикс gh credential разъезда
 - ✅ [2026-03-26 18:07] WP-29: artifact-gated atomicity — WeekPlan gate, SESSION-CONTEXT gate, атомарная ротация scheduler-report
 - ✅ [2026-03-26 15:32] Ремонт открытия дня: подтверждён root cause (утренний экран был stale, strategist morning позже успешно завершился), исправлен баг в daily-report.sh с LOG_FILE→SCHEDULER_LOG, пересобран truthful SESSION-OPEN/AGENTS-STATUS; теперь Strategist и Extractor green, итоговый verdict yellow только из-за некритичных внешних связок
