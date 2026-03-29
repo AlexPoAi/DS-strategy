@@ -29,6 +29,7 @@ bash ~/Github/FMT-exocortex-template/roles/extractor/scripts/claude-run.sh archi
 | rejected/CO.reject.005-task-saby-support.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #saby #governance | rejected |
 | rejected/CO.reject.006-task-architect-replies.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #архитектор #governance | rejected |
 | rejected/CO.reject.007-task-coffee-cards.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #карточки #зерно #governance | rejected |
+| rejected/CO.reject.008-google-drive-sync.md | capture | 2026-03-18 | task — задача по настройке среды, не доменное знание; правило извлечено отдельно (accept) | #task #gitignore #google-drive | rejected |
 
 ---
 
