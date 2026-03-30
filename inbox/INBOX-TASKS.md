@@ -43,8 +43,18 @@ created: 2026-03-04
     4. Сохранить PAT в безопасном месте (1Password или системный keychain)
   - Репо: VK-offee, VK-offee-rag
 
-- [pending] 2026-03-28: OpenAI embeddings блокируются с российского VPS — починить RAG индексацию
+- [done] 2026-03-28: OpenAI embeddings блокируются с российского VPS — починить RAG индексацию
   - Контекст: Сервер 72.56.4.61 (Timeweb Moscow) получает 403 от OpenAI API. ChromaDB пустая — RAG не работает.
+  - Результат: ✅ Решено 2026-03-30 (WP-43). Прокси OpenAI настроен, venv создан, ChromaDB переиндексирована (436 docs). Бот работает.
+
+- [pending] 2026-03-30: OOM при переиндексации ChromaDB на VPS — indexer.py убивается (Killed)
+  - Контекст: VPS 2GB RAM не справляется с полным прогоном indexer.py при переиндексации. Процесс убивается ОС без ошибки.
+  - Приоритет: medium
+  - Варианты решения:
+    1. Добавить swap на VPS: `fallocate -l 2G /swapfile && mkswap /swapfile && swapon /swapfile`
+    2. Переиндексировать батчами — разбить find_pack_files() на части, коммитить по 50 документов
+    3. Переиндексировать локально и синхронизировать data/chroma через rsync на VPS
+  - Репо: VK-offee-rag (src/indexer.py)
   - Приоритет: high
   - Варианты решения:
     1. Настроить OpenAI через прокси (как ANTHROPIC_BASE_URL уже настроен через dev.aiprime.store)
