@@ -19,6 +19,9 @@ budget: 3h
 
 ## Контекст
 
+**Google Drive папка с отчётами:**
+https://drive.google.com/drive/folders/1I_aWEHvGVI5c-aAEM03erNZj7HGXtJPf?usp=sharing
+
 Менеджер Жанна раз в 2 недели (после инвентаризации) скидывает:
 - Накладные от поставщиков (все за период)
 - Отчёты по продажам
