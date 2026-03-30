@@ -30,6 +30,7 @@ bash ~/Github/FMT-exocortex-template/roles/extractor/scripts/claude-run.sh archi
 | rejected/CO.reject.006-task-architect-replies.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #архитектор #governance | rejected |
 | rejected/CO.reject.007-task-coffee-cards.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #карточки #зерно #governance | rejected |
 | rejected/CO.reject.008-google-drive-sync.md | capture | 2026-03-18 | task — задача по настройке среды, не доменное знание; правило извлечено отдельно (accept) | #task #gitignore #google-drive | rejected |
+| rejected/CO.reject.009-coffee-sales-online (Продажи кофе онлайн — reject).md | capture | 2026-03-30 | governance — стратегическая идея канала продаж (сайт+TG), не операционный стандарт Pack | #governance #стратегия #продажи | rejected |
 
 ---
 
