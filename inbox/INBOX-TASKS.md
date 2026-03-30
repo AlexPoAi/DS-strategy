@@ -7,14 +7,11 @@ created: 2026-03-04
 
 > Задачи, поступившие вне очереди во время выполнения РП. Обрабатываются после завершения текущего РП.
 
-- [pending] 2026-03-28: Починить notify.sh у strategist после дрейфа путей IWE→Github
+- [done] 2026-03-28: Починить notify.sh у strategist после дрейфа путей IWE→Github
   - Контекст: `strategist.sh day-plan` завершается, но post-step уведомления падает на старом пути `/Users/alexander/IWE/DS-IT-systems/DS-ai-systems/synchronizer/scripts/notify.sh`. Из-за этого «мозг экзокортекса» остаётся в жёлтом статусе.
   - Приоритет: high
-  - Что нужно сделать:
-    1. Исправить путь вызова `notify.sh` в `FMT-exocortex-template/roles/strategist/scripts/strategist.sh`
-    2. Проверить другие остатки path drift на старую структуру `IWE/DS-IT-systems/DS-ai-systems`
-    3. Прогнать strategist day-plan + health-check + AGENTS-STATUS
-  - Артефакт: `DS-strategy/inbox/WP-39-notify-path-drift (Починка notify.sh после дрейфа путей IWE→Github).md`
+  - Результат: ✅ Исправлено 2026-03-30. Commit 1fddbc8. Файлы: strategist.sh:64, protocol-close.md (2 места). ENG.WP.004 создан. Мозг экзокортекса → 🟢 зелёный.
+  - Артефакт: `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.004-notify-path-drift-2026-03-29.md`
   - Репо: FMT-exocortex-template + DS-strategy
 
 - [pending] 2026-03-28: Красивый Telegram-отчёт закрытия дня вместо raw-лога
