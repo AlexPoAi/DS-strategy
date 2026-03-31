@@ -31,6 +31,11 @@ bash ~/Github/FMT-exocortex-template/roles/extractor/scripts/claude-run.sh archi
 | rejected/CO.reject.007-task-coffee-cards.md | capture | 2026-03-14 | governance — задача (task), не доменное знание Pack | #task #карточки #зерно #governance | rejected |
 | rejected/CO.reject.008-google-drive-sync.md | capture | 2026-03-18 | task — задача по настройке среды, не доменное знание; правило извлечено отдельно (accept) | #task #gitignore #google-drive | rejected |
 | rejected/CO.reject.009-coffee-sales-online (Продажи кофе онлайн — reject).md | capture | 2026-03-30 | governance — стратегическая идея канала продаж (сайт+TG), не операционный стандарт Pack | #governance #стратегия #продажи | rejected |
+| rejected/CO.reject.010-saas-product-idea.md | capture | 2026-03-31 | governance — идея SaaS-продукта для кофеен, бизнес-идея, не доменное знание | #saas #strategy #business-idea | rejected |
+| rejected/CO.reject.011-coffee-sales-website.md | capture | 2026-03-31 | governance — задача по запуску канала продаж (сайт+доставка), не операционное знание | #sales #website #strategy | rejected |
+| rejected/CO.reject.012-relocation-strategy.md | capture | 2026-03-31 | personal-strategy — личная цель владельца, не доменное знание VK Coffee | #personal #relocation #strategy | rejected |
+| rejected/CO.reject.013-telegram-bot-upgrade.md | capture | 2026-03-31 | implementation-task — техническая задача, реализационное знание, не Pack | #telegram #bot #technical | rejected |
+| rejected/CO.reject.014-kitchen-relocation-decision.md | capture | 2026-03-31 | governance — стратегическое решение о распределении помещений, не операционный процесс | #kitchen #strategy #decision | rejected |
 
 ---
 
