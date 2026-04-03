@@ -3,6 +3,17 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-04: [ИНЖ] Добавить детектор OAuth 401 с macOS-уведомлением в run_claude (по образцу Церена W12)
+  - Контекст: Церен описал: агенты падали с 401 10 дней, никто не знал. Решение — 3 строки bash в run_claude: при exit code 401 → CRITICAL в лог + osascript уведомление macOS. У нас та же проблема: extractor inbox-check сегодня упал с "CRITICAL: Auth failed" 3 раза без алерта.
+  - Приоритет: high
+  - Что сделать:
+    1. Найти `run_claude` функцию в `~/Github/FMT-exocortex-template/roles/synchronizer/scripts/scheduler.sh` (или где она определена)
+    2. Добавить: если exit code = 1 и в логе есть "401" или "Auth failed" → `osascript -e 'display notification "Auth failed — claude /login" with title "Экзокортекс: КРИТИЧНО"'`
+    3. Дополнительно: записать CRITICAL в лог с явным маркером чтобы health-check его находил
+    4. Протестировать: симулировать auth failure, убедиться что уведомление приходит
+  - Источник: пост Церена DS-Knowledge-Index-Tseren/docs/2026/2026-03-19-week-review-w12.md
+  - Репо: FMT-exocortex-template (roles/synchronizer/scripts/)
+
 - [pending] 2026-04-04: [ИНЖ] Починить daily-telegram — TELEGRAM_CHAT_ID не найден в конфиге агента
   - Контекст: За 03.04 ошибка повторилась 5 раз (09:09, 12:00, 15:00, 18:00, 21:15). Telegram-отчёты не доходят. Бот VK-offee на VPS работает нормально, проблема в конфиге планировщика экзокортекса.
   - Приоритет: high
