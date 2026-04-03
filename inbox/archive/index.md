@@ -36,6 +36,10 @@ bash ~/Github/FMT-exocortex-template/roles/extractor/scripts/claude-run.sh archi
 | rejected/CO.reject.012-relocation-strategy.md | capture | 2026-03-31 | personal-strategy — личная цель владельца, не доменное знание VK Coffee | #personal #relocation #strategy | rejected |
 | rejected/CO.reject.013-telegram-bot-upgrade.md | capture | 2026-03-31 | implementation-task — техническая задача, реализационное знание, не Pack | #telegram #bot #technical | rejected |
 | rejected/CO.reject.014-kitchen-relocation-decision.md | capture | 2026-03-31 | governance — стратегическое решение о распределении помещений, не операционный процесс | #kitchen #strategy #decision | rejected |
+| rejected/CO.reject.015-test-message-telegram.md | capture | 2026-04-03 | test — тестовое сообщение проверки связи pipeline Telegram → captures | #test #telegram #pipeline | rejected |
+| rejected/CO.reject.016-cups-menu-task.md | capture | 2026-04-03 | task — задача по доработке дизайна стаканов и меню, не доменное знание | #task #дизайн #стаканы #меню | rejected |
+| rejected/CO.reject.017-test-telegram-bot-task.md | capture | 2026-04-03 | test + task — тестовое сообщение + задача настройки Telegram бота | #test #task #telegram #bot | rejected |
+| rejected/CO.reject.018-telegram-bot-development.md | capture | 2026-04-03 | implementation — реализационная задача, привязана к стеку Telegram | #task #telegram #bot #implementation | rejected |
 
 ---
 
