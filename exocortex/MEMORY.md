@@ -123,6 +123,7 @@
 
 | # | РП | Бюджет | Статус | Дедлайн |
 |---|-----|--------|--------|---------|
+| 48 | Полное тестирование Telegram-бота VK-offee | 1h | in_progress | 03.04 |
 | 47 | Редизайн workflow Extractor (captures → inbox → Pack) | 3h | pending | 01.04 |
 | 42 | PACK-warehouse — накладные, остатки, поставщики как карточки | 2h | pending | — |
 | 44 | FPF-моделирование PACK-kitchen — FM-уровень | 2h | partial | — |
