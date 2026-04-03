@@ -3,6 +3,22 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-03: Оптимизация кэша Claude Code — два бага увеличивают расходы в 10-20x
+  - Контекст: Статья с Reddit (reverse engineering Claude Code binary). Два независимых бага ломают prompt cache.
+  - Приоритет: high
+  - Баг 1: Замена метки cch=00000 в standalone binary. При обсуждении внутренних деталей CC в разговоре — метка попадает в messages[] вместо system[] → кэш ломается каждый запрос (~$0.04/запрос).
+    - Workaround: запускать через `npx @anthropic-ai/claude-code` вместо standalone binary.
+  - Баг 2: --resume ВСЕГДА ломает кэш (с v2.1.69). deferred_tools_delta вставляется в разные позиции messages[] при new vs resume → полный cache miss (~$0.15 за resume).
+    - Workaround: нет внешнего. Downgrade до v2.1.68 или v2.1.30.
+  - Влияние: для 500k контекста — до $0.20+ за запрос. У нас были аналогичные проблемы (7.4M cache creation, 15.6M cache read за день — задача от 14.03).
+  - Что сделать:
+    1. Проверить какой binary у нас стоит: standalone или npm
+    2. Проверить версию Claude Code (`claude --version`)
+    3. Если standalone → переключиться на npx
+    4. Избегать --resume или минимизировать
+  - Источник: Reddit, reverse engineering Claude Code, GitHub issues #40524 и #34629
+  - Репо: FMT-exocortex-template (настройка среды)
+
 # Входящие задачи
 
 > Задачи, поступившие вне очереди во время выполнения РП. Обрабатываются после завершения текущего РП.
