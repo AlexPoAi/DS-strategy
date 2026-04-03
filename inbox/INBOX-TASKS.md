@@ -3,6 +3,37 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-04: [ИНЖ] Починить daily-telegram — TELEGRAM_CHAT_ID не найден в конфиге агента
+  - Контекст: За 03.04 ошибка повторилась 5 раз (09:09, 12:00, 15:00, 18:00, 21:15). Telegram-отчёты не доходят. Бот VK-offee на VPS работает нормально, проблема в конфиге планировщика экзокортекса.
+  - Приоритет: high
+  - Что проверить:
+    1. `cat ~/.config/aist/env` — есть ли TELEGRAM_CHAT_ID
+    2. `grep -r "TELEGRAM_CHAT_ID" ~/Github/FMT-exocortex-template/roles/synchronizer/` — откуда берётся chat_id в daily-telegram скрипте
+    3. Прописать chat_id в нужное место конфига
+    4. Протестировать: запустить daily-telegram вручную, убедиться что отчёт приходит в TG
+  - Репо: FMT-exocortex-template (roles/synchronizer/)
+
+- [pending] 2026-04-04: [ИНЖ] Починить extractor inbox-check — падает с exit code 1 (claude exited code 1)
+  - Контекст: За 03.04 упал 3 раза (10:21, 15:06, 18:03). Причина: auth failed (10:21 — "CRITICAL: Auth failed via helper/env/custom API"), потом просто code 1 без auth ошибки. Inbox не проверяется автоматически.
+  - Приоритет: high
+  - Что проверить:
+    1. `tail -100 ~/logs/synchronizer/scheduler-2026-04-03.log` — полный контекст ошибок
+    2. Проверить что `claude` запускается без ошибок сейчас: `claude --version`
+    3. Проверить auth: `claude auth status` или запустить `extractor.sh inbox-check` вручную
+    4. Если auth — переавторизоваться: `claude /login`
+    5. Если модель — проверить какая модель прописана в extractor.sh (после фикса 22.03 убрали жёсткую модель)
+  - Репо: FMT-exocortex-template (roles/extractor/)
+
+- [pending] 2026-04-04: [ИНЖ] Обновить SESSION-CONTEXT.md — устарел (данные от 22.03, последнее обновление 03.04 22:19 но содержимое старое)
+  - Контекст: SESSION-CONTEXT содержит «что сделано сегодня» за 22.03, не за 03.04. Нужно записать итоги 03.04.
+  - Приоритет: medium
+  - Что записать в итоги 03.04:
+    - WP-48: Telegram-бот починен (systemd на VPS, убран с Мака, исправлен git order)
+    - WP-49: правило --resume добавлено в CLAUDE.md (баг кэша v2.1.69+)
+    - PARK: 8 артефактов (DOC.015-020, WP.025-026, COMM.010-011) — анализ документов ЛУКС
+    - Технический долг после сбоя 01.04 закрыт
+  - Репо: DS-strategy
+
 - [pending] 2026-04-03: Изучить оптимизацию токенов у Церена (upstream FMT-exocortex-template)
   - Контекст: За 03.04 потрачено 67.9M токенов (30M cache read, 37.4M input). Opus 4.6 стоит x5 от Sonnet. Нужно изучить как Церен решает проблему расхода токенов в шаблоне экзокортекса.
   - Приоритет: high
