@@ -40,6 +40,7 @@ bash ~/Github/FMT-exocortex-template/roles/extractor/scripts/claude-run.sh archi
 | rejected/CO.reject.016-cups-menu-task.md | capture | 2026-04-03 | task — задача по доработке дизайна стаканов и меню, не доменное знание | #task #дизайн #стаканы #меню | rejected |
 | rejected/CO.reject.017-test-telegram-bot-task.md | capture | 2026-04-03 | test + task — тестовое сообщение + задача настройки Telegram бота | #test #task #telegram #bot | rejected |
 | rejected/CO.reject.018-telegram-bot-development.md | capture | 2026-04-03 | implementation — реализационная задача, привязана к стеку Telegram | #task #telegram #bot #implementation | rejected |
+| rejected/CO.reject.019-inbox-pack-concept.md | capture | 2026-04-03 | implementation — архитектура инструмента (экзокортекс), не доменное знание Pack | #экзокортекс #implementation #architecture | rejected |
 
 ---
 
