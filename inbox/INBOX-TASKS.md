@@ -3,6 +3,16 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-03: Изучить оптимизацию токенов у Церена (upstream FMT-exocortex-template)
+  - Контекст: За 03.04 потрачено 67.9M токенов (30M cache read, 37.4M input). Opus 4.6 стоит x5 от Sonnet. Нужно изучить как Церен решает проблему расхода токенов в шаблоне экзокортекса.
+  - Приоритет: high
+  - Что проверить:
+    1. `git fetch upstream && git show upstream/main:CLAUDE.md` — есть ли правила по токенам
+    2. `git show upstream/main:memory/` — размер файлов, политика сжатия
+    3. Какие модели рекомендует Церен для каких задач
+    4. Есть ли у него механизм автопереключения моделей
+  - Репо: FMT-exocortex-template (upstream Церена)
+
 - [pending] 2026-04-03: Оптимизация кэша Claude Code — два бага увеличивают расходы в 10-20x
   - Контекст: Статья с Reddit (reverse engineering Claude Code binary). Два независимых бага ломают prompt cache.
   - Приоритет: high
