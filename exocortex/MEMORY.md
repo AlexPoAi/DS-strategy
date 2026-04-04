@@ -173,3 +173,4 @@
 | **Только русский язык и термин «мозг»** | `memory/feedback-russian-thinking-and-brain-term.md` |
 | **Durable truthful fixes** | `memory/feedback-durable-truthful-fixes.md` |
 | **Экосистемный анализ перед изменениями** | `memory/feedback-ecosystem-wide-change-analysis.md` |
+| **Напоминания → INBOX-TASKS (не только cron)** | `memory/feedback-reminders-to-inbox.md` |
