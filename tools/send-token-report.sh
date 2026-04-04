@@ -4,6 +4,14 @@
 DATE=$(date +%Y-%m-%d)
 TOKENS_JSON="$HOME/Github/DS-strategy/.status/daily-tokens-$DATE.json"
 COST_SCRIPT="$HOME/Github/DS-strategy/tools/calculate-cost.py"
+ENV_FILE="$HOME/.config/aist/env"
+
+if [ -f "$ENV_FILE" ]; then
+    set -a
+    source "$ENV_FILE"
+    set +a
+fi
+
 TELEGRAM_TOKEN="${TELEGRAM_BOT_TOKEN}"
 CHAT_ID="${TELEGRAM_CHAT_ID}"
 

@@ -16,6 +16,7 @@
 - ✅ В WP зафиксирован handoff для другого агента: post-migration audit, inventory, rotation order, residual risks
 - ✅ Открыт инженерный WP `ENG.WP.008-automation-map (Карта автоматизаций экосистемы и источников окружения).md`
 - ✅ В `ENG.WP.008` зафиксированы фактические automation-контуры: GitHub Actions, launchd/shell automation, env/source-of-truth и critical dependency paths
+- ✅ Починен `DS-strategy/tools/send-token-report.sh`: добавлена загрузка `~/.config/aist/env`, Telegram-отчёт по токенам снова отправляется успешно
 
 **Что сделано 04.04:**
 - ✅ PARK.COMM.012: зафиксирован ответ Елены по расчётам конструкций (04.04)
