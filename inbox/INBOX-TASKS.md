@@ -3,6 +3,11 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-05: [ENG] FMT-exocortex-template — CI validate-template: убрать личные пути из шаблона, починить validate-template.yml
+  - Контекст: после миграции на AlexPoAi сработал GitHub Actions → шаблон содержал /Users/alexander/ в 86 местах + /opt/homebrew hardcoded
+  - Что сделано (2026-04-05): заменены личные пути на {{WORKSPACE_DIR}}/{{HOME_DIR}} плейсхолдеры в 25 файлах, добавлены exclusions в CI, CI зелёный
+  - Остаток: проверить через update.sh что placeholders корректно подставляются при установке
+
 - [pending] 2026-04-04: [SECURITY] VK-offee — провести проверку уязвимых мест хранения секретов и каналов авторизации
   - Контекст: в VK-offee смешаны несколько каналов хранения секретов и доступа: история git/GitHub, локальные `.env`, Google OAuth-файлы, системные credential helpers, документация с остатками токенов. Нужна инвентаризация без поломки экосистемы.
   - Что проверить:
@@ -17,6 +22,7 @@ created: 2026-03-04
   - Бюджет: 2h
   - Артефакт:
     - `VK-offee/content/0.Management/0.9. Входящие/security-review-priority-checklist-2026-04-04.md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.007-post-migration-security-inspection (Постмиграционная инспекция безопасности экосистемы после переезда на новый GitHub-аккаунт).md`
     - при подтверждении рисков: отдельный runbook ротации секретов без остановки автоматизаций
 
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
