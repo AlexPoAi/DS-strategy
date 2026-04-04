@@ -3,6 +3,34 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-04: [KE] Применить: IWE.METHOD.001 — Метод непрерывного обучения (замыкать контур регулярного слота)
+  - Контекст: Extraction report 2026-04-04 #2, кандидат #1
+  - Репо: PACK-iwe-culture → 02-methods/IWE.METHOD.001-continuous-learning-loop (Метод непрерывного обучения — замыкать контур).md
+  - Действие: create file (готовый текст в extraction report)
+  - Приоритет: medium
+  - Бюджет: 10 мин
+
+- [pending] 2026-04-04: [KE] Применить: IWE.DISTINCTION.001 — Устарел vs Ошибка агента в health-check уведомлениях
+  - Контекст: Extraction report 2026-04-04 #2, кандидат #2
+  - Репо: PACK-iwe-culture → 03-distinctions/IWE.DISTINCTION.001-stale-vs-failed-agent (Устарел vs Ошибка агента).md
+  - Действие: create file (готовый текст в extraction report)
+  - Приоритет: medium
+  - Бюджет: 10 мин
+
+- [pending] 2026-04-04: [KE] Применить: IWE.METHOD.002 — Экстрактор читает только captures.md
+  - Контекст: Extraction report 2026-04-04 #2, кандидат #3
+  - Репо: PACK-iwe-culture → 02-methods/IWE.METHOD.002-extractor-reads-captures-only (Экстрактор читает только captures.md).md
+  - Действие: create file (готовый текст в extraction report)
+  - Приоритет: medium
+  - Бюджет: 10 мин
+
+- [pending] 2026-04-04: [KE] Routing gap — добавить PACK-iwe-culture в routing.md
+  - Контекст: Extraction report 2026-04-04 #2 — все 3 кандидата направлены в PACK-iwe-culture, но он отсутствует в таблице routing.md
+  - Репо: FMT-exocortex-template → roles/extractor/config/routing.md
+  - Действие: добавить строку: PACK-iwe-culture | IWE | ~/Github/PACK-iwe-culture | Культура работы IWE: протоколы, навыки, различения, методы
+  - Приоритет: high
+  - Бюджет: 5 мин
+
 - [pending] 2026-04-04: [KE] Применить: PARK.ENTITY.002 — Блокер: канализационная труба (стратегия отступа)
   - Контекст: Extraction report 2026-04-04, кандидат #1
   - Репо: VK-offee → PACK-park-development/02-domain-entities/PARK.ENTITY.002-sewage-pipe-blocker (Блокер-канализационная труба).md
