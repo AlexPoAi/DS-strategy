@@ -14,6 +14,8 @@
 - ✅ Открыт инженерный WP `ENG.WP.007-post-migration-security-inspection (Постмиграционная инспекция безопасности экосистемы после переезда на новый GitHub-аккаунт).md`
 - ✅ Задача связана с `DS-strategy/inbox/INBOX-TASKS.md`
 - ✅ В WP зафиксирован handoff для другого агента: post-migration audit, inventory, rotation order, residual risks
+- ✅ Открыт инженерный WP `ENG.WP.008-automation-map (Карта автоматизаций экосистемы и источников окружения).md`
+- ✅ В `ENG.WP.008` зафиксированы фактические automation-контуры: GitHub Actions, launchd/shell automation, env/source-of-truth и critical dependency paths
 
 **Что сделано 04.04:**
 - ✅ PARK.COMM.012: зафиксирован ответ Елены по расчётам конструкций (04.04)

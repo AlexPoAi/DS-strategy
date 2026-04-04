@@ -58,6 +58,39 @@ author: Environment Engineer (Codex)
 
 ---
 
+## Подтверждённые automation-точки
+
+### GitHub Actions
+
+| Репозиторий | Workflow | Точка запуска | Источники env / secrets | Что делает | Критичность |
+|---|---|---|---|---|---|
+| `FMT-exocortex-template` | `cloud-scheduler.yml` | [cloud-scheduler.yml](/Users/alexander/Github/FMT-exocortex-template/.github/workflows/cloud-scheduler.yml) | `STRATEGY_REPO`, `HEALTH_CHECK_REPOS`, `BOT_HEALTH_URL`, `STRATEGY_REPO_TOKEN` | backup memory → exocortex, health-report по нескольким репо | Очень высокая |
+| `FMT-exocortex-template` | `notify-update.yml` | [notify-update.yml](/Users/alexander/Github/FMT-exocortex-template/.github/workflows/notify-update.yml) | `BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET` | ежедневный дайджест изменений шаблона через bot webhook | Средняя |
+| `FMT-exocortex-template` | `validate-template.yml` | [validate-template.yml](/Users/alexander/Github/FMT-exocortex-template/.github/workflows/validate-template.yml) | GitHub runner env | CI-валидация шаблона, контроль hardcoded paths/placeholders | Средняя |
+| `DS-strategy` | `cloud-scheduler.yml` | [cloud-scheduler.yml](/Users/alexander/Github/DS-strategy/.github/workflows/cloud-scheduler.yml) | `BOT_HEALTH_URL`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | nightly health-check экзокортекса + Telegram отчёт | Высокая |
+| `creativ-convector` | `obsidian-ai-pr.yml` | [obsidian-ai-pr.yml](/Users/alexander/Github/creativ-convector/.github/workflows/obsidian-ai-pr.yml) | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | ручной AI enrichment заметок и PR | Средняя |
+
+### Локальные launchd / shell automation
+
+| Репозиторий | Контур | Точка запуска | Источник env | Что делает | Выход | Критичность |
+|---|---|---|---|---|---|---|
+| `FMT-exocortex-template` | scheduler | [roles/synchronizer/scripts/scheduler.sh](/Users/alexander/Github/FMT-exocortex-template/roles/synchronizer/scripts/scheduler.sh) | локальная shell-среда, шаблонные пути `{{WORKSPACE_DIR}}`, локальные git credentials | диспетчер strategist/extractor/synchronizer задач | state markers, logs, git push/pull | Очень высокая |
+| `FMT-exocortex-template` | health-check | [roles/synchronizer/scripts/health-check.sh](/Users/alexander/Github/FMT-exocortex-template/roles/synchronizer/scripts/health-check.sh) | `~/.config/aist/env`, launchctl, локальные state dirs | проверка здоровья агентов, auth-helper, scheduler, статусов | macOS notify, Telegram notify, logs | Очень высокая |
+| `FMT-exocortex-template` | strategist | [roles/strategist/scripts/strategist.sh](/Users/alexander/Github/FMT-exocortex-template/roles/strategist/scripts/strategist.sh) | `~/.claude/projects/...`, `CLAUDE_PATH`, git auth | сценарии day-plan/session-prep/week-review/note-review | изменения в `DS-strategy`, push в git, локальные логи | Очень высокая |
+| `FMT-exocortex-template` | extractor | [roles/extractor/scripts/extractor.sh](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/scripts/extractor.sh) | `~/.config/aist/env`, `~/.claude/settings.json`, `anthropic_auth_helper.sh` | inbox-check, session-import, session-tasks и другие KE-сценарии | extraction reports, задачи, git commit/push в `DS-strategy` | Очень высокая |
+| `FMT-exocortex-template` | session watcher | [roles/extractor/scripts/session-watcher.sh](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/scripts/session-watcher.sh) | чистая launchd-среда | следит за `pending-sessions`, запускает import + tasks | перенос файлов в processed, chain-report | Высокая |
+| `FMT-exocortex-template` | launchd plists | `roles/*/scripts/launchd/*.plist` | launchd | расписание strategist/extractor/scheduler/health-check | запуск shell-скриптов по графику | Очень высокая |
+| `VK-offee` | monitor bot | [telegram-bot/start_monitor.sh](/Users/alexander/Github/VK-offee/telegram-bot/start_monitor.sh) | `~/.config/aist/env` | запуск монитора экзокортекса в Telegram | polling-бот, сообщения | Средняя |
+| `VK-offee` | Telegram bot runtime | [telegram-bot/bot.py](/Users/alexander/Github/VK-offee/telegram-bot/bot.py) | `telegram-bot/.env` через `load_dotenv()` | ответы сотрудникам через RAG | Telegram polling, `bot.log` | Очень высокая |
+| `VK-offee` | Google Drive sync | [auto-sync.sh](/Users/alexander/Github/VK-offee/.github/scripts/auto-sync.sh) | локальная shell-среда, git auth | запуск `sync_google_drive_v2.py`, auto-commit/push изменений | обновление `knowledge-base`, git commit/push | Высокая |
+| `VK-offee` | Drive importer | [sync_google_drive.py](/Users/alexander/Github/VK-offee/.github/scripts/sync_google_drive.py) | `GOOGLE_DRIVE_FOLDER_ID`, `credentials.json`, `token.pickle` | импорт документов из Drive | файлы в `knowledge-base`, sync report | Высокая |
+| `VK-offee` | Sheets importer | [sync-google-sheets.py](/Users/alexander/Github/VK-offee/.github/scripts/sync-google-sheets.py) | `credentials.json`, `token.pickle`, hardcoded folder id | импорт всех Google Sheets в CSV | CSV-файлы в `knowledge-base` | Высокая |
+| `VK-offee` | Saby scraper | [saby_scraper.py](/Users/alexander/Github/VK-offee/saby-integration/saby_scraper.py) | `.env` через `load_dotenv()` | веб-автоматизация Saby Presto | html, screenshots, извлечённые данные | Средняя |
+| `VK-offee-rag` | RAG API | [src/api.py](/Users/alexander/Github/VK-offee-rag/src/api.py) | `.env` через `load_dotenv()` | localhost API для поиска и ответа | FastAPI на `127.0.0.1`, `/health`, `/query` | Очень высокая |
+| `creativ-convector` | session launcher | [начать-сессию.sh](/Users/alexander/Github/creativ-convector/%D0%BD%D0%B0%D1%87%D0%B0%D1%82%D1%8C-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E.sh) | локальная python-среда | запуск стратегической сессии | manual workflow / локальный run | Низкая/средняя |
+
+---
+
 ## Критичные автоматизации для детализации
 
 ### 1. Стратег экзокортекса
@@ -135,6 +168,20 @@ author: Environment Engineer (Codex)
 - OAuth-файлы Google (`credentials.json`, `token.pickle`, `token_upload.pickle`)
 - системные credential helpers (`git`, `osxkeychain`, `gh`)
 
+### Подтверждённые соответствия `automation -> env`
+
+| Automation | Основной env/source-of-truth | Комментарий |
+|---|---|---|
+| `FMT strategist` | `~/.claude/projects/...` + `CLAUDE_PATH` + локальный git auth | не завязан на repo-local `.env` |
+| `FMT extractor` | `~/.config/aist/env`, `~/.claude/settings.json`, auth helper | самый чувствительный к локальной машине контур |
+| `FMT health-check` | `~/.config/aist/env` | использует Telegram токен и chat id для алертов |
+| `DS-strategy cloud-scheduler` | GitHub Actions secrets + repo variables | облачный слой, не зависит от launchd |
+| `VK-offee Telegram bot` | `VK-offee/telegram-bot/.env` | bot runtime source-of-truth |
+| `VK-offee monitor bot` | `~/.config/aist/env` | отдельный телеграм-контур, не тот же слой что `.env` бота |
+| `VK-offee Google Drive/Sheets sync` | `credentials.json`, `token.pickle`, `token_upload.pickle`, локальный git auth | после синка может делать commit/push |
+| `VK-offee-rag API` | `VK-offee-rag/.env` | localhost-only сервис для основного бота |
+| `creativ-convector AI PR` | GitHub Actions secrets | ручной workflow_dispatch |
+
 ### Инженерное правило
 
 При любой работе с автоматизациями сначала определять:
@@ -147,11 +194,32 @@ author: Environment Engineer (Codex)
 
 ## Что ещё нужно дозаполнить
 
-- полный перечень GitHub Actions по всем репозиториям
 - перечень launchd plist и их фактический статус
 - карта cron/ручных scheduler-контуров, если они есть
 - соответствие `секрет -> automation -> repo -> smoke test`
 - владелец каждого критичного automation-path
+- status/health endpoints и smoke-test команды по каждому критичному контуру
+
+---
+
+## Critical dependency paths
+
+### Нельзя ломать без отдельной проверки
+
+- `FMT-exocortex-template -> roles/synchronizer/scripts/scheduler.sh -> roles/strategist/scripts/strategist.sh`
+- `FMT-exocortex-template -> roles/extractor/scripts/extractor.sh -> DS-strategy/inbox/*`
+- `FMT-exocortex-template -> roles/synchronizer/scripts/health-check.sh -> Telegram notify`
+- `DS-strategy -> .github/workflows/cloud-scheduler.yml -> Telegram`
+- `VK-offee -> telegram-bot/bot.py -> VK-offee-rag/src/api.py`
+- `VK-offee -> .github/scripts/auto-sync.sh -> git commit/push`
+- `VK-offee -> sync_google_drive.py / sync-google-sheets.py -> Google OAuth files`
+
+### Смежные риски
+
+- один и тот же Telegram контур использует несколько storage layers
+- часть automation работает локально, часть в GitHub Actions
+- часть сценариев сама делает `git push`, что увеличивает риск непредсказуемых side effects
+- миграция аккаунта и ротация секретов могут затронуть сразу несколько automation-path
 
 ---
 

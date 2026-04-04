@@ -25,6 +25,18 @@ created: 2026-03-04
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.007-post-migration-security-inspection (Постмиграционная инспекция безопасности экосистемы после переезда на новый GitHub-аккаунт).md`
     - при подтверждении рисков: отдельный runbook ротации секретов без остановки автоматизаций
 
+- [pending] 2026-04-05: [ENGINEERING] Экосистема — держать актуальной карту автоматизаций и источников окружения
+  - Контекст: после миграции и параллельной работы агентов нужен единый инженерный документ, из которого видно, что автоматизировано, где живут точки запуска, откуда берётся env и какие контуры нельзя ломать.
+  - Что поддерживать в актуальном состоянии:
+    1. GitHub Actions по ключевым репозиториям
+    2. launchd / shell automation и scheduler-контуры
+    3. соответствие `automation -> env/source-of-truth`
+    4. critical dependency paths и smoke-test paths
+  - Приоритет: high
+  - Бюджет: living document
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.008-automation-map (Карта автоматизаций экосистемы и источников окружения).md`
+
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
   - Контекст: все документы парка разбросаны по PACK-park-development, Google Drive, Telegram, Downloads. Нужен единый реестр.
   - Что сделать:
