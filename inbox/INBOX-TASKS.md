@@ -3,6 +3,22 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-04: [SECURITY] VK-offee — провести проверку уязвимых мест хранения секретов и каналов авторизации
+  - Контекст: в VK-offee смешаны несколько каналов хранения секретов и доступа: история git/GitHub, локальные `.env`, Google OAuth-файлы, системные credential helpers, документация с остатками токенов. Нужна инвентаризация без поломки экосистемы.
+  - Что проверить:
+    1. Почему у репозитория `alexpoaiagent-sudo/VK-offee` не переключается visibility в `private`
+    2. Историю git на старые `.env`, Telegram token, Anthropic/OpenAI keys, GitHub PAT
+    3. `.git/config`, `remote.origin.url`, credential helpers, `gh`, VS Code / Claude Code auth
+    4. `telegram-bot/.env` и `$HOME/.config/aist/env` как runtime-источники секретов
+    5. `.github/scripts/credentials.json`, `token.pickle`, `token_upload.pickle` и Google sync scripts
+    6. `saby-integration` на реальные runtime-секреты и места их хранения
+    7. Логи и документацию на следы секретов и частичных утечек
+  - Приоритет: high
+  - Бюджет: 2h
+  - Артефакт:
+    - `VK-offee/content/0.Management/0.9. Входящие/security-review-priority-checklist-2026-04-04.md`
+    - при подтверждении рисков: отдельный runbook ротации секретов без остановки автоматизаций
+
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
   - Контекст: все документы парка разбросаны по PACK-park-development, Google Drive, Telegram, Downloads. Нужен единый реестр.
   - Что сделать:
