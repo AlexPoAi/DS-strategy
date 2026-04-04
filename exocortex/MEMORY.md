@@ -123,6 +123,7 @@
 
 | # | РП | Бюджет | Статус | Дедлайн |
 |---|-----|--------|--------|---------|
+| 50 | Каталог готовых блюд из кассы Сабы (KITCHEN.WP.011) | 1h | pending | — |
 | 48 | Полное тестирование Telegram-бота VK-offee | 1h | in_progress | 03.04 |
 | 47 | Редизайн workflow Extractor (captures → inbox → Pack) | 3h | pending | 01.04 |
 | 42 | PACK-warehouse — накладные, остатки, поставщики как карточки | 2h | pending | — |
