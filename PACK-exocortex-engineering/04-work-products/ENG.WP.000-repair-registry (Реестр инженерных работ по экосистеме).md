@@ -21,7 +21,8 @@ status: living-document
 | ENG.WP.001 | Починка прав +x на скриптах стратега | 2026-03-28 | ✅ done |
 | ENG.WP.002 | Симлинк IWE и починка путей стратега | 2026-03-28 | ✅ done |
 | ENG.WP.003 | Карточка VPS сервера VK-offee | 2026-03-28 | ✅ done |
-| ENG.WP.004 | Починка notify.sh после дрейфа путей IWE→Github | 2026-03-29 | ✅ done |
+| ENG.WP.005 | scheduler различает SKIP(exit 2) от ошибки стратега | 2026-04-04 | ✅ done |
+| ENG.WP.006 | Auth failure детектор в strategist.sh + telegram chat-id | 2026-04-04 | ✅ done |
 
 ---
 
@@ -50,7 +51,8 @@ status: living-document
 2. **OAuth 401 без алерта** — 1 инцидент, системный фикс: health-check.sh
 3. **day-close зависает** — 1 инцидент, системный фикс: в разработке
 4. **Два «экрана открытия» показывают разное** — системный, требует alignment
-5. **Path Drift** — захардкоженные абсолютные пути устаревают при переносе директорий (IWE→Github). Диагностика: `grep -rn "IWE/DS-IT-systems" ~/Github/`. Профилактика: использовать переменные `$HOME`, `$(dirname "$0")`.
+5. **SKIP ≠ FAILED** — exit 2 из strategist при lock воспринимается scheduler как ошибка. Фикс: 04.04 (ENG.WP.005)
+6. **Нет auth-алерта в стратеге** — extractor имел детектор, strategist — нет. Фикс: 04.04 (ENG.WP.006)
 
 ---
 
