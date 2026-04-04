@@ -23,6 +23,7 @@ status: living-document
 | ENG.WP.003 | Карточка VPS сервера VK-offee | 2026-03-28 | ✅ done |
 | ENG.WP.005 | scheduler различает SKIP(exit 2) от ошибки стратега | 2026-04-04 | ✅ done |
 | ENG.WP.006 | Auth failure детектор в strategist.sh + telegram chat-id | 2026-04-04 | ✅ done |
+| ENG.WP.007 | Постмиграционная инспекция безопасности экосистемы после переезда на новый GitHub-аккаунт | 2026-04-04 | 🔄 active |
 
 ---
 
