@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-05 00:38
+**Последнее обновление:** 2026-04-05 01:06
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.008: починен send-token-report.sh — добавлена загрузка ~/.config/aist/env, Telegram-отчёт по токенам снова отправляется успешно; фикс записан в SESSION-CONTEXT
+**Статус:** задача закрыта — ENG.WP.009: low-risk этап нормализации Telegram notification layer — daily-telegram-report и unprocessed-notes-check переведены на ~/.config/aist/env с legacy fallback; daily-telegram runtime-tested; исправлен формат alert-сообщения; inventory, target architecture и migration plan зафиксированы в ENG.WP.009
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [00:38] Сессия закрыта
+- 🔒 [01:06] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -227,6 +227,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-05)
+- ✅ [2026-04-05 01:06] ENG.WP.009: low-risk этап нормализации Telegram notification layer — daily-telegram-report и unprocessed-notes-check переведены на ~/.config/aist/env с legacy fallback; daily-telegram runtime-tested; исправлен формат alert-сообщения; inventory, target architecture и migration plan зафиксированы в ENG.WP.009
 - ✅ [2026-04-05 00:38] ENG.WP.008: починен send-token-report.sh — добавлена загрузка ~/.config/aist/env, Telegram-отчёт по токенам снова отправляется успешно; фикс записан в SESSION-CONTEXT
 - ✅ [2026-04-05 00:29] ENG.WP.008: создана и наполнена карта автоматизаций экосистемы, связана с inbox и SESSION-CONTEXT; зафиксированы GitHub Actions, launchd/shell automation, env/source-of-truth и critical dependency paths
 - ✅ [2026-04-05 00:13] FMT-exocortex-template CI fix: заменены личные пути на плейсхолдеры в 25 файлах, validate-template зелёный
