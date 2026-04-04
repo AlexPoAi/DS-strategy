@@ -3,6 +3,22 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-04: [KE] Применить: PARK.ENTITY.002 — Блокер: канализационная труба (стратегия отступа)
+  - Контекст: Extraction report 2026-04-04, кандидат #1
+  - Репо: VK-offee → PACK-park-development/02-domain-entities/PARK.ENTITY.002-sewage-pipe-blocker (Блокер-канализационная труба).md
+  - Действие: create file
+  - Приоритет: medium
+  - Бюджет: 15 мин
+  - Готовый текст: см. DS-strategy/inbox/extraction-reports/2026-04-04-inbox-check.md → Кандидат #1
+
+- [pending] 2026-04-04: [KE] Применить: MGMT.DISTINCTION.001 — Кухня ≠ Бариста по конкурентной ценности
+  - Контекст: Extraction report 2026-04-04, кандидат #2
+  - Репо: VK-offee → PACK-management/01-domain-contract/MGMT.DISTINCTION.001-kitchen-vs-barista-competitive-advantage (Кухня vs Бариста — конкурентное преимущество).md
+  - Действие: create file
+  - Приоритет: medium
+  - Бюджет: 15 мин
+  - Готовый текст: см. DS-strategy/inbox/extraction-reports/2026-04-04-inbox-check.md → Кандидат #2
+
 - [pending] 2026-04-06: [НАПОМИНАНИЕ] ПАРК — дедлайн ответа от Елены по графику первой очереди
   - Контекст: 02.04 Елена обещала прислать скорректированный график сроков разработки разделов (приложение к доп.договору). На 04.04 — не прислала.
   - Что сделать: если график не пришёл → написать Елене со ссылкой на обещание от 02.04 18:10
