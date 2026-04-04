@@ -17,6 +17,9 @@
 - ✅ Открыт инженерный WP `ENG.WP.008-automation-map (Карта автоматизаций экосистемы и источников окружения).md`
 - ✅ В `ENG.WP.008` зафиксированы фактические automation-контуры: GitHub Actions, launchd/shell automation, env/source-of-truth и critical dependency paths
 - ✅ Починен `DS-strategy/tools/send-token-report.sh`: добавлена загрузка `~/.config/aist/env`, Telegram-отчёт по токенам снова отправляется успешно
+- ✅ Открыт `ENG.WP.010-day-close-entrypoint-drift (Устранение дрейфа entrypoint для day-close у Strategist).md`
+- ✅ В `FMT-exocortex-template/roles/strategist/scripts/strategist.sh` починены два системных блокера day-close: lookup переведён с `prompts/day-close.md` на `memory/protocol-close.md`, а `CLAUDE_PATH` больше не зависит от template-placeholder
+- ✅ Truthful результат: runner `day-close` снова запускается и доходит до Claude, но сам протокол остаётся интерактивным и ещё не является полностью автономным shell-close
 
 **Что сделано 04.04:**
 - ✅ PARK.COMM.012: зафиксирован ответ Елены по расчётам конструкций (04.04)

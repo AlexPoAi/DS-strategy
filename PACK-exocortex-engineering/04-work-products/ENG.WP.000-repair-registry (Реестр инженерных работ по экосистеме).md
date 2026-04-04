@@ -26,6 +26,7 @@ status: living-document
 | ENG.WP.007 | Постмиграционная инспекция безопасности экосистемы после переезда на новый GitHub-аккаунт | 2026-04-04 | 🔄 active |
 | ENG.WP.008 | Карта автоматизаций экосистемы и источников окружения | 2026-04-05 | 🔄 active |
 | ENG.WP.009 | Нормализация Telegram notification layer экосистемы | 2026-04-05 | 🔄 active |
+| ENG.WP.010 | Устранение дрейфа entrypoint для day-close у Strategist | 2026-04-05 | 🔄 active |
 
 ---
 
