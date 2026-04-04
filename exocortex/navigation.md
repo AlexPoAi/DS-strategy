@@ -66,3 +66,16 @@
 
 > Все context files: `DS-strategy/inbox/WP-{N}-{slug}.md`
 > Архив: `DS-strategy/archive/wp-contexts/`
+
+---
+
+## Внешние ресурсы (Google Drive / Sheets)
+
+| Ресурс | Ссылка | Назначение |
+|--------|--------|-----------|
+| Google Drive — папка для бота (VK-offee) | [1sGGcG1DBHIMMhZFvPGd_gGOesncQwhiq](https://drive.google.com/drive/folders/1sGGcG1DBHIMMhZFvPGd_gGOesncQwhiq) | Жанна загружает отчёты Сабы: Каталог_, Накладные_, Продажи_ |
+| Google Sheets — реестр документов | [14PxApr1x8iHuD...](https://docs.google.com/spreadsheets/d/14PxApr1x8iHuD-ioCzYjpRoaEJw_7iYWKjPAkpaOvsM/edit?gid=0#gid=0) | Реестр файлов по папке VK-offee |
+| Google Sheets — остатки (Жанна) | [1OHG_qtW3RUty62R1lIx0thaozLZDNJn50Woi551y9II](https://docs.google.com/spreadsheets/d/1OHG_qtW3RUty62R1lIx0thaozLZDNJn50Woi551y9II/edit?gid=872814975#gid=872814975) | Все остатки по кофейне |
+
+**Скрипт доступа:** `VK-offee/saby-integration/google_drive_parser.py`
+**Credentials:** `VK-offee/.github/scripts/credentials.json` + `token.pickle`
