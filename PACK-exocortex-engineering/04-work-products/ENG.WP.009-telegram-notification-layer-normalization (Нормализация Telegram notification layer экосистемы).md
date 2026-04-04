@@ -358,6 +358,57 @@ GitHub Actions workflows должны оставаться со своим sourc
 
 ---
 
+## Выполнено 05.04 — этап 2 (outbound path normalization)
+
+- `FMT-exocortex-template/roles/synchronizer/scripts/templates/synchronizer.sh`
+  - добавлены сценарии:
+    - `daily-telegram-report`
+    - `unprocessed-notes-check`
+    - `health-check`
+    - `token-report`
+  - добавлены безопасные fallback-пути на `$HOME/Github`, если template placeholders ещё не подставлены установщиком
+
+- `FMT-exocortex-template/roles/synchronizer/scripts/daily-telegram-report.sh`
+  - переведён с direct `curl` на `notify.sh synchronizer daily-telegram-report`
+  - runtime smoke test через `notify.sh` пройден
+
+- `FMT-exocortex-template/roles/synchronizer/scripts/unprocessed-notes-check.sh`
+  - переведён с direct `curl` на `notify.sh synchronizer unprocessed-notes-check`
+  - runtime smoke test через `notify.sh` пройден
+
+- `FMT-exocortex-template/roles/synchronizer/scripts/health-check.sh`
+  - основной outbound path переведён на `notify.sh synchronizer health-check`
+  - direct `curl` оставлен как fallback для сохранения надёжности critical alerts
+  - transport smoke test пройден
+
+- `FMT-exocortex-template/roles/strategist/scripts/strategist.sh`
+  - canary-alert в `note-review` переведён на `notify.sh strategist note-review-canary`
+  - direct `curl` оставлен как fallback
+  - transport smoke test пройден
+
+- `DS-strategy/tools/send-token-report.sh`
+  - переведён на `notify.sh synchronizer token-report`
+  - runtime smoke test пройден
+
+Вывод:
+- local operational Telegram layer теперь в основном идёт через `notify.sh`
+- прямые `curl` остались только как intentional fallback в критичных местах
+- transport-layer экзокортекса перестал быть разрозненным набором отдельных senders
+
+---
+
+## Residual risks / что осталось
+
+- `health-check.sh` и `strategist.sh` всё ещё содержат прямой `curl` как fallback
+- cloud Telegram layer по-прежнему отдельный и intentionally не унифицирован с local layer
+- нужно отдельно решить, закрываем ли legacy `~/.config/exocortex/telegram-*` окончательно или держим как переходный fallback
+
+Текущая truthful оценка:
+- основной локальный Telegram notification layer нормализован
+- WP продвинут существенно, но не считается полностью завершённым до решения судьбы legacy fallback и финальной документации smoke tests
+
+---
+
 ## Migration plan
 
 ### Группа A — перевести на `notify.sh`

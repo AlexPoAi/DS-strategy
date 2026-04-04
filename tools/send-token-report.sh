@@ -5,6 +5,7 @@ DATE=$(date +%Y-%m-%d)
 TOKENS_JSON="$HOME/Github/DS-strategy/.status/daily-tokens-$DATE.json"
 COST_SCRIPT="$HOME/Github/DS-strategy/tools/calculate-cost.py"
 ENV_FILE="$HOME/.config/aist/env"
+NOTIFY_SCRIPT="$HOME/Github/FMT-exocortex-template/roles/synchronizer/scripts/notify.sh"
 
 if [ -f "$ENV_FILE" ]; then
     set -a
@@ -41,9 +42,16 @@ _Автоматический отчёт экзокортекса_"
 
 # Отправить в Telegram
 if [ -n "$TELEGRAM_TOKEN" ] && [ -n "$CHAT_ID" ]; then
+    if [ -x "$NOTIFY_SCRIPT" ]; then
+        if NOTIFY_TEXT="$MESSAGE" "$NOTIFY_SCRIPT" synchronizer token-report > /dev/null 2>&1; then
+            echo "✅ Отчёт отправлен в Telegram"
+            exit 0
+        fi
+    fi
+
     curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
         -d chat_id="$CHAT_ID" \
-        -d text="$MESSAGE" \
+        --data-urlencode text="$MESSAGE" \
         -d parse_mode="Markdown" > /dev/null
     echo "✅ Отчёт отправлен в Telegram"
 else
