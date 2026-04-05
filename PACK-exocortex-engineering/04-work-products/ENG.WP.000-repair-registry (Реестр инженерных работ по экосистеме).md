@@ -29,6 +29,7 @@ status: living-document
 | ENG.WP.010 | Устранение дрейфа entrypoint для day-close у Strategist | 2026-04-05 | 🔄 active |
 | ENG.WP.011 | Выравнивание opening-state и day-close маршрута экзокортекса | 2026-04-05 | 🔄 active |
 | ENG.WP.012 | Канонический day-close summary и удаление token-report из закрытия дня | 2026-04-05 | 🔄 active |
+| ENG.WP.013 | Единый маршрут открытия и закрытия сессии для всех агентов | 2026-04-05 | 🔄 active |
 
 ---
 
