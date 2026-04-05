@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-05 23:28
+**Последнее обновление:** 2026-04-05 23:44
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.016: stabilize product always-on VPS runtime after GitHub migration
+**Статус:** задача закрыта — ENG.WP.017: automate RAG reindex after VK-offee push on VPS
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:28] Сессия закрыта
+- 🔒 [23:44] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -227,6 +227,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-05)
+- ✅ [2026-04-05 23:44] ENG.WP.017: automate RAG reindex after VK-offee push on VPS
 - ✅ [2026-04-05 23:59] ENG.WP.017: автопереиндексация RAG после push в `VK-offee` доведена до production evidence — на VPS `72.56.4.61` подняты `vk-rag-reindex.service` + `vk-rag-reindex.timer`, добавлен `swapfile 2G`, починен `indexer --reset`, первый полный прогон завершён (`263` файлов, `579` документов, `last-pack-head=29709c656aa595009a1e0397e60a24efc775eb2c`), повторный запуск без новых коммитов корректно возвращает `pack unchanged`
 - ✅ [2026-04-05 23:28] ENG.WP.016: stabilize product always-on VPS runtime after GitHub migration
 - ✅ [2026-04-05 23:44] ENG.WP.016: product always-on VPS контур стабилизирован — текущий сервер `72.56.4.61` подтверждён как живой runtime, server remotes переведены на SSH `AlexPoAi`, `vk-rag-api` и `vk-telegram-bot` пережили restart, RAG health после прогрева = 436 документов; server-only правки (`/note`, `saby-reports`) подняты обратно в git, obsolete `chroma_db/chroma.sqlite3` удалены как legacy хвост
