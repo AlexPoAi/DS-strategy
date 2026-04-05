@@ -114,6 +114,93 @@ author: Environment Engineer (Codex)
 
 ---
 
+## Factual Secret Inventory (срез на 2026-04-05)
+
+Ниже — factual inventory без раскрытия значений. Это уже не план, а подтверждённый срез по локальной экосистеме.
+
+### 1. Локальные runtime secret stores
+
+| Место | Тип | Git-статус | Кто использует | Риск |
+|---|---|---|---|---|
+| [/.claude/settings.json](/Users/alexander/Github/.claude/settings.json) | локальный config/allowed commands | локальный файл, не versioned source-of-truth | локальная среда Codex/Claude, Telegram/OpenAI-related команды | высокий |
+| [FMT-exocortex-template/.claude/settings.json](/Users/alexander/Github/FMT-exocortex-template/.claude/settings.json) | repo-local settings | **tracked** | FMT template/runtime | средний |
+| [VK-offee-rag/.env](/Users/alexander/Github/VK-offee-rag/.env) | runtime env | ignored, не tracked | `src/api.py`, `src/indexer.py`, `src/query.py` через `load_dotenv()` | высокий |
+| [VK-offee/telegram-bot/.env](/Users/alexander/Github/VK-offee/telegram-bot/.env) | runtime env | ignored, не tracked | `bot.py`, `rag_client.py`, `fetch_invoices.py`, `find_topics.py`, `monitor_bot.py`, тесты | высокий |
+| [VK-offee/.github/scripts/credentials.json](/Users/alexander/Github/VK-offee/.github/scripts/credentials.json) | Google OAuth client credentials | ignored, не tracked | Google Drive/Sheets sync scripts | высокий |
+| [VK-offee/.github/scripts/token.pickle](/Users/alexander/Github/VK-offee/.github/scripts/token.pickle) | Google OAuth access token | ignored, не tracked | Google sync scripts | высокий |
+| [VK-offee/.github/scripts/token_upload.pickle](/Users/alexander/Github/VK-offee/.github/scripts/token_upload.pickle) | Google OAuth access token | ignored, не tracked | upload/sync scripts | высокий |
+
+### 2. Репозитории и tracked/non-tracked status
+
+Подтверждено через `git ls-files` и `git check-ignore`:
+
+- [VK-offee-rag/.env.example](/Users/alexander/Github/VK-offee-rag/.env.example) — tracked
+- [creativ-convector/.env.example](/Users/alexander/Github/creativ-convector/.env.example) — tracked
+- [FMT-exocortex-template/.claude/settings.json](/Users/alexander/Github/FMT-exocortex-template/.claude/settings.json) — tracked
+- [VK-offee/telegram-bot/.env](/Users/alexander/Github/VK-offee/telegram-bot/.env) — ignored, not tracked
+- [VK-offee-rag/.env](/Users/alexander/Github/VK-offee-rag/.env) — ignored, not tracked
+- [VK-offee/.github/scripts/credentials.json](/Users/alexander/Github/VK-offee/.github/scripts/credentials.json) — ignored, not tracked
+- [VK-offee/.github/scripts/token.pickle](/Users/alexander/Github/VK-offee/.github/scripts/token.pickle) — ignored, not tracked
+- [VK-offee/.github/scripts/token_upload.pickle](/Users/alexander/Github/VK-offee/.github/scripts/token_upload.pickle) — ignored, not tracked
+
+### 3. Какие секреты реально используются в коде
+
+| Секрет / группа | Где используется | Контур |
+|---|---|---|
+| `OPENAI_API_KEY` | `VK-offee-rag/src/*.py`, `VK-offee/plannings/*.py`, `DS-strategy/tools/fpf-consult.sh`, `creativ-convector` scripts/workflows | OpenAI API / embeddings / summarization |
+| `ANTHROPIC_API_KEY` | `VK-offee-rag/src/query.py`, `creativ-convector` workflows/scripts, token-monitor/docs | Anthropic/Claude API |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `FMT` synchronizer/strategist/extractor scripts, `DS-strategy` workflows/tools, `VK-offee` bots | Telegram transport / monitor / alerts |
+| `SABY_EMAIL`, `SABY_PASSWORD`, `SABY_APP_CLIENT_ID`, `SABY_APP_SECRET`, `SABY_SECRET_KEY` | `VK-offee/saby-integration/*` | Saby integration |
+| `WAKATIME_API_KEY` | `FMT` strategist/synchronizer scripts | WakaTime collection |
+| Google OAuth (`credentials.json`, `token.pickle`, `token_upload.pickle`) | `VK-offee/.github/scripts/*sync*` | Drive / Sheets sync |
+
+### 4. Подтверждённые места многослойного хранения
+
+Один и тот же operational контур опирается сразу на несколько слоёв:
+
+- локальные `.env`
+- `~/.config/aist/env`
+- GitHub Actions secrets
+- локальные `.claude/settings.json`
+- OAuth-файлы в `VK-offee/.github/scripts/`
+
+Это подтверждает главный структурный риск: нет единого source-of-truth для секретов и auth-layer.
+
+### 5. Документация и примеры, требующие различения
+
+Есть два типа docs:
+
+1. **Sanitized/placeholder docs** — допустимы, но не являются runtime-risk сами по себе
+   - [VK-offee/БЕЗОПАСНОСТЬ API КЛЮЧИ В GIT.md](/Users/alexander/Github/VK-offee/%D0%91%D0%95%D0%97%D0%9E%D0%9F%D0%90%D0%A1%D0%9D%D0%9E%D0%A1%D0%A2%D0%AC%20API%20%D0%9A%D0%9B%D0%AE%D0%A7%D0%98%20%D0%92%20GIT.md)
+   - [VK-offee/СРОЧНО СМЕНИТЬ ТОКЕНЫ.md](/Users/alexander/Github/VK-offee/%D0%A1%D0%A0%D0%9E%D0%A7%D0%9D%D0%9E%20%D0%A1%D0%9C%D0%95%D0%9D%D0%98%D0%A2%D0%AC%20%D0%A2%D0%9E%D0%9A%D0%95%D0%9D%D0%AB.md)
+   - [VK-offee/telegram-bot/КАК ДОБАВИТЬ OPENAI КЛЮЧ.md](/Users/alexander/Github/VK-offee/telegram-bot/%D0%9A%D0%90%D0%9A%20%D0%94%D0%9E%D0%91%D0%90%D0%92%D0%98%D0%A2%D0%AC%20OPENAI%20%D0%9A%D0%9B%D0%AE%D0%A7.md)
+
+2. **Docs, которые всё ещё задают опасные практики**
+   - [VK-offee/telegram-bot/deploy.sh](/Users/alexander/Github/VK-offee/telegram-bot/deploy.sh) содержит места для ручной вставки ключей
+   - [GIT-PUSH-SOLUTION.md](/Users/alexander/Github/VK-offee/GIT-PUSH-SOLUTION.md) содержит примеры `ghp_...`
+
+### 6. Truthful исторический статус
+
+- Быстрый текущий `git log --all -- telegram-bot/.env` в локальном срезе не показал path-history для этого файла.
+- Это **не отменяет** ранее зафиксированный риск старых утечек; это значит, что перед решением о rewrite history нужно отдельно перепроверить историю по конкретным путям и коммитам более узким forensic-pass.
+
+### 7. Текущий truthful вывод по ENG.WP.007
+
+Что уже есть:
+
+- фактическая карта основных secret stores;
+- подтверждение tracked / ignored статуса ключевых локальных файлов;
+- подтверждение многослойного хранения и auth fragmentation.
+
+Что ещё не закрыто:
+
+- GitHub Secrets inventory в новых приватных репозиториях;
+- ротация по сервисам;
+- smoke test после ротации;
+- итоговые `security-migration-audit-report.md`, `rotation-runbook.md`, `residual-risks.md`.
+
+---
+
 ## Критерии завершения
 
 - Все целевые репозитории на новом аккаунте приватные
