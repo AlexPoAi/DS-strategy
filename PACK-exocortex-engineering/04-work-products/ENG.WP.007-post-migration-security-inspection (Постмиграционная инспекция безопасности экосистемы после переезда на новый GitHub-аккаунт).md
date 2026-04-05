@@ -372,6 +372,37 @@ ENG.WP.007 после этого обновления находится в со
 
 ---
 
+## Fact Update — Wave 1 (Telegram) выполнен частично и подтверждён
+
+### Что выполнено
+
+- локальный operational Telegram layer использует новый актуальный token через `~/.config/aist/env`
+- cloud repo secrets заведены в:
+  - `AlexPoAi/DS-strategy`
+  - `AlexPoAi/FMT-exocortex-template`
+- установлены repo secrets:
+  - `TELEGRAM_BOT_TOKEN`
+  - `TELEGRAM_CHAT_ID`
+
+### Что проверено
+
+- `notify.sh synchronizer day-close` → сообщение отправлено успешно
+- `Telegram Bot API getMe` → `HTTP 200`, bot identity валидна
+- `gh secret list --repo` подтвердил наличие secrets в двух repo-level cloud контурах
+
+### Truthful статус Wave 1
+
+- **local Telegram route** — зелёный
+- **cloud Telegram route (DS-strategy/FMT)** — secrets заведены
+- **VK-offee product bot route** — token в локальном `.env` присутствует, но полноценный product smoke test ещё не зафиксирован в этом WP
+
+### Что остаётся по Telegram
+
+- при необходимости дополнительно прогнать product smoke test `VK-offee` bot
+- отдельно решить, нужно ли заводить Telegram secrets в других repo-level или достаточно двух cloud репозиториев
+
+---
+
 ## Критерии завершения
 
 - Все целевые репозитории на новом аккаунте приватные

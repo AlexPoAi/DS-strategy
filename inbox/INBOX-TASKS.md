@@ -3,7 +3,21 @@ type: inbox
 created: 2026-03-04
 ---
 
-- [pending] 2026-04-05: [АГЕНТСТВО] Нанять Document Generator + Report Distribution Agent для pipeline презентаций
+- [pending] 2026-04-05: [ИНЖ] R-1: Автопереиндексация RAG после push VK-offee
+  - Контекст: WF-3 разорван — ChromaDB на VPS не обновляется при изменении Pack. Бот отвечает по устаревшей базе. Выявлено: ENG.WP.014 (Workflow Architect audit).
+  - Что сделать: добавить post-receive hook или cron на VPS → после push VK-offee → запуск indexer.py
+  - Приоритет: high
+  - Бюджет: 1h
+  - Артефакт: ENG.WP.015
+
+- [pending] 2026-04-05: [ИНЖ] R-2: Починить week-review — переключить на Haiku
+  - Контекст: WF-7 сломан с 23 мар (429 cost limit). Недельный обзор не формируется. Выявлено: ENG.WP.014.
+  - Что сделать: в strategist.sh для week-review принудительно задать модель Haiku вместо дефолтной
+  - Приоритет: high
+  - Бюджет: 30m
+  - Артефакт: ENG.WP.015 (вместе с R-1)
+
+ + Report Distribution Agent для pipeline презентаций
   - Контекст: в agency-agents найдены два профильных агента для pipeline «документ из репо → презентация → Telegram»
   - Что сделать:
     1. Прочитать `agency-agents/specialized/specialized-document-generator.md`
