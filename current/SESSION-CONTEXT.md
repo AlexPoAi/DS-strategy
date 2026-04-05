@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-05 01:31
+**Последнее обновление:** 2026-04-05 21:40
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.010: устранён drift entrypoint day-close у strategist — runner переведён на memory/protocol-close.md, снят блокер CLAUDE_PATH, повторный запуск day-close доходит до Claude; truthful status зафиксирован: runner repaired, но сам day-close остаётся интерактивным протоколом и ещё не является полностью автономным shell-close
+**Статус:** задача закрыта — ENG.WP.011: выровнен opening-state и day-close route экзокортекса — починен daily-report path drift, восстановлена генерация AGENTS-STATUS и SESSION-OPEN, свежий SchedulerReport снова создаётся operational route, templates/synchronizer.sh переведён на актуальный DS-agent-workspace report path, human-readable day-close summary приведён к контракту WP-41 и проверен через Telegram smoke test
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [01:31] Сессия закрыта
+- 🔒 [21:41] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -227,6 +227,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-05)
+- ✅ [2026-04-05 21:40] ENG.WP.011: выровнен opening-state и day-close route экзокортекса — починен daily-report path drift, восстановлена генерация AGENTS-STATUS и SESSION-OPEN, свежий SchedulerReport снова создаётся operational route, templates/synchronizer.sh переведён на актуальный DS-agent-workspace report path, human-readable day-close summary приведён к контракту WP-41 и проверен через Telegram smoke test
 - ✅ [2026-04-05 01:31] ENG.WP.010: устранён drift entrypoint day-close у strategist — runner переведён на memory/protocol-close.md, снят блокер CLAUDE_PATH, повторный запуск day-close доходит до Claude; truthful status зафиксирован: runner repaired, но сам day-close остаётся интерактивным протоколом и ещё не является полностью автономным shell-close
 - ✅ [2026-04-05 01:19] ENG.WP.009: нормализован основной local Telegram notification layer — daily-telegram-report, unprocessed-notes-check, health-check, strategist note-review canary и send-token-report переведены на notify.sh с runtime smoke tests; residual risks и truthful status зафиксированы в ENG.WP.009
 - ✅ [2026-04-05 01:06] ENG.WP.009: low-risk этап нормализации Telegram notification layer — daily-telegram-report и unprocessed-notes-check переведены на ~/.config/aist/env с legacy fallback; daily-telegram runtime-tested; исправлен формат alert-сообщения; inventory, target architecture и migration plan зафиксированы в ENG.WP.009
