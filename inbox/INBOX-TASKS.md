@@ -8,7 +8,7 @@ created: 2026-03-04
   - Что сделать: добавить post-receive hook или cron на VPS → после push VK-offee → запуск indexer.py
   - Приоритет: high
   - Бюджет: 1h
-  - Артефакт: TBD — implementation WP на always-on RAG + bot (ещё не открыт)
+  - Артефакт: ENG.WP.016-always-on-rag-and-bot (Always-on RAG и Telegram bot на VPS/cloud).md
 
 - [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
   - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
@@ -143,6 +143,7 @@ created: 2026-03-04
   - Бюджет: 2 этапа
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.014-openai-first-always-on-migration (OpenAI-first always-on миграция агентного слоя).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.016-always-on-rag-and-bot (Always-on RAG и Telegram bot на VPS/cloud).md`
 
 - [pending] 2026-04-05: [ENGINEERING] Local-first / cloud-fallback архитектура агентного слоя
   - Контекст: пользовательский контракт уточнён — пока ноутбук включён, локальные агенты работают как primary; когда local runtime unavailable, always-on облачный слой берёт на себя жизненно важные сервисы. Нужен единый контракт, чтобы не было двойных запусков и разъехавшихся маршрутов.
@@ -158,6 +159,7 @@ created: 2026-03-04
   - Бюджет: 2 этапа
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.015-local-first-cloud-fallback-architecture (Local-first / cloud-fallback архитектура агентного слоя).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.016-always-on-rag-and-bot (Always-on RAG и Telegram bot на VPS/cloud).md`
 
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
   - Контекст: все документы парка разбросаны по PACK-park-development, Google Drive, Telegram, Downloads. Нужен единый реестр.
