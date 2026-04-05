@@ -10,12 +10,23 @@ created: 2026-03-04
   - Бюджет: 1h
   - Артефакт: ENG.WP.015
 
-- [pending] 2026-04-05: [ИНЖ] R-2: Починить week-review — переключить на Haiku
-  - Контекст: WF-7 сломан с 23 мар (429 cost limit). Недельный обзор не формируется. Выявлено: ENG.WP.014.
-  - Что сделать: в strategist.sh для week-review принудительно задать модель Haiku вместо дефолтной
+- [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
+  - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
+  - Архитектура:
+    ```
+    run_claude() {
+      try: claude-haiku-4-5 → если exit=model_unavailable → try: claude-sonnet-4-6
+      Opus: ЗАПРЕЩЁН (удалить из всех скриптов)
+    }
+    ```
+  - Где применить:
+    1. `strategist.sh` — все сценарии (morning, week-review, note-review, day-close)
+    2. `extractor.sh` — inbox-check
+    3. `scheduler.sh` — dispatch логика
+  - Как проверить: `grep -rn "model\|opus\|haiku\|sonnet" ~/Github/FMT-exocortex-template/roles/*/scripts/*.sh`
   - Приоритет: high
-  - Бюджет: 30m
-  - Артефакт: ENG.WP.015 (вместе с R-1)
+  - Бюджет: 1h
+  - Артефакт: ENG.WP.015-model-fallback-cascade (Каскадный fallback моделей в агентах).md
 
  + Report Distribution Agent для pipeline презентаций
   - Контекст: в agency-agents найдены два профильных агента для pipeline «документ из репо → презентация → Telegram»
