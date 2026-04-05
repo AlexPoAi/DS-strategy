@@ -201,6 +201,177 @@ author: Environment Engineer (Codex)
 
 ---
 
+## Rotation Runbook (безопасный порядок ротации)
+
+Ниже — практический порядок ротации, выстроенный так, чтобы не уронить экосистему.
+
+### Принцип
+
+- ротируем по одному контуру;
+- после каждой ротации делаем smoke test;
+- не делаем mass rotation;
+- не чистим историю git до окончания ротации и стабилизации.
+
+### Wave 1 — Telegram
+
+**Что ротировать**
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID` — не секрет в том же классе, но проверить актуальность маршрутов
+
+**Где обновлять**
+
+- `~/.config/aist/env`
+- `VK-offee/telegram-bot/.env`
+- GitHub Actions secrets в `DS-strategy` / `FMT-exocortex-template` / других репо, где есть Telegram workflows
+- локальные config/routes, если ещё есть fallback paths
+
+**Почему первая волна**
+
+- Telegram-канал самый видимый для операционной обратной связи;
+- старые утечки исторически касались именно Telegram token;
+- smoke test простой и быстрый.
+
+**Smoke test**
+
+- `notify.sh synchronizer health-check`
+- `notify.sh synchronizer day-close`
+- `VK-offee` bot `/start` или минимальный ping
+
+### Wave 2 — OpenAI / Anthropic
+
+**Что ротировать**
+
+- `OPENAI_API_KEY`
+- `ANTHROPIC_API_KEY`
+
+**Где обновлять**
+
+- `VK-offee-rag/.env`
+- `VK-offee/telegram-bot/.env`
+- `creativ-convector` runtime `.env` / GitHub Actions secrets
+- `DS-strategy/tools/fpf-consult.sh` depends on env source
+
+**Почему вторая волна**
+
+- это влияет на RAG, AI enrichment и часть консультационных инструментов;
+- но легче изолируется, чем Google OAuth.
+
+**Smoke test**
+
+- `VK-offee-rag` health/query
+- `VK-offee` bot с AI-сценарием
+- `creativ-convector` AI workflow smoke
+
+### Wave 3 — Google OAuth
+
+**Что ротировать / переподнимать**
+
+- `credentials.json` — только если есть подозрение на компрометацию client credentials
+- `token.pickle`
+- `token_upload.pickle`
+
+**Где обновлять**
+
+- `VK-offee/.github/scripts/credentials.json`
+- `VK-offee/.github/scripts/token.pickle`
+- `VK-offee/.github/scripts/token_upload.pickle`
+
+**Почему третья волна**
+
+- это высокорисковый operational контур;
+- при неудачной ротации ломаются Drive / Sheets sync.
+
+**Smoke test**
+
+- один sync Google Drive
+- один sync Google Sheets
+- один upload scenario
+
+### Wave 4 — Saby
+
+**Что ротировать**
+
+- `SABY_EMAIL`
+- `SABY_PASSWORD`
+- `SABY_APP_CLIENT_ID`
+- `SABY_APP_SECRET`
+- `SABY_SECRET_KEY`
+
+**Где обновлять**
+
+- runtime `.env` / локальный env-layer, который реально читает `saby_scraper.py` и `test_connection.py`
+
+**Почему четвёртая волна**
+
+- это изолированный контур;
+- не является центральным нервом экосистемы;
+- но содержит чувствительные учётные данные.
+
+**Smoke test**
+
+- `test_connection.py`
+- один минимальный сценарий `saby_scraper.py`
+
+### Wave 5 — GitHub access / repo tokens / secrets hygiene
+
+**Что ротировать**
+
+- PAT / repo-specific tokens / service tokens, если ещё используются
+- GitHub Actions secrets, где есть исторический риск или старые токены
+
+**Где обновлять**
+
+- GitHub account / repo secrets
+- credential helper / `gh auth` / local remotes
+
+**Smoke test**
+
+- `git fetch`
+- `git push`
+- один Actions workflow manual re-run
+
+---
+
+## Residual Risks (после текущего среза)
+
+Даже после выполнения runbook останутся риски, которые нужно признать отдельно:
+
+1. **История git**
+   - старые секреты могли остаться в исторических коммитах и форках/клонах
+
+2. **Локальный `.claude/settings.json`**
+   - это не versioned source-of-truth, но всё ещё чувствительный слой локальной среды
+
+3. **Многослойность**
+   - даже после ротации нужно решить архитектурно, где канонически живут secrets:
+     - `.env`
+     - `~/.config/aist/env`
+     - GitHub secrets
+     - OAuth files
+
+4. **Опасные docs/patterns**
+   - часть документации всё ещё учит ручной вставке ключей или содержит risky examples
+
+---
+
+## Truthful следующий шаг
+
+ENG.WP.007 после этого обновления находится в состоянии:
+
+- **audit substantially progressed**
+- **rotation plan defined**
+- **implementation not yet executed**
+
+Чтобы закрыть WP, следующим отдельным циклом нужно:
+
+1. пройти `Wave 1` и `Wave 2`;
+2. сделать smoke tests;
+3. оформить `security-migration-audit-report.md` и `residual-risks.md`;
+4. затем решать, нужен ли отдельный forensic/history pass.
+
+---
+
 ## Критерии завершения
 
 - Все целевые репозитории на новом аккаунте приватные
