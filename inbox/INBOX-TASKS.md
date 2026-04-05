@@ -119,6 +119,20 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.008-automation-map (Карта автоматизаций экосистемы и источников окружения).md`
 
+- [pending] 2026-04-05: [ENGINEERING] OpenAI-first always-on migration агентного слоя
+  - Контекст: подтверждено, что ключевые локальные агенты перестают работать при выключенном ноутбуке. Нужен roadmap, который снижает desktop-bound зависимость без ломки strategist/extractor/scheduler.
+  - Что уже выяснено:
+    1. `VK-offee-rag` и `VK-offee/telegram-bot` — first migration targets
+    2. `strategist.sh`, `extractor.sh`, `scheduler.sh` — desktop-bound, требуют отдельного runtime-refactor
+    3. массовый перевод “всех агентов на OpenAI” простой заменой ключа — неверная стратегия
+  - Следующий шаг:
+    1. открыть implementation WP на `always-on RAG + bot`
+    2. потом отдельно проектировать remote runtime contract для strategist/extractor/scheduler
+  - Приоритет: high
+  - Бюджет: 2 этапа
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.014-openai-first-always-on-migration (OpenAI-first always-on миграция агентного слоя).md`
+
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
   - Контекст: все документы парка разбросаны по PACK-park-development, Google Drive, Telegram, Downloads. Нужен единый реестр.
   - Что сделать:

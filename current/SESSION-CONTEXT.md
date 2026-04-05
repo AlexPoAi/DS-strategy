@@ -228,6 +228,7 @@
 
 ## Что сделано сегодня (2026-04-05)
 - ✅ [2026-04-05 22:54] ENG.WP.014 создан: Аудит workflow экосистемы от Workflow Architect. 10 workflow-ов проанализированы, 4 критических разрыва выявлены (RAG переиндексация, сессия→INBOX, week-review, агентство). R-1 и R-2 добавлены в INBOX как инженерные задачи W15.
+- ✅ [2026-04-05 23:05] ENG.WP.014: зафиксирована карта OpenAI-first always-on migration — `VK-offee-rag` и `VK-offee/telegram-bot` признаны first migration targets; `strategist/extractor/scheduler` подтверждены как desktop-bound и требующие отдельного runtime-refactor
 - ✅ [2026-04-05 22:41] Добавлена задача в INBOX: нанять Document Generator + Report Distribution Agent для pipeline презентаций. Агенты найдены в agency-agents/specialized/.
 - ✅ [2026-04-05 22:36] Зафиксирована идея: автогенерация презентаций через Playwright + Нана Банана → Telegram. Техрешение: браузерная автоматизация (API нет, только веб). INBOX обновлён.
 - ✅ [2026-04-05 22:32] Зафиксированы 2 capture в INBOX: (1) Полный рефакторинг экосистемы — аудит глазами внешнего агента; (2) Стратегическая идея — платформа управления сетью кофеен как тиражируемый продукт
