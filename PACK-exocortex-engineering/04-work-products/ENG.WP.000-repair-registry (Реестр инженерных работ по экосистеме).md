@@ -27,6 +27,7 @@ status: living-document
 | ENG.WP.008 | Карта автоматизаций экосистемы и источников окружения | 2026-04-05 | 🔄 active |
 | ENG.WP.009 | Нормализация Telegram notification layer экосистемы | 2026-04-05 | 🔄 active |
 | ENG.WP.010 | Устранение дрейфа entrypoint для day-close у Strategist | 2026-04-05 | 🔄 active |
+| ENG.WP.011 | Выравнивание opening-state и day-close маршрута экзокортекса | 2026-04-05 | 🔄 active |
 
 ---
 
