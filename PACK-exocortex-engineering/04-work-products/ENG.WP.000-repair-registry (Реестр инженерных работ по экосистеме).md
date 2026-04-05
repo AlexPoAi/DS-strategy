@@ -35,6 +35,9 @@ status: living-document
 | ENG.WP.016 | Always-on RAG и Telegram bot на VPS/cloud | 2026-04-05 | 🔄 active |
 | ENG.WP.017 | Автопереиндексация RAG после push в VK-offee | 2026-04-05 | ✅ done |
 | ENG.WP.018 | Разделение RAG на core knowledge и Saby analytics | 2026-04-05 | 🔄 active |
+| ENG.WP.019 | История надёжности и сбоев Strategist | 2026-04-05 | 🔄 active |
+| ENG.WP.020 | Укрепление надёжности Strategist | 2026-04-05 | 🔄 active |
+| ENG.WP.021 | Контракт 24/7 исполнения Strategist | 2026-04-06 | 🔄 active |
 
 ---
 

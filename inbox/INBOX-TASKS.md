@@ -40,6 +40,42 @@ created: 2026-03-04
   - Бюджет: 1h
   - Артефакт: TBD — WP на каскадный fallback моделей (ещё не открыт)
 
+- [pending] 2026-04-05: [ENGINEERING] Strategist — собрать единый reliability dossier и roadmap hardening
+  - Контекст: история сбоев `strategist` уже размазана между inbox, failure-modes, SESSION-CONTEXT и точечными WP. Это самый проблемный local-primary агент экосистемы: у него уже были path drift, зависание `day-close`, auth failures, runtime drift и truthful route mismatch.
+  - Что сделать:
+    1. Собрать единый dossier по классам сбоев и уже выполненным фиксам
+    2. Отделить “уже починено” от “осталось системным риском”
+    3. Зафиксировать truthful verdict по зрелости `strategist`
+    4. Подготовить следующий WP на hardening или remote-capable runner
+  - Приоритет: high
+  - Бюджет: 45 мин
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.019-strategist-reliability-history (История надёжности и сбоев Strategist).md`
+
+- [pending] 2026-04-05: [ENGINEERING] Strategist — hardening auth/day-close/week-review runtime
+  - Контекст: после ENG.WP.019 картина уже собрана, но operational issues не сняты. Сейчас нужны не новые наблюдения, а hardening-цикл: auth-failure observability, предсказуемый `day-close`, recovery для `week-review`, снижение shell/runtime хрупкости.
+  - Что сделать:
+    1. Собрать один actionable checklist по всем pending хвостам `strategist`
+    2. Усилить auth-failure observability
+    3. Довести `day-close` до предсказуемого truthful результата
+    4. Разобрать `week-review`: починка или честный downgrade
+  - Приоритет: critical
+  - Бюджет: 1.5-2h
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.020-strategist-hardening (Укрепление надёжности Strategist).md`
+
+- [pending] 2026-04-06: [ENGINEERING] Strategist — спроектировать 24/7 runtime contract
+  - Контекст: подтверждено, что текущий `Strategist` живёт на ноутбуке: `launchd`, локальный `claude` CLI, локальные logs/locks/state. Значит при выключенном ноутбуке он не работает. Нужен честный ответ, как именно `Strategist` должен жить в модели `24/7`: оставаться local-only, стать remote-capable или разделиться по сценариям.
+  - Что сделать:
+    1. Разложить сценарии `Strategist` на `local-only / cloud-safe / requires redesign`
+    2. Зафиксировать `runtime mode source-of-truth`
+    3. Определить `no-double-run` и unified result semantics
+    4. Выбрать первый сценарий для реального 24/7 выноса
+  - Приоритет: critical
+  - Бюджет: 1.5h
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.021-strategist-24x7-runtime-contract (Контракт 24/7 исполнения Strategist).md`
+
  + Report Distribution Agent для pipeline презентаций
   - Контекст: в agency-agents найдены два профильных агента для pipeline «документ из репо → презентация → Telegram»
   - Что сделать:
