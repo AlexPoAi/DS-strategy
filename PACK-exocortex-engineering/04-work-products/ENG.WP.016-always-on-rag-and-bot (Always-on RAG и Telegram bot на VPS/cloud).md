@@ -275,3 +275,88 @@ Cloud secrets не должны жить в git.
 - `bash -n telegram-bot/deploy.sh` — OK
 
 Это означает, что implementation уже начат на уровне кода, но ещё не прошёл через реальный VPS rollout и smoke test с выключенным ноутбуком.
+
+## Historical evidence и текущий blocker
+
+Из прошлых WP и session artifacts уже известно:
+
+- старый VPS существовал и раньше использовался для `VK-offee` bot + RAG;
+- бот и RAG уже запускались на Timeweb VPS `72.56.4.61`;
+- позже был зафиксирован блокер: старый VPS больше не используется и нужен новый серверный контур.
+
+Подтверждающие артефакты:
+
+- [WP-38-vps-deploy-vkoffee-bot (Облачный деплой VK-offee бота и RAG API).md](/Users/alexander/Github/DS-strategy/inbox/WP-38-vps-deploy-vkoffee-bot%20%28%D0%9E%D0%B1%D0%BB%D0%B0%D1%87%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BF%D0%BB%D0%BE%D0%B9%20VK-offee%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B8%20RAG%20API%29.md)
+- [WP-42-vps-architecture-analysis (Анализ архитектуры VPS и сценарии работы).md](/Users/alexander/Github/DS-strategy/inbox/WP-42-vps-architecture-analysis%20%28%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D1%8B%20VPS%20%D0%B8%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B8%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%29.md)
+- [WP-43-fix-vps-embeddings (Починить RAG индексацию на VPS).md](/Users/alexander/Github/DS-strategy/inbox/WP-43-fix-vps-embeddings%20%28%D0%9F%D0%BE%D1%87%D0%B8%D0%BD%D0%B8%D1%82%D1%8C%20RAG%20%D0%B8%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%B0%D1%86%D0%B8%D1%8E%20%D0%BD%D0%B0%20VPS%29.md)
+
+Truthful blocker:
+
+- реальный rollout сейчас упирается не в отсутствие deploy-script, а в отсутствие подтверждённого нового VPS/runtime target.
+
+## Rollout checklist
+
+### Вариант A — новый VPS уже есть
+
+1. Подтвердить сервер:
+   - IP / SSH доступ
+   - Ubuntu 22.04+
+   - минимум 4GB RAM, 20GB SSD
+
+2. Подтвердить runtime target:
+   - рабочая директория `/opt/vk-offee`
+   - `systemd` доступен
+   - outbound доступ к OpenAI/Anthropic или рабочему proxy/base URL
+
+3. На сервере выполнить:
+   - clone/pull `VK-offee`
+   - clone/pull `VK-offee-rag`
+   - создать `venv`
+   - заполнить server env:
+     - `VK-offee-rag/.env`
+     - `VK-offee/telegram-bot/.env`
+
+4. Проверить server env contract:
+   - `VK-offee-rag/.env`
+     - `API_HOST=127.0.0.1` если бот и RAG на одном сервере
+     - `API_PORT=8000`
+     - `OPENAI_API_KEY`
+     - `ANTHROPIC_API_KEY`
+   - `VK-offee/telegram-bot/.env`
+     - `TELEGRAM_BOT_TOKEN`
+     - `RAG_API_URL=http://127.0.0.1:8000`
+     - `BOT_RUNTIME_MODE=cloud`
+
+5. Запустить `deploy.sh` или развернуть systemd units вручную.
+
+6. Проверить systemd:
+   - `vk-rag-api.service`
+   - `vk-telegram-bot.service`
+
+7. Прогнать smoke tests:
+   - `curl http://127.0.0.1:8000/health`
+   - проверка логов `journalctl`
+   - вопрос боту в Telegram
+   - тест при выключенном ноутбуке
+
+### Вариант B — нового VPS ещё нет
+
+1. Сначала закрыть инфраструктурный blocker:
+   - выбрать provider
+   - зарегистрировать новый VPS
+   - получить IP/SSH
+
+2. После этого вернуться к варианту A без перепроектирования кода.
+
+## Smoke test contract — ноутбук выключен
+
+Минимальный acceptance run:
+
+1. локальный `VK-offee` bot process не запущен;
+2. ноутбук выключен или disconnected;
+3. на сервере живы:
+   - `vk-rag-api.service`
+   - `vk-telegram-bot.service`
+4. пользователь пишет боту в Telegram;
+5. бот отвечает через remote RAG;
+6. в логах видно `BOT_RUNTIME_MODE=cloud`.
