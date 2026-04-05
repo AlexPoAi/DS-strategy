@@ -228,6 +228,7 @@
 
 ## Что сделано сегодня (2026-04-05)
 - ✅ [2026-04-05 22:58] Зафиксирована инженерная задача R-2: каскадный fallback моделей (Haiku→Sonnet, Opus запрещён). INBOX обновлён. Haiku недоступен на текущем API ключе — важный контекст для всех инженерных задач.
+- ✅ [2026-04-05 23:12] ENG.WP.015: оформлен архитектурный контракт `local-first / cloud-fallback` для агентного слоя — `VK-offee-rag` и `VK-offee/telegram-bot` закреплены как cloud-primary кандидаты, `strategist/extractor/scheduler` оставлены local-primary до redesign, зафиксированы heartbeat/failover semantics и правило `no-double-run`
 - ✅ [2026-04-05 22:56] ENG.WP.014: зафиксирована карта OpenAI-first always-on migration и выделены first migration targets
 - ✅ [2026-04-05 22:54] ENG.WP.014 создан: Аудит workflow экосистемы от Workflow Architect. 10 workflow-ов проанализированы, 4 критических разрыва выявлены (RAG переиндексация, сессия→INBOX, week-review, агентство). R-1 и R-2 добавлены в INBOX как инженерные задачи W15.
 - ✅ [2026-04-05 23:05] ENG.WP.014: зафиксирована карта OpenAI-first always-on migration — `VK-offee-rag` и `VK-offee/telegram-bot` признаны first migration targets; `strategist/extractor/scheduler` подтверждены как desktop-bound и требующие отдельного runtime-refactor

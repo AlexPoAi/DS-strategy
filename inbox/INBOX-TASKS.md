@@ -8,7 +8,7 @@ created: 2026-03-04
   - Что сделать: добавить post-receive hook или cron на VPS → после push VK-offee → запуск indexer.py
   - Приоритет: high
   - Бюджет: 1h
-  - Артефакт: ENG.WP.015
+  - Артефакт: TBD — implementation WP на always-on RAG + bot (ещё не открыт)
 
 - [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
   - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
@@ -26,7 +26,7 @@ created: 2026-03-04
   - Как проверить: `grep -rn "model\|opus\|haiku\|sonnet" ~/Github/FMT-exocortex-template/roles/*/scripts/*.sh`
   - Приоритет: high
   - Бюджет: 1h
-  - Артефакт: ENG.WP.015-model-fallback-cascade (Каскадный fallback моделей в агентах).md
+  - Артефакт: TBD — WP на каскадный fallback моделей (ещё не открыт)
 
  + Report Distribution Agent для pipeline презентаций
   - Контекст: в agency-agents найдены два профильных агента для pipeline «документ из репо → презентация → Telegram»
@@ -143,6 +143,21 @@ created: 2026-03-04
   - Бюджет: 2 этапа
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.014-openai-first-always-on-migration (OpenAI-first always-on миграция агентного слоя).md`
+
+- [pending] 2026-04-05: [ENGINEERING] Local-first / cloud-fallback архитектура агентного слоя
+  - Контекст: пользовательский контракт уточнён — пока ноутбук включён, локальные агенты работают как primary; когда local runtime unavailable, always-on облачный слой берёт на себя жизненно важные сервисы. Нужен единый контракт, чтобы не было двойных запусков и разъехавшихся маршрутов.
+  - Что уже зафиксировано:
+    1. `VK-offee-rag` и `VK-offee/telegram-bot` — cloud-primary кандидаты
+    2. `strategist.sh`, `extractor.sh`, `scheduler.sh` — local-primary до redesign
+    3. требуется heartbeat/failover contract и правило `no-double-run`
+  - Следующий шаг:
+    1. открыть implementation WP на `always-on RAG + bot`
+    2. определить source-of-truth для runtime mode / heartbeat
+    3. описать smoke tests online/offline для ноутбука
+  - Приоритет: critical
+  - Бюджет: 2 этапа
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.015-local-first-cloud-fallback-architecture (Local-first / cloud-fallback архитектура агентного слоя).md`
 
 - [pending] 2026-04-04: [ПАРК] Создать реестр документов по проекту Парк Голубинка
   - Контекст: все документы парка разбросаны по PACK-park-development, Google Drive, Telegram, Downloads. Нужен единый реестр.
