@@ -276,6 +276,32 @@ Cloud secrets не должны жить в git.
 
 Это означает, что implementation уже начат на уровне кода, но ещё не прошёл через реальный VPS rollout и smoke test с выключенным ноутбуком.
 
+## Fact update — VPS контур синхронизирован после миграции
+
+Подтверждено на живом сервере:
+
+- VPS `72.56.4.61` активен и используется как текущий product always-on runtime;
+- server remotes переведены с `alexpoaiagent-sudo` на SSH remotes `AlexPoAi`;
+- `vk-rag-api.service` и `vk-telegram-bot.service` успешно пережили restart после sync;
+- localhost health после прогрева:
+  - `{"status":"healthy","documents_indexed":436}`
+
+Дополнительно:
+
+- server-only полезные правки были подняты обратно в versioned source-of-truth:
+  - Telegram `/note` / `📝 Заметка` в `VK-offee`
+  - индексация `knowledge-base/saby-reports` в `VK-offee-rag`
+- obsolete server-local Chroma хвост признан неактуальным:
+  - активный store = `data/chroma`
+  - старые `chroma_db/` и `chroma.sqlite3` удалены с VPS
+  - в `VK-offee-rag/.gitignore` добавлены ignore rules для этих legacy runtime files
+
+Truthful итог:
+
+- product always-on контур не требует нового VPS прямо сейчас;
+- главный migration blocker был не инфраструктурный, а post-migration Git/auth drift и server-local divergence;
+- этот слой уже снят.
+
 ## Historical evidence и текущий blocker
 
 Из прошлых WP и session artifacts уже известно:

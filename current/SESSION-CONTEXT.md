@@ -227,6 +227,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-05)
+- ✅ [2026-04-05 23:44] ENG.WP.016: product always-on VPS контур стабилизирован — текущий сервер `72.56.4.61` подтверждён как живой runtime, server remotes переведены на SSH `AlexPoAi`, `vk-rag-api` и `vk-telegram-bot` пережили restart, RAG health после прогрева = 436 документов; server-only правки (`/note`, `saby-reports`) подняты обратно в git, obsolete `chroma_db/chroma.sqlite3` удалены как legacy хвост
 - ✅ [2026-04-05 23:16] Сессия стратегирования W15: создан WeekPlan W15 (РП 51-57), добавлены 8+ задач в INBOX, создан ENG.WP.014 (аудит Workflow Architect — 10 WF, 4 критических разрыва, рекомендации R1-R5), обновлён MEMORY.md (W15 план, Ритуал согласования: обязательный шаг Агент, каскадный fallback Haiku→Sonnet, Opus запрещён)
 - ✅ [2026-04-05 23:11] Встроен шаг 'Агент' в Ритуал согласования (MEMORY.md). Теперь при каждом открытии РП обязательный шаг: найти агента в REGISTRY.md → нанять или зафиксировать в GAPS. Протокол найма HIRING-PROTOCOL.md уже написан, теперь он не потеряется.
 - ✅ [2026-04-05 23:10] ENG.WP.016: always-on RAG + bot implementation slice (remote-ready API host, deploy contract, env template)
