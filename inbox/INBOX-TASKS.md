@@ -11,6 +11,17 @@ created: 2026-03-04
   - Артефакт: ENG.WP.017-rag-auto-reindex-after-push (Автопереиндексация RAG после push в VK-offee).md
   - Итог: done — `vk-rag-reindex.timer` установлен на VPS `72.56.4.61`, первый полный reindex завершён (`263` файлов, `579` документов), повторный запуск без новых коммитов корректно уходит в `pack unchanged`
 
+- [pending] 2026-04-05: [ИНЖ] R-3: Разделить RAG-индекс на core knowledge и Saby analytics
+  - Контекст: Saby-данные нужны, но их нельзя держать в одной коллекции с operational Pack-knowledge. Иначе продуктовый бот загрязняется накладными и закупочной аналитикой.
+  - Что сделать:
+    1. Разделить индексацию на `core` и `saby` коллекции
+    2. Обычные вопросы направлять в `core`
+    3. Вопросы о закупках/накладных/поставщиках направлять в `saby`
+    4. Обновить `/health` и `/stats` под multi-collection
+  - Приоритет: high
+  - Бюджет: 1.5h
+  - Артефакт: ENG.WP.018-multi-collection-rag (Разделение RAG на core knowledge и Saby analytics).md
+
 - [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
   - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
   - Архитектура:
