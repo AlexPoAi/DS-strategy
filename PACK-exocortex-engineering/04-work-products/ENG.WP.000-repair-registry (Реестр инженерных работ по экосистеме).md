@@ -33,6 +33,7 @@ status: living-document
 | ENG.WP.014 | OpenAI-first always-on миграция агентного слоя | 2026-04-05 | 🔄 active |
 | ENG.WP.015 | Local-first / cloud-fallback архитектура агентного слоя | 2026-04-05 | 🔄 active |
 | ENG.WP.016 | Always-on RAG и Telegram bot на VPS/cloud | 2026-04-05 | 🔄 active |
+| ENG.WP.017 | Автопереиндексация RAG после push в VK-offee | 2026-04-05 | ✅ done |
 
 ---
 

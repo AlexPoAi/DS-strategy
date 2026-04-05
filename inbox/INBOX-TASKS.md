@@ -3,12 +3,13 @@ type: inbox
 created: 2026-03-04
 ---
 
-- [pending] 2026-04-05: [ИНЖ] R-1: Автопереиндексация RAG после push VK-offee
+- [done] 2026-04-05: [ИНЖ] R-1: Автопереиндексация RAG после push VK-offee
   - Контекст: WF-3 разорван — ChromaDB на VPS не обновляется при изменении Pack. Бот отвечает по устаревшей базе. Выявлено: ENG.WP.014 (Workflow Architect audit).
-  - Что сделать: добавить post-receive hook или cron на VPS → после push VK-offee → запуск indexer.py
+  - Что сделать: добавить server-side `systemd timer` на VPS → проверка `origin/main` в `VK-offee` → запуск `indexer.py` только при изменении HEAD → restart `vk-rag-api`
   - Приоритет: high
   - Бюджет: 1h
-  - Артефакт: ENG.WP.016-always-on-rag-and-bot (Always-on RAG и Telegram bot на VPS/cloud).md
+  - Артефакт: ENG.WP.017-rag-auto-reindex-after-push (Автопереиндексация RAG после push в VK-offee).md
+  - Итог: done — `vk-rag-reindex.timer` установлен на VPS `72.56.4.61`, первый полный reindex завершён (`263` файлов, `579` документов), повторный запуск без новых коммитов корректно уходит в `pack unchanged`
 
 - [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
   - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
