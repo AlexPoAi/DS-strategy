@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-05 23:02
+**Последнее обновление:** 2026-04-05 23:10
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.015: local-first / cloud-fallback architecture contract for agent layer
+**Статус:** задача закрыта — ENG.WP.016: always-on RAG + bot implementation slice (remote-ready API host, deploy contract, env template)
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:02] Сессия закрыта
+- 🔒 [23:12] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -227,6 +227,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-05)
+- ✅ [2026-04-05 23:10] ENG.WP.016: always-on RAG + bot implementation slice (remote-ready API host, deploy contract, env template)
 - ✅ [2026-04-05 23:02] ENG.WP.015: local-first / cloud-fallback architecture contract for agent layer
 - ✅ [2026-04-05 22:58] Зафиксирована инженерная задача R-2: каскадный fallback моделей (Haiku→Sonnet, Opus запрещён). INBOX обновлён. Haiku недоступен на текущем API ключе — важный контекст для всех инженерных задач.
 - ✅ [2026-04-05 23:12] ENG.WP.015: оформлен архитектурный контракт `local-first / cloud-fallback` для агентного слоя — `VK-offee-rag` и `VK-offee/telegram-bot` закреплены как cloud-primary кандидаты, `strategist/extractor/scheduler` оставлены local-primary до redesign, зафиксированы heartbeat/failover semantics и правило `no-double-run`
