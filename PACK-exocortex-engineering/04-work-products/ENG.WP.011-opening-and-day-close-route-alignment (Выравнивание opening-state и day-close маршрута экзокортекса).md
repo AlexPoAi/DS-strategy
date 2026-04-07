@@ -106,3 +106,18 @@ author: Environment Engineer (Codex)
 
 - `health-check` всё ещё формулирует часть деградации как «норма после перезагрузки», а `SESSION-OPEN` как `yellow` verdict; это уже не path drift, а семантическая калибровка языка и severity
 - `ENG.WP.010` остаётся актуален как слой про сам `day-close` protocol-runner, но пользовательский summary-route теперь выровнен
+
+## Follow-up 2026-04-07 — Canonical MEMORY route
+
+Новый агент при прохождении ритуала открытия мог ошибочно считать knowledge-infra жёлтой, если проверял legacy path `~/Github/MEMORY.md`, которого уже нет как отдельного файла.
+
+Что исправлено:
+
+- canonical route для WP Gate и ритуала открытия зафиксирован как `~/Github/memory/MEMORY.md`;
+- root `~/Github/MEMORY.md` признан только backward-compatible alias, а не отдельным source-of-truth;
+- ключевые opening instructions обновлены так, чтобы отсутствие root alias не трактовалось как инфраструктурная ошибка при наличии рабочего `memory/MEMORY.md`.
+
+Truthful результат:
+
+- новый агент больше не должен выдавать ложный yellow-status только из-за отсутствия старого root `MEMORY.md`;
+- source-of-truth для knowledge/opening layer снова один: `memory/MEMORY.md`.
