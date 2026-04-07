@@ -199,6 +199,47 @@ author: Environment Engineer (Codex)
 - smoke test после ротации;
 - итоговые `security-migration-audit-report.md`, `rotation-runbook.md`, `residual-risks.md`.
 
+### 8. Findings from live inspection (2026-04-07)
+
+Подтверждено дополнительной live-проверкой:
+
+- `remote.origin.url` в ключевых репозиториях сейчас без токенов в URL:
+  - `VK-offee`, `VK-offee-rag`, `DS-strategy`, `DS-agent-workspace`, `FMT-exocortex-template`, `creativ-convector`, `agency-agents`
+  - формат: `https://github.com/AlexPoAi/<repo>.git`
+- `PACK-iwe-culture` сейчас без `origin`; это не секрет-риск, но это operational gap для репозитория из scope.
+- `VK-offee/telegram-bot/.env`, `VK-offee-rag/.env`, `VK-offee/.github/scripts/credentials.json`, `token.pickle`, `token_upload.pickle`:
+  - не tracked
+  - ignored
+  - остаются high-risk runtime stores, но не подтверждены как текущая утечка через git.
+- В локальном `~/Github/.claude/settings.json` были подтверждены literal Telegram bot token values в allow-list командах `curl .../getUpdates`.
+- В `VK-offee/GIT-PUSH-SOLUTION.md` были подтверждены опасные doc patterns:
+  - пример `ghp_...`
+  - `Authorization: token ...`
+  - старый repo namespace `alexpoaiagent-sudo/...`
+
+### 9. Applied hardening during ENG.WP.007 (2026-04-07)
+
+В рамках этого цикла уже выполнено:
+
+- Санитизирован [VK-offee/GIT-PUSH-SOLUTION.md](/Users/alexander/Github/VK-offee/GIT-PUSH-SOLUTION.md):
+  - `ghp_...` заменён на env-based `GITHUB_TOKEN`
+  - `Authorization: token` заменён на `Authorization: Bearer`
+  - старый namespace `alexpoaiagent-sudo/...` заменён на `AlexPoAi/...`
+- Санитизирован локальный [/.claude/settings.json](/Users/alexander/Github/.claude/settings.json):
+  - literal Telegram bot token удалён из allow-list команд
+  - команды переведены на env-based форму `bot$TELEGRAM_BOT_TOKEN/...`
+  - удалён allow-list entry с push через token-in-URL и старый namespace; заменён на `git push origin main`
+
+### 10. Residual risks after this slice
+
+После выполненных правок всё ещё остаются открытые риски:
+
+- секреты по-прежнему хранятся в нескольких runtime-контурах без единого source-of-truth;
+- не проведена ротация Telegram/OpenAI/Anthropic/Google/Saby;
+- не проверены GitHub Secrets в новых приватных репозиториях;
+- не проведён отдельный forensic-pass по старому GitHub-источнику и истории старых публичных репозиториев;
+- локальный `.claude/settings.json` остаётся high-risk config surface, даже после удаления literal token values.
+
 ---
 
 ## Rotation Runbook (безопасный порядок ротации)
