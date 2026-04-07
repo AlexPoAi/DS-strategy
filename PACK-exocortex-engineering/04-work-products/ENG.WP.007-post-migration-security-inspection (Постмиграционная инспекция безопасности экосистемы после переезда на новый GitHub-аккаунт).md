@@ -478,6 +478,23 @@ author: Environment Engineer (Codex)
 - `git push`
 - один Actions workflow manual re-run
 
+### Rotation Registry (операционный минимум перед реальной ротацией)
+
+| Secret group | Основные secret names | Где обновлять | Owner / layer | Smoke test | Статус |
+|---|---|---|---|---|---|
+| Telegram local/cloud | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `~/.config/aist/env`, `VK-offee/telegram-bot/.env`, repo secrets `DS-strategy`, `FMT-exocortex-template` | local runtime + GitHub Actions | `notify.sh`, cloud scheduler notification, product bot ping | partial |
+| OpenAI / Anthropic | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | `VK-offee-rag/.env`, `VK-offee/telegram-bot/.env`, `creativ-convector` secrets/runtime, env for `fpf-consult.sh` | app runtime + optional Actions | RAG query, bot AI scenario, `creativ-convector` workflow smoke | pending |
+| Google OAuth | `credentials.json`, `token.pickle`, `token_upload.pickle` | `VK-offee/.github/scripts/` runtime files | local/VPS sync runtime | Drive sync, Sheets sync, upload scenario | pending |
+| Saby | `SABY_EMAIL`, `SABY_PASSWORD`, `SABY_APP_CLIENT_ID`, `SABY_APP_SECRET`, `SABY_SECRET_KEY` | runtime `.env` / env-layer used by `saby-integration` | app/runtime only | `test_connection.py`, minimal scraper scenario | pending |
+| GitHub cloud machine token | `STRATEGY_REPO_TOKEN` | repo secret in `FMT-exocortex-template` | GitHub Actions machine secret | backup job, health-check clone, manual workflow rerun | pending |
+| Template webhook pair | `BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET` | repo secrets in `FMT-exocortex-template` | webhook integration secret pair | `notify-update.yml` manual dispatch / endpoint 200 | pending |
+
+#### Truthful notes for the registry
+
+- `partial` означает: контур частично подтверждён и/или уже обновлён, но не закрыт end-to-end для всех потребителей.
+- `pending` означает: inventory есть, но controlled rotation + smoke test ещё не выполнены в рамках этого WP.
+- Для `STRATEGY_REPO_TOKEN` и webhook pair перед ротацией нужен owner confirmation, потому что из локального кода не видно фактического service-account scope.
+
 ---
 
 ## Residual Risks (после текущего среза)
