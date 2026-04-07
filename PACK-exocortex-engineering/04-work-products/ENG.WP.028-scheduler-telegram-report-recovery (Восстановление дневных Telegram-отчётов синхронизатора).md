@@ -53,6 +53,10 @@ author: Environment Engineer (Codex)
   - `daily-report.sh` и `health-check.sh` теперь предпочитают свежие daily/interval markers старым `~/.local/state/exocortex/status/*.status`, если marker новее;
   - `strategist-note-review`, `synchronizer-code-scan`, `synchronizer-daily-report` и `extractor-inbox-check` больше не рисуются как stale только потому, что мартовский `.status` старше живого marker-а;
   - stale для задач вне текущего окна (например `week-review` не в понедельник) больше переводится в neutral `missing`, а не раздувает yellow noise.
+- снята путаница между `stale` и реально пропущенным сегодняшним окном:
+  - для `strategist-morning` после 22:00 при отсутствии marker-а вводится отдельный truthful статус `missed_window`, а не абстрактный `stale`;
+  - `AGENTS-STATUS.md` и `SESSION-OPEN` теперь показывают человеческое сообщение `окно на сегодня уже пропущено`;
+  - `health-check.sh` логирует это отдельно как `ПРОПУЩЕНО ОКНО`, но всё ещё suppress-ит stale-only Telegram alert, чтобы этот хвост не перекрывал полезный дневной отчёт.
 
 ## Проверка
 
@@ -79,6 +83,9 @@ author: Environment Engineer (Codex)
   - `health-check.sh` показывает truthful картину: stale остался только у `strategist-morning`;
   - `strategist-note-review`, `synchronizer-code-scan`, `synchronizer-daily-report` и `extractor-inbox-check` подтверждаются как `success`;
   - `strategist-week-review` во вторник больше не шумит как stale/error, а считается задачей вне текущего окна.
+- после `missed_window` fix:
+  - вместо формулировки `устаревший или неполный статус` opening/status artifacts показывают `окно на сегодня уже пропущено`;
+  - remaining yellow verdict теперь объясним: это исторически пропущенное утреннее окно до фиксов, а не текущая поломка runtime plane.
 
 ## Truthful status
 
@@ -87,6 +94,6 @@ author: Environment Engineer (Codex)
 При этом во время прогона всплыли ещё два отдельных хвоста, не блокирующих саму отправку отчёта:
 
 - `strategist note-review` имел отдельную runtime-ошибку, она уже снята отдельным follow-up в `ENG.WP.020`;
-- remaining next layer — уже не stale source-of-truth drift, а более тонкая product-level калибровка severity для одиночного stale `strategist-morning` и возможная нормализация wording `устаревший` → `не запускалось в текущем окне`, если это будет полезно пользователю.
+- remaining next layer — уже не stale source-of-truth drift, а product-level решение: считать ли одиночный `strategist-morning missed_window` просто информационным recovery-note или отдельным operational debt до следующего утра.
 
 То есть Telegram notification path уже починен, но агентный runtime ещё требует следующего cleanup-цикла.
