@@ -146,6 +146,7 @@ author: Environment Engineer (Codex)
 - `auth_failed`
 - `skipped_lock`
 - `offline_by_design`
+- `unsupported_path`
 
 ### 4. Auth model
 
@@ -178,12 +179,12 @@ author: Environment Engineer (Codex)
 
 | Сценарий | Класс | Почему |
 |---|---|---|
-| `day-plan` | `legacy / not primary candidate` | Сценарий уже помечен как deprecated в пользу `protocol-open.md`; не стоит строить 24/7 контракт вокруг legacy entry |
-| `morning` | `cloud-safe candidate` | Сам shell-entrypoint локальный, но сам смысл сценария близок к scheduled planning/opening route; потенциально можно вынести как cloud-safe слой после split от legacy `day-plan` |
+| `day-plan` | `legacy shell alias -> protocol-open` | Сам legacy prompt больше не является source-of-truth; runner уже резолвит открытие дня в canonical `protocol-open.md`, так что 24/7 контракт нужно строить вокруг opening-route, а не вокруг старого prompt-файла |
+| `morning` | `cloud-safe candidate` | Сам shell-entrypoint локальный, но смысл сценария уже фактически сводится к scheduled opening route; после split можно выносить как cloud-safe `opening-summary` path |
 | `session-prep` | `cloud-safe candidate with caveats` | Не требует живого пользователя, но сильно читает WeekPlan, inbox, Strategy, WORKPLAN и строит weekly draft; возможен вынос, если будет единый source-of-truth и no-double-run |
 | `week-review` | `cloud-safe candidate with redesign` | Это лучший кандидат на 24/7 scheduled strategist-path, но он тяжёлый: собирает коммиты по всем репо, пишет в WeekPlan и DS-Knowledge-Index, зависит от truthful result semantics |
 | `note-review` | `requires redesign` | Работает с живым локальным inbox, deterministic cleanup, archive flow и частично полуинтерактивной семантикой; слишком много локального mutable state |
-| `day-close` | `local-only for now` | Завязан на `protocol-close`, governance batch, memory/backup semantics и ещё остаётся интерактивным по своей природе |
+| `day-close` | `local-only interactive only` | Завязан на `protocol-close`, governance batch, memory/backup semantics и по факту не годится для headless strategist-runner; `strategist.sh day-close` теперь truthfully возвращает `unsupported_path` |
 | `strategy-session` | `local-only` | По смыслу это deep-work/interactive сценарий, не годится для always-on выноса |
 
 ## Первый design verdict
@@ -217,6 +218,16 @@ author: Environment Engineer (Codex)
 При этом он ещё достаточно сложный, чтобы стать правильным test-case для всего 24/7 runtime contract.
 
 ## Следующий practical step
+
+Следующий инженерный шаг для этого WP уже уточнился после operational fixes 2026-04-07:
+
+1. Не пытаться выносить `day-close` в 24/7-контур вообще
+2. Считать первым реальным кандидатом на remote-capable pilot именно `week-review`
+3. Для pilot-ветки зафиксировать:
+   - runtime mode source-of-truth
+   - no-double-run rule между local `launchd` и cloud runner
+   - unified result semantics, включая `unsupported_path`
+4. После этого открывать уже не общий discussion, а отдельный implementation slice под `week-review` как первый cloud-safe scenario
 
 Не писать remote runner вслепую, а открыть следующий implementation slice:
 
