@@ -5,17 +5,17 @@
 - Проверка среды: **🟢 зелёный**
 - Помощник авторизации: **🟢 зелёный**
 - Canonical protocol route: **🟢 зелёный**
-- Runtime arbiter: **🟢 зелёный**
+- Runtime arbiter: **🟡 требует внимания**
 - Статус-артефакты: **🟡 требует внимания**
 - Стратег: **🟡 требует внимания**
 - Экстрактор: **🟡 требует внимания**
-- Обновлено: **2026-04-07 22:55**
+- Обновлено: **2026-04-07 22:58**
 
 ## Runtime
 
-- Provider primary: **codex**
-- Provider reason: **both_available_preference_codex**
-- Codex: **available**
+- Provider primary: **claude**
+- Provider reason: **only_claude_available**
+- Codex: **missing**
 - Claude: **available**
 - Runtime policy: **split**
 - Local control plane: **available**
