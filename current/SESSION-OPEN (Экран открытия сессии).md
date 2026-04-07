@@ -4,8 +4,8 @@
 
 - Режим открытия: **Продолжать только после явного подтверждения пользователя.**
 - Итоговый verdict: **🟡 yellow**
-- Время проверки: **2026-04-07 22:47:11**
-- Последнее обновление статус-артефактов: **2026-04-07 22:47:11**
+- Время проверки: **2026-04-07 22:54:41**
+- Последнее обновление статус-артефактов: **2026-04-07 22:54:41**
 
 ## Приборная панель среды
 
@@ -13,7 +13,17 @@
 - Проверка среды: **🟢 green**
 - Помощник авторизации: **🟢 green**
 - Canonical protocol route: **🟢 green**
+- Runtime arbiter: **🟡 yellow**
 - Статус-артефакты: **🟡 yellow**
+
+## Runtime mode
+
+- Provider plane: **primary=unavailable, codex=unknown, claude=unknown**
+- Runtime policy: **unknown**
+- Local control plane: **unknown**
+- Cloud RAG: **unknown**
+- Cloud takeover scope: **unknown**
+- Cloud bot runtime: **unknown**
 
 ## Задачи агентов
 - Стратег: открытие дня: **🟡 устаревший или неполный статус**
@@ -25,6 +35,7 @@
 
 ## Что требует внимания
 
+- Runtime arbiter unavailable: /Users/alexander/Github/FMT-exocortex-template/roles/synchronizer/scripts/runtime-arbiter.sh
 - Стратег: открытие дня: stale
 - Стратег: разбор заметок: stale
 - Стратег: обзор недели: stale
