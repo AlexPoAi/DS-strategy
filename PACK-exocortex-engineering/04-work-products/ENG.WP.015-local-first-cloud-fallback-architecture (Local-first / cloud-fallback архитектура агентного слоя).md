@@ -170,3 +170,15 @@ author: Environment Engineer (Codex)
 - гибридная модель признана лучшей стратегией, чем массовый перенос всех агентов;
 - контракт fallback теперь описан;
 - implementation ещё не начат.
+
+## Уточнение после provider migration
+
+На 2026-04-07 локальный агентный слой уже может жить в режиме `Codex-primary / Claude-fallback`.
+
+Это улучшает provider stability и снижает зависимость от Anthropic-path, но **не меняет** базовый truthful verdict этого WP:
+
+- `Strategist`
+- `Extractor`
+- `Scheduler`
+
+по-прежнему остаются `local-primary` контурами, пока их runtime/state/lock semantics не вынесены в отдельный cloud-capable contract.

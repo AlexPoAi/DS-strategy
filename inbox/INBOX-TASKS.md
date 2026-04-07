@@ -16,6 +16,18 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.024-provider-fallback-claude-to-codex (Provider fallback Claude→Codex для агентного слоя).md`
 
+- [done] 2026-04-07: [ENGINEERING] Codex-primary миграция локального агентного слоя
+  - Контекст: provider fallback уже был добавлен, но operational default всё ещё оставался Claude-first. Пользовательский вектор — перевести локальных агентов на более стабильный Codex-path, сохранив Claude как запасной путь.
+  - Что сделано:
+    1. В `strategist.sh` и `extractor.sh` добавлен `AI_CLI_PROVIDER_PRIMARY`
+    2. Дефолт переведён на `codex`
+    3. `Claude` оставлен fallback-provider'ом
+    4. Документация и архитектурный контур обновлены под `Codex-primary / Claude-fallback`
+  - Приоритет: high
+  - Бюджет: 45 мин
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.025-codex-primary-agent-migration (Codex-primary миграция локального агентного слоя).md`
+
 - [done] 2026-04-07: [ENGINEERING] Open protocol routing — устранить пустой canonical path для `memory/protocol-open.md`
   - Контекст: в корневом `CLAUDE.md` opening route указывает на `memory/protocol-open.md`, но по этому пути файла нет. В реальной среде протокол открытия живёт в `DS-strategy/exocortex/memory/protocol-open.md` и/или `FMT-exocortex-template/memory/protocol-open.md`. Получается разрыв между объявленным canonical route и фактическим source-of-truth.
   - Почему это нельзя оставлять: агент получает ссылку, которая должна быть рабочей по контракту экосистемы. Недопустимо, чтобы в стартовом протоколе была пустая ссылка или битый путь даже при наличии обходного маршрута.
