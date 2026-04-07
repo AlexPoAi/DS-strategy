@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 23:09
+**Последнее обновление:** 2026-04-07 23:12
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — health-check noise reduction: stale-only Telegram alerts suppressed so daily exocortex digest is no longer masked by useless stale notifications
+**Статус:** задача закрыта — ENG.WP.020 follow-up: note-review shell crash fixed; canary counters deterministic and cleanup route corrected
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:09] Сессия закрыта
+- 🔒 [23:12] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 23:12] ENG.WP.020 follow-up: note-review shell crash fixed; canary counters deterministic and cleanup route corrected
 - ✅ [2026-04-07 23:09] health-check noise reduction: stale-only Telegram alerts suppressed so daily exocortex digest is no longer masked by useless stale notifications
 - ✅ [2026-04-07 23:08] ENG.WP.028: scheduler dispatch restored and daily Telegram agent reports recovered; synchronizer now reaches daily-telegram-report and sends enriched status digest
 - ✅ [2026-04-07 23:03] ENG.WP.027 follow-up: strategist and extractor diagnostics aligned to provider parity; auth/preflight messages now use truthful AI-CLI wording
