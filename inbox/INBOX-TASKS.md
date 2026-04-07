@@ -3,6 +3,18 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-07: [ENGINEERING] Восстановить дневные Telegram-отчёты синхронизатора
+  - Контекст: пользователь перестал получать в течение дня большие Telegram-отчёты о состоянии агентов. При этом markdown-артефакты `daily-report` продолжали создаваться, что означало разрыв между report generation и Telegram delivery.
+  - Что сделано:
+    1. В `scheduler.sh` починены runtime paths для role runner discovery
+    2. Устранён `set -e` abort в блоке `strategist morning`, который мог обрывать dispatch до Telegram-шага
+    3. Восстановлен проход scheduler до `daily-telegram-report`
+    4. Усилен сам текст daily Telegram report: brain verdict, runtime mode, block `Что требует внимания`
+    5. Подтверждена реальная отправка в Telegram и появление marker-файлов доставки
+  - Приоритет: high
+  - Бюджет: 45 мин
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.028-scheduler-telegram-report-recovery (Восстановление дневных Telegram-отчётов синхронизатора).md`
 - [done] 2026-04-07: [ENGINEERING] Runtime arbiter для равноправного выбора Codex / Claude по доступности
   - Контекст: после `Codex-primary` миграции система стала устойчивее, но всё ещё жила с hardcoded operational default. Пользовательский вектор другой: `Codex` и cloud/Claude provider paths должны работать на равных, а primary path должен определяться по реальной доступности и продлённой подписке, а не по старой привязке к одному vendor'у.
   - Что сделано:
