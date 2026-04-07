@@ -240,6 +240,41 @@ author: Environment Engineer (Codex)
 - не проведён отдельный forensic-pass по старому GitHub-источнику и истории старых публичных репозиториев;
 - локальный `.claude/settings.json` остаётся high-risk config surface, даже после удаления literal token values.
 
+### 11. GitHub Actions secret inventory (2026-04-07)
+
+Проверены workflow-файлы в репозиториях из scope, где реально есть `.github/workflows/`.
+
+#### Repo -> secrets used
+
+| Репозиторий | Workflow | Secrets |
+|---|---|---|
+| `DS-strategy` | `.github/workflows/cloud-scheduler.yml` | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
+| `FMT-exocortex-template` | `.github/workflows/cloud-scheduler.yml` | `STRATEGY_REPO_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
+| `FMT-exocortex-template` | `.github/workflows/notify-update.yml` | `BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET` |
+| `creativ-convector` | `.github/workflows/obsidian-ai-pr.yml` | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
+| `VK-offee`, `VK-offee-rag`, `DS-agent-workspace`, `PACK-iwe-culture`, `agency-agents` | workflow secrets usage not found in local workflow files | — |
+
+#### Truthful findings
+
+- GitHub Actions secret surface сейчас подтверждённо включает минимум:
+  - `TELEGRAM_BOT_TOKEN`
+  - `TELEGRAM_CHAT_ID`
+  - `STRATEGY_REPO_TOKEN`
+  - `BOT_WEBHOOK_URL`
+  - `TEMPLATE_WEBHOOK_SECRET`
+  - `OPENAI_API_KEY`
+  - `ANTHROPIC_API_KEY`
+- Это inventory только по workflow references; без GitHub API/Settings access он не подтверждает наличие или отсутствие секретов в repo settings, а подтверждает именно ожидаемые имена.
+- В `DS-strategy/.github/workflows/cloud-scheduler.yml` найден migration drift:
+  - workflow всё ещё клонировал `VK-offee` и `FMT-exocortex-template` из старого namespace `alexpoaiagent-sudo`
+  - это уже исправлено на `AlexPoAi`
+
+#### Вывод для следующих волн ротации
+
+- Wave Telegram должна покрывать не только local runtime, но и GitHub Actions secrets в `DS-strategy` и `FMT-exocortex-template`.
+- Wave OpenAI/Anthropic должна включать GitHub Actions secrets в `creativ-convector`, иначе ручной/optional AI workflow останется на старых ключах.
+- `STRATEGY_REPO_TOKEN` и webhook secrets (`BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET`) требуют отдельной service-account inventory до ротации.
+
 ---
 
 ## Rotation Runbook (безопасный порядок ротации)

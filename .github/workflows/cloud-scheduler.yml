@@ -44,14 +44,14 @@ jobs:
         with:
           fetch-depth: 100
 
-      - name: Clone дополнительные репо (публичные)
+      - name: Clone дополнительные репо
         run: |
           mkdir -p /tmp/repos
           cp -r . /tmp/repos/DS-strategy
 
           for REPO in VK-offee FMT-exocortex-template; do
             git clone --depth 50 --single-branch \
-              "https://github.com/alexpoaiagent-sudo/${REPO}.git" \
+              "https://github.com/AlexPoAi/${REPO}.git" \
               "/tmp/repos/${REPO}" 2>/dev/null \
               && echo "✓ cloned $REPO" \
               || echo "⚠ skip $REPO"
