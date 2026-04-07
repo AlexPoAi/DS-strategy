@@ -704,7 +704,7 @@ created: 2026-03-04
   - Репо: DS-strategy / целевой system repo по результату
 
 
-- [pending] 2026-03-22: 🔴 Критично — разобрать зависание Claude day-close / strategist day-close
+- [done] 2026-03-22: 🔴 Критично — разобрать зависание Claude day-close / strategist day-close
   - Контекст: Ночной приёмочный тест показал реальный runtime-дефект закрытия дня. `strategist.sh day-close` стартует, в логе фиксируется `Manual: running day close` и `Starting scenario: day-close`, но сценарий не даёт финального результата. Ранее в тот же день уже был зафиксирован таймаут `day-close` на 300s. Дополнительно lock выглядит нетипично: `~/logs/strategist/locks/day-close.2026-03-22.lock` является директорией, а не обычным lock-файлом. День пришлось закрыть обходным безопасным маршрутом через `close-task.sh`.
   - Приоритет: critical
   - Что нужно сделать:
@@ -714,6 +714,7 @@ created: 2026-03-04
     - Определить, где именно сценарий зависает: на Claude runtime, git-обходе, backup, чтении WeekPlan/MEMORY или close-flow шаге
     - После диагностики решить: чинить сам `day-close`, упростить его контракт или оставить закрытие дня только через truthfully verified safe-route
     - Обязательно проверить исправление на реальном запуске без ложного success
+  - Результат: 2026-04-07 зафиксировано архитектурное решение. `strategist.sh day-close` больше не используется как headless-route, потому что `protocol-close.md` интерактивен и раньше давал ложный `success`. Runner теперь truthfully возвращает `status=unsupported_path`, а canonical day-close остаётся только через интерактивный `protocol-close`.
   - Артефакт: честно работающий `day-close` или зафиксированное архитектурное решение, почему он больше не используется как основной путь закрытия дня
   - Репо: FMT-exocortex-template / DS-strategy / корневой `close-task.sh`
 

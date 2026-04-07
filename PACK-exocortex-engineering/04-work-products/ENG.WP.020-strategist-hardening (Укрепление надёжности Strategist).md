@@ -164,3 +164,14 @@ WP только открыт.
   - success на втором проходе
 
 Это не закрывает весь WP.020, но снимает актуальный operational дефект сегодняшнего morning-run.
+
+## Шестой выполненный slice
+
+Закрыт ложный headless-path для `day-close`:
+
+- подтверждено по логам `2026-04-06`, что `strategist.sh day-close` кормил интерактивный `protocol-close.md`, получал уточняющий вопрос и ошибочно маркировал запуск как `success`;
+- это не runtime timeout bug, а architectural mismatch между headless runner и interactive close protocol;
+- `strategist.sh day-close` переведён в truthful отказ с `status=unsupported_path` и `exit_code=19`;
+- в качестве canonical маршрута оставлен только интерактивный `protocol-close`.
+
+Итог: опасный псевдо-автоматический путь закрытия дня больше не может создать ложное ощущение, что день был закрыт корректно.
