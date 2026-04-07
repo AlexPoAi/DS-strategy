@@ -59,6 +59,10 @@ author: Environment Engineer (Codex)
 - дополнительно выровнен installer/quickstart слой:
   - `setup.sh` теперь внутренне использует нейтральный `AI_CLI_PATH`, сохраняя совместимость с существующим `{{CLAUDE_PATH}}` placeholder
   - `README.md` quickstart теперь предлагает `codex` или `claude`, а не только Claude-only вход
+- дополнительно выровнен deeper docs слой:
+  - `docs/SETUP-GUIDE.md` больше не требует Anthropic subscription как обязательную предпосылку для всего IWE
+  - `docs/IWE-HELP.md` отражает runtime arbitration и AI-CLI-first semantics
+  - `docs/LEARNING-PATH.md` описывает Extractor и MCP как AI-CLI/Claude-compatible path, а не как Claude-only слой
 
 ## Проверка
 
@@ -69,6 +73,7 @@ author: Environment Engineer (Codex)
 - legacy wrapper `claude-run.sh` успешно резолвится в `ai-run.sh`
 - high-signal docs приведены к AI-CLI-first формулировкам без потери Claude fallback semantics
 - `setup.sh` проходит `bash -n` после neutral naming cleanup
+- `SETUP-GUIDE.md`, `IWE-HELP.md`, `LEARNING-PATH.md` выровнены с `Codex primary / Claude fallback / auto-runtime` semantics
 
 ## Truthful status
 
