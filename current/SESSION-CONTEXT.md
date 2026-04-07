@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 23:03
+**Последнее обновление:** 2026-04-07 23:08
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.027 follow-up: strategist and extractor diagnostics aligned to provider parity; auth/preflight messages now use truthful AI-CLI wording
+**Статус:** задача закрыта — ENG.WP.028: scheduler dispatch restored and daily Telegram agent reports recovered; synchronizer now reaches daily-telegram-report and sends enriched status digest
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:03] Сессия закрыта
+- 🔒 [23:08] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 23:08] ENG.WP.028: scheduler dispatch restored and daily Telegram agent reports recovered; synchronizer now reaches daily-telegram-report and sends enriched status digest
 - ✅ [2026-04-07 23:03] ENG.WP.027 follow-up: strategist and extractor diagnostics aligned to provider parity; auth/preflight messages now use truthful AI-CLI wording
 - ✅ [2026-04-07 23:01] ENG.WP.025 docs follow-up: SETUP-GUIDE, IWE-HELP and LEARNING-PATH aligned to AI-CLI-first and Codex/Claude parity semantics
 - ✅ [2026-04-07 22:59] ENG.WP.025 follow-up: setup.sh and README quickstart aligned to AI-CLI-first semantics; installer no longer assumes Claude-only primary path
