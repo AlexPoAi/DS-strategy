@@ -3,6 +3,19 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-07: [ENGINEERING] Provider fallback `Claude -> Codex` для агентного слоя
+  - Контекст: после каскада `Haiku -> Sonnet` агентный слой всё ещё зависел от одного vendor-path. Если Anthropic runtime/auth/preflight ломается, runner'ы снова деградируют в hard fail. При этом в среде уже доступен рабочий `codex` CLI (`login status: Logged in using ChatGPT`).
+  - Что сделано:
+    1. В `strategist.sh` добавлен provider fallback `Claude -> Codex`
+    2. В `extractor.sh` добавлен provider fallback `Claude -> Codex`
+    3. Введены `AI_CLI_PROVIDER_FALLBACK`, `CODEX_PATH`, `CODEX_MODEL`
+    4. Логи теперь фиксируют `provider=codex`
+    5. Пройдены mock smoke tests для обоих runner'ов
+  - Приоритет: high
+  - Бюджет: 45-60 мин
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.024-provider-fallback-claude-to-codex (Provider fallback Claude→Codex для агентного слоя).md`
+
 - [done] 2026-04-07: [ENGINEERING] Open protocol routing — устранить пустой canonical path для `memory/protocol-open.md`
   - Контекст: в корневом `CLAUDE.md` opening route указывает на `memory/protocol-open.md`, но по этому пути файла нет. В реальной среде протокол открытия живёт в `DS-strategy/exocortex/memory/protocol-open.md` и/или `FMT-exocortex-template/memory/protocol-open.md`. Получается разрыв между объявленным canonical route и фактическим source-of-truth.
   - Почему это нельзя оставлять: агент получает ссылку, которая должна быть рабочей по контракту экосистемы. Недопустимо, чтобы в стартовом протоколе была пустая ссылка или битый путь даже при наличии обходного маршрута.
