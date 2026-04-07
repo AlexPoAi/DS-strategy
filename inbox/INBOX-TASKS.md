@@ -23,6 +23,7 @@ created: 2026-03-04
     2. Дефолт переведён на `codex`
     3. `Claude` оставлен fallback-provider'ом
     4. Документация и архитектурный контур обновлены под `Codex-primary / Claude-fallback`
+    5. Legacy extractor entrypoint переведён на `ai-run.sh`, старый `claude-run.sh` оставлен wrapper'ом
   - Приоритет: high
   - Бюджет: 45 мин
   - Артефакт:

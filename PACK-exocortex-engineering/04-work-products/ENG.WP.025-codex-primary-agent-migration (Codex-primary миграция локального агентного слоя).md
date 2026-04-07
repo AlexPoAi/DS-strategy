@@ -48,12 +48,16 @@ author: Environment Engineer (Codex)
 - в `ENG.WP.015` добавлено уточнение: provider migration в `Codex` не отменяет runtime truth о том, что `Strategist` / `Extractor` остаются `local-primary`
 - в `LEARNING-PATH.md` исполнители `Стратег` и `Экстрактор` отражены как `AI CLI (Codex primary, Claude fallback)`
 - в `README.md` и `SETUP-GUIDE.md` ослаблена Anthropic-centric формулировка: `Codex` теперь указан как нормальный и рекомендуемый путь для локального агентного слоя
+- legacy entrypoint `claude-run.sh` переведён в wrapper, а канонический extractor entrypoint теперь `ai-run.sh`
+- `ECOSYSTEM.md` и `setup.sh` обновлены под AI-CLI-first wording вместо Claude-only wording
 
 ## Проверка
 
 - `bash -n` прошёл для обоих runner'ов
 - mock smoke test подтвердил `Codex-primary` путь для `Strategist`
 - ранее подтверждённые smoke tests `Claude -> Codex` fallback остаются валидны
+- `ai-run.sh` проходит `bash -n`
+- legacy wrapper `claude-run.sh` успешно резолвится в `ai-run.sh`
 
 ## Truthful status
 
