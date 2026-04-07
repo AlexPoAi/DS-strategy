@@ -49,6 +49,10 @@ author: Environment Engineer (Codex)
   - `daily-report.sh` получил отдельный refresh-route `--refresh-status-artifacts`, который пересобирает `RUNTIME-MODE.md`, `AGENTS-STATUS.md` и `SESSION-OPEN` без полного пересоздания SchedulerReport;
   - `daily-telegram-report.sh` теперь вызывает этот refresh перед отправкой, поэтому Telegram-report больше не зависит от старого утреннего snapshot-а;
   - opening/status artifacts и runtime arbiter теперь синхронизируются на одном живом состоянии provider plane.
+- снят stale-semantics drift внутри opening/status artifacts:
+  - `daily-report.sh` и `health-check.sh` теперь предпочитают свежие daily/interval markers старым `~/.local/state/exocortex/status/*.status`, если marker новее;
+  - `strategist-note-review`, `synchronizer-code-scan`, `synchronizer-daily-report` и `extractor-inbox-check` больше не рисуются как stale только потому, что мартовский `.status` старше живого marker-а;
+  - stale для задач вне текущего окна (например `week-review` не в понедельник) больше переводится в neutral `missing`, а не раздувает yellow noise.
 
 ## Проверка
 
@@ -71,6 +75,10 @@ author: Environment Engineer (Codex)
   - `current/AGENTS-STATUS.md`
   - `current/SESSION-OPEN (Экран открытия сессии).md`
 - после refresh `AGENTS-STATUS` и `SESSION-OPEN` больше не показывают legacy `primary=claude, codex=missing`; теперь они truthfully отражают `primary=codex, codex=available, claude=available`
+- после stale-semantics fix:
+  - `health-check.sh` показывает truthful картину: stale остался только у `strategist-morning`;
+  - `strategist-note-review`, `synchronizer-code-scan`, `synchronizer-daily-report` и `extractor-inbox-check` подтверждаются как `success`;
+  - `strategist-week-review` во вторник больше не шумит как stale/error, а считается задачей вне текущего окна.
 
 ## Truthful status
 
@@ -79,6 +87,6 @@ author: Environment Engineer (Codex)
 При этом во время прогона всплыли ещё два отдельных хвоста, не блокирующих саму отправку отчёта:
 
 - `strategist note-review` имел отдельную runtime-ошибку, она уже снята отдельным follow-up в `ENG.WP.020`;
-- remaining next layer — уже не доставка Telegram-отчёта, а semantic calibration severity/aging для stale-задач внутри opening/status artifacts.
+- remaining next layer — уже не stale source-of-truth drift, а более тонкая product-level калибровка severity для одиночного stale `strategist-morning` и возможная нормализация wording `устаревший` → `не запускалось в текущем окне`, если это будет полезно пользователю.
 
 То есть Telegram notification path уже починен, но агентный runtime ещё требует следующего cleanup-цикла.
