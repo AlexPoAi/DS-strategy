@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 23:26
+**Последнее обновление:** 2026-04-07 23:32
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.028 follow-up: stale semantics calibrated so opening/status artifacts prefer fresh runtime markers over stale March status files; only real morning stale now remains
+**Статус:** задача закрыта — ENG.WP.011 follow-up: fixed canonical MEMORY route for opening ritual; agents now use ~/Github/memory/MEMORY.md and root ~/Github/MEMORY.md is restored as backward-compatible alias to prevent false yellow opening errors
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:26] Сессия закрыта
+- 🔒 [23:32] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 23:32] ENG.WP.011 follow-up: fixed canonical MEMORY route for opening ritual; agents now use ~/Github/memory/MEMORY.md and root ~/Github/MEMORY.md is restored as backward-compatible alias to prevent false yellow opening errors
 - ✅ [2026-04-07 23:26] ENG.WP.028 follow-up: stale semantics calibrated so opening/status artifacts prefer fresh runtime markers over stale March status files; only real morning stale now remains
 - ✅ [2026-04-07 23:22] ENG.WP.028 follow-up: added pre-send refresh of runtime/opening artifacts so daily Telegram report uses truthful Codex/Claude provider state instead of stale morning snapshots
 - ✅ [2026-04-07 23:16] ENG.WP.028 follow-up: fixed extractor workspace drift and code-scan runtime path; nightly synchronizer paths now resolve truthful workspace and reports are no longer polluted by false inbox/runtime failures
