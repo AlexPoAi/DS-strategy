@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 22:42
+**Последнее обновление:** 2026-04-07 22:46
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.026: RAG разделён на core и saby, API получил truthful routing verdict, regression-test пройден
+**Статус:** задача закрыта — ENG.WP.025: high-signal documentation cleanup завершён — README, IWE-HELP, LEARNING-PATH и onboarding-guide выровнены под AI-CLI-first / Codex-primary semantics
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [22:42] Сессия закрыта
+- 🔒 [22:46] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 22:46] ENG.WP.025: high-signal documentation cleanup завершён — README, IWE-HELP, LEARNING-PATH и onboarding-guide выровнены под AI-CLI-first / Codex-primary semantics
 - ✅ [2026-04-07 22:42] ENG.WP.026: RAG разделён на core и saby, API получил truthful routing verdict, regression-test пройден
 - ✅ [2026-04-07 22:35] ENG.WP.025: legacy extractor entrypoint переведён на ai-run.sh, claude-run.sh оставлен совместимым wrapper, setup/ECOSYSTEM обновлены под AI-CLI-first
 - ✅ [2026-04-07 22:32] ENG.WP.025: локальный агентный слой переведён в режим Codex-primary / Claude-fallback; документация и архитектурный контур обновлены
