@@ -3,6 +3,19 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-07: [ENGINEERING] Runtime arbiter для равноправного выбора Codex / Claude по доступности
+  - Контекст: после `Codex-primary` миграции система стала устойчивее, но всё ещё жила с hardcoded operational default. Пользовательский вектор другой: `Codex` и cloud/Claude provider paths должны работать на равных, а primary path должен определяться по реальной доступности и продлённой подписке, а не по старой привязке к одному vendor'у.
+  - Что сделано:
+    1. Добавлен `runtime-arbiter.sh` как единый source-of-truth для provider/runtime plane
+    2. Введён `DS-strategy/current/RUNTIME-POLICY.env`
+    3. `strategist.sh` и `extractor.sh` переведены на `AI_CLI_PROVIDER_PRIMARY=auto`
+    4. `health-check.sh` перестал считать Anthropic helper единственным критическим auth/runtime verdict'ом
+    5. `daily-report.sh`, `AGENTS-STATUS.md` и opening screen теперь показывают runtime mode и provider resolution
+  - Приоритет: high
+  - Бюджет: 45-60 мин
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.027-runtime-arbiter-codex-cloud-parity (Арбитр доступности Codex и Cloud provider plane).md`
+
 - [done] 2026-04-07: [ENGINEERING] Provider fallback `Claude -> Codex` для агентного слоя
   - Контекст: после каскада `Haiku -> Sonnet` агентный слой всё ещё зависел от одного vendor-path. Если Anthropic runtime/auth/preflight ломается, runner'ы снова деградируют в hard fail. При этом в среде уже доступен рабочий `codex` CLI (`login status: Logged in using ChatGPT`).
   - Что сделано:

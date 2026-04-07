@@ -182,3 +182,7 @@ author: Environment Engineer (Codex)
 - `Scheduler`
 
 по-прежнему остаются `local-primary` контурами, пока их runtime/state/lock semantics не вынесены в отдельный cloud-capable contract.
+
+Следующий шаг после этого уточнился ещё сильнее: provider choice тоже нельзя держать как hardcoded default.
+
+На 2026-04-07 добавлен отдельный runtime arbiter слой (`ENG.WP.027`), который выбирает primary provider по policy и реальной доступности (`Codex` / `Claude`), не смешивая это решение с вопросом local-vs-cloud runtime.

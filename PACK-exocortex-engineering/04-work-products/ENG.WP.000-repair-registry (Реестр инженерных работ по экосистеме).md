@@ -38,6 +38,7 @@ status: living-document
 | ENG.WP.019 | История надёжности и сбоев Strategist | 2026-04-05 | 🔄 active |
 | ENG.WP.020 | Укрепление надёжности Strategist | 2026-04-05 | 🔄 active |
 | ENG.WP.021 | Контракт 24/7 исполнения Strategist | 2026-04-06 | 🔄 active |
+| ENG.WP.027 | Арбитр доступности Codex и Cloud provider plane | 2026-04-07 | ✅ done |
 
 ---
 
