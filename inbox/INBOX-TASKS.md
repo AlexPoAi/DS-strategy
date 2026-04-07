@@ -3,7 +3,7 @@ type: inbox
 created: 2026-03-04
 ---
 
-- [pending] 2026-04-07: [ENGINEERING] Open protocol routing — устранить пустой canonical path для `memory/protocol-open.md`
+- [done] 2026-04-07: [ENGINEERING] Open protocol routing — устранить пустой canonical path для `memory/protocol-open.md`
   - Контекст: в корневом `CLAUDE.md` opening route указывает на `memory/protocol-open.md`, но по этому пути файла нет. В реальной среде протокол открытия живёт в `DS-strategy/exocortex/memory/protocol-open.md` и/или `FMT-exocortex-template/memory/protocol-open.md`. Получается разрыв между объявленным canonical route и фактическим source-of-truth.
   - Почему это нельзя оставлять: агент получает ссылку, которая должна быть рабочей по контракту экосистемы. Недопустимо, чтобы в стартовом протоколе была пустая ссылка или битый путь даже при наличии обходного маршрута.
   - Что сделать:
@@ -15,6 +15,7 @@ created: 2026-03-04
   - Бюджет: 30-45 мин
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.022-open-protocol-routing-fix (Починка canonical route протоколов открытия).md`
+  - Итог: done — восстановлен workspace symlink `~/Github/memory -> ~/.claude/projects/-Users-alexander-Github/memory`, canonical `protocol-open/work/close` снова резолвятся из корня, в `health-check.sh` и `daily-report.sh` добавлен smoke-check на broken/missing canonical protocol route
 
 - [done] 2026-04-05: [ИНЖ] R-1: Автопереиндексация RAG после push VK-offee
   - Контекст: WF-3 разорван — ChromaDB на VPS не обновляется при изменении Pack. Бот отвечает по устаревшей базе. Выявлено: ENG.WP.014 (Workflow Architect audit).
