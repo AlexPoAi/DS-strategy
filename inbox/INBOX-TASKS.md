@@ -52,7 +52,7 @@ created: 2026-03-04
   - Как проверить: `grep -rn "model\|opus\|haiku\|sonnet" ~/Github/FMT-exocortex-template/roles/*/scripts/*.sh`
   - Приоритет: high
   - Бюджет: 1h
-  - Артефакт: TBD — WP на каскадный fallback моделей (ещё не открыт)
+  - Артефакт: `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.023-model-fallback-cascade (Каскадный fallback моделей Haiku→Sonnet для агентного слоя).md`
 
 - [pending] 2026-04-05: [ENGINEERING] Strategist — собрать единый reliability dossier и roadmap hardening
   - Контекст: история сбоев `strategist` уже размазана между inbox, failure-modes, SESSION-CONTEXT и точечными WP. Это самый проблемный local-primary агент экосистемы: у него уже были path drift, зависание `day-close`, auth failures, runtime drift и truthful route mismatch.
