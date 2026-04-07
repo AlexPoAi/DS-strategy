@@ -36,7 +36,7 @@ created: 2026-03-04
   - Бюджет: 1.5h
   - Артефакт: ENG.WP.018-multi-collection-rag (Разделение RAG на core knowledge и Saby analytics).md
 
-- [pending] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
+- [done] 2026-04-05: [ИНЖ] R-2: Каскадный fallback моделей в агентах (Haiku → Sonnet, Opus запрещён)
   - Контекст: Haiku недоступен на текущем ключе, Opus вызывает 429 cost limit. Нужен fallback: пробуем Haiku → если недоступен → Sonnet. Opus полностью отключить.
   - Архитектура:
     ```
@@ -48,8 +48,10 @@ created: 2026-03-04
   - Где применить:
     1. `strategist.sh` — все сценарии (morning, week-review, note-review, day-close)
     2. `extractor.sh` — inbox-check
-    3. `scheduler.sh` — dispatch логика
-  - Как проверить: `grep -rn "model\|opus\|haiku\|sonnet" ~/Github/FMT-exocortex-template/roles/*/scripts/*.sh`
+    3. `scheduler.sh` — dispatch логика проверена, изменения не требуются
+  - Как проверено:
+    1. `bash -n` для `strategist.sh` и `extractor.sh`
+    2. mock smoke test fallback-сценария `Haiku -> Sonnet`
   - Приоритет: high
   - Бюджет: 1h
   - Артефакт: `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.023-model-fallback-cascade (Каскадный fallback моделей Haiku→Sonnet для агентного слоя).md`
