@@ -41,6 +41,10 @@ author: Environment Engineer (Codex)
   - runtime mode;
   - блок `Что требует внимания`;
   - счётчик рабочих продуктов и нанятых агентов.
+- в adjacent nightly paths дополнительно снят runtime drift:
+  - `extractor.sh` переведён на truthful workspace resolution вместо literal `{{HOME_DIR}}/Github`;
+  - `inbox-check` снова видит реальный `DS-strategy/inbox/captures.md` и truthfully возвращает `SKIP: No pending captures`, а не `captures.md not found`;
+  - `code-scan.sh` переведён на реальный workspace path и перестал ломаться на empty array / `set -u`.
 
 ## Проверка
 
@@ -56,6 +60,8 @@ author: Environment Engineer (Codex)
 - в `~/.local/state/exocortex/` появились:
   - `telegram-report-2026-04-07`
   - `synchronizer-telegram-report-2026-04-07`
+- `extractor.sh inbox-check` вручную подтверждает реальный путь и даёт `SKIP: No pending captures in inbox`
+- `code-scan.sh --dry-run` проходит и показывает truthful summary по найденным репозиториям
 
 ## Truthful status
 
@@ -63,7 +69,7 @@ author: Environment Engineer (Codex)
 
 При этом во время прогона всплыли ещё два отдельных хвоста, не блокирующих саму отправку отчёта:
 
-- `strategist note-review` имеет отдельную runtime-ошибку;
-- `extractor inbox-check` живёт с отдельной workspace/captures drift-семантикой.
+- `strategist note-review` имел отдельную runtime-ошибку, она уже снята отдельным follow-up в `ENG.WP.020`;
+- remaining next layer — уже не доставка Telegram-отчёта, а дальнейшая чистка status semantics и legacy status artifacts.
 
 То есть Telegram notification path уже починен, но агентный runtime ещё требует следующего cleanup-цикла.
