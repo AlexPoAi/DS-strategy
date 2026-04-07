@@ -175,3 +175,17 @@ WP только открыт.
 - в качестве canonical маршрута оставлен только интерактивный `protocol-close`.
 
 Итог: опасный псевдо-автоматический путь закрытия дня больше не может создать ложное ощущение, что день был закрыт корректно.
+
+## Седьмой выполненный slice
+
+Снят аварийный shell-crash у `note-review`:
+
+- canary counters для `fleeting-notes.md` переведены на deterministic helper functions вместо `grep ... || echo 0`, из-за которых появлялось значение вида `0\n0`;
+- отсутствие `DS-strategy/inbox/fleeting-notes.md` теперь считается допустимым нулевым состоянием и логируется как warning, а не ломает весь nightly path;
+- deterministic cleanup route исправлен с несуществующего `cleanup-processed-notes.py` на реальный `cleanup-processed-notes.sh`.
+
+Проверка:
+
+- `bash -n strategist.sh` проходит;
+- `bash -n cleanup-processed-notes.sh` проходит;
+- `strategist.sh note-review` больше не падает мгновенно на canary/cleanup stage и доходит до provider execution path.
