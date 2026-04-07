@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 21:40
+**Последнее обновление:** 2026-04-07 21:48
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-55 routing gap: PACK-iwe-culture добавлен в extractor routing.md, KE-маршрут восстановлен
+**Статус:** задача закрыта — ENG.WP.007 slice: санитизированы опасные security patterns — убраны literal Telegram token и token-in-URL команды из local .claude/settings.json, очищен VK-offee/GIT-PUSH-SOLUTION.md от ghp_/Authorization token/old namespace, WP обновлён truthful findings
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [21:41] Сессия закрыта
+- 🔒 [21:48] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 21:48] ENG.WP.007 slice: санитизированы опасные security patterns — убраны literal Telegram token и token-in-URL команды из local .claude/settings.json, очищен VK-offee/GIT-PUSH-SOLUTION.md от ghp_/Authorization token/old namespace, WP обновлён truthful findings
 - ✅ [2026-04-07 21:40] WP-55 routing gap: PACK-iwe-culture добавлен в extractor routing.md, KE-маршрут восстановлен
 - ✅ [2026-04-07 21:39] ENG.WP.022: восстановлен canonical route для memory/protocol-open|work|close, создан root symlink ~/Github/memory и добавлены smoke-checks в health-check.sh и daily-report.sh
 - ✅ [2026-04-07 21:35] Зафиксирован критический инженерный дефект canonical route open protocol: пустой путь memory/protocol-open.md добавлен в INBOX-TASKS как ENG.WP.022
