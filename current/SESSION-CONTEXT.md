@@ -6,17 +6,17 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 23:38
-**Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
-**Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
+**Последнее обновление:** 2026-04-07 23:47
+**Сессия:** W15, активная неделя 2026-04-06 → 2026-04-12
+**Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
 
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.011 follow-up: added opening-contract regression guard in health-check to verify canonical memory route, root alias, and legacy-MEMORY wording across active opening files
-**Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
-**Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
+**Статус:** микроцикл закрыт — truthful cleanup статусов и отчётности экзокортекса сохранён
+**Активный РП:** W15 / инженерная стабилизация экзокортекса и truthful observability
+**Следующий шаг:** Открыть следующий рабочий цикл из сохранённого состояния без повторной диагностики уже закрытых drift-слоёв.
 
 ---
 
@@ -52,10 +52,10 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:38] Сессия закрыта
-1. Проверить результаты закрытия и открыть следующий рабочий цикл.
-2. Продолжить truthful close-flow без ложноположительных сообщений.
-3. После стабилизации снова прогнать end-to-end закрытие дня.
+- 🔒 [23:47] Микроцикл сохранён
+1. Открыть следующий рабочий цикл от текущего truthful состояния `scheduler/health-check/daily-report`.
+2. Переходить в следующий продуктовый контур без возврата к уже закрытым yellow-noise drift.
+3. При следующем удобном окне идти либо в Telegram-бота, либо в следующий operational cleanup.
 
 ---
 
@@ -274,6 +274,10 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 23:47] Микроцикл сохранён: SESSION-CONTEXT выровнен под реальное состояние W15/Codex, все рабочие деревья чистые, truthful observability stack согласован (`health-check`, `AGENTS-STATUS`, `SESSION-OPEN`, `SchedulerReport`)
+- ✅ [2026-04-07 23:46] SchedulerReport cleanup: блок `Ошибки и предупреждения` переведён с исторических WARN-логов на текущие статусы задач, поэтому в отчёте остался только один активный хвост — пропущенное сегодняшнее утреннее окно Strategist
+- ✅ [2026-04-07 23:45] Truthful scheduler semantics: `SchedulerReport` переведён на те же status semantics, что и opening artifacts; верхний verdict теперь `🟡 Среда работает с замечаниями`, а не ложный `🔴 критический сбой`
+- ✅ [2026-04-07 23:43] Remaining yellow tail clarified: `strategist-morning` после закрытия окна теперь помечается отдельным `missed_window`, а не абстрактным `stale`; opening/status artifacts и health-check объясняют это как historical miss, а не как текущий runtime crash
 - ✅ [2026-04-07 23:38] ENG.WP.011 follow-up: added opening-contract regression guard in health-check to verify canonical memory route, root alias, and legacy-MEMORY wording across active opening files
 - ✅ [2026-04-07 23:35] ENG.WP.011 tiny follow-up: aligned DS-strategy/exocortex/protocol-open.md to canonical memory/MEMORY.md route so no remaining opening copy points to legacy root MEMORY wording
 - ✅ [2026-04-07 23:34] ENG.WP.011 follow-up: cleaned remaining opening checklists and protocol copies to canonical memory/MEMORY.md route so new agents do not inherit legacy root-MEMORY wording
