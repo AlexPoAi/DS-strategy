@@ -150,3 +150,17 @@ WP только открыт.
 3. Проверить `day-close` на auth-loss и truthful result class
 4. Проверить lock/timeout semantics для `day-close`
 5. После этого решить, нужен ли отдельный WP на `strategist remote-capable runner`
+
+## Пятый выполненный slice
+
+Починен live-path утреннего открытия дня:
+
+- `day-plan` в `strategist.sh` больше не читает deprecated prompt-файл и теперь резолвится в canonical `memory/protocol-open.md`;
+- runner снова уважает внешний `CLAUDE_PATH`, то есть wrapper/env override реально работают, а не затираются локальным дефолтом;
+- детектор model-path failures расширен под `API Error: 400 {"code":"E005","message":"Invalid request"}`, чтобы `Haiku -> Sonnet` fallback срабатывал и на этом классе ошибок;
+- mock smoke test подтвердил сценарий:
+  - attempt 1: `claude-haiku-4-5` -> `E005 Invalid request`
+  - automatic fallback -> `claude-sonnet-4-6`
+  - success на втором проходе
+
+Это не закрывает весь WP.020, но снимает актуальный operational дефект сегодняшнего morning-run.
