@@ -61,6 +61,10 @@ author: Environment Engineer (Codex)
   - статус `Claude`;
   - runtime policy;
   - local/cloud runtime verdict.
+- диагностические сообщения в `strategist.sh` и `extractor.sh` выровнены под provider parity:
+  - auth/preflight ошибки больше не выглядят как Claude-only инцидент;
+  - сообщения пользователю теперь указывают на `Claude-compatible` path и реальный re-login hint;
+  - staging/session cleanup и runner comments приведены к AI-CLI wording вместо Claude-only wording.
 
 ## Проверка
 
@@ -75,6 +79,7 @@ author: Environment Engineer (Codex)
   - `~/.local/state/exocortex/runtime-arbiter.env`
 - `runtime-arbiter.sh --env` возвращает shell assignments для runner'ов
 - `daily-report.sh --dry-run` отражает runtime mode секцию
+- `bash -n` повторно пройден после diagnostic wording cleanup в `strategist.sh` и `extractor.sh`
 
 ## Truthful status
 
