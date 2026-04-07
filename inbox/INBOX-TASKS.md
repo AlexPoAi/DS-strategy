@@ -24,6 +24,7 @@ created: 2026-03-04
     3. `Claude` оставлен fallback-provider'ом
     4. Документация и архитектурный контур обновлены под `Codex-primary / Claude-fallback`
     5. Legacy extractor entrypoint переведён на `ai-run.sh`, старый `claude-run.sh` оставлен wrapper'ом
+    6. README / IWE-HELP / LEARNING-PATH / onboarding-guide выровнены под AI-CLI-first wording
   - Приоритет: high
   - Бюджет: 45 мин
   - Артефакт:

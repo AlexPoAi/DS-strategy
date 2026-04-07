@@ -50,6 +50,12 @@ author: Environment Engineer (Codex)
 - в `README.md` и `SETUP-GUIDE.md` ослаблена Anthropic-centric формулировка: `Codex` теперь указан как нормальный и рекомендуемый путь для локального агентного слоя
 - legacy entrypoint `claude-run.sh` переведён в wrapper, а канонический extractor entrypoint теперь `ai-run.sh`
 - `ECOSYSTEM.md` и `setup.sh` обновлены под AI-CLI-first wording вместо Claude-only wording
+- выполнен focused doc cleanup в high-signal документах:
+  - `README.md`
+  - `docs/IWE-HELP.md`
+  - `docs/LEARNING-PATH.md`
+  - `docs/onboarding/onboarding-guide.md`
+  чтобы onboarding и quick-help больше не обещали Claude-only режим там, где система уже работает как `Codex-primary / Claude-fallback`
 
 ## Проверка
 
@@ -58,6 +64,7 @@ author: Environment Engineer (Codex)
 - ранее подтверждённые smoke tests `Claude -> Codex` fallback остаются валидны
 - `ai-run.sh` проходит `bash -n`
 - legacy wrapper `claude-run.sh` успешно резолвится в `ai-run.sh`
+- high-signal docs приведены к AI-CLI-first формулировкам без потери Claude fallback semantics
 
 ## Truthful status
 
