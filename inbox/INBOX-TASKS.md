@@ -277,10 +277,11 @@ created: 2026-03-04
   - Приоритет: medium
   - Бюджет: 10 мин
 
-- [pending] 2026-04-04: [KE] Routing gap — добавить PACK-iwe-culture в routing.md
+- [done] 2026-04-04: [KE] Routing gap — добавить PACK-iwe-culture в routing.md
   - Контекст: Extraction report 2026-04-04 #2 — все 3 кандидата направлены в PACK-iwe-culture, но он отсутствует в таблице routing.md
   - Репо: FMT-exocortex-template → roles/extractor/config/routing.md
   - Действие: добавить строку: PACK-iwe-culture | IWE | ~/Github/PACK-iwe-culture | Культура работы IWE: протоколы, навыки, различения, методы
+  - Итог: done — PACK-iwe-culture добавлен в routing.md как официальный Pack extractor routing, gap закрыт
   - Приоритет: high
   - Бюджет: 5 мин
 
