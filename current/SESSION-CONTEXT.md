@@ -6,7 +6,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-07 22:19
+**Последнее обновление:** 2026-04-07 22:21
 **Сессия:** W12, активная неделя 2026-03-16 → 2026-03-22
 **Агент:** Claude Sonnet 4.6 (claude-sonnet-4-6)
 **Рабочий терминал:** ~/Github/
@@ -14,7 +14,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — ENG.WP.020: strategist day-plan переведён на protocol-open, CLAUDE_PATH override восстановлен, E005 Invalid request теперь уходит в Haiku→Sonnet fallback
+**Статус:** задача закрыта — ENG.WP.020: strategist day-close переведён в truthful unsupported_path; интерактивный protocol-close оставлен единственным canonical route
 **Активный РП:** РП#21 / стабилизация экзокортекса и truthful close-flow
 **Следующий шаг:** Проверить результаты закрытия и открыть следующий рабочий цикл.
 
@@ -52,7 +52,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [22:19] Сессия закрыта
+- 🔒 [22:21] Сессия закрыта
 1. Проверить результаты закрытия и открыть следующий рабочий цикл.
 2. Продолжить truthful close-flow без ложноположительных сообщений.
 3. После стабилизации снова прогнать end-to-end закрытие дня.
@@ -274,6 +274,7 @@
 ---
 
 ## Что сделано сегодня (2026-04-07)
+- ✅ [2026-04-07 22:21] ENG.WP.020: strategist day-close переведён в truthful unsupported_path; интерактивный protocol-close оставлен единственным canonical route
 - ✅ [2026-04-07 22:19] ENG.WP.020: strategist day-plan переведён на protocol-open, CLAUDE_PATH override восстановлен, E005 Invalid request теперь уходит в Haiku→Sonnet fallback
 - ✅ [2026-04-07 22:16] ENG.WP.023: реализован fallback моделей Haiku→Sonnet в strategist/extractor, Opus запрещён, mock smoke test пройден
 - ✅ [2026-04-07 22:08] ENG.WP.007 slice: добавлен operational rotation registry по secret groups (update points, owner layer, smoke tests, status)
