@@ -56,6 +56,9 @@ author: Environment Engineer (Codex)
   - `docs/LEARNING-PATH.md`
   - `docs/onboarding/onboarding-guide.md`
   чтобы onboarding и quick-help больше не обещали Claude-only режим там, где система уже работает как `Codex-primary / Claude-fallback`
+- дополнительно выровнен installer/quickstart слой:
+  - `setup.sh` теперь внутренне использует нейтральный `AI_CLI_PATH`, сохраняя совместимость с существующим `{{CLAUDE_PATH}}` placeholder
+  - `README.md` quickstart теперь предлагает `codex` или `claude`, а не только Claude-only вход
 
 ## Проверка
 
@@ -65,6 +68,7 @@ author: Environment Engineer (Codex)
 - `ai-run.sh` проходит `bash -n`
 - legacy wrapper `claude-run.sh` успешно резолвится в `ai-run.sh`
 - high-signal docs приведены к AI-CLI-first формулировкам без потери Claude fallback semantics
+- `setup.sh` проходит `bash -n` после neutral naming cleanup
 
 ## Truthful status
 
