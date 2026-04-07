@@ -275,6 +275,77 @@ author: Environment Engineer (Codex)
 - Wave OpenAI/Anthropic должна включать GitHub Actions secrets в `creativ-convector`, иначе ручной/optional AI workflow останется на старых ключах.
 - `STRATEGY_REPO_TOKEN` и webhook secrets (`BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET`) требуют отдельной service-account inventory до ротации.
 
+### 12. Service-account inventory for workflow secrets (2026-04-07)
+
+Ниже — не значения секретов, а их operational role, blast radius и blind spots.
+
+#### `STRATEGY_REPO_TOKEN`
+
+**Где используется**
+
+- `FMT-exocortex-template/.github/workflows/cloud-scheduler.yml`
+  - `actions/checkout` для `repository: ${{ env.STRATEGY_REPO }}`
+  - `GH_TOKEN` для clone дополнительных репозиториев из `HEALTH_CHECK_REPOS`
+  - implicit `git push` после backup в strategy repo
+
+**Что это означает по правам**
+
+- secret должен иметь как минимум доступ к `DS-strategy`;
+- если используется `HEALTH_CHECK_REPOS`, token должен читать все перечисленные репозитории;
+- для backup-job token фактически имеет write-path в `DS-strategy`, потому что workflow коммитит и пушит в `exocortex/`.
+
+**Blast radius**
+
+- компрометация `STRATEGY_REPO_TOKEN` = запись в `DS-strategy` из cloud workflow;
+- при широком scope token также получает read-доступ к дополнительным репозиториям из `HEALTH_CHECK_REPOS`;
+- это не просто read-only PAT, а operational machine secret с write impact.
+
+**Blind spots**
+
+- из локального кода не видно:
+  - fine-grained это token или classic PAT;
+  - кто владелец token/service account;
+  - ограничен ли token одним repo или organisation-wide;
+  - какие именно репозитории сейчас перечислены в `HEALTH_CHECK_REPOS`.
+
+#### `BOT_WEBHOOK_URL` + `TEMPLATE_WEBHOOK_SECRET`
+
+**Где используется**
+
+- `FMT-exocortex-template/.github/workflows/notify-update.yml`
+  - POST на `${BOT_WEBHOOK_URL}/api/template-update`
+  - аутентификация через header `X-Webhook-Secret: ${TEMPLATE_WEBHOOK_SECRET}`
+
+**Operational role**
+
+- это не прямой Telegram token;
+- это bot-mediated broadcast path: GitHub Action -> webhook endpoint -> bot -> subscribers.
+
+**Blast radius**
+
+- компрометация `BOT_WEBHOOK_URL` сама по себе даёт endpoint location;
+- компрометация `TEMPLATE_WEBHOOK_SECRET` потенциально позволяет отправлять фальшивые template-update события в канал рассылки, если endpoint не имеет дополнительной защиты;
+- этот контур влияет на subscriber-facing broadcast, но не на `DS-strategy` git state.
+
+**Blind spots**
+
+- не видно:
+  - где физически живёт webhook endpoint;
+  - кто владелец bot service account;
+  - есть ли rate limiting / IP filtering / replay protection;
+  - используется ли этот же webhook secret где-то ещё.
+
+#### Truthful вывод по service-account layer
+
+- `STRATEGY_REPO_TOKEN` сейчас самый чувствительный GitHub Actions secret в cloud automation слое, потому что сочетает `read + write + multi-repo reach`.
+- `BOT_WEBHOOK_URL` / `TEMPLATE_WEBHOOK_SECRET` — отдельный integration secret class; их надо ротировать не вместе с Telegram bot token, а как отдельный webhook trust pair.
+- Перед реальной rotation wave нужен минимальный registry:
+  - secret name
+  - owner/service account
+  - scope
+  - где обновляется
+  - какой smoke test подтверждает успех
+
 ---
 
 ## Rotation Runbook (безопасный порядок ротации)
