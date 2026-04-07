@@ -5,23 +5,23 @@
 - Проверка среды: **🟢 зелёный**
 - Помощник авторизации: **🟢 зелёный**
 - Canonical protocol route: **🟢 зелёный**
-- Runtime arbiter: **🔴 требует внимания**
+- Runtime arbiter: **🟢 зелёный**
 - Статус-артефакты: **🟡 требует внимания**
 - Стратег: **🟡 требует внимания**
 - Экстрактор: **🟡 требует внимания**
-- Обновлено: **2026-04-07 22:54**
+- Обновлено: **2026-04-07 22:55**
 
 ## Runtime
 
-- Provider primary: **unavailable**
-- Provider reason: **runtime_arbiter_missing**
-- Codex: **unknown**
-- Claude: **unknown**
-- Runtime policy: **unknown**
-- Local control plane: **unknown**
+- Provider primary: **codex**
+- Provider reason: **both_available_preference_codex**
+- Codex: **available**
+- Claude: **available**
+- Runtime policy: **split**
+- Local control plane: **available**
 - Cloud RAG: **unknown**
-- Cloud takeover scope: **unknown**
-- Cloud bot runtime: **unknown**
+- Cloud takeover scope: **product-only**
+- Cloud bot runtime: **declared**
 
 ## Задачи
 - Стратег: открытие дня: **🟡 устаревший или неполный статус**
