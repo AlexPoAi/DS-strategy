@@ -4,8 +4,8 @@
 
 - Режим открытия: **Продолжать только после явного подтверждения пользователя.**
 - Итоговый verdict: **🟡 yellow**
-- Время проверки: **2026-04-07 23:07:08**
-- Последнее обновление статус-артефактов: **2026-04-07 23:07:08**
+- Время проверки: **2026-04-07 23:21:21**
+- Последнее обновление статус-артефактов: **2026-04-07 23:21:21**
 
 ## Приборная панель среды
 
@@ -13,12 +13,12 @@
 - Проверка среды: **🟢 green**
 - Помощник авторизации: **🟢 green**
 - Canonical protocol route: **🟢 green**
-- Runtime arbiter: **🟡 yellow**
+- Runtime arbiter: **🟢 green**
 - Статус-артефакты: **🟡 yellow**
 
 ## Runtime mode
 
-- Provider plane: **primary=claude, codex=missing, claude=available**
+- Provider plane: **primary=codex, codex=available, claude=available**
 - Runtime policy: **split**
 - Local control plane: **available**
 - Cloud RAG: **unknown**
