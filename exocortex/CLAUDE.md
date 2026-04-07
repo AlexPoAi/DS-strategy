@@ -8,11 +8,14 @@
 
 ### 0.1 Старт сессии — читать ДО любого действия
 
-1. `memory/repo-type-rules.md` — типы репо, что можно/нельзя
-2. `memory/fpf-reference.md` — FPF различения и терминология
-3. `DS-strategy/current/WeekPlan*.md` — активные РП недели
-4. `DS-strategy/SESSION-CONTEXT.md` — где закончили в прошлый раз
-5. Если работаем с VK-offee → `VK-offee/CLAUDE.md`
+1. `memory/MEMORY.md` — каноническая оперативная память экзокортекса
+2. `memory/repo-type-rules.md` — типы репо, что можно/нельзя
+3. `memory/fpf-reference.md` — FPF различения и терминология
+4. `DS-strategy/current/WeekPlan*.md` — активные РП недели
+5. `DS-strategy/current/SESSION-CONTEXT.md` — где закончили в прошлый раз
+6. Если работаем с VK-offee → `VK-offee/CLAUDE.md`
+
+> Совместимость: root alias `~/Github/MEMORY.md` может существовать для старых агентов, но canonical source-of-truth для открытия — `~/Github/memory/MEMORY.md`.
 
 **Без этого — не начинать. Агент работает по FPF+SPF+SRT+FMT, не по своим дефолтам.**
 
