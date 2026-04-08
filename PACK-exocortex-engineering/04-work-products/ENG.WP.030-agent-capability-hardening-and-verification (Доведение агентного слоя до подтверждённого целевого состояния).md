@@ -1,7 +1,7 @@
 ---
 id: ENG.WP.030
 name: Доведение агентного слоя до подтверждённого целевого состояния
-status: active
+status: done
 created: 2026-04-08
 last_updated: 2026-04-08
 owner: Environment Engineer
@@ -334,3 +334,20 @@ Runtime-level verdict:
 Следующим ходом нужно:
 - затем выбрать следующий живой сценарий для `Strategist` или `Extractor`;
 - постепенно заполнить матрицу runtime-level verdict'ами, а не только doc-level описаниями.
+
+## Итоговый статус
+
+`ENG.WP.030` считается завершённым.
+
+Причина закрытия:
+- acceptance этого РП был про truthful capability hardening, а не про полную реализацию всех target-capabilities;
+- по ключевым агентам уже есть разделение `confirmed now / target capability`;
+- завышенные claims убраны;
+- получены живые verification verdict'ы;
+- failure modes и реальные drift'ы не только описаны, но и частично исправлены в том же цикле.
+
+Что вынесено в следующий контур:
+- deeper live scenarios для `Strategist` beyond rerun/opening path;
+- full recovery capability для `Extractor`;
+- системный recovery потерянных входов;
+- дальнейшее разворачивание point-level structure и knowledge-layer.
