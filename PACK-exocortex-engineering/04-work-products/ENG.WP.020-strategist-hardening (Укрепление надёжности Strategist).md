@@ -230,3 +230,13 @@ WP только открыт.
 - локальная проверка `build_message week-review` теперь возвращает корректный weekly summary и GitHub-ссылку на актуальный WeekPlan.
 
 Итог: weekly scenario больше не должен молча завершаться без Telegram-сообщения только из-за broken template path.
+
+## Двенадцатый выполненный slice
+
+Убран опасный reinstall-path, который мог вернуть legacy double-run:
+
+- `roles/strategist/install.sh` больше не копирует и не загружает `com.strategist.morning` / `com.strategist.weekreview`;
+- install-script теперь честно удаляет legacy plist из `~/Library/LaunchAgents`, оставляет только ручной strategist entrypoint и отправляет к `roles/synchronizer/install.sh`;
+- README Strategist обновлён под текущий runtime contract: scheduled source-of-truth = `com.exocortex.scheduler`.
+
+Итог: даже после повторной установки роли `Strategist` legacy launchd jobs не должны тихо возвращаться в систему и ломать no-double-run правило.
