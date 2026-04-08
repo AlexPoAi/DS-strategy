@@ -250,3 +250,13 @@ WP только открыт.
 - README Strategist выровнен до конца: `session-prep`, `day-plan` и `week-review` теперь все ссылаются на один и тот же scheduler-runtime.
 
 Итог: у Strategist больше нет внутреннего расхождения между runtime-contract в коде и тем, что читают prompt/doc consumers.
+
+## Четырнадцатый выполненный slice
+
+Добавлен proactive smoke-check на weekly notify-contract Strategist:
+
+- в `health-check.sh` появился отдельный `check_strategist_notify_contract()`;
+- он source'ит strategist notification template и проверяет, что `build_message week-review` реально возвращает непустое сообщение;
+- живой прогон `health-check` подтвердил новый guard: `ОК: strategist notify template builds week-review message`.
+
+Итог: broken weekly Telegram-template теперь должен ловиться как инженерная ошибка среды заранее, а не только по факту “почему не пришёл отчёт”.
