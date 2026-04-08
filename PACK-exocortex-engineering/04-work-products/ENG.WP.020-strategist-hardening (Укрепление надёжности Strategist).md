@@ -220,3 +220,13 @@ WP только открыт.
 - fallback push после weekly scenario тоже переведён на resolver knowledge-index репозитория, так что сценарий не зависит от legacy `~/IWE/DS-Knowledge-Index`.
 
 Итог: `week-review` теперь меньше зависит от удачного контекстного угадывания и ближе к повторяемому scheduled-сценарию с одним source-of-truth.
+
+## Одиннадцатый выполненный slice
+
+Починен Telegram notify-path для weekly strategist scenario:
+
+- `notify.sh strategist week-review` больше не возвращает пустое сообщение из-за literal `{{WORKSPACE_DIR}}` в template `roles/synchronizer/scripts/templates/strategist.sh`;
+- strategist notification template переведён на runtime workspace resolution (`~/Github` с fallback на `~/IWE`);
+- локальная проверка `build_message week-review` теперь возвращает корректный weekly summary и GitHub-ссылку на актуальный WeekPlan.
+
+Итог: weekly scenario больше не должен молча завершаться без Telegram-сообщения только из-за broken template path.
