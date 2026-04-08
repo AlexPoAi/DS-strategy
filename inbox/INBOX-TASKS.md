@@ -64,7 +64,7 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.029-upstream-update-audit-and-apply-contract (Аудит upstream-обновлений Церена и контракт их применения).md`
 
-- [pending] 2026-04-08: [ENGINEERING] Довести агентный слой до целевой рабочей модели
+- [in_progress] 2026-04-08: [ENGINEERING] Довести агентный слой до целевой рабочей модели
   - Контекст: после `ENG.WP.030` truthful-картина уже собрана, но идеальная модель агентного слоя пока реализована только частично. Особенно заметен gap у `Extractor`: он умеет делать extraction-report и routing, но не доказан как надёжный full-loop агент, который сам возвращает элемент в нужный `Pack`, `INBOX`, recovery-catalog или backlog без потери governance/growth input'ов.
   - Что сделать:
     1. Спроектировать canonical flow `input -> classification -> target route -> artifact -> tracked status`
@@ -77,6 +77,13 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.031-agent-target-capability-implementation (Доведение агентов до целевой рабочей модели).md`
     - обновлённые runner/contracts для `Extractor` и смежных агентов
+  - Прогресс на 2026-04-08:
+    - собрана таблица `идеальная модель -> как сейчас -> разрыв -> что сделать`
+    - recovery первого слоя подтверждён и сведён в единый каталог
+    - для `Extractor` введён outcome-contract `pack_candidate / backlog_task / recovery_item / rejected / deferred`
+    - `inbox-check` переведён на materialized outcome-loop: runner теперь проверяет, что report оставил реальный след в `INBOX` / recovery-catalog / archive и коммитит эти артефакты вместе
+    - живой `inbox-check` вскрыл отдельный runtime-gap `codex exec may hang`; в runner добавлен timeout guard для provider execution
+    - следующий implementation-slice: довести `Strategist` до return-loop по recovery items и weekly/backlog priorities
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог
   - Контекст: пользователь прямо чувствует, что значительная часть мыслей, запросов и рабочих заготовок потерялась внутри множества репозиториев, Telegram-captures, extraction-reports, processed sessions и разрозненных заметок. Это уже не одна потерянная запись, а системный recovery-контур.

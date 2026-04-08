@@ -21,6 +21,15 @@ owner: Environment Engineer
 - `Strategist` не доказал full chaos-structuring и recovery-management слой;
 - governance/backlog элементы могут распознаваться, но не всегда доходят до `INBOX` как рабочие сущности.
 
+## Ритуал согласования
+
+- Роль владельца implementation-цикла: `Environment Engineer`
+- Нанятые роли на этот slice:
+  - `Extractor` — intake, classification, outcome-routing
+  - `Strategist` — следующий prioritization/return loop
+  - `Environment Engineer` — verification, anti-loss gates, runtime hardening
+- Текущий implementation focus: сначала довести `Extractor` до materialized outcome-loop, потом замкнуть `Strategist` return path
+
 ## Целевая модель
 
 Агентный слой должен уметь следующее end-to-end:
@@ -123,6 +132,39 @@ owner: Environment Engineer
 Что это пока НЕ подтверждает:
 - это ещё не live end-to-end proof;
 - это implementation contract layer, который теперь можно проверять на реальном сценарии.
+
+## Slice 2 — Extractor materialized outcome loop
+
+Что сделано:
+- в `roles/extractor/scripts/extractor.sh` добавлен post-check для `inbox-check`;
+- `Extractor` теперь не должен считать success достаточным, если report не породил materialized след:
+  - `pack_candidate` / `backlog_task` -> след в `INBOX-TASKS.md`
+  - `recovery_item` -> recovery-catalog за текущую дату
+  - `rejected` -> archive entry
+  - processed captures -> `[analyzed YYYY-MM-DD]`
+- staging/commit coverage расширена: в git теперь входят не только `captures` и `extraction-reports`, но и recovery/archive слой.
+
+Что это подтверждает:
+- `report != success` зафиксировано уже не только в docs, но и в runtime enforcement слое;
+- подтверждённый gap, где recovery/archive артефакты могли создаться, но не попасть в git, закрыт на уровне runner.
+
+Что это пока НЕ подтверждает:
+- это ещё не полный `Strategist` return loop;
+- это ещё не доказывает full recovery по всем историческим источникам.
+
+## Slice 3 — Extractor provider timeout guard
+
+Что сделано:
+- живой прогон `inbox-check` показал новый runtime-gap: `codex exec` может зависнуть в headless режиме, не доводя outcome-loop до финала;
+- в `roles/extractor/scripts/extractor.sh` добавлен `CODEX_TIMEOUT` и timeout-wrapper для provider execution;
+- timeout теперь классифицируется как явный runtime failure, а не бесконечное зависание headless job.
+
+Почему это важно:
+- пока provider может висеть бесконечно, даже хороший outcome-contract не считается operationally safe;
+- для ночного/автоматического `inbox-check` нужен bounded runtime, иначе возможны partial edits и подвисшие launchd циклы.
+
+Что дальше:
+- следующий practical hardening — добавить atomic apply guard, чтобы при timeout/abort partial edits не оставались в `captures` или соседних артефактах.
 
 ## Acceptance
 
