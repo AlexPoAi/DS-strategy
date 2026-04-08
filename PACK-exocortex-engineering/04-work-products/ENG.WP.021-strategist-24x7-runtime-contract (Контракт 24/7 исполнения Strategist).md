@@ -247,3 +247,13 @@ WP только открыт.
 - `Strategist` в текущем виде не является 24/7 агентом;
 - hardening локального runner-а полезен, но не решает always-on задачу;
 - для 24/7 нужен отдельный runtime contract, а не только “починить ещё один shell-скрипт”.
+
+## Operational note after 2026-04-08 hardening
+
+После очередного hardening-среза weekly semantics уже выровнены точнее:
+
+- source-of-truth scheduler-window для `week-review` = `Понедельник 00:00`;
+- legacy `Sunday` wording убран из runner-а и help-текста;
+- prompt больше не привязан к несуществующему `DS-Knowledge-Index`, а резолвит реальный knowledge-index repo из workspace.
+
+Это ещё не делает `week-review` cloud-ready, но снимает часть ложной вариативности перед следующим 24/7 implementation slice.

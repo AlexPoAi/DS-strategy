@@ -209,3 +209,14 @@ WP только открыт.
 - в `health-check.sh` добавлен отдельный detector на legacy Strategist jobs alongside scheduler, чтобы такой конфликт больше не возвращался тихо.
 
 Итог: false-concurrent morning semantics больше не должны повторяться, пока source-of-truth runtime остаётся только `com.exocortex.scheduler`.
+
+## Десятый выполненный slice
+
+Снят semantic/path drift у `week-review`:
+
+- `strategist.sh` больше не логирует weekly scenario как `Sunday`, если реальное scheduler-окно уже живёт по понедельнику;
+- usage/help выровнены под truthful окно `Monday 00:00 local`;
+- prompt `week-review.md` больше не жёстко указывает в несуществующий `DS-Knowledge-Index`, а получает реальный `{{KNOWLEDGE_INDEX_DIR}}` / `{{KNOWLEDGE_INDEX_REPO}}`;
+- fallback push после weekly scenario тоже переведён на resolver knowledge-index репозитория, так что сценарий не зависит от legacy `~/IWE/DS-Knowledge-Index`.
+
+Итог: `week-review` теперь меньше зависит от удачного контекстного угадывания и ближе к повторяемому scheduled-сценарию с одним source-of-truth.
