@@ -126,9 +126,20 @@ owner: Environment Engineer
 3. Если роль описывает желаемое будущее состояние, это должно маркироваться как `target capability`.
 4. Скрипт или агент не может считаться успешным, если нет проверяемого артефакта результата.
 
+## Slice 3 — Strategist acceptance-runbook
+
+Что сделано:
+- создан отдельный acceptance-runbook для `Strategist` с truthful semantics `pass / partial / broken`;
+- `roles/strategist/README.md` теперь явно отделяет confirmed operational scope от target capability;
+- recovery/chaos-structuring больше не описывается как capability, подтверждённая по умолчанию.
+
+Артефакты:
+- [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/strategist/ACCEPTANCE.md)
+- [roles/strategist/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/strategist/README.md)
+
 ## Следующий slice
 
 Следующим ходом нужно:
-- скорректировать role/docs под truthful semantics;
-- собрать test matrix `scenario -> expected artifact -> failure mode -> pass/fail`;
-- начать с `Strategist`, потому что именно по нему пользователь первым заметил расхождение между замыслом и практикой.
+- повторить ту же truthful acceptance-модель для `Extractor`;
+- затем описать, какие сценарии `Synchronizer` реально может использовать как verification harness;
+- после этого перейти к живому прогону минимум одного acceptance-сценария, а не только к описанию правил.
