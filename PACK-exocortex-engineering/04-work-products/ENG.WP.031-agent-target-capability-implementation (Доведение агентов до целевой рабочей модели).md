@@ -39,6 +39,27 @@ owner: Environment Engineer
 5. Элемент не теряется между extraction, rejected-архивом, `INBOX` и WeekPlan.
 6. Повторный запуск не создаёт хаос, дубли и ложный success.
 
+## Таблица разрыва: идеальная модель vs реальность
+
+| Слой цикла | Идеальная модель | Как сейчас по факту | Разрыв | Что нужно сделать |
+|---|---|---|---|---|
+| `1. Intake` | Все входы попадают в единый intake-layer и не теряются | Основные входы попадают в `captures`, extraction-reports, processed-sessions, но часть живёт параллельно в `creativ-convector`, Telegram и внешних заметках | intake не полностью централизован | закрепить canonical intake map и правила, что считается источником истины |
+| `2. Classification` | Агент определяет тип элемента: `Pack / WP / backlog / reject / defer` | `Extractor` умеет частичную классификацию, но governance/growth/personal inputs может распознать и всё равно не вернуть в backlog | классификация есть, но outcome не всегда приводит к сохранению элемента | ввести outcome-статусы и обязательный route для каждого типа |
+| `3. Pack routing` | Для Pack-knowledge агент сразу определяет целевой Pack и создаёт candidate card | routing частично работает, но full-loop на реальных recovery-cases не доказан | нет гарантии, что кандидат дойдёт до устойчивого Pack/WP контура | дотянуть `Extractor` до полного routing loop с артефактом |
+| `4. Governance routing` | Если это не Pack-knowledge, агент переводит элемент в `INBOX`/strategic backlog/recovery | именно тут был подтверждённый провал: `rejected` capture мог содержательно распознаться, но в `INBOX` не попасть | governance/growth inputs частично “исчезают” | правило: governance/growth/personal inputs нельзя терять в reject-пустоту |
+| `5. Artifact creation` | На выходе всегда есть управляемый артефакт: task, recovery item, candidate card, WP draft | чаще всего есть report, но не всегда есть следующий управляемый объект | report ≠ завершённый loop | сделать артефакт обязательной частью outcome semantics |
+| `6. Dedup / anti-loss` | Повторный запуск не создаёт дублей и не стирает след элемента | уже есть частичные safeguards, но полного anti-loss contract между `captures`, rejected, `INBOX`, recovery нет | возможны повторные трактовки и ручные провалы | спроектировать dedup/anti-loss contract между слоями |
+| `7. Strategist return loop` | `Strategist` берёт recovered items и превращает их в weekly/backlog priorities | `Strategist` хорошо держит ритуалы, но full chaos-structuring/recovery-return loop не доказан | recovered inputs ещё не всегда доходят до управляемого приоритета автоматически | добавить strategist-side contract на работу с recovery items |
+| `8. Verification` | Система сама доказывает, что цикл прошёл end-to-end без потери | есть первая verification-wave и truthful acceptance, но не полный orchestrated loop | verification пока частично ручная | добить один живой end-to-end сценарий и закрепить его как acceptance example |
+
+## Truthful snapshot на сегодня
+
+- **Идеальная модель описана**: да
+- **Truthful current-state зафиксирован**: да
+- **Первый recovery-pass сделан**: да
+- **Полный цикл от входа до правильного Pack/WP/backlog работает надёжно**: ещё нет
+- **Следующий ключевой implementation owner**: `Extractor + Strategist` в рамках `ENG.WP.031`
+
 ## Главные gaps
 
 ### 1. Extractor full recovery loop
