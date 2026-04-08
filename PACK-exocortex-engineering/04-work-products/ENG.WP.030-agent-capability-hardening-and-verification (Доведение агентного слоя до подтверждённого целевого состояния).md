@@ -183,9 +183,58 @@ Runtime-level verdict:
 - dry-run path можно использовать как первую живую verification basis;
 - claim про full acceptance-harness всё ещё остаётся `partial/target`, потому что пока подтверждён только один безопасный verification scenario, а не весь orchestrated agent-verification loop.
 
+## Slice 7 — Extractor live verification run
+
+Выбран безопасный сценарий:
+- `bash roles/extractor/scripts/extractor.sh inbox-check`
+
+Предварительная проверка:
+- в `DS-strategy/inbox/captures.md` обнаружено `total=43`, `processed=17`, `analyzed=26`, `pending=0`
+
+Результат запуска:
+- сценарий завершился с `exit 0`;
+- runner truthfully вернул `SKIP: No pending captures in inbox (total=43, processed=17, analyzed=26)`;
+- provider execution не запускался, Telegram path не активировался.
+
+Runtime-level verdict:
+- `Extractor / Inbox-Check` = `pass`
+
+Что это подтверждает:
+- headless inbox-check path умеет корректно отрабатывать нулевое состояние;
+- false-positive extraction не произошло;
+- safe operational semantics для пустого inbox подтверждена живым запуском.
+
+## Slice 8 — Strategist rerun verification
+
+Выбран безопасный сценарий:
+- повторный запуск `bash roles/strategist/scripts/strategist.sh morning` после уже выполненного утреннего цикла
+
+Первичный результат запуска:
+- runner завершился с `exit 0`;
+- в живом выводе зафиксировано `SKIP: day-plan already completed today`.
+
+Найденный drift:
+- skip-path truthfully защищал от повторного запуска, но не освежал status-artifact как source-of-truth;
+- из-за этого `strategist-morning.status` мог оставаться stale после повторной проверки.
+
+Что исправлено:
+- в `roles/strategist/scripts/strategist.sh` skip-ветка для `morning/day-plan` и `week-review` теперь явно обновляет status-artifact как `success` с summary `already completed earlier ...`.
+
+Повторная проверка после фикса:
+- `bash -n roles/strategist/scripts/strategist.sh` = `ok`;
+- повторный `strategist.sh morning` снова завершился с `SKIP: day-plan already completed today`;
+- прямое чтение `~/.local/state/exocortex/status/strategist-morning.status` уже показало свежий артефакт `2026-04-08 17:19:50` с summary `already completed earlier today`.
+
+Runtime-level verdict:
+- `Strategist / Morning rerun guard` = `pass`
+
+Что это подтверждает:
+- повторный запуск не приводит к ложному повторному утреннему сценарию;
+- guard against false reruns работает;
+- status-artifact для rerun-path теперь согласован с живым verdict, а не остаётся историческим мусором.
+
 ## Следующий slice
 
 Следующим ходом нужно:
-- выбрать один живой acceptance-прогон с безопасным execution path;
-- после этого выбрать следующий живой сценарий для `Strategist` или `Extractor`;
+- затем выбрать следующий живой сценарий для `Strategist` или `Extractor`;
 - постепенно заполнить матрицу runtime-level verdict'ами, а не только doc-level описаниями.
