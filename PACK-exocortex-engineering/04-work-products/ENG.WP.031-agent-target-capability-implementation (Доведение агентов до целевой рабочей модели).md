@@ -103,6 +103,27 @@ owner: Environment Engineer
 5. Подтвердить живым сценарием как минимум один настоящий full-loop recovery path.
 6. После этого обновить truthful verdict по агентам.
 
+## Slice 1 — Extractor outcome contract
+
+Что сделано:
+- `Extractor` больше не описывается как бинарный `Pack / reject` контур;
+- в его docs и `inbox-check` prompt введены явные outcome-статусы:
+  - `pack_candidate`
+  - `backlog_task`
+  - `recovery_item`
+  - `rejected`
+  - `deferred`
+- прямо закреплено правило: governance/growth/personal inputs нельзя терять в пустой `reject`, если для них есть осмысленный DS/backlog route.
+
+Артефакты:
+- [roles/extractor/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/README.md)
+- [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/ACCEPTANCE.md)
+- [prompts/inbox-check.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/prompts/inbox-check.md)
+
+Что это пока НЕ подтверждает:
+- это ещё не live end-to-end proof;
+- это implementation contract layer, который теперь можно проверять на реальном сценарии.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
