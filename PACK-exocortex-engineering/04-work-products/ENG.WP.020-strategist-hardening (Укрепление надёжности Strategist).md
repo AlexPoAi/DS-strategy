@@ -198,3 +198,14 @@ WP только открыт.
 - добавлен truthful resolver, который сначала ищет config в canonical workspace / current `.claude/projects` путях для `Github`, и только потом пробует legacy `IWE`;
 - при отсутствии конфига runner теперь явно логирует `Strategy day config: missing -> monday`, вместо тихого скрытого fallback без объяснения;
 - это уменьшает риск ложного выбора `session-prep` / `day-plan` из-за незаметного path-drift после миграции `IWE -> Github`.
+
+## Девятый выполненный slice
+
+Найдена и снята реальная причина ложной lock-семантики morning-run:
+
+- в runtime одновременно жили `com.exocortex.scheduler` и legacy launchd jobs `com.strategist.morning` / `com.strategist.weekreview`;
+- из-за этого `Strategist` мог стартовать дважды: один экземпляр честно получал file-lock и писал `SKIP`, а второй реально выполнял `day-plan`;
+- старые launchd jobs выгружены из `launchctl` и переведены в `.plist.disabled`;
+- в `health-check.sh` добавлен отдельный detector на legacy Strategist jobs alongside scheduler, чтобы такой конфликт больше не возвращался тихо.
+
+Итог: false-concurrent morning semantics больше не должны повторяться, пока source-of-truth runtime остаётся только `com.exocortex.scheduler`.
