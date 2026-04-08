@@ -105,6 +105,27 @@ owner: Environment Engineer
 2. Убрать самые явные завышения из agent docs.
 3. Подготовить verification scenarios для `Strategist` и `Extractor`.
 
+## Verification Matrix — Slice 2
+
+| Агент | Сценарий | Что должно произойти | Артефакт pass | Failure mode |
+|---|---|---|---|---|
+| `Strategist` | `WP Gate` на задаче, которая уже есть в плане | Агент находит задачу, даёт truthful verdict и не врёт о статусе | запись/ссылка на существующий WP или WeekPlan verdict | false positive: задача "найдена", хотя её нет |
+| `Strategist` | `morning/day-plan` | Агент проходит open-route и создаёт/обновляет утренний артефакт без ложного success | актуальный opening artifact + truthful status | success без реального артефакта |
+| `Strategist` | `week-review` | Агент строит weekly output по реальным данным недели, без пустого шаблона | weekly summary / WeekPlan section | пустой output, stale summary, broken notify |
+| `Strategist` | `chaos-structuring` claim | Агент должен доказать ability разобрать размазанные входы по нескольким репо | recovery/structure artifact с дедупликацией | capability не подтверждена, claim остаётся target-only |
+| `Extractor` | `inbox-check` | Агент находит входящие и даёт truthful report без path drift | extraction report с источниками | silent miss, wrong path, stale-only report |
+| `Extractor` | `on-demand extraction` | Агент маршрутизирует input в Pack или DS по доменному тесту | candidate artifact + routing rationale | wrong routing / duplicate / hallucinated path |
+| `Extractor` | `lost-input recovery` | Агент возвращает потерянные входы в единый каталог | recovery catalog entry со статусом `new/already tracked/rejected` | recovery не дотягивается end-to-end |
+| `Synchronizer` | `daily-report` | Система даёт единый truthful verdict по среде и агентам | synced report + Telegram summary | drift между report / health-check / opening screen |
+| `Environment Engineer` | `broken runtime fix` | Инженер находит root cause и чинит end-to-end | commit + post-check + clean rerun | workaround вместо root cause |
+
+## Truthful rules for verification
+
+1. Capability считается подтверждённой только после живого сценария, а не после описания в README.
+2. Если сценарий отработал частично, verdict = `partial`, а не `ready`.
+3. Если роль описывает желаемое будущее состояние, это должно маркироваться как `target capability`.
+4. Скрипт или агент не может считаться успешным, если нет проверяемого артефакта результата.
+
 ## Следующий slice
 
 Следующим ходом нужно:
