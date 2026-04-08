@@ -137,9 +137,20 @@ owner: Environment Engineer
 - [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/strategist/ACCEPTANCE.md)
 - [roles/strategist/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/strategist/README.md)
 
+## Slice 4 — Extractor acceptance-runbook
+
+Что сделано:
+- создан отдельный acceptance-runbook для `Extractor`;
+- `roles/extractor/README.md` теперь явно отделяет confirmed extraction/routing scope от target recovery capability;
+- `lost-input recovery` больше не считается доказанной функцией по умолчанию.
+
+Артефакты:
+- [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/ACCEPTANCE.md)
+- [roles/extractor/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/README.md)
+
 ## Следующий slice
 
 Следующим ходом нужно:
-- повторить ту же truthful acceptance-модель для `Extractor`;
-- затем описать, какие сценарии `Synchronizer` реально может использовать как verification harness;
-- после этого перейти к живому прогону минимум одного acceptance-сценария, а не только к описанию правил.
+- описать, какие сценарии `Synchronizer` реально может использовать как verification harness;
+- затем выбрать один живой acceptance-прогон для `Strategist` или `Extractor`;
+- после этого зафиксировать первый `pass/partial/broken` verdict не по документации, а по реальному запуску.
