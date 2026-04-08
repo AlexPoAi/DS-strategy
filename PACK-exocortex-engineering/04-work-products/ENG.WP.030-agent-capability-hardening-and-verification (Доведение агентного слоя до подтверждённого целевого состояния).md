@@ -148,9 +148,44 @@ owner: Environment Engineer
 - [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/ACCEPTANCE.md)
 - [roles/extractor/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/extractor/README.md)
 
+## Slice 5 — Synchronizer acceptance-runbook
+
+Что сделано:
+- создан отдельный acceptance-runbook для `Synchronizer`;
+- `roles/synchronizer/README.md` теперь явно отделяет confirmed dispatcher/reporting scope от target verification-harness capability;
+- safe verification basis закреплена через `daily-report --dry-run`, а full acceptance-harness пока truthfully оставлен как target-state.
+
+Артефакты:
+- [ACCEPTANCE.md](/Users/alexander/Github/FMT-exocortex-template/roles/synchronizer/ACCEPTANCE.md)
+- [roles/synchronizer/README.md](/Users/alexander/Github/FMT-exocortex-template/roles/synchronizer/README.md)
+
+## Slice 6 — Первый live verification run
+
+Выбран безопасный сценарий:
+- `bash roles/synchronizer/scripts/daily-report.sh --dry-run`
+
+Причина выбора:
+- сценарий уже поддерживает dry-run semantics;
+- не пишет отчёты, не коммитит и не пушит;
+- позволяет проверить truthful report-generation path на живом runtime-state.
+
+Результат запуска:
+- сценарий завершился с `exit 0`;
+- собран содержательный scheduler-report за `2026-04-08`;
+- output truthfully показал `Среда готова к работе`, текущие результаты задач и runtime mode;
+- в логах явно зафиксировано `DRY RUN — отчёт не записан`, то есть safe-run semantics подтверждены.
+
+Runtime-level verdict:
+- `Synchronizer / Daily-Report Dry-Run` = `pass`
+
+Что это подтверждает:
+- `Synchronizer` уже реально пригоден как safe reporting/verdict layer;
+- dry-run path можно использовать как первую живую verification basis;
+- claim про full acceptance-harness всё ещё остаётся `partial/target`, потому что пока подтверждён только один безопасный verification scenario, а не весь orchestrated agent-verification loop.
+
 ## Следующий slice
 
 Следующим ходом нужно:
-- описать, какие сценарии `Synchronizer` реально может использовать как verification harness;
-- затем выбрать один живой acceptance-прогон для `Strategist` или `Extractor`;
-- после этого зафиксировать первый `pass/partial/broken` verdict не по документации, а по реальному запуску.
+- выбрать один живой acceptance-прогон с безопасным execution path;
+- после этого выбрать следующий живой сценарий для `Strategist` или `Extractor`;
+- постепенно заполнить матрицу runtime-level verdict'ами, а не только doc-level описаниями.
