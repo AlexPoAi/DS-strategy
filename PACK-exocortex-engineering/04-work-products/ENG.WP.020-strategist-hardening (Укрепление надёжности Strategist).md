@@ -189,3 +189,12 @@ WP только открыт.
 - `bash -n strategist.sh` проходит;
 - `bash -n cleanup-processed-notes.sh` проходит;
 - `strategist.sh note-review` больше не падает мгновенно на canary/cleanup stage и доходит до provider execution path.
+
+## Восьмой выполненный slice
+
+Снят legacy path-drift у `strategy_day` configuration:
+
+- `strategist.sh` больше не читает `day-rhythm-config.yaml` только из мёртвого legacy-пути `~/.claude/projects/...-IWE/...`;
+- добавлен truthful resolver, который сначала ищет config в canonical workspace / current `.claude/projects` путях для `Github`, и только потом пробует legacy `IWE`;
+- при отсутствии конфига runner теперь явно логирует `Strategy day config: missing -> monday`, вместо тихого скрытого fallback без объяснения;
+- это уменьшает риск ложного выбора `session-prep` / `day-plan` из-за незаметного path-drift после миграции `IWE -> Github`.
