@@ -248,6 +248,25 @@ Runtime-level verdict:
 - `Strategist` больше не должен логировать ложное `missing -> monday`, если canonical/template memory layer доступен;
 - будущие opening/work сценарии будут читать rhythm-config из реального knowledge-layer, а не из хардкодного fallback.
 
+## Slice 10 — Synchronizer code-scan dry-run
+
+Выбран безопасный сценарий:
+- `bash roles/synchronizer/scripts/code-scan.sh --dry-run`
+
+Результат запуска:
+- сценарий завершился с `exit 0`;
+- truthful output показал:
+  - `DS-Knowledge-Index-Tseren` — `SKIP`, нет коммитов за 24 часа;
+  - `DS-agent-workspace` — `FOUND`, 41 коммит за 24 часа;
+- побочных эффектов и изменений в git-деревьях после dry-run не осталось.
+
+Runtime-level verdict:
+- `Synchronizer / Code-Scan Dry-Run` = `pass`
+
+Что это подтверждает:
+- у `Synchronizer` уже есть как минимум два безопасных живых verification path: `daily-report --dry-run` и `code-scan --dry-run`;
+- safe reporting/observability layer подтверждается не единичным запуском, а повторяемым dry-run execution.
+
 ## Следующий slice
 
 Следующим ходом нужно:
