@@ -24,6 +24,11 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.030-agent-capability-hardening-and-verification (Доведение агентного слоя до подтверждённого целевого состояния).md`
     - обновлённые role/docs по агентам
+  - Прогресс на 2026-04-08:
+    - первая verification-wave завершена;
+    - `Strategist`, `Extractor`, `Synchronizer`, `Environment Engineer` получили truthful acceptance/runbook слой;
+    - зафиксированы первые live verdict'ы и закрыты реальные drift'ы (`strategist rerun status`, `strategist rhythm-config`);
+    - следующий этап — уже не общая truth-cleanup, а более глубокие live scenarios для `Strategist` и recovery-capabilities `Extractor`.
 
 - [pending] 2026-04-08: [STRUCTURE] Развернуть point-level knowledge layer для точек VK-offee
   - Контекст: пользователь зафиксировал правильную логику: Самокиша, Тургенева и Луговая — это не просто разрозненные документы в `knowledge-base`, а отдельные operational точки со своими договорами, арендой, подрядчиками и вопросами согласования. Уже поднят первый pilot `POINT-samokisha`, и теперь нужен дисциплинированный структурный контур с ритуалом открытия/закрытия и явным агентным составом.

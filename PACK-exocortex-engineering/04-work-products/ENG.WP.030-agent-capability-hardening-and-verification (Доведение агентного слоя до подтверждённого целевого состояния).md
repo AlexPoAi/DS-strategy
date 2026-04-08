@@ -305,6 +305,30 @@ Runtime-level verdict:
 - `Environment Engineer` truthfully подтверждён как рабочий diagnostic/fix контур среды;
 - meta-verification capability по всему агентному слою остаётся `partial`, но базовый diagnostic layer уже подкреплён живым инструментальным прогоном.
 
+## Итог первой verification-wave
+
+Что реально достигнуто в этом цикле:
+- по ключевым агентам оформлены truthful acceptance-runbook'и;
+- завышенные claims в role/docs убраны или отделены как `target capability`;
+- собраны и зафиксированы первые живые runtime-verdict'ы;
+- минимум два найденных drift'а (`strategist rerun status`, `strategist rhythm-config`) не просто описаны, а починены и перепроверены.
+
+### Current live verdict snapshot
+
+| Агент | Проверенный сценарий | Live verdict | Общий truthful status |
+|---|---|---|---|
+| `Strategist` | `morning` rerun guard + rhythm-config resolution | `pass` | `partial` |
+| `Extractor` | `inbox-check` при пустом inbox | `pass` | `partial` |
+| `Synchronizer` | `daily-report --dry-run`, `code-scan --dry-run` | `pass`, `pass` | `ready` как reporting/dispatcher, `partial` как full harness |
+| `Environment Engineer` | `runtime-arbiter --env` diagnostic path | `pass` | `ready` как diagnostic/fix, `partial` как meta-verification owner |
+
+### Что пока остаётся target-only
+
+- `Strategist`: chaos-structuring и recovery потерянных входов;
+- `Extractor`: full lost-input recovery и automatic return-to-WP loop;
+- `Synchronizer`: fully orchestrated acceptance-harness без ручной инженерной интерпретации;
+- `Environment Engineer`: repeatable acceptance-service по всему агентному слою.
+
 ## Следующий slice
 
 Следующим ходом нужно:
