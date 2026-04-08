@@ -267,6 +267,44 @@ Runtime-level verdict:
 - у `Synchronizer` уже есть как минимум два безопасных живых verification path: `daily-report --dry-run` и `code-scan --dry-run`;
 - safe reporting/observability layer подтверждается не единичным запуском, а повторяемым dry-run execution.
 
+## Slice 11 — Environment Engineer acceptance-runbook
+
+Что сделано:
+- для `Environment Engineer` создан отдельный truthful acceptance-runbook;
+- агентский паспорт теперь явно отделяет подтверждённый diagnostic/fix scope от target meta-verification capability;
+- роль больше не описывается как уже полностью оформленный acceptance-owner всего агентного слоя.
+
+Артефакты:
+- [environment-engineer-acceptance.md](/Users/alexander/Github/DS-agent-workspace/agency/agents/environment-engineer-acceptance.md)
+- [environment-engineer.md](/Users/alexander/Github/DS-agent-workspace/agency/agents/environment-engineer.md)
+
+## Slice 12 — Environment Engineer live diagnostic check
+
+Выбран безопасный сценарий:
+- `bash roles/synchronizer/scripts/runtime-arbiter.sh --env`
+
+Причина выбора:
+- сценарий даёт инструментальный runtime verdict;
+- не требует записи в repo и не шлёт Telegram;
+- подходит именно как truthful diagnostic-check, а не как fake "repair" without incident.
+
+Результат запуска:
+- сценарий завершился с `exit 0`;
+- получен явный runtime verdict:
+  - provider primary = `codex`
+  - codex = `available (login_ok)`
+  - claude = `available (auth_helper_ok)`
+  - local control = `available (launchctl_scheduler_loaded)`
+  - runtime policy = `split`
+
+Runtime-level verdict:
+- `Environment Engineer / Runtime Diagnosis` = `pass`
+
+Что это подтверждает:
+- агентный diagnostic path уже может давать проверяемый runtime-state без гадания;
+- `Environment Engineer` truthfully подтверждён как рабочий diagnostic/fix контур среды;
+- meta-verification capability по всему агентному слою остаётся `partial`, но базовый diagnostic layer уже подкреплён живым инструментальным прогоном.
+
 ## Следующий slice
 
 Следующим ходом нужно:
