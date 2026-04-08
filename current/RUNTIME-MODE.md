@@ -1,6 +1,6 @@
 ---
 type: runtime-mode
-updated: 2026-04-08 09:00:02
+updated: 2026-04-08 14:09:18
 provider_policy: auto
 provider_preference: codex
 runtime_policy: split
@@ -11,9 +11,9 @@ cloud_takeover_scope: product-only
 
 ## Provider Plane
 
-- Primary provider: `claude`
-- Why: `only_claude_available`
-- Codex: `missing` (`codex_cli_not_found`)
+- Primary provider: `codex`
+- Why: `both_available_preference_codex`
+- Codex: `available` (`login_ok`)
 - Claude: `available` (`auth_helper_ok`)
 
 ## Runtime Plane
@@ -28,5 +28,5 @@ cloud_takeover_scope: product-only
 
 - Local agents (`strategist`, `extractor`, `scheduler`) остаются `local-primary` до отдельного runtime redesign.
 - Product services (`VK-offee-rag`, `VK-offee/telegram-bot`) считаются `cloud-primary` контуром.
-- Provider selection для локальных агентов должен брать `claude`, пока он доступен.
+- Provider selection для локальных агентов должен брать `codex`, пока он доступен.
 - Если primary provider станет недоступен, runner должен переключаться на доступный fallback-provider без ручного переписывания скриптов.
