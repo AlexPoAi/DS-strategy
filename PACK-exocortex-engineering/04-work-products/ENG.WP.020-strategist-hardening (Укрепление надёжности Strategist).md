@@ -260,3 +260,14 @@ WP только открыт.
 - живой прогон `health-check` подтвердил новый guard: `ОК: strategist notify template builds week-review message`.
 
 Итог: broken weekly Telegram-template теперь должен ловиться как инженерная ошибка среды заранее, а не только по факту “почему не пришёл отчёт”.
+
+## Пятнадцатый выполненный slice
+
+`Strategist` переведён с косвенной observability на прямую запись собственных status-artifacts:
+
+- `strategist.sh` теперь сам пишет `~/.local/state/exocortex/status/strategist-*.status` для `morning`, `week-review` и `note-review`;
+- статус обновляется на старте сценария (`running`) и затем фиксируется как `success / failed / timeout / auth_failed`;
+- lock-конфликт тоже больше не остаётся только в логе: при живом lock пишется `running`-artifact с понятным summary;
+- это уменьшает зависимость `daily-report` и `health-check` от legacy markers и grep по старым логам.
+
+Итог: статусный слой Strategist становится source-of-truth ближе к самому runner'у, а не к downstream реконструкции по косвенным следам.
