@@ -64,6 +64,20 @@ created: 2026-03-04
   - Артефакт:
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.029-upstream-update-audit-and-apply-contract (Аудит upstream-обновлений Церена и контракт их применения).md`
 
+- [pending] 2026-04-08: [ENGINEERING] Довести агентный слой до целевой рабочей модели
+  - Контекст: после `ENG.WP.030` truthful-картина уже собрана, но идеальная модель агентного слоя пока реализована только частично. Особенно заметен gap у `Extractor`: он умеет делать extraction-report и routing, но не доказан как надёжный full-loop агент, который сам возвращает элемент в нужный `Pack`, `INBOX`, recovery-catalog или backlog без потери governance/growth input'ов.
+  - Что сделать:
+    1. Спроектировать canonical flow `input -> classification -> target route -> artifact -> tracked status`
+    2. Довести `Extractor` до full recovery loop без потери элементов между `captures`, extraction-reports, rejected и `INBOX`
+    3. Добавить outcome-статусы: `pack_candidate / backlog_task / recovery_item / rejected / deferred`
+    4. Закрыть разрыв между `Extractor`, `Strategist` и recovery/backlog контуром
+    5. Подтвердить минимум один живой end-to-end сценарий, где элемент не теряется и оказывается в правильном контуре
+  - Приоритет: critical
+  - Бюджет: 3-5h
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.031-agent-target-capability-implementation (Доведение агентов до целевой рабочей модели).md`
+    - обновлённые runner/contracts для `Extractor` и смежных агентов
+
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог
   - Контекст: пользователь прямо чувствует, что значительная часть мыслей, запросов и рабочих заготовок потерялась внутри множества репозиториев, Telegram-captures, extraction-reports, processed sessions и разрозненных заметок. Это уже не одна потерянная запись, а системный recovery-контур.
   - Что сделать:
@@ -80,6 +94,7 @@ created: 2026-03-04
     - источники recovery сверены: `captures`, extraction-reports, processed-sessions, WeekPlan, UNPROCESSED report, creativ-convector
     - собран первичный recovery-каталог
     - подтверждено: часть хвостов уже tracked, но минимум 2 стратегические задачи действительно были потеряны между rejected/archive и `INBOX`
+    - truthful limitation: это первый подтверждённый recovery-pass по основным источникам, а не гарантия, что уже найдены абсолютно все исторические потери экосистемы
 
 - [pending] 2026-04-08: [STRATEGY] Личная стратегия переезда: Кипр/Таиланд через автономность VK-offee и доход 500к+
   - Контекст: заметка `Переезд на кипр или тайланд` была извлечена, но зависла между rejected-архивом и backlog. Это не Pack-knowledge, а личная стратегическая цель владельца.
