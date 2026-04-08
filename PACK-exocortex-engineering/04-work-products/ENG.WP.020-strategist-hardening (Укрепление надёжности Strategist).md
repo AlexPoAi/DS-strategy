@@ -240,3 +240,13 @@ WP только открыт.
 - README Strategist обновлён под текущий runtime contract: scheduled source-of-truth = `com.exocortex.scheduler`.
 
 Итог: даже после повторной установки роли `Strategist` legacy launchd jobs не должны тихо возвращаться в систему и ломать no-double-run правило.
+
+## Тринадцатый выполненный slice
+
+Дочищен remaining legacy wording внутри самого Strategist:
+
+- `week-review.md` больше не объявляет `launchd` как runtime source-of-truth, а ссылается на `com.exocortex.scheduler`;
+- `note-review.md` тоже переведён с `launchd` на scheduler-based wording;
+- README Strategist выровнен до конца: `session-prep`, `day-plan` и `week-review` теперь все ссылаются на один и тот же scheduler-runtime.
+
+Итог: у Strategist больше нет внутреннего расхождения между runtime-contract в коде и тем, что читают prompt/doc consumers.
