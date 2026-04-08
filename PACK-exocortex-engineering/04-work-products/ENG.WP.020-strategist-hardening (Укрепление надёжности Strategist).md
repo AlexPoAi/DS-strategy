@@ -281,3 +281,13 @@ WP только открыт.
 - особенно полезно для `morning`, `week-review` и `note-review`, где повторный запуск после частичных сбоев был одним из исторических failure-классов.
 
 Итог: status-artifacts теперь не просто “пишутся для отчётов”, а реально участвуют в operational semantics самого runner'а.
+
+## Семнадцатый выполненный slice
+
+Выровнена lock-semantics между `Strategist` и `scheduler`:
+
+- `scheduler.sh` теперь трактует `exit 2` для `week-review` и `note-review` так же, как уже трактовал для morning-path;
+- живой lock больше не логируется как ложный `WARN: failed`, а идёт как `INFO: уже выполняется (lock), ждём завершения`;
+- failure-ветка теперь честно пишет и `exit code`, если это действительно не lock, а ошибка.
+
+Итог: scheduler больше не смешивает “сценарий реально сломан” и “сценарий уже выполняется другим экземпляром” для weekly/nightly strategist-paths.
