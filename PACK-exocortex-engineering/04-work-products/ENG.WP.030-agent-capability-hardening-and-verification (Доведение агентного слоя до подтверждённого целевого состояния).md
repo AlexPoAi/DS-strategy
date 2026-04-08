@@ -233,6 +233,21 @@ Runtime-level verdict:
 - guard against false reruns работает;
 - status-artifact для rerun-path теперь согласован с живым verdict, а не остаётся историческим мусором.
 
+## Slice 9 — Strategist rhythm-config hardening
+
+Найденный drift:
+- живой запуск `strategist.sh morning` показывал `Strategy day config: missing -> monday`;
+- корневой canonical memory-layer `~/Github/memory` существовал, но в нём отсутствовал `day-rhythm-config.yaml`;
+- из-за этого `Strategist` падал в fallback `monday` даже при наличии template-конфига.
+
+Что исправлено:
+- `roles/strategist/scripts/strategist.sh` теперь умеет брать `day-rhythm-config.yaml` и из `FMT-exocortex-template/memory` как safe fallback;
+- в canonical memory-layer восстановлен `day-rhythm-config.yaml`, чтобы root memory route снова был полным.
+
+Ожидаемый эффект:
+- `Strategist` больше не должен логировать ложное `missing -> monday`, если canonical/template memory layer доступен;
+- будущие opening/work сценарии будут читать rhythm-config из реального knowledge-layer, а не из хардкодного fallback.
+
 ## Следующий slice
 
 Следующим ходом нужно:
