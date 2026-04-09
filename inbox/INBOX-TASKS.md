@@ -83,6 +83,7 @@ created: 2026-03-04
     - для `Extractor` введён outcome-contract `pack_candidate / backlog_task / recovery_item / rejected / deferred`
     - `inbox-check` переведён на materialized outcome-loop: runner теперь проверяет, что report оставил реальный след в `INBOX` / recovery-catalog / archive и коммитит эти артефакты вместе
     - живой `inbox-check` вскрыл отдельный runtime-gap `codex exec may hang`; в runner добавлен timeout guard для provider execution
+    - для `Strategist` закрыт ещё один provider gap: `Claude-compatible runtime failure (503 / E015 / internal server error)` теперь должен уходить в `Codex` fallback вместо голого `failed`
     - следующий implementation-slice: довести `Strategist` до return-loop по recovery items и weekly/backlog priorities
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог

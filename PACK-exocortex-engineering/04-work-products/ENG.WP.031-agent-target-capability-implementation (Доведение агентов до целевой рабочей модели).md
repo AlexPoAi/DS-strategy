@@ -166,6 +166,22 @@ owner: Environment Engineer
 Что дальше:
 - следующий practical hardening — добавить atomic apply guard, чтобы при timeout/abort partial edits не оставались в `captures` или соседних артефактах.
 
+## Slice 4 — Strategist Claude-runtime fallback to Codex
+
+Что сделано:
+- по живому логу `Strategist` подтверждён runtime-gap: `Claude-compatible provider` мог падать на `503 / E015 / Internal server error`, но сценарий не уходил в `Codex`, а просто завершался как `failed`;
+- в `roles/strategist/scripts/strategist.sh` добавлен отдельный детектор provider-runtime failures;
+- такие сбои теперь переводятся в `Codex` fallback, а не считаются конечной точкой отказа;
+- `Codex`-ветка у `Strategist` также получила `CODEX_TIMEOUT`, чтобы fallback-path сам не зависал бесконечно.
+
+Почему это важно:
+- пользовательский operational contract для агентного слоя теперь жёстче: если Anthropic/Claude path неактивен или нестабилен, рабочий цикл должен продолжаться через GPT/Codex path;
+- это уменьшает зависимость `Strategist` от одного provider-а и приближает runtime к целевой модели `provider resilience`.
+
+Что это пока НЕ подтверждает:
+- это ещё не полный cross-agent orchestration loop;
+- нужен отдельный живой прогон, который покажет именно фактический `Claude failure -> Codex success` на сценарии `Strategist`.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
