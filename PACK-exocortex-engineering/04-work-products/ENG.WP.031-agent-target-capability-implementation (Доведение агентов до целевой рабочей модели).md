@@ -206,6 +206,30 @@ Live evidence on 2026-04-09:
 - пока это prompt/contract layer, а не live end-to-end proof;
 - следующий шаг — живой weekly/session-prep сценарий, где recovery item реально попадёт в `WeekPlan` или останется в backlog с явным verdict.
 
+## Slice 6 — Strategist recovery brief generator
+
+Что сделано:
+- добавлен `roles/strategist/scripts/build-recovery-brief.sh`;
+- генератор собирает актуальный `RECOVERY-CATALOG-LOST-INPUTS-*` в компактный артефакт `DS-strategy/current/RECOVERY-BRIEF.md`;
+- `strategist.sh` теперь обновляет recovery-brief перед `session-prep`;
+- `session-prep.md` читает не только сырой recovery-catalog, но и готовый brief как compact input.
+
+Live evidence on 2026-04-09:
+- генератор успешно построил `current/RECOVERY-BRIEF.md`;
+- в brief подняты 3 recovery-элемента, которые действительно требуют weekly/governance verdict:
+  - переезд Кипр/Таиланд
+  - канал продаж VK Coffee
+  - ИИ ассистенты для проработки
+
+Почему это важно:
+- recovery layer перестаёт быть “скрытым” markdown-каталогом;
+- `Strategist` получает materialized recovery input до запуска weekly/session-prep;
+- это уже ближе к управляемому return-loop, чем один только prompt-contract.
+
+Что это пока НЕ подтверждает:
+- ещё не доказано, что `Strategist` автоматически вернул эти элементы в WeekPlan или backlog по живому weekly сценарию;
+- нужен следующий live proof на `session-prep` или эквивалентном controlled run.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;

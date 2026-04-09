@@ -85,6 +85,7 @@ created: 2026-03-04
     - живой `inbox-check` вскрыл отдельный runtime-gap `codex exec may hang`; в runner добавлен timeout guard для provider execution
     - для `Strategist` закрыт ещё один provider gap: `Claude-compatible runtime failure (503 / E015 / internal server error)` теперь должен уходить в `Codex` fallback вместо голого `failed`
     - `Strategist` получил prompt-level recovery-return contract: weekly/session-prep теперь обязан читать `RECOVERY-CATALOG-LOST-INPUTS-*` и давать явный verdict `WeekPlan / backlog / keep in recovery`
+    - добавлен `RECOVERY-BRIEF` generator: recovery layer теперь материализуется в `current/RECOVERY-BRIEF.md` перед `session-prep`
     - следующий implementation-slice: живо проверить recovery-return loop на weekly/session-prep сценарии
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог
