@@ -303,6 +303,14 @@ Live evidence on 2026-04-09:
   - нужен следующий safe-pass по восстановлению canonical checkout на VPS,
   - затем installation pass для `com.exocortex.scheduler`.
 
+Что подготовлено для следующего pass:
+- добавлен deploy-helper `setup/optional/deploy-vps-exocortex-runtime.sh`;
+- helper делает:
+  - SSH preflight,
+  - sync `FMT-exocortex-template` и `DS-strategy` в канонический remote workspace,
+  - затем `setup-vps-agent-runtime.sh` на VPS;
+- это снижает риск ручного drift'а, когда сервер снова станет доступен по SSH.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
