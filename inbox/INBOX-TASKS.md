@@ -33,6 +33,25 @@ created: 2026-03-04
     - acceptance этого блока выполнен;
     - target-capabilities не считаются реализованными автоматически и вынесены в отдельные следующие задачи (`[RECOVERY]`, `[STRUCTURE]`, deeper Strategist/Extractor loops).
 
+- [pending] 2026-04-09: [ENGINEERING] Восстановить app-connectors parity для Codex и Claude (Google Drive + Gmail)
+  - Контекст: пользователь правильно зафиксировал целевое состояние: `Claude` и `Codex` должны работать как два равноправных агента, продолжая один и тот же контур документов и коммуникаций. Сейчас в `Codex Desktop` сломан весь app connector layer: и `Google Drive`, и `Gmail` падают одинаково с `failed to get client` / `MCP startup failed: timed out handshaking with MCP server after 30s`. Это уже не проблема одного плагина, а runtime-gap всего `codex_apps` слоя.
+  - Что сделать:
+    1. Зафиксировать truthful диагноз: плагин-каталог, токены, sync-layer и internet отдельно от runtime клиента
+    2. Найти безопасный способ восстановить `codex_apps` без потери auth/state
+    3. Добиться живой проверки минимум двух коннекторов: `Google Drive` и `Gmail`
+    4. Убедиться, что после восстановления Codex может создавать/редактировать Google Docs и читать Gmail так же, как это ожидается от равноправного агента рядом с Claude
+    5. Зафиксировать post-check и runbook recovery на будущее
+  - Acceptance:
+    - `Google Drive` и `Gmail` инструменты проходят живой tool call без handshake timeout;
+    - можно создать или прочитать тестовый Google Doc;
+    - можно выполнить чтение Gmail label/thread;
+    - есть truthful verdict, что parity restored либо зафиксирован внешний blocker с точной границей.
+  - Приоритет: critical
+  - Бюджет: 1-2h
+  - Артефакт:
+    - новый инженерный WP в `DS-strategy/PACK-exocortex-engineering/04-work-products/`
+    - обновлённый runbook recovery для connector-layer
+
 - [pending] 2026-04-08: [STRUCTURE] Развернуть point-level knowledge layer для точек VK-offee
   - Контекст: пользователь зафиксировал правильную логику: Самокиша, Тургенева и Луговая — это не просто разрозненные документы в `knowledge-base`, а отдельные operational точки со своими договорами, арендой, подрядчиками и вопросами согласования. Уже поднят первый pilot `POINT-samokisha`, и теперь нужен дисциплинированный структурный контур с ритуалом открытия/закрытия и явным агентным составом.
   - Что сделать:
@@ -90,6 +109,8 @@ created: 2026-03-04
     - добавлен `RECOVERY-BRIEF` generator: recovery layer теперь материализуется в `current/RECOVERY-BRIEF.md` перед `session-prep`
     - 2026-04-09 закрыт provider-plane drift `codex=missing, claude=available`: `runtime-arbiter` теперь ищет Codex не только через `PATH`, но и через фиксированные fallback-пути; health-check подтверждает `provider=codex, codex=available, claude=available`
     - добавлен VPS-first runtime слой: installer `setup-vps-agent-runtime.sh` + systemd timer/service для `com.exocortex.scheduler`; в scheduler внедрён `SCHEDULER-RUNTIME.env` с флагом standby (`EXOCORTEX_DISABLE_LOCAL_DISPATCH=1`) для предотвращения double-run при переносе на VPS
+    - ключевые runtime scripts переведены на workspace-layout agnostic resolver вместо жёсткого `~/Github`, чтобы один и тот же контур работал и локально, и на VPS
+    - внешний blocker на текущий момент сместился в server/transport layer: VPS `72.56.4.61` начал сбрасывать SSH/rsync во время синхронизации, а server-side checkout находится в broken state (`/root/DS-strategy` с мёртвым remote, отсутствует canonical `FMT-exocortex-template`)
     - следующий implementation-slice: живо проверить recovery-return loop на weekly/session-prep сценарии
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог

@@ -273,6 +273,36 @@ Live evidence on 2026-04-09:
 - появляется канонический путь миграции `local -> VPS` без ручной пересборки роли;
 - снимается главный operational риск пользователя: "день закончился, потому что компьютер выключили".
 
+## Slice 9 — Workspace-layout agnostic runtime layer
+
+Что сделано:
+- добавлен единый resolver `roles/synchronizer/scripts/resolve-workspace.sh`;
+- ключевые runner'ы переведены с жёсткого `~/Github` на auto-resolve workspace root:
+  - `strategist.sh`
+  - `extractor.sh`
+  - `scheduler.sh`
+  - `runtime-arbiter.sh`
+  - `health-check.sh`
+  - `daily-report.sh`
+  - `daily-telegram-report.sh`
+  - `opening-contract-check.sh`
+  - `code-scan.sh`
+  - recovery helpers `build-recovery-brief.sh` и `sync-recovery-into-weekplan.sh`;
+- `Strategist` больше не требует macOS-only `caffeinate` для запуска: guard стал conditional.
+
+Что это подтверждает:
+- локальный и VPS layout теперь могут использовать один и тот же script layer без ручного переписывания путей;
+- `Codex` и `Cloud/Claude` остаются равноправными provider-path'ами, а изменение касается только runtime/layout слоя.
+
+Внешний blocker на 2026-04-09:
+- доступ к VPS `72.56.4.61` как `root` подтверждён, но во время синхронизации нового workspace сервер начал сбрасывать SSH/rsync сессии (`Connection reset by peer`);
+- additionally на самом VPS обнаружен broken git state:
+  - `/root/DS-strategy` указывает на несуществующий remote/repo,
+  - `FMT-exocortex-template` там отсутствует как canonical checkout;
+- значит blocker сейчас не в agent logic, а в transport/server state:
+  - нужен следующий safe-pass по восстановлению canonical checkout на VPS,
+  - затем installation pass для `com.exocortex.scheduler`.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
