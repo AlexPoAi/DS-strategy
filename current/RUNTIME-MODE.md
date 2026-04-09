@@ -1,6 +1,6 @@
 ---
 type: runtime-mode
-updated: 2026-04-09 08:45:31
+updated: 2026-04-09 11:31:29
 provider_policy: auto
 provider_preference: codex
 runtime_policy: split
