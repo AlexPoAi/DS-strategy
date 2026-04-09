@@ -182,6 +182,12 @@ owner: Environment Engineer
 - это ещё не полный cross-agent orchestration loop;
 - нужен отдельный живой прогон, который покажет именно фактический `Claude failure -> Codex success` на сценарии `Strategist`.
 
+Live evidence on 2026-04-09:
+- контролируемый тест `note-review` с подменённым `CLAUDE_PATH` на искусственный `503 / E015` подтвердил runtime path:
+  - `Claude-compatible provider runtime failure for note-review on claude-haiku-4-5 — falling back to Codex`
+  - затем `Strategist` действительно стартовал `Codex`-ветку с причиной `claude_provider_runtime_failure`
+- test был остановлен после подтверждения fallback engagement, чтобы не держать лишний headless run и не вносить побочные изменения в рабочий контур.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
