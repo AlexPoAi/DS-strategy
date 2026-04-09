@@ -253,6 +253,26 @@ Live evidence on 2026-04-09:
 - делает runtime-выбор truthful при урезанном `PATH` у планировщика;
 - укрепляет контракт `Codex/Claude parity` без ручного переключения.
 
+## Slice 8 — VPS-first runtime for scheduler/agents
+
+Что сделано:
+- добавлен Linux/VPS installer для always-on агентного контура:
+  - `setup/optional/setup-vps-agent-runtime.sh`
+  - `systemd` templates для `com.exocortex.scheduler.service` и `com.exocortex.scheduler.timer`;
+- `scheduler.sh` получил runtime-config слой (`DS-strategy/current/SCHEDULER-RUNTIME.env`):
+  - `EXOCORTEX_RUNTIME_TARGET`
+  - `EXOCORTEX_DISABLE_LOCAL_DISPATCH`
+- локальный scheduler теперь может truthfully уходить в standby, чтобы не было double-run при активном VPS;
+- runtime policy в `DS-strategy/current/RUNTIME-POLICY.env` переведена в:
+  - `AI_RUNTIME_POLICY=cloud-primary`
+  - `CLOUD_TAKEOVER_SCOPE=all-agents`
+  - `CLOUD_BOT_RUNTIME_DECLARED=vps`
+
+Почему это важно:
+- при выключенном ноутбуке execution больше не должен останавливаться;
+- появляется канонический путь миграции `local -> VPS` без ручной пересборки роли;
+- снимается главный operational риск пользователя: "день закончился, потому что компьютер выключили".
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;

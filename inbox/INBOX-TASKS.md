@@ -87,6 +87,7 @@ created: 2026-03-04
     - `Strategist` получил prompt-level recovery-return contract: weekly/session-prep теперь обязан читать `RECOVERY-CATALOG-LOST-INPUTS-*` и давать явный verdict `WeekPlan / backlog / keep in recovery`
     - добавлен `RECOVERY-BRIEF` generator: recovery layer теперь материализуется в `current/RECOVERY-BRIEF.md` перед `session-prep`
     - 2026-04-09 закрыт provider-plane drift `codex=missing, claude=available`: `runtime-arbiter` теперь ищет Codex не только через `PATH`, но и через фиксированные fallback-пути; health-check подтверждает `provider=codex, codex=available, claude=available`
+    - добавлен VPS-first runtime слой: installer `setup-vps-agent-runtime.sh` + systemd timer/service для `com.exocortex.scheduler`; в scheduler внедрён `SCHEDULER-RUNTIME.env` с флагом standby (`EXOCORTEX_DISABLE_LOCAL_DISPATCH=1`) для предотвращения double-run при переносе на VPS
     - следующий implementation-slice: живо проверить recovery-return loop на weekly/session-prep сценарии
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог
