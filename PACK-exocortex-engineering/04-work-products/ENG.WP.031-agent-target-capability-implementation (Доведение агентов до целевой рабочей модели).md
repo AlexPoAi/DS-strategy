@@ -3,7 +3,7 @@ id: ENG.WP.031
 name: Доведение агентов до целевой рабочей модели
 status: active
 created: 2026-04-08
-last_updated: 2026-04-08
+last_updated: 2026-04-09
 owner: Environment Engineer
 ---
 
@@ -229,6 +229,29 @@ Live evidence on 2026-04-09:
 Что это пока НЕ подтверждает:
 - ещё не доказано, что `Strategist` автоматически вернул эти элементы в WeekPlan или backlog по живому weekly сценарию;
 - нужен следующий live proof на `session-prep` или эквивалентном controlled run.
+
+## Slice 7 — Runtime arbiter: Codex detection hardening
+
+Что сделано:
+- по живым Telegram alert'ам `2026-04-09 19:15` и `20:15` подтверждён новый operational gap:
+  - `Provider plane degraded: codex=missing, claude=available`
+- root-cause: `runtime-arbiter.sh` определял Codex только через `command -v codex`; в некоторых launch/scheduler окружениях это давало `missing`, хотя Codex фактически установлен и залогинен;
+- в `roles/synchronizer/scripts/runtime-arbiter.sh` добавлен `resolve_codex_path`:
+  - сначала `CODEX_PATH`,
+  - затем `command -v`,
+  - затем fallback по фиксированным путям (`/Applications/Codex.app/...`, `/usr/local/bin`, `/opt/homebrew/bin`, `$HOME/.local/bin`);
+- проверка login теперь идёт через найденный бинарник (`"$codex_path" login status`), а не через голый `codex`.
+
+Live evidence on 2026-04-09:
+- после фикса:
+  - `bash runtime-arbiter.sh --env` вернул `AI_CLI_CODEX_STATUS="available"` и `AI_CLI_PROVIDER_PRIMARY_RESOLVED="codex"`;
+  - `health-check.sh` зафиксировал `provider=codex ... codex=available claude=available`;
+  - итог health-check: `✅ Среда исправна`.
+
+Почему это важно:
+- снимает ложную деградацию provider-plane в мониторинге;
+- делает runtime-выбор truthful при урезанном `PATH` у планировщика;
+- укрепляет контракт `Codex/Claude parity` без ручного переключения.
 
 ## Acceptance
 
