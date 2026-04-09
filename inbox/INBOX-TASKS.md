@@ -84,7 +84,8 @@ created: 2026-03-04
     - `inbox-check` переведён на materialized outcome-loop: runner теперь проверяет, что report оставил реальный след в `INBOX` / recovery-catalog / archive и коммитит эти артефакты вместе
     - живой `inbox-check` вскрыл отдельный runtime-gap `codex exec may hang`; в runner добавлен timeout guard для provider execution
     - для `Strategist` закрыт ещё один provider gap: `Claude-compatible runtime failure (503 / E015 / internal server error)` теперь должен уходить в `Codex` fallback вместо голого `failed`
-    - следующий implementation-slice: довести `Strategist` до return-loop по recovery items и weekly/backlog priorities
+    - `Strategist` получил prompt-level recovery-return contract: weekly/session-prep теперь обязан читать `RECOVERY-CATALOG-LOST-INPUTS-*` и давать явный verdict `WeekPlan / backlog / keep in recovery`
+    - следующий implementation-slice: живо проверить recovery-return loop на weekly/session-prep сценарии
 
 - [in_progress] 2026-04-08: [RECOVERY] Восстановить потерянные задачи, заметки и пользовательские входы в единый каталог
   - Контекст: пользователь прямо чувствует, что значительная часть мыслей, запросов и рабочих заготовок потерялась внутри множества репозиториев, Telegram-captures, extraction-reports, processed sessions и разрозненных заметок. Это уже не одна потерянная запись, а системный recovery-контур.

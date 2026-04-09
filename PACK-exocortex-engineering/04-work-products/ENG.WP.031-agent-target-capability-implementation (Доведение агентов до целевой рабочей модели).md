@@ -188,6 +188,24 @@ Live evidence on 2026-04-09:
   - затем `Strategist` действительно стартовал `Codex`-ветку с причиной `claude_provider_runtime_failure`
 - test был остановлен после подтверждения fallback engagement, чтобы не держать лишний headless run и не вносить побочные изменения в рабочий контур.
 
+## Slice 5 — Strategist recovery-return contract
+
+Что сделано:
+- weekly/session-prep prompt для `Strategist` теперь обязан читать `RECOVERY-CATALOG-LOST-INPUTS-*` как отдельный source layer;
+- `Inbox Triage` расширен с 3 до 4 корзин, добавлен блок `♻️ Recovery return loop`;
+- для recovery items теперь требуется явный weekly/governance verdict:
+  - `→ WeekPlan`
+  - `→ INBOX backlog`
+  - `→ keep in recovery`
+
+Почему это важно:
+- раньше recovery catalog мог существовать отдельно от стратегического weekly контура;
+- теперь у `Strategist` появился явный contract не просто “знать о recovery”, а возвращать его в управляемый planning loop.
+
+Что это пока НЕ подтверждает:
+- пока это prompt/contract layer, а не live end-to-end proof;
+- следующий шаг — живой weekly/session-prep сценарий, где recovery item реально попадёт в `WeekPlan` или останется в backlog с явным verdict.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
