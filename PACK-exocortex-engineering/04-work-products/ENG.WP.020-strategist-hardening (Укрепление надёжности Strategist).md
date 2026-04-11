@@ -291,3 +291,27 @@ WP только открыт.
 - failure-ветка теперь честно пишет и `exit code`, если это действительно не lock, а ошибка.
 
 Итог: scheduler больше не смешивает “сценарий реально сломан” и “сценарий уже выполняется другим экземпляром” для weekly/nightly strategist-paths.
+
+## Восемнадцатый выполненный slice
+
+Убран log-bloat provider layer без потери диагностики:
+
+- сырой stdout/stderr provider-а больше не заливается целиком в основной `~/logs/strategist/YYYY-MM-DD.log`;
+- вместо этого сырой вывод архивируется в отдельный raw-layer:
+  - `~/logs/strategist/raw/YYYY-MM-DD/...`
+- основной strategist-log теперь хранит:
+  - путь к архивированному raw-output;
+  - путь к last-message артефакту (для Codex, если он есть);
+  - короткий tail только при `failed / timeout`.
+
+Почему это важно:
+
+- giant logs стали отдельным operational risk и мешали разбору реальных проблем;
+- при Codex-provider полный transcript мог раздувать strategist-log до сотен килобайт за один сценарий;
+- compact log ближе к эталону простого и надёжного runner-а, но сохраняет truthful observability через raw-архив.
+
+Итог:
+
+- диагностический материал не потерян;
+- основной strategist-log снова пригоден для быстрых проверок;
+- raw-output остаётся доступным для глубокого incident-review.

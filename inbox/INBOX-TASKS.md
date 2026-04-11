@@ -322,7 +322,7 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 1.5h
   - Артефакт:
-    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.021-strategist-24x7-runtime-contract (Контракт 24/7 исполнения Strategist).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.021-strategist-24x7-runtime-contract (Контракт 24x7 исполнения Strategist).md`
 
 - [pending] 2026-04-05: [АГЕНТ] Report Distribution Agent для pipeline презентаций
   - Контекст: в agency-agents найдены два профильных агента для pipeline «документ из репо → презентация → Telegram»
