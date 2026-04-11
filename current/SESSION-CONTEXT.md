@@ -1,324 +1,47 @@
 # Контекст текущей сессии
 
-> **Читать при обрыве.** Обновляется после каждой задачи.
-> Последнее обновление: 2026-04-08
+> **Читать при обрыве.** Это живой handoff-файл, а не исторический лог.
+> Последнее обновление: 2026-04-11
+> Полный архив старого хвоста: `archive/session-context-log/SESSION-CONTEXT-archive-through-2026-04-08 (Архив SESSION-CONTEXT до 08 апреля 2026).md`
 
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-08 21:27
+**Последнее обновление:** 2026-04-11 21:10
 **Сессия:** W15, активная неделя 2026-04-06 → 2026-04-12
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
+**Пользовательское правило формата:** короткие карточки по умолчанию, подробнее только по явному запросу. См. `current/USER-PREFERENCES.md`
 
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — Открыт ENG.WP.031 implementation-cycle: для Extractor прошит materialized outcome-loop, добавлен post-check routed artifacts и timeout guard для Codex provider; идеальная модель vs текущее состояние зафиксированы truthful образом
-**Активный РП:** W15 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
+**Статус:** открыт инженерный цикл по модернизации экзокортекса с двумя приоритетами: сначала надёжность, потом экономия токенов.
+**Активный РП:** `ENG.WP.035-session-context-compression`
+**Связанный РП:** `ENG.WP.036-tseren-vs-target-model-gap-analysis`
+**Следующий шаг:** завершить сжатие `SESSION-CONTEXT`, затем перейти к проверке устойчивости `Strategist 24/7` и к следующим safe-first шагам модернизации.
 
 ---
 
-## Что сделано сегодня (2026-03-22)
-- ✅ [2026-03-22 23:41] зафиксирована критическая задача на завтра: разобрать зависание Claude day-close
-- ✅ [2026-03-22 23:38] закрытие дня безопасным маршрутом после диагностики зависания strategist day-close
-- ✅ [2026-03-22 23:20] проверен и обновлён план на завтра после truthful readiness/close-flow
-- ✅ [2026-03-22 23:17] truthful readiness: verify session-open hook contract and card spacing
-- ✅ [2026-03-22 23:10] truthful close-task: detect post-close dirty repos
-- ✅ [2026-03-22 23:09] truthful close-task: detect post-close dirty repos
-- ✅ [2026-03-22 23:07] truthful readiness: evidence-based status artifacts and morning verdict
-- ✅ [2026-03-22 23:03] РП#22: зафиксирован отдельный пакет runtime/status стабилизации экзокортекса — сохранены hook wiring, снята жёсткая модель из extractor, исправлена truthful семантика stale status в scheduler/health-check/daily-report, обновлены WP-22 и next-actions с развилкой на параллельный пакет readiness и последующий сравнительный аудит с Цереном.
-- ✅ [2026-03-22 22:53] контроль удаления двойного разделителя в SESSION-CONTEXT
-- ✅ [2026-03-22 22:38] финальная проверка truthful close-task после фикса пролога SESSION-CONTEXT
-- ✅ [2026-03-22 22:25] проверка truthful close-task после hardening
-- ✅ [2026-03-22 21:17] РП#21: устранено падение strategist-morning и завершён финальный прокат открытия дня. В strategist runner убрана жёсткая модель claude-sonnet-4-6, добавлена точная классификация сбоев (auth, billing/quota, model unavailable, network, preflight), те же русские статусы согласованы в scheduler, daily-report и health-check. Проверка end-to-end пройдена: hook на фразу открытия дня возвращает зелёный экран, strategist-morning=success, health-check зелёный, startup screen разрешает обычное открытие дня.
-- ✅ [2026-03-22 21:01] РП#20: выполнен helper-only cleanup для Claude auth. Остановлены зависшие диагностические процессы, shell-хвосты auth убраны, итоговая схема доступа зафиксирована в `DS-strategy/inbox/WP-20-agent-recovery-and-monitoring.md` и `current/SESSION-CONTEXT.md`. Пользователь подтвердил: `claude` в обычном терминале запускается без ошибки.
-- ✅ [2026-03-22 20:50] Полностью протестирован РП#21 end-to-end: hook UserPromptSubmit срабатывает на фразу открытия дня и возвращает русский стартовый экран, daily-report dry-run корректно строит SchedulerReport/AGENTS-STATUS/SESSION-OPEN, записанный `SESSION-OPEN (Экран открытия сессии).md` совпадает по структуре, health-check работает.
-- ✅ [2026-03-22 20:45] РП#21: реализован обязательный стартовый экран открытия сессии экзокортекса. Добавлен русский session-open hook на UserPromptSubmit для фраз открытия дня, генератор daily-report теперь строит AGENTS-STATUS, SchedulerReport и SESSION-OPEN с индикатором мозга экзокортекса и критических связок среды, health-check и scheduler русифицированы, protocol-open.md, корневой CLAUDE.md и MEMORY.md обновлены под жёсткий session-open gate.
-- ✅ [2026-03-22 19:50] Inbox-Check: pending captures не найдены, обработка не требовалась.
-- ✅ [2026-03-22 22:10] Начат критический фикс truthful close-flow: подтверждено, что `close-task.sh` мог печатать ложный success banner, а `strategist day-close` не должен зависеть от note-review артефактов. Идёт исправление сценария закрытия и финишного скрипта.
-
----
-
-## Предыдущая зафиксированная сессия (2026-03-21)
-- ✅ [2026-03-21 23:20] Проверены мозг, стратег, экстрактор и health-check перед закрытием дня: scheduler loaded, health-check loaded, strategist statuses success, extractor success, daily-report success, среда готова к работе.
-- ✅ [2026-03-21 23:16] Расширена приоритетная задача в INBOX-TASKS.md: стартовый экран открытия рабочей сессии теперь включает статус «мозга» экзокортекса, проверку критических связок среды (Google Drive sync, творческий конвейер, Obsidian, auth/helper layer, shell/runtime-скрипты, секреты и доступы).
-- ✅ [2026-03-21 23:16] В INBOX записан техдолг: исправить автозапись SESSION-CONTEXT и вывод close-task.sh.
-- ✅ [2026-03-21 23:14] В INBOX записана критическая задача на завтра: сделать заказ на Submarine Coffee.
-- ✅ [2026-03-21 23:10] В INBOX-TASKS.md добавлена приоритетная критическая задача: обязательный стартовый экран состояния экзокортекса при открытии рабочей сессии.
-- ✅ [2026-03-21 22:16] Стабилизирован экзокортекс: scheduler стал главным runtime entrypoint, strategist/extractor переведены на единый Claude path и helper-based auth preflight, введены status-artifacts, правдивые SchedulerReport и AGENTS-STATUS, сняты legacy launchd jobs strategist/extractor.
+## Что сделано сегодня (2026-04-11)
+- ✅ [2026-04-11 18:40] Открыт `ENG.WP.034` по снижению token budget; зафиксировано, что главный перерасход сидит в `SESSION-CONTEXT.md`, а не только в `CLAUDE.md`.
+- ✅ [2026-04-11 19:05] Введена команда `сверь с эталоном` как обязательный инженерный gate; правило закреплено в корневом `CLAUDE.md`, `DS-strategy/CLAUDE.md` и `ENG.CONCEPT.001`.
+- ✅ [2026-04-11 19:30] Открыт `ENG.WP.035`; подтверждено, что compression `SESSION-CONTEXT` соответствует эталону и не должен ломать агентный контур.
+- ✅ [2026-04-11 20:00] Открыт `ENG.WP.036`; выполнена сверка реализации Церена с нашим эталоном.
+- ✅ [2026-04-11 20:15] Зафиксирован принцип модернизации: **надёжность выше экономии токенов** для всего ключевого контура экзокортекса.
+- ✅ [2026-04-11 20:35] Подтверждено направление симбиоза: берём у Церена простоту и устойчивость, у себя сохраняем truthful governance и ритуалы.
+- ✅ [2026-04-11 21:10] `current/SESSION-CONTEXT.md` сжат до формата живого handoff; исторический хвост вынесен в архивный файл.
 
 ---
 
 ## Следующий шаг
-- 🔒 [21:27] Сессия закрыта
-1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
-2. Открыть следующий рабочий цикл от текущего truthful состояния.
-3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
+1. Проверить, что новый компактный `SESSION-CONTEXT.md` не ломает открытие и закрытие сессии.
+2. Обновить `ENG.WP.035` фактом компрессии и compatibility verdict.
+3. Вернуться к инженерной задаче проверки `Strategist 24/7` как следующему reliability-check.
 
 ---
 
-## Контекст проекта
-### Связка репозиториев
-- **VK-offee** (`~/Github/VK-offee`) — Pack, база знаний кофеен, source of truth
-- **creativ-convector** (`~/Documents/creativ-convector.nocloud`) — исчезающие заметки, черновики → питает VK-offee
-- **FMT-exocortex-template** (`~/Github/FMT-exocortex-template`) — операционка, протоколы Open-Work-Close
-- **DS-strategy** (`~/Github/DS-strategy`) — governance hub, WeekPlan, стратегия
-
-### Как работаем
-1. Открываем день через стартовый экран экзокортекса.
-2. Работаем по РП и сохраняем артефакты в целевые репозитории.
-3. Фиксируем завершение задачи только через truthful close-flow.
-4. Закрываем день только после подтверждённых обновлений WeekPlan, MEMORY, SESSION-CONTEXT и backup.
-
----
-
-## Что сделано сегодня (2026-03-24)
-- ✅ [2026-03-24 23:56] WP-27 truthful close-flow alignment
-- ✅ [2026-03-24 23:40] Релиз 1: зафиксирован и частично исправлен blocker bug scheduler/dispatch и truthful close-flow; добавлены runtime budget, dispatch/task locks, completed-window semantics и git-state preflight, точка продолжения на завтра записана в WP-22
-- ✅ [2026-03-24 23:37] Закрытие дня: завершены WP-23, WP-24, WP-25 и WP-26 по сквозному контролю экзокортекса, зафиксировано постоянное правило итерационной дисциплины рабочих продуктов, следующий шаг — WP-27 truthful close-flow и дисциплина итераций
-- ✅ [2026-03-24 23:33] CLAUDE.md: добавлено блокирующее постоянное правило итерационной дисциплины — один WP = один артефакт = одно truthful закрытие, без перехода к следующему WP до закрытия текущего
-- ✅ [2026-03-24 23:31] CLAUDE.md: добавлено блокирующее постоянное правило итерационной дисциплины — один WP = один артефакт = одно truthful закрытие, без перехода к следующему WP до закрытия текущего
-- ✅ [2026-03-24 23:30] WP-26: задан truthful observability layer для экзокортекса — наблюдаемые очереди, backlog visibility, stuck/stale/partial/blocked visibility в AGENTS-STATUS, SESSION-OPEN, SchedulerReport и status store для перехода к WP-27
-- ✅ [2026-03-24 23:28] WP-25: зафиксирован пакет safeguards для сквозного контроля экзокортекса — stale lock, stuck queue, bounded retry, canaries, escalation ladder и защита от partial execution для перехода к WP-26
-- ✅ [2026-03-24 23:24] WP-24: задана failure state machine и truthful status semantics для runtime-контура экзокортекса, определены states, transitions и условия зелёного verdict для перехода к WP-25
-- ✅ [2026-03-24 23:21] WP-23: собрана end-to-end карта экосистемы экзокортекса, зафиксированы source-of-truth по стадиям и основные failure modes для перехода к WP-24
-- ✅ [2026-03-24 23:14] WP-23: собрана end-to-end карта экосистемы экзокортекса, зафиксированы source-of-truth по стадиям и основные failure modes для перехода к WP-24
-- ✅ [2026-03-24 23:07] WP-23: собрана end-to-end карта экосистемы экзокортекса, зафиксированы source-of-truth по стадиям и основные failure modes для перехода к WP-24
-- ✅ [2026-03-24 22:43] Исправлен scheduler evidence layer: убран mapfile из scheduler.sh для совместимости с bash 3.2, ложный failed у synchronizer-code-scan устранён, точечная проверка run_task дала success
-
----
-
-## Что сделано сегодня (2026-03-25)
-- ✅ [2026-03-25 23:06] Ежедневный разбор заметок: новых заметок нет; DS-strategy/inbox/fleeting-notes.md отсутствует
-- ✅ [2026-03-25 19:26] Создан РП-37: Каталог агентов на русском языке - извлечение метаданных всех 75+ агентов, перевод описаний, организация по категориям, JSON-индекс для поиска
-- ✅ [2026-03-25 19:24] Создан РП-36: RAG-бот для VK-offee с MCP-сервером, нанятыми агентами (MCP Builder, AI Engineer, Backend Architect), архитектурой и планом этапов
-- ✅ [2026-03-25 19:16] Агенство ИИ-агентов: создан механизм найма из agency-agents (75+ специализированных агентов), документ AI-AGENCY.md с каталогом и правилами, утилита hire.sh для поиска и активации агентов
-- ✅ [2026-03-25 19:12] WP-35: VK-телебот как монитор экзокортекса - добавлены уведомления от extractor (session-import, session-tasks, archive-review), реализованы команды бота /status /agents /wp /logs, создан monitor_bot.py и start_monitor.sh
-- ✅ [2026-03-25 19:07] РП#35: настроены Telegram-уведомления от strategist и scheduler в личный чат, шаблоны на русском
-- ✅ [2026-03-25 18:54] РП#30: Обработаны документы из Downloads/кофейня — каталог напитков (BAR.WP.010), каталог еды (KITCHEN.WP.010), счета-фактуры (MGMT.WP.015-016), карточки поставщиков (ИП Шмилов, Мёуд)
-- ✅ [2026-03-25 17:02] WP-29: проверена artifact-gated atomicity — daily-report создаёт статусы с evidence verification, WeekPlan existence check работает, git atomicity соблюдается
-- ✅ [2026-03-25 16:57] Отключён Telegram-бот (фото + start.sh), добавлена команда 'обнови экзокортекс' с pre/post проверками в CLAUDE.md
-- ✅ [2026-03-25 15:00] Экосистема: fix close-task.sh (git pull для чистых репо), Obsidian sync plist (HOME+LANG+PATH), launchd агенты inbox-check и weekreview загружены
-- ✅ [2026-03-25 14:58] РП#16: зафиксирован прогресс — договорённость с мастером, визит 26.03 для замера и ответа по согласованию конструкции вывески на Самокиша
-- ✅ [2026-03-25 14:37] WP-22: диагностика и починка всех красных флагов утра — perl timeout, billing_failed классификация, найдена причина note-review/week-review (429 cost limit)
-- ✅ [2026-03-25 14:36] WP-29: WeekPlan W13 создан вручную; retry x3 для model_unavailable добавлен в strategist.sh
-- ✅ [2026-03-25 14:33] WP-22: добавлена классификация billing_failed для 429 Total cost limit в strategist.sh
-- ✅ [2026-03-25 14:20] WP-22: исправлен strategist-morning — заменён python subprocess wrapper на perl timeout fallback (как у Церена в upstream), добавлен caffeinate, увеличен бюджет до 1800s
-- ✅ [2026-03-25 14:06] WP-29 artifact-gated atomicity для strategist и scheduler — оформлен как рабочий продукт
-- ✅ [2026-03-25 00:14] Создан WP-28 pristine template acceptance и выполнено полное закрытие дня
-- ✅ [2026-03-25 00:12] Закрытие дня после WP-27 truthful close-flow alignment
-- ✅ [2026-03-25 00:06] Закрытие дня: зафиксирован Релиз 1 по scheduler/dispatch и truthful close-flow; на завтра оставлен план — daily-report/status layer, затем close-flow check, затем консолидация триггеров VK-offee
-- ✅ [2026-03-25 00:05] WP-27 historical validator cleanup and configured-fork detection
-- ✅ [2026-03-25 00:04] Тест протокола закрытия дня: замер числа коммитов и truthful close-flow
-
----
-
-## Что сделано сегодня (2026-03-26)
-- ✅ [2026-03-26 22:02] РП#30 сохранён в inbox — агентство ИИ-агентов: механизм найма готов, контекст зафиксирован, продолжение завтра
-- ✅ [2026-03-26 22:30] FPF-инспекция VK-offee завершена v1.1: добавлены объекты «списание» и уточнён «ингредиент» (срок годности, различение мл/г vs шт). Баланс остатков замкнут: поставки − продажи − списания = остатки. Два потока бара: еда (из кухни) vs ингредиенты (от поставщиков). РП на завтра создан в INBOX — перенос реальных данных по новой структуре + PACK-hr.
-- ✅ [2026-03-26 22:02] FPF-инспекция VK-offee завершена: domain-contracts 11 объектов v1.1 (списание, ингредиент обновлён, баланс замкнут). РП на завтра создан в INBOX: перенос реальных данных по новой структуре
-- ✅ [2026-03-26 21:49] сохранение сессии — синхронизация SESSION-CONTEXT и незакоммиченных файлов
-- ✅ [2026-03-26 21:37] Domain-contracts: созданы карточки 10 объектов системы VK-offee по FPF-шаблону (заказ, поставка, расхождение, заказ кухни, порция еды с маркировкой, напиток, стол, посадка, период учёта, возмещение)
-- ✅ [2026-03-26 21:32] адаптация формата agency-agents: AGENT-TEMPLATE.md + vk-coffee-analyst v2.0 по двухслойной архитектуре
-- ✅ [2026-03-26 21:31] FPF-моделирование PACK-hr: сотрудник, договор, обучение, роль. Создан жёсткий шаблон domain-contract с примерами (сотрудник + смена). Вся FPF-инспекция VK-offee завершена.
-- ✅ [2026-03-26 21:28] FPF-моделирование PACK-management: смена, период учёта, инвентаризация, возмещение, метрики потерь. Создана мастер-схема всей системы VK-offee (MASTER-SCHEMA-v1) + шаблон карточки объекта
-- ✅ [2026-03-26 21:08] РП#30: механизм найма агентов — HIRING-PROTOCOL.md + GAPS.md + протокол согласования обновлён
-- ✅ [2026-03-26 21:01] FPF-моделирование PACK-bar и PACK-service: построены объектные модели — напиток/рецепт/ингредиент/оборудование для бара; стол/посадка с временными метками и группировкой заказов для сервиса
-- ✅ [2026-03-26 20:43] FPF-инспекция VK-offee: построена объектная модель домена v1 — типы, объекты, правила размещения для всех PACK; зафиксированы ответы Константина и Валерия по проекту парк (PARK.COMM.007-008), скорректирован график РНС (PARK.DOC.014), зафиксировано понимание стадий АР/КР/РР (PARK.CONCEPT.006)
-- ✅ [2026-03-26 20:19] РП#30: создан реестр агентов DS-агентства + механизм найма в Ритуале согласования
-- ✅ [2026-03-26 19:27] Обновление экзокортекса до v0.16.2 от Церена: 175 коммитов, новые skills, caffeinate, day-close, verifier + WP-29 atomicity поверх + cloud-scheduler с Telegram
-- ✅ [2026-03-26 18:29] WP-29: artifact-gated atomicity — WeekPlan gate, SESSION-CONTEXT gate, атомарная ротация scheduler-report, фикс gh credential разъезда
-- ✅ [2026-03-26 15:32] Ремонт открытия дня: исправлен баг в daily-report.sh, пересобран truthful SESSION-OPEN/AGENTS-STATUS
-- ✅ [2026-03-26 15:24] Day Plan: создан DayPlan 2026-03-26, обновлён WeekPlan W13
-
----
-
-## Что сделано сегодня (2026-03-27)
-- ✅ [2026-03-27 22:04] FPF Консультант v1 завершён: загружены файлы из Downloads (FPF-Spec.md 48k строк + fpf-spf-pack.md + fpf-readme.md), vector store = 8 файлов, обновлён system prompt (3 режима: физический анализ / domain-contract / консультация), зарегистрирован в агентстве DS как агент #7, закоммичено и запушено в DS-agent-workspace
-- ✅ [2026-03-27 21:23] Закрытие дня 2026-03-27: РП#30 агентство v2.0 закрыт, РП#15 кресла закрыт, РП#5 RAG-бот Telegram v3.1 закрыт, WP-38 деплой на VPS сохранён — продолжим после регистрации хостинга
-- ✅ [2026-03-27 21:21] Сохранён контекст WP-38: облачный деплой VK-offee бота + RAG API на VPS. Бот v3.1 готов, пользователь идёт выбирать и регистрироваться на хостинге.
-- ✅ [2026-03-27 20:55] РП#5: RAG-бот VK-offee интегрирован с Telegram — бот v3.0: заменён grep-поиск на ChromaDB+Claude RAG (394 чанка, 7 Pack), rag_client.py с retry x3
-- ✅ [2026-03-27 20:46] Domain-contracts PACK-hr v1.4: закрыт — сотрудник, договор, допуск (текущий: Родион; будущий: модули), роль, модуль обучения (будущий)
-- ✅ [2026-03-27 20:34] РП#15: Новые кресла для зала Тургенева — заказ размещён
-- ✅ [2026-03-27 20:28] РП#30: DS-агентство v2.0 — обновлено 5 карточек агентов до v2.0 (environment-engineer, park-architect, hr-specialist, strategist, code-engineer) + создан Supreme HR (👑) знает 186+ агентов, подбирает под задачу
-- ✅ [2026-03-27 20:20] Domain-contracts PACK-management v1.3: закрыт — смена, инвентаризация, кассовый отчёт, передача выручки, расхождение (единый объект 2 типа: товарное/кассовое), retail-товар, склад
-- ✅ [2026-03-27 20:03] Domain-contracts PACK-cafe-operations v1.2: закрыт полностью — 9 объектов (заказ обновлён, оплата, клиент, место хранения, перемещение, остатки с двойным различением, возврат, расхождение, списание, поставка)
-
----
-
-## Что сделано сегодня (2026-03-28)
-- ✅ [2026-03-28 21:31] WP-38 частично завершён: VPS поднят, бот и RAG API запущены на 72.56.4.61, индекс работает (287 документов), но сценарии бота и структура базы знаний требуют доработки. Выявлено: ответы по зарплатам неполные, кнопки/сценарии требуют полного рефакторинга, нужен аудит репо на bot-readable карточки. Завтра первым делом продолжить: 1) аудит базы знаний под RAG, 2) сценарии Telegram-агента, 3) рефакторинг bot-readable карточек и зарплатных документов.
-- ✅ [2026-03-28 21:15] Создан WP-39 для инженера экосистемы: починка notify.sh (path drift IWE→Github) и добавлена задача в INBOX
-- ✅ [2026-03-28 21:09] Закрытие дня 2026-03-28
-- ✅ [2026-03-28 21:04] FPF Консультант v2: загружен pack-kitchen-contracts-v1.md (816 строк) в vector store — консультант теперь знает все объекты и роли PACK-kitchen
-- ✅ [2026-03-28 20:53] FPF Консультант v2: thread persistence + автозагрузка контекста + интерактивный режим -i + --reset + --status — протестировано успешно
-- ✅ [2026-03-28 20:53] WP-38 завершён: бот VK-offee задеплоен на VPS 72.56.4.61 (Timeweb Cloud). Оба сервиса запущены: vk-rag-api + vk-telegram-bot. Карточка сервера ENG.WP.003 создана.
-- ✅ [2026-03-28 20:52] FPF Консультант v2: thread persistence + автозагрузка контекста домена + интерактивный режим (-i) + --reset + --status
-- ✅ [2026-03-28 20:39] День закрыт: FM-план PACK-kitchen (004-013) зафиксирован в INBOX от FPF Консультанта
-- ✅ [2026-03-28 20:05] PACK-kitchen рефактор: ENTITY.002 (Повар) → deprecated, созданы ROLE.001 (Повар), ROLE.002 (Младший повар), ROLE.003 (Раннер) по FPF A.7 — роль ≠ система
-- ✅ [2026-03-28 19:27] FPF PACK-kitchen v1 завершён: PACK-SCHEMA (домен, цепочка, traceability) сохранена в 01-concepts, FM-задача записана в INBOX
-- ✅ [2026-03-28 19:13] FPF-моделирование PACK-kitchen: созданы карточки 004 (Ингредиент v1.1), 005 (Кухонный цех v1.1), 006 (Блюдо v1.0) — совместно с FPF Консультантом через веб-режим
-- ✅ [2026-03-28 15:33] Симлинк ~/IWE→~/Github + починка путей стратега + post-merge hook
-- ✅ [2026-03-28 15:32] FPF-моделирование PACK-kitchen: первый сеанс с FPF Консультантом. Зафиксирована концептуальная основа домена (блюдо = целевая система, цепочка ингредиент→заготовка→блюдо, BoundedContext паттерн, рецепт = U.MethodDescription). Создана карточка KITCHEN.ENTITY.003-zagotovka. Вывод: консультант силён на анализ, слабоват на шаблонные карточки — ручной режим эффективнее.
-- ✅ [2026-03-28 15:23] Симлинк ~/IWE→~/Github + починка путей стратега + упрощение post-merge hook
-- ✅ [2026-03-28 15:10] Починка +x прав на скриптах + post-merge hook + создан PACK-exocortex-engineering (Инженерные работы по экосистеме)
-
----
-
-## Что сделано сегодня (2026-03-29)
-- ✅ [2026-03-29 12:19] WP-40 создан: схема еженедельных отчётов менеджера через Google Drive — папка Drive, чеклист анализа, сообщение для Жанны. VK-offee sync-коммит (65 файлов knowledge-base) закрыт и запушен.
-
----
-
-## Что сделано сегодня (2026-03-30)
-- ✅ [2026-03-30 23:19] WP-44 Этапы 1-3 выполнены: ChromaDB переиндексирована (436 docs, 122 saby-карточки), keyword-routing исправлен, RAG-бот находит накладные по поставщику. Верификация пройдена: накладная Дмитрий → INV ✅, капучино → PACK-bar ✅
-- ✅ [2026-03-30 21:20] WP-44 Этап 3: ChromaDB переиндексирована с 122 saby-карточками накладных (436 docs total), исправлен keyword-routing в query.py — RAG-бот теперь находит накладные по имени поставщика. Верификация: "накладная Дмитрий десерты" → INV-2026-03-12-156629-дмитрий.md ✅
-- ✅ [2026-03-30 15:58] WP-44: Спроектирована система работы с отчётами Saby — структура хранения, формат карточек, 4 сценария использования бота, план реализации на 5h
-- ✅ [2026-03-30 15:44] РП#21: Система мониторинга агентов + механизм принудительного согласования — Фаза 1 и 2 завершены. Усилено правило #0, включены RunAtLoad для агентов, создан unprocessed-notes-check.sh, все 5 тестов пройдены.
-- ✅ [2026-03-30 15:39] WP-43: Починил RAG индексацию на VPS — добавил прокси OpenAI в .env, создал venv, переиндексировал ChromaDB (287 документов), перезапустил сервисы. Бот работает.
-- ✅ [2026-03-30 15:11] WP-42: Анализ архитектуры VPS — создан полный документ с решениями embeddings, БД, агентами и планом на 3 недели
-- ✅ [2026-03-30 15:07] WP-41: Красивый Telegram-отчёт закрытия дня — создана функция day-close в synchronizer.sh, формат с эмодзи и топ-5 задач, отправка работает
-- ✅ [2026-03-30 14:36] День закрыт: диагностика VPS (бот + RAG API работают, 287 документов), VK-offee sync закрыт, WP-40 создан (схема отчётов менеджера через Drive). Все репо чисты.
-- ✅ [2026-03-30 14:25] WP-39: Починка notify.sh после дрейфа путей IWE→Github. Исправлены: strategist.sh:64, protocol-close.md (2 места). Создан ENG.WP.004. Мозг экзокортекса → зелёный.
-- ✅ [2026-03-30 10:10] inbox-check: проверка captures.md, создание extraction report 2026-03-30 (0 pending captures)
-- ✅ [2026-03-30 10:08] inbox-check: проверка captures.md, создание extraction report 2026-03-30 (0 pending captures)
-- ✅ [2026-03-30 07:02] Inbox-Check: pending captures не найдены, обработка не требовалась
-
----
-
-## Что сделано сегодня (2026-03-31)
-- ✅ [2026-03-31 23:35] WP-47 создан: Редизайн workflow Extractor (captures → inbox → Pack). Проанализирован подход Церена, спроектирован новый workflow с автоматическим созданием задач в inbox. Приоритет high, deadline завтра.
-- ✅ [2026-03-31 22:59] WP-46 создан (рефакторинг Telegram-бота, 5 сценариев, архитектура меню). WP-47 создан (система учёта токенов с Telegram-отчётами, 3 скрипта). Claude Code обновлён до 2.1.81 — исправлена утечка токенов. Нанятые агенты: Product Manager + AI Engineer (API лимит достигнут)
-- ✅ [2026-03-31 22:45] WP-46 создан: рефакторинг Telegram-бота VK-offee (5 сценариев, архитектура меню, план MVP 2-3h). Claude Code обновлён до 2.1.81 — исправлена утечка токенов через кэш ( за 5 дней, 6289 запросов). Добавлены env vars: DISABLE_NONESSENTIAL_TRAFFIC=1, ATTRIBUTION_HEADER=0
-
----
-
-## Что сделано сегодня (2026-04-01)
-- ✅ [2026-04-01 20:30] Scheduler починен: заменены плейсхолдеры {{WORKSPACE_DIR}} в 4 скриптах, все агенты работают (exit 0). Добавлена императивная проверка WP Gate в MEMORY.md — блокирующая секция в начале файла для предотвращения обхода ритуала.
-
----
-
-## Что сделано сегодня (2026-04-03)
-- ✅ [2026-04-03 22:43] WP-48 Telegram-бот починен (systemd VPS, убран с Мака, git order fix). WP-49 правило --resume в CLAUDE.md. PARK: 8 артефактов ЛУКС (DOC.015-020, WP.025-026, COMM.010-011). Инженерные задачи на 04.04 зафиксированы в INBOX.
-- ✅ [2026-04-03 22:19] WP-49: Добавлено правило 15 в CLAUDE.md — НЕ использовать --resume (баг кэша Claude Code v2.1.69+, расходы x10-20). Workaround: новая сессия каждый раз, контекст через SESSION-CONTEXT.md. Анализ экосистемы: агенты не затронуты (не используют resume).
-- ✅ [2026-04-03 22:07] Закрытие дня 03.04: WP-48 (тестирование бота) закрыт, технический долг после сбоя 01.04 ликвидирован, Telegram-бот починен (git pull ошибка, systemd, дубль удалён). PACK-warehouse создан, ждёт данных от Жанны.
-- ✅ [2026-04-03 22:03] WP-48: Тестирование Telegram-бота. Результаты: (1) /note работает — заметки сохраняются в captures.md (подтверждено данными). (2) Ошибка git pull fixed — порядок операций исправлен + fallback. (3) systemd сервис настроен (vkoffee-bot.service). (4) Дубль на Маке удалён. (5) Conflict 409 — временный от многократных перезапусков, исчезнет сам.
-- ✅ [2026-04-03 21:49] PARK: анализ документов ЛУКС (П240, ДС1-3, АВР1) — карточки DOC.015-020, стратегия переговоров WP.025-026, коммуникации COMM.010-011
-- ✅ [2026-04-03 20:27] WP: Починка Telegram-бота — убран дубль на Маке (plist удалён), исправлен note_command на VPS (порядок git: add→commit→pull→push), добавлен fallback при ошибке git. Бот перезапущен на VPS.
-- ✅ [2026-04-03 13:40] Telegram-бот стабилизирован: 3 слоя защиты (autossh, retry+backoff, fallback без прокси). Ссылка Жанны сохранена в INBOX-TASKS.
-- ✅ [2026-04-03 11:59] Починен Telegram-бот: исправлены 3 бага (git pull порядок add→commit→pull→push, установлен socksio, убрана кириллица из команды). Бот работает — Application started.
-- ✅ [2026-04-03 11:32] Технический долг после сбоя 01.04: закоммичены INBOX-TASKS + UNPROCESSED-NOTES-REPORT, обновлён SESSION-CONTEXT до актуального состояния (WP-47/44/42/45 — статусы расставлены)
-
----
-
-## Что сделано сегодня (2026-04-04)
-- ✅ [2026-04-04 23:54] Миграция всех GitHub репо с alexpoaiagent-sudo на AlexPoAi: 22 репо перенесены как private, gh CLI переключён, агенты работают
-- ✅ [2026-04-04 21:49] Закрытие дня
-- ✅ [2026-04-04 21:32] Консультация: интеграция ChatGPT Plus (Codex) с VK-offee через GitHub PR workflow
-- ✅ [2026-04-04 21:04] WP-50 закрыт: каталог блюд WP.011 + таблица хранения WP.012 (эмодзи формат) + INBOX-TASKS обновлён (реестр документов Google Drive)
-- ✅ [2026-04-04 19:38] Кухня: WP.012 таблица сроков хранения для согласования управляющим (13 позиций наша кухня)
-- ✅ [2026-04-04 19:26] Кухня: WP.011 каталог блюд из Сабы (13 наших + 17 поставщики), METHOD.007 сроки хранения по СанПиН, METHOD.002 обновлён, ENG.FM.006 нарушение ритуала зафиксировано
-- ✅ [2026-04-04 15:20] WP-47: Extractor workflow redesign — добавлен Step 3b в inbox-check.md: автоматическое создание [KE]-задач в INBOX-TASKS.md для каждого accept-кандидата из extraction report. Мост captures→inbox→Pack теперь замкнут.
-- ✅ [2026-04-04 14:58] Инженерный сеанс 04.04: ENG.WP.005 scheduler SKIP≠WARN (d932681), ENG.WP.006 auth 401 детектор в strategist (87b1ae3), daily-telegram chat-id починен, stale lock 22.03 удалён. Диагностика итога пройдена. Контекст сохранён в DS-agent-workspace.
-- ✅ [2026-04-04 14:45] ПАРК: зафиксированы COMM.012 (Елена 04.04), COMM.013 (график 02.04), правило напоминаний в INBOX-TASKS, идея Pack Личный помощник
-
----
-
-## Что сделано сегодня (2026-04-05)
-- ✅ [2026-04-05 23:52] ENG.WP.018: prepare multi-collection RAG split for core and Saby
-- ✅ [2026-04-05 23:58] ENG.WP.019: собран единый reliability dossier по Strategist — в одном артефакте сведены path drift, day-close hangs, auth/helper failures, runtime drift и truthful semantics mismatch; зафиксирован truthful verdict: `strategist` функционален, но остаётся хрупким local-primary агентом до отдельного runtime/auth hardening
-- ✅ [2026-04-05 23:59] ENG.WP.020: открыт отдельный hardening-цикл для Strategist — scope сфокусирован на auth-failure observability, предсказуемом `day-close`, recovery для `week-review` и снижении shell/runtime хрупкости без попытки сейчас выносить strategist в always-on контур
-- ✅ [2026-04-06 00:03] ENG.WP.020: выполнены первые hardening-slices для Strategist — auth failure теперь уходит не только в `osascript`, но и в Telegram; `run_claude()` переведён на truthful result semantics (без ложного `Completed scenario` при exit!=0); lock стал PID-aware со stale-cleanup; prompt-runner теперь подставляет реальные `WORKSPACE_DIR/HOME_DIR/GITHUB_USER`. Truthful status: `week-review` сейчас не stale-lock, а живой длинный runtime, финальный verdict ещё не получен
-- ✅ [2026-04-06 00:07] ENG.WP.021: открыт отдельный WP на 24/7 runtime contract для Strategist — зафиксировано, что текущий Strategist не является always-on агентом, пока живёт через `launchd + local claude CLI + local logs/locks/state`; следующим шагом должна стать карта сценариев `local-only / cloud-safe / requires redesign`
-- ✅ [2026-04-06 00:10] ENG.WP.021: сделан первый design split по сценариям Strategist — `strategy-session/day-close/note-review` зафиксированы как local-only, `week-review` признан лучшим первым кандидатом на cloud-safe 24/7 вынос, `session-prep` — вторым кандидатом с оговорками; legacy `day-plan` исключён как база для будущего always-on маршрута
-- ✅ [2026-04-05 23:44] ENG.WP.017: automate RAG reindex after VK-offee push on VPS
-- ✅ [2026-04-05 23:59] ENG.WP.017: автопереиндексация RAG после push в `VK-offee` доведена до production evidence — на VPS `72.56.4.61` подняты `vk-rag-reindex.service` + `vk-rag-reindex.timer`, добавлен `swapfile 2G`, починен `indexer --reset`, первый полный прогон завершён (`263` файлов, `579` документов, `last-pack-head=29709c656aa595009a1e0397e60a24efc775eb2c`), повторный запуск без новых коммитов корректно возвращает `pack unchanged`
-- ✅ [2026-04-05 23:28] ENG.WP.016: stabilize product always-on VPS runtime after GitHub migration
-- ✅ [2026-04-05 23:44] ENG.WP.016: product always-on VPS контур стабилизирован — текущий сервер `72.56.4.61` подтверждён как живой runtime, server remotes переведены на SSH `AlexPoAi`, `vk-rag-api` и `vk-telegram-bot` пережили restart, RAG health после прогрева = 436 документов; server-only правки (`/note`, `saby-reports`) подняты обратно в git, obsolete `chroma_db/chroma.sqlite3` удалены как legacy хвост
-- ✅ [2026-04-05 23:16] Сессия стратегирования W15: создан WeekPlan W15 (РП 51-57), добавлены 8+ задач в INBOX, создан ENG.WP.014 (аудит Workflow Architect — 10 WF, 4 критических разрыва, рекомендации R1-R5), обновлён MEMORY.md (W15 план, Ритуал согласования: обязательный шаг Агент, каскадный fallback Haiku→Sonnet, Opus запрещён)
-- ✅ [2026-04-05 23:11] Встроен шаг 'Агент' в Ритуал согласования (MEMORY.md). Теперь при каждом открытии РП обязательный шаг: найти агента в REGISTRY.md → нанять или зафиксировать в GAPS. Протокол найма HIRING-PROTOCOL.md уже написан, теперь он не потеряется.
-- ✅ [2026-04-05 23:10] ENG.WP.016: always-on RAG + bot implementation slice (remote-ready API host, deploy contract, env template)
-- ✅ [2026-04-05 23:02] ENG.WP.015: local-first / cloud-fallback architecture contract for agent layer
-- ✅ [2026-04-05 22:58] Зафиксирована инженерная задача R-2: каскадный fallback моделей (Haiku→Sonnet, Opus запрещён). INBOX обновлён. Haiku недоступен на текущем API ключе — важный контекст для всех инженерных задач.
-- ✅ [2026-04-05 23:12] ENG.WP.015: оформлен архитектурный контракт `local-first / cloud-fallback` для агентного слоя — `VK-offee-rag` и `VK-offee/telegram-bot` закреплены как cloud-primary кандидаты, `strategist/extractor/scheduler` оставлены local-primary до redesign, зафиксированы heartbeat/failover semantics и правило `no-double-run`
-- ✅ [2026-04-05 23:18] ENG.WP.016: открыт implementation WP на always-on `VK-offee-rag` + `VK-offee/telegram-bot` — зафиксированы scope, acceptance criteria, smoke tests и правило `single active bot process`
-- ✅ [2026-04-05 22:56] ENG.WP.014: зафиксирована карта OpenAI-first always-on migration и выделены first migration targets
-- ✅ [2026-04-05 22:54] ENG.WP.014 создан: Аудит workflow экосистемы от Workflow Architect. 10 workflow-ов проанализированы, 4 критических разрыва выявлены (RAG переиндексация, сессия→INBOX, week-review, агентство). R-1 и R-2 добавлены в INBOX как инженерные задачи W15.
-- ✅ [2026-04-05 23:05] ENG.WP.014: зафиксирована карта OpenAI-first always-on migration — `VK-offee-rag` и `VK-offee/telegram-bot` признаны first migration targets; `strategist/extractor/scheduler` подтверждены как desktop-bound и требующие отдельного runtime-refactor
-- ✅ [2026-04-05 22:41] Добавлена задача в INBOX: нанять Document Generator + Report Distribution Agent для pipeline презентаций. Агенты найдены в agency-agents/specialized/.
-- ✅ [2026-04-05 22:36] Зафиксирована идея: автогенерация презентаций через Playwright + Нана Банана → Telegram. Техрешение: браузерная автоматизация (API нет, только веб). INBOX обновлён.
-- ✅ [2026-04-05 22:32] Зафиксированы 2 capture в INBOX: (1) Полный рефакторинг экосистемы — аудит глазами внешнего агента; (2) Стратегическая идея — платформа управления сетью кофеен как тиражируемый продукт
-- ✅ [2026-04-05 22:30] ENG.WP.013: выровнен единый маршрут открытия и закрытия сессии для всех агентов
-- ✅ [2026-04-05 22:28] Добавлена inbox-задача: аудит незакрытых задач из предыдущих сессий стратегирования. Зафиксирован системный gap — задачи из сессий не попадают в INBOX автоматически.
-- ✅ [2026-04-05 22:24] ENG.WP.012: удалён локальный token-monitor хвост из канонического close-route
-- ✅ [2026-04-05 22:24] Сессия стратегирования W15 расширена: добавлены РП 56 (аудит Pack, gap-анализ) и РП 57 (реестры документов по каждому Pack). WeekPlan W15 и MEMORY.md обновлены.
-- ✅ [2026-04-05 22:22] ENG.WP.012: канонический day-close summary закреплён, token-report убран из обязательного close-route
-- ✅ [2026-04-05 22:11] Сессия стратегирования W15: зафиксированы 5 РП (51-55) по трём контурам — ПАРК (аудит счетов), КУХНЯ (вакуматор B2B), КОФЕЙНИ (аналитика Saby + маркетинг). WeekPlan W15 обновлён, MEMORY.md переключена на W15
-- ✅ [2026-04-05 21:40] ENG.WP.011: выровнен opening-state и day-close route экзокортекса — починен daily-report path drift, восстановлена генерация AGENTS-STATUS и SESSION-OPEN, свежий SchedulerReport снова создаётся operational route, templates/synchronizer.sh переведён на актуальный DS-agent-workspace report path, human-readable day-close summary приведён к контракту WP-41 и проверен через Telegram smoke test
-- ✅ [2026-04-05 01:31] ENG.WP.010: устранён drift entrypoint day-close у strategist — runner переведён на memory/protocol-close.md, снят блокер CLAUDE_PATH, повторный запуск day-close доходит до Claude; truthful status зафиксирован: runner repaired, но сам day-close остаётся интерактивным протоколом и ещё не является полностью автономным shell-close
-- ✅ [2026-04-05 01:19] ENG.WP.009: нормализован основной local Telegram notification layer — daily-telegram-report, unprocessed-notes-check, health-check, strategist note-review canary и send-token-report переведены на notify.sh с runtime smoke tests; residual risks и truthful status зафиксированы в ENG.WP.009
-- ✅ [2026-04-05 01:06] ENG.WP.009: low-risk этап нормализации Telegram notification layer — daily-telegram-report и unprocessed-notes-check переведены на ~/.config/aist/env с legacy fallback; daily-telegram runtime-tested; исправлен формат alert-сообщения; inventory, target architecture и migration plan зафиксированы в ENG.WP.009
-- ✅ [2026-04-05 00:38] ENG.WP.008: починен send-token-report.sh — добавлена загрузка ~/.config/aist/env, Telegram-отчёт по токенам снова отправляется успешно; фикс записан в SESSION-CONTEXT
-- ✅ [2026-04-05 00:29] ENG.WP.008: создана и наполнена карта автоматизаций экосистемы, связана с inbox и SESSION-CONTEXT; зафиксированы GitHub Actions, launchd/shell automation, env/source-of-truth и critical dependency paths
-- ✅ [2026-04-05 00:13] FMT-exocortex-template CI fix: заменены личные пути на плейсхолдеры в 25 файлах, validate-template зелёный
-- ✅ [2026-04-05 00:05] ENG.WP.007: открыт инженерный WP постмиграционной инспекции безопасности, связан с inbox, добавлен handoff для другого агента и обновлён SESSION-CONTEXT
-
----
-
-## Что сделано сегодня (2026-04-06)
-- ✅ [2026-04-06 04:25] session-prep W15: архивация WeekPlan W08-W14 в archive/, обновление WeekPlan W15 (итоги W14, inbox triage, стратегическая сверка, полная повестка сессии, контент-план W15 с 5 постами, таблица решений)
-- ✅ [2026-04-06 00:16] ENG.WP.019-021: strategist reliability dossier, hardening, and 24x7 runtime contract
-
----
-
-## Что сделано сегодня (2026-04-07)
-- ✅ [2026-04-07 23:52] truthful close-flow: SESSION-CONTEXT is now mandatory and dynamically rewritten during close
-- ✅ [2026-04-07 23:47] Микроцикл сохранён: SESSION-CONTEXT выровнен под реальное состояние W15/Codex, все рабочие деревья чистые, truthful observability stack согласован (`health-check`, `AGENTS-STATUS`, `SESSION-OPEN`, `SchedulerReport`)
-- ✅ [2026-04-07 23:46] SchedulerReport cleanup: блок `Ошибки и предупреждения` переведён с исторических WARN-логов на текущие статусы задач, поэтому в отчёте остался только один активный хвост — пропущенное сегодняшнее утреннее окно Strategist
-- ✅ [2026-04-07 23:45] Truthful scheduler semantics: `SchedulerReport` переведён на те же status semantics, что и opening artifacts; верхний verdict теперь `🟡 Среда работает с замечаниями`, а не ложный `🔴 критический сбой`
-- ✅ [2026-04-07 23:43] Remaining yellow tail clarified: `strategist-morning` после закрытия окна теперь помечается отдельным `missed_window`, а не абстрактным `stale`; opening/status artifacts и health-check объясняют это как historical miss, а не как текущий runtime crash
-- ✅ [2026-04-07 23:38] ENG.WP.011 follow-up: added opening-contract regression guard in health-check to verify canonical memory route, root alias, and legacy-MEMORY wording across active opening files
-- ✅ [2026-04-07 23:35] ENG.WP.011 tiny follow-up: aligned DS-strategy/exocortex/protocol-open.md to canonical memory/MEMORY.md route so no remaining opening copy points to legacy root MEMORY wording
-- ✅ [2026-04-07 23:34] ENG.WP.011 follow-up: cleaned remaining opening checklists and protocol copies to canonical memory/MEMORY.md route so new agents do not inherit legacy root-MEMORY wording
-- ✅ [2026-04-07 23:32] ENG.WP.011 follow-up: fixed canonical MEMORY route for opening ritual; agents now use ~/Github/memory/MEMORY.md and root ~/Github/MEMORY.md is restored as backward-compatible alias to prevent false yellow opening errors
-- ✅ [2026-04-07 23:26] ENG.WP.028 follow-up: stale semantics calibrated so opening/status artifacts prefer fresh runtime markers over stale March status files; only real morning stale now remains
-- ✅ [2026-04-07 23:22] ENG.WP.028 follow-up: added pre-send refresh of runtime/opening artifacts so daily Telegram report uses truthful Codex/Claude provider state instead of stale morning snapshots
-- ✅ [2026-04-07 23:16] ENG.WP.028 follow-up: fixed extractor workspace drift and code-scan runtime path; nightly synchronizer paths now resolve truthful workspace and reports are no longer polluted by false inbox/runtime failures
-- ✅ [2026-04-07 23:12] ENG.WP.020 follow-up: note-review shell crash fixed; canary counters deterministic and cleanup route corrected
-- ✅ [2026-04-07 23:09] health-check noise reduction: stale-only Telegram alerts suppressed so daily exocortex digest is no longer masked by useless stale notifications
-- ✅ [2026-04-07 23:08] ENG.WP.028: scheduler dispatch restored and daily Telegram agent reports recovered; synchronizer now reaches daily-telegram-report and sends enriched status digest
-- ✅ [2026-04-07 23:03] ENG.WP.027 follow-up: strategist and extractor diagnostics aligned to provider parity; auth/preflight messages now use truthful AI-CLI wording
-- ✅ [2026-04-07 23:01] ENG.WP.025 docs follow-up: SETUP-GUIDE, IWE-HELP and LEARNING-PATH aligned to AI-CLI-first and Codex/Claude parity semantics
-- ✅ [2026-04-07 22:59] ENG.WP.025 follow-up: setup.sh and README quickstart aligned to AI-CLI-first semantics; installer no longer assumes Claude-only primary path
-- ✅ [2026-04-07 22:56] ENG.WP.027: runtime arbiter for equal Codex/Claude provider selection implemented; health-check and opening artifacts now reflect truthful provider/runtime mode
-- ✅ [2026-04-07 22:46] ENG.WP.025: high-signal documentation cleanup завершён — README, IWE-HELP, LEARNING-PATH и onboarding-guide выровнены под AI-CLI-first / Codex-primary semantics
-- ✅ [2026-04-07 22:42] ENG.WP.026: RAG разделён на core и saby, API получил truthful routing verdict, regression-test пройден
-- ✅ [2026-04-07 22:35] ENG.WP.025: legacy extractor entrypoint переведён на ai-run.sh, claude-run.sh оставлен совместимым wrapper, setup/ECOSYSTEM обновлены под AI-CLI-first
-- ✅ [2026-04-07 22:32] ENG.WP.025: локальный агентный слой переведён в режим Codex-primary / Claude-fallback; документация и архитектурный контур обновлены
-- ✅ [2026-04-07 22:28] ENG.WP.024: добавлен provider fallback Claude→Codex в strategist/extractor; mock smoke tests пройдены
-- ✅ [2026-04-07 22:22] ENG.WP.021: 24x7 контракт уточнён — day-close local-only interactive, unsupported_path добавлен в unified result semantics, week-review закреплён как первый cloud-safe pilot
-- ✅ [2026-04-07 22:21] ENG.WP.020: strategist day-close переведён в truthful unsupported_path; интерактивный protocol-close оставлен единственным canonical route
-- ✅ [2026-04-07 22:19] ENG.WP.020: strategist day-plan переведён на protocol-open, CLAUDE_PATH override восстановлен, E005 Invalid request теперь уходит в Haiku→Sonnet fallback
-- ✅ [2026-04-07 22:16] ENG.WP.023: реализован fallback моделей Haiku→Sonnet в strategist/extractor, Opus запрещён, mock smoke test пройден
-- ✅ [2026-04-07 22:08] ENG.WP.007 slice: добавлен operational rotation registry по secret groups (update points, owner layer, smoke tests, status)
-- ✅ [2026-04-07 22:05] ENG.WP.007 slice: добавлен service-account inventory для STRATEGY_REPO_TOKEN и webhook secrets (BOT_WEBHOOK_URL/TEMPLATE_WEBHOOK_SECRET) с blast radius и blind spots
-- ✅ [2026-04-07 22:00] ENG.WP.007 slice: собран GitHub Actions secret inventory по workflow, найден и исправлен migration drift в DS-strategy cloud-scheduler (old namespace -> AlexPoAi), WP обновлён
-- ✅ [2026-04-07 21:48] ENG.WP.007 slice: санитизированы опасные security patterns — убраны literal Telegram token и token-in-URL команды из local .claude/settings.json, очищен VK-offee/GIT-PUSH-SOLUTION.md от ghp_/Authorization token/old namespace, WP обновлён truthful findings
-- ✅ [2026-04-07 21:40] WP-55 routing gap: PACK-iwe-culture добавлен в extractor routing.md, KE-маршрут восстановлен
-- ✅ [2026-04-07 21:39] ENG.WP.022: восстановлен canonical route для memory/protocol-open|work|close, создан root symlink ~/Github/memory и добавлены smoke-checks в health-check.sh и daily-report.sh
-- ✅ [2026-04-07 21:35] Зафиксирован критический инженерный дефект canonical route open protocol: пустой путь memory/protocol-open.md добавлен в INBOX-TASKS как ENG.WP.022
-
----
-
-## Что сделано сегодня (2026-04-08)
-- ✅ [2026-04-08 21:27] Открыт ENG.WP.031 implementation-cycle: для Extractor прошит materialized outcome-loop, добавлен post-check routed artifacts и timeout guard для Codex provider; идеальная модель vs текущее состояние зафиксированы truthful образом
-- ✅ [2026-04-08 21:14] Закрыта первая verification-wave агентного слоя, собран recovery-каталог потерянных входов и открыт implementation-контур ENG.WP.031 для доведения агентов до целевой модели
-- ✅ [2026-04-08 21:04] Recovery-pass по потерянным входам завершён: собран каталог RECOVERY-CATALOG-LOST-INPUTS-2026-04-08, реальные потери возвращены в INBOX, открыт ENG.WP.031 на доведение агентного слоя до идеальной end-to-end модели
-- ✅ [2026-04-08 20:24] ENG.WP.030 закрыт как первая verification-wave: acceptance/runbook оформлены для Strategist, Extractor, Synchronizer и Environment Engineer, live runtime-verdicts зафиксированы truthful образом
-- ✅ [2026-04-08 17:31] VK-offee / Самокиша: оформлен point-level knowledge hub, расширен dossier точки по вывеске, аренде и регуляторике, создана опорная структура для дальнейшего point-based knowledge management
-- ✅ [2026-04-08 15:51] VK-offee SERVICE: закрыт единый блок воронки продаж SERVICE.WP.003-017, собран v3 draft, все микро-РП сохранены и блок закрыт общим closeout артефактом
-- ✅ [2026-04-08 14:26] VK-offee: закрыт цикл по PARK, зафиксирован ответ ЛУКС 8 апреля, добавлен агентский входной коридор, закрыт внутренний цикл ожиданием внешнего ответа, синхронизированы knowledge-base изменения
-- ✅ [2026-04-08 00:12] PARK: собран верхний контур Pack, нормализованы реестры и Telegram timeline, зеркально заведены локальные оригиналы ЛУКС и листы площадей, добавлены OCR-карточки
-- ✅ [2026-04-08 00:00] закрытие дня 2026-04-08: truthful observability стабилизирована, close-flow и Telegram day-close summary активированы
+## Критические ориентиры
+- При любой инженерной задаче сначала применять команду `сверь с эталоном`.
+- Модернизация экзокортекса идёт по формуле: **stable first -> cheap second -> beautiful third**.
+- `SESSION-CONTEXT.md` должен оставаться коротким handoff-файлом; длинная история живёт только в архиве.
