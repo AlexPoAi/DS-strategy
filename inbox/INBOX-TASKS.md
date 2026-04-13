@@ -64,6 +64,19 @@ created: 2026-03-04
     - новый инженерный WP в `DS-strategy/PACK-exocortex-engineering/04-work-products/`
     - обновлённый runbook recovery для connector-layer
 
+- [pending] 2026-04-13: [ENGINEERING] Подготовить GitHub Actions к переходу с Node.js 20 на Node.js 24
+  - Контекст: GitHub предупредил о выводе `Node.js 20` из runtime для JavaScript actions. Начиная с `2026-06-02` JavaScript actions будут принудительно исполняться на `Node.js 24`, а `Node.js 20` будет удалён из среды `2026-09-16`. Уже есть warning по `actions/checkout@v4`, значит нужно заранее проверить все workflow и обновить action versions/совместимость.
+  - Что сделать:
+    1. Просканировать `.github/workflows/*.yml` по всем ключевым репо
+    2. Найти actions, которые ещё завязаны на старый Node runtime
+    3. Проверить актуальные версии этих actions с поддержкой `Node 24`
+    4. Составить короткий список безопасных обновлений
+    5. При необходимости подготовить staged migration plan
+  - Приоритет: medium
+  - Бюджет: 30-45 мин
+  - Артефакт:
+    - отдельный инженерный WP по миграции GitHub Actions на `Node 24`
+
 - [pending] 2026-04-08: [STRUCTURE] Развернуть point-level knowledge layer для точек VK-offee
   - Контекст: пользователь зафиксировал правильную логику: Самокиша, Тургенева и Луговая — это не просто разрозненные документы в `knowledge-base`, а отдельные operational точки со своими договорами, арендой, подрядчиками и вопросами согласования. Уже поднят первый pilot `POINT-samokisha`, и теперь нужен дисциплинированный структурный контур с ритуалом открытия/закрытия и явным агентным составом.
   - Что сделать:
