@@ -191,3 +191,4 @@
 | **Экосистемный анализ перед изменениями** | `memory/feedback-ecosystem-wide-change-analysis.md` |
 | **Напоминания → INBOX-TASKS (не только cron)** | `memory/feedback-reminders-to-inbox.md` |
 | **Инженерный ритуал post-dev** | `memory/feedback-eng-post-dev-verification.md` — после любого фикса в экзокортексе обязательна диагностика итога |
+| **Итерационные инженерные циклы** | `memory/feedback-iterative-engineering-cycles.md` — инженерные WP вести только micro-cycle → close-task.sh → commit/push |
