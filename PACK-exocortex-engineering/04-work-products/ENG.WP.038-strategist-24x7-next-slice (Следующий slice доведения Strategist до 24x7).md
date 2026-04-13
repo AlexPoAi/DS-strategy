@@ -218,6 +218,105 @@ author: Environment Engineer (Codex)
 - weekly-path становится наблюдаемым не только в понедельник, но на всём окне недели;
 - это ближе к эталону `stable first`, где система не скрывает неисполненный weekly contract.
 
+## Стратегия доведения Strategist до 24x7
+
+### Фаза 1 — Weekly contract solid
+
+Цель:
+
+- сделать `week-review` полностью эталонным scheduled-path.
+
+Критерии:
+
+- один weekly window;
+- один verified success;
+- одна truth-semantics между `strategist`, `scheduler`, `daily-report`, `health-check`;
+- provider-chain стабильна: `Haiku -> Sonnet -> Codex`.
+
+Статус:
+
+- **почти выполнено**.
+
+### Фаза 2 — Orchestrator truth
+
+Цель:
+
+- довести `scheduler/synchronizer` до состояния, где они не:
+  - маскируют пропуски;
+  - не создают второй source-of-truth;
+  - не вводят мягкие ложные зелёные статусы.
+
+Что сюда входит:
+
+- проверка status-artifacts;
+- корректные weekly/daily windows;
+- строгая видимость missing/stale;
+- отсутствие `double-run`.
+
+Статус:
+
+- **частично выполнено**, но ещё нужен финальный short audit всего orchestration-layer.
+
+### Фаза 3 — Second cloud-safe scenario
+
+Цель:
+
+- выбрать следующий сценарий после weekly.
+
+Кандидат:
+
+- `session-prep`
+
+Но только после:
+
+- завершения Фазы 2;
+- и только как тонкий scheduled contract, не как full deep-work move.
+
+Статус:
+
+- **ещё не начинали реализацию**.
+
+### Фаза 4 — 24x7 Strategist pilot
+
+Цель:
+
+- получить честный partial `24/7` Strategist:
+  - не весь агент;
+  - а набор cloud-safe scheduled scenarios.
+
+Входит:
+
+- `week-review`
+- затем `session-prep`
+- при необходимости позднее `morning/opening-summary`
+
+Не входит:
+
+- `day-close`
+- `strategy-session`
+- интерактивный deep-work
+
+## Новый практический вывод
+
+Лучший путь теперь выглядит так:
+
+1. Закончить `weekly + orchestration` как один solid runtime layer
+2. Провести короткий final audit `scheduler/synchronizer`
+3. Только потом брать `session-prep`
+4. Не трогать deep-work сценарии до отдельного redesign
+
+## Текущий truthful status
+
+`Strategist 24/7` сейчас:
+
+- уже **не broken**
+- уже **не weekly-fragile**
+- но всё ещё **partial**
+
+Ближайшая цель:
+
+- перевести его из `partial` в `stable scheduled partial`
+
 ## Критерий завершения
 
 WP считается завершённым, когда:
