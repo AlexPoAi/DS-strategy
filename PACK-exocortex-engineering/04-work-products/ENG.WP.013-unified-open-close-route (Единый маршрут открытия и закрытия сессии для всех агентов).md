@@ -64,6 +64,26 @@ author: Environment Engineer (Codex)
 - канонический стартовый экран закреплён в `protocol-open.md`;
 - open/close route описан одинаково для всех агентов.
 
+## Дополнительный hardening-срез (2026-04-13)
+
+После появления ложного `red` startup-screen подтверждено:
+
+- runtime/provider слой локально был жив;
+- главный blocker шёл не от провайдеров, а от `opening-contract-check.sh`;
+- check валился на legacy wording в:
+  - `DS-strategy/exocortex/protocol-open.md`
+  - `DS-strategy/exocortex/checklists.md`
+
+Что исправлено:
+
+- ссылки на голый `MEMORY.md` переведены на канонический путь `memory/MEMORY.md`;
+- `opening-contract-check.sh` после правки снова возвращает `EXIT:0`.
+
+Итог:
+
+- startup-screen перестал краснеть из-за ложного protocol-route drift;
+- маршрут открытия стал ближе к эталону: красный verdict теперь должен означать реальный structural/runtime blocker, а не устаревшую формулировку в документе.
+
 ## Примечание по source-of-truth
 
 - versioned source-of-truth для маршрута теперь живёт в `DS-strategy/exocortex/*` и `FMT-exocortex-template/*`;
