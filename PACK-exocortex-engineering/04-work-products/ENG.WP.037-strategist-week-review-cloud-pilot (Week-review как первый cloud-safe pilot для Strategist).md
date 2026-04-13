@@ -3,7 +3,7 @@ type: engineering-work-product
 wp_id: ENG.WP.037
 title: Week-review как первый cloud-safe pilot для Strategist
 date: 2026-04-13
-status: active
+status: completed
 priority: critical
 linked_inbox: ENGINEERING
 author: Environment Engineer (Codex)
@@ -190,6 +190,46 @@ author: Environment Engineer (Codex)
   - не lock-модель как главная причина;
   - а именно `week-review` execution contract и provider compatibility.
 
+## Slice 3 — controlled weekly run: pass on Haiku
+
+Проведён повторный controlled local run `week-review` после упрощения weekly contract и выравнивания provider path.
+
+### Что подтвердилось
+
+- `Claude Sonnet` в текущем контуре остаётся ненадёжным:
+  - на weekly path дал `API Error 400 / E005 / Invalid request`;
+- `Claude Haiku` завершил weekly path успешно;
+- dual-provider логика сработала truthful образом:
+  - проблемный `Sonnet` не был объявлен рабочим;
+  - стабильный результат был получен на `Haiku`;
+- `WeekPlan W16` реально обновлён;
+- status-artifact зафиксировал:
+  - `STATUS=success`
+  - `EXIT_CODE=0`
+  - `EVIDENCE_STATUS=verified`
+
+### Итоговый verdict
+
+- `Claude Sonnet` = broken for current weekly contract;
+- `Claude Haiku` = stable primary path for `week-review`;
+- `Codex` = второе плечо fallback-контура;
+- `week-review` как controlled local pilot = **pass**.
+
+### Практический вывод
+
+На текущем этапе `Strategist` не считается полностью доведённым до эталона, но его ключевой weekly path больше не является главным слабым звеном:
+
+- routing подтверждён;
+- opening drift снят;
+- provider semantics truthful;
+- weekly scenario завершён успешно на рабочем provider path.
+
+Следующий инженерный шаг уже должен идти не в `week-review`, а в:
+
+- `Strategist 24x7` следующий slice;
+- `scheduler / synchronizer`;
+- review результата по `Extractor` после завершения второго агента.
+
 ## Критерий завершения
 
 WP считается завершённым, когда есть:
@@ -199,3 +239,13 @@ WP считается завершённым, когда есть:
 - правила `local/cloud`;
 - критерии успеха/ошибки;
 - следующая команда на реальный тест без архитектурной двусмысленности.
+
+## Статус закрытия
+
+Критерий завершения достигнут:
+
+- pilot-контракт зафиксирован;
+- provider-path truthfully диагностирован;
+- weekly path проверен живым запуском;
+- стабильный рабочий путь определён (`Haiku`);
+- следующая инженерная очередь понятна.
