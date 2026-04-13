@@ -157,6 +157,39 @@ author: Environment Engineer (Codex)
 - сначала core weekly result в `WeekPlan`;
 - тяжёлый publishing / week-close tail — отдельно или позже.
 
+## Slice 2 — provider contract diagnostics
+
+Проведена отдельная живая диагностика provider-path для `week-review`.
+
+### Что подтверждено
+
+- `Sonnet` сейчас не является надёжным default-path:
+  - на weekly path дал `API Error 400 / E005 / Invalid request`;
+  - как стабильный primary-path не подтверждён;
+- `Haiku` живой:
+  - прямой короткий CLI-пинг прошёл успешно;
+- dual-provider логика стала truthful:
+  - сначала Claude-compatible path;
+  - затем fallback внутри Claude-path;
+  - затем Codex как второе плечо.
+
+### Решение по default-contract
+
+Пока не будет нормального доступа/подписки для `Sonnet`, стабильный default оставляем таким:
+
+- `Claude Haiku` = primary stable path;
+- `Claude Sonnet` = future-path / not trusted as default right now;
+- `Codex` = второе плечо fallback-контура.
+
+### Truthful verdict slice 2
+
+- improved, but not done;
+- слабое место `Strategist` теперь локализовано уже очень узко:
+  - не routing;
+  - не opening;
+  - не lock-модель как главная причина;
+  - а именно `week-review` execution contract и provider compatibility.
+
 ## Критерий завершения
 
 WP считается завершённым, когда есть:
