@@ -85,12 +85,37 @@ verification_class: closed-loop
 - локальные фиксы без полного цикла `Церен -> эталон -> текущее -> перенос`
 - менять protocol-open без синхронной проверки skills/checkers/runtime/backups
 
-## Следующий шаг (Phase 2)
-- построить verification matrix по шагам переноса;
-- определить безопасный порядок модернизации: canonical protocol -> skills/hooks -> checker -> runtime -> backup mirrors;
-- после этого открыть следующий инженерный цикл и реализовывать уже по шагам.
+## Фаза 2 — verification matrix и порядок переноса
+
+### Verification matrix
+
+| Шаг | Что меняем | Где меняем | Что проверяем сразу после шага | Класс риска |
+|-----|------------|------------|--------------------------------|-------------|
+| 1 | Канонический open protocol | `FMT-exocortex-template/memory/protocol-open.md` + связанные ссылки в `CLAUDE.md`/skills | `opening-contract-check.sh`, чтение маршрута `day-open`, отсутствие legacy/двойного маршрута | High |
+| 2 | Skill / hook слой | `.claude/skills/day-open/SKILL.md`, `.claude/skills/run-protocol/SKILL.md`, `.claude/hooks/wp-gate-reminder.sh` | `run-protocol open`, корректный lazy-load, отсутствие ссылок на старый маршрут | Medium |
+| 3 | Checker слой | `roles/synchronizer/scripts/opening-contract-check.sh`, при необходимости `health-check.sh` | красный/жёлтый/зелёный статус строится по новой модели без ложного legacy drift | High |
+| 4 | Runtime слой | `roles/strategist/scripts/strategist.sh`, `roles/synchronizer/scripts/daily-report.sh` | `day-plan/session-prep/day-close` используют тот же canonical route и собирают корректные status artifacts | High |
+| 5 | Backup / mirror слой | `DS-strategy/exocortex/*`, производные backup-копии | checker не падает на зеркалах, backup остаётся производным от canonical source-of-truth | Medium |
+
+### Порядок переноса
+1. **Canonical protocol first** — сначала определить и стабилизировать единый source-of-truth маршрута открытия.
+2. **Skill / hook alignment** — затем выровнять все точки входа, чтобы они читали только canonical route.
+3. **Checker alignment** — после этого обновить enforce-слой, чтобы он валидировал новую модель, а не legacy-следы.
+4. **Runtime alignment** — затем подключить strategist / reports / session-open artifacts к уже стабилизированному контракту.
+5. **Backup alignment last** — только в конце синхронизировать зеркала и backup-производные.
+
+### Инварианты проверки
+- Один canonical route для opening/day-open/session-prep.
+- Skills, hooks, runtime и checker не должны ссылаться на разные protocol-open файлы.
+- Personal truthful governance, WP Gate и close-flow сохраняются как обязательный слой.
+- Backup/mirror не может быть самостоятельным source-of-truth.
+- После каждого шага обязательна отдельная диагностика итога до следующего шага.
+
+## Следующий шаг (следующий отдельный цикл)
+- выполнить шаг 1: зафиксировать целевой canonical protocol route и список файлов, которые обязаны ссылаться только на него;
+- после реализации отдельно прогнать checker/runtime-диагностику и только потом переходить к skill/hook alignment.
 
 ## Осталось
-- собрать verification matrix;
-- утвердить порядок переноса;
-- выполнить перенос отдельными truthful циклами.
+- реализовать шаг 1 как отдельный truthful цикл;
+- после него отдельно проверить checker/runtime verdict;
+- пройти шаги 2-5 отдельными закрываемыми блоками.
