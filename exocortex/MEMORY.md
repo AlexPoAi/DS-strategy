@@ -131,6 +131,7 @@
 
 | # | РП | Бюджет | Статус | Приоритет |
 |---|-----|--------|--------|-----------|
+| 60 | СИСТЕМА: Переделка opening/open-contract контура — перенос modern upstream с truthful governance | 3h | pending | High |
 | 58 | МАРАФОН: Ответы на вопросы Алёны — правки в тетради, доступ к репо | 2h | in_progress | High |
 | 51 | ПАРК: Аудит счетов от архитекторов — проверка перед подписанием ДС | 2h | pending | 🔴 High |
 | 42 | PACK-warehouse — накладные, остатки, поставщики как карточки | 2h | pending | 🔴 High |
@@ -186,6 +187,7 @@
 | **Русский статус и цветовая индикация** | `memory/feedback-russian-status-language.md` |
 | **Только русский язык и термин «мозг»** | `memory/feedback-russian-thinking-and-brain-term.md` |
 | **Durable truthful fixes** | `memory/feedback-durable-truthful-fixes.md` |
+| **Pack facts first** | `memory/feedback-pack-fact-verification-first.md` |
 | **Экосистемный анализ перед изменениями** | `memory/feedback-ecosystem-wide-change-analysis.md` |
 | **Напоминания → INBOX-TASKS (не только cron)** | `memory/feedback-reminders-to-inbox.md` |
 | **Инженерный ритуал post-dev** | `memory/feedback-eng-post-dev-verification.md` — после любого фикса в экзокортексе обязательна диагностика итога |
