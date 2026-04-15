@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-15 20:35
+updated: 2026-04-15 20:50
 tags: [warehouse, automation, telegram, vk-offee]
 ---
 
@@ -38,6 +38,10 @@ tags: [warehouse, automation, telegram, vk-offee]
 6. Добавлен регулярный full-loop entrypoint и launchd-шаблон:
    - `PACK-warehouse/tools/warehouse_full_loop.sh`
    - `PACK-warehouse/tools/com.vkoffee.warehouse-full-loop.plist` (каждые 30 минут).
+7. Проведена безопасная зачистка `telegram-bot` от legacy/debug мусора:
+   - удалены небоевые скрипты с хардкод `CHAT_ID` (`fetch_invoices.py`, `find_topics.py`, `test_chat_access.py`);
+   - `start.sh` возвращен в рабочий режим запуска `bot.py`;
+   - в `.env.example`/`deploy.sh` добавлен явный env-контракт для `WAREHOUSE_REPORT_CHAT_ID`/`TELEGRAM_CHAT_ID`.
 
 ## Открытые хвосты
 1. Подтвердить целевой Telegram chat назначения (оставить текущий `TELEGRAM_CHAT_ID` или зафиксировать отдельный `WAREHOUSE_REPORT_CHAT_ID`).
