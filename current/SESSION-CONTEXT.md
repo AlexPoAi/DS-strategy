@@ -1,13 +1,13 @@
 # Контекст текущей сессии
 
 > **Читать при обрыве.** Это живой handoff-файл, а не исторический лог.
-> Последнее обновление: 2026-04-13
+> Последнее обновление: 2026-04-15
 > Полный архив старого хвоста: `archive/session-context-log/SESSION-CONTEXT-archive-through-2026-04-08 (Архив SESSION-CONTEXT до 08 апреля 2026).md`
 
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-13 22:36
+**Последнее обновление:** 2026-04-15 18:47
 **Сессия:** W16, активная неделя 2026-04-13 → 2026-04-19
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-60: собрал verification matrix и порядок переноса opening/open-contract modernization; зафиксировал следующий отдельный цикл
+**Статус:** in progress — стабилизация strategist 24/7 и фиксация инженерной хронологии
 **Активный РП:** W16 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
+**Следующий шаг:** закрыть runtime-slice (локальный dispatch + неинтерактивный day-plan + codex fallback paths), затем оформить решение по pristine-reset от шаблона Церена.
 
 ---
 
@@ -74,3 +74,12 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 Следующий шаг: передать markdown дизайнеру для PDF, затем Алёне
 - ✅ [2026-04-13 14:31] Week Review W15: собраны метрики (313 коммитов, 41% completion), обновлены итоги в W16 WeekPlan, ENG.WP.037 provider diagnostics зафиксирована
 - ✅ [2026-04-13 14:06] Week Review W15: собраны метрики (313 коммитов, 41% completion), написаны итоги в WeekPlan, создан пост для клуба (status: ready → авто-публикация Пн 07:14), обновлён README.md, закоммичены оба репо
+
+---
+
+## Что сделано сегодня (2026-04-15)
+- ✅ [2026-04-15 18:33] Подтверждён runtime-gap: scheduler запускал `strategist morning`, но сценарий day-plan уходил в интерактивный `memory/protocol-open.md`, из-за чего запуск зависал и не давал устойчивый 24/7 контур.
+- ✅ [2026-04-15 18:37] В `roles/strategist/scripts/strategist.sh` исправлен route-resolver: `day-plan` теперь читает `roles/strategist/prompts/day-plan.md` (headless), а не `protocol-open.md`.
+- ✅ [2026-04-15 18:42] В `strategist.sh` добавлен fallback-resolver пути Codex (`/Applications/...`, `/usr/local/bin`, `/opt/homebrew/bin`, `~/.local/bin`) и codex-first fallback-порядок при недоступности runtime-arbiter.
+- ✅ [2026-04-15 18:44] Health-check подтверждает provider-plane `codex available`, control-plane `local available`; strategist-morning фиксируется как `running` в status-артефакте в момент smoke.
+- 🟡 [2026-04-15 18:45] Открыт decision-slice: сравнить стоимость полного pristine-reset от шаблона Церена vs controlled migration с сохранением текущих артефактов и истории.

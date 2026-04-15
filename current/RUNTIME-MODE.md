@@ -1,10 +1,10 @@
 ---
 type: runtime-mode
-updated: 2026-04-15 18:29:22
+updated: 2026-04-15 18:33:02
 provider_policy: auto
 provider_preference: codex
-runtime_policy: cloud-primary
-cloud_takeover_scope: all-agents
+runtime_policy: split
+cloud_takeover_scope: product-only
 ---
 
 # Runtime Mode
@@ -21,12 +21,12 @@ cloud_takeover_scope: all-agents
 - Local control plane: `available` (`launchctl_scheduler_loaded`)
 - Cloud RAG status: `unknown` (`health_url_not_configured`)
 - Cloud bot runtime: `vps`
-- Runtime policy: `cloud-primary`
-- Cloud takeover scope: `all-agents`
+- Runtime policy: `split`
+- Cloud takeover scope: `product-only`
 
 ## Truthful Verdict
 
-- Local agents (`strategist`, `extractor`, `scheduler`) переведены в `cloud-primary`; локальный dispatch должен быть standby-only.
-- Product services (`VK-offee-rag`, `VK-offee/telegram-bot`) остаются `cloud-primary` контуром.
+- Local agents (`strategist`, `extractor`, `scheduler`) остаются `local-primary` до отдельного runtime redesign.
+- Product services (`VK-offee-rag`, `VK-offee/telegram-bot`) считаются `cloud-primary` контуром.
 - Provider selection для активного runtime должен брать `codex`, пока он доступен.
 - Если primary provider станет недоступен, runner должен переключаться на доступный fallback-provider без ручного переписывания скриптов.
