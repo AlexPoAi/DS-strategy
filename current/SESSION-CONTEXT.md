@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-15 18:47
+**Последнее обновление:** 2026-04-15 19:59
 **Сессия:** W16, активная неделя 2026-04-13 → 2026-04-19
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** in progress — стабилизация strategist 24/7 и фиксация инженерной хронологии
+**Статус:** задача закрыта — Создан полный план рефакторинга PACK-park-development: REFACTORING-PLAN.md с 6 этапами работы. Обновлены TELEGRAM-TIMELINE.md (добавлено событие 15.04), DOCUMENT-REGISTRY.md (финансовая таблица), COMMUNICATION-REGISTRY.md (PARK.COMM.023), START-HERE.md (улучшена структура входа агента). Задача в INBOX-TASKS.md зафиксирована.
 **Активный РП:** W16 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** закрыть runtime-slice (локальный dispatch + неинтерактивный day-plan + codex fallback paths), затем оформить решение по pristine-reset от шаблона Церена.
+**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
 
 ---
 
@@ -37,7 +37,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [22:37] Сессия закрыта
+- 🔒 [19:59] Сессия закрыта
 1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
 2. Открыть следующий рабочий цикл от текущего truthful состояния.
 3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
@@ -78,6 +78,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 ---
 
 ## Что сделано сегодня (2026-04-15)
+- ✅ [2026-04-15 19:59] Создан полный план рефакторинга PACK-park-development: REFACTORING-PLAN.md с 6 этапами работы. Обновлены TELEGRAM-TIMELINE.md (добавлено событие 15.04), DOCUMENT-REGISTRY.md (финансовая таблица), COMMUNICATION-REGISTRY.md (PARK.COMM.023), START-HERE.md (улучшена структура входа агента). Задача в INBOX-TASKS.md зафиксирована.
 - ✅ [2026-04-15 18:33] Подтверждён runtime-gap: scheduler запускал `strategist morning`, но сценарий day-plan уходил в интерактивный `memory/protocol-open.md`, из-за чего запуск зависал и не давал устойчивый 24/7 контур.
 - ✅ [2026-04-15 18:37] В `roles/strategist/scripts/strategist.sh` исправлен route-resolver: `day-plan` теперь читает `roles/strategist/prompts/day-plan.md` (headless), а не `protocol-open.md`.
 - ✅ [2026-04-15 18:42] В `strategist.sh` добавлен fallback-resolver пути Codex (`/Applications/...`, `/usr/local/bin`, `/opt/homebrew/bin`, `~/.local/bin`) и codex-first fallback-порядок при недоступности runtime-arbiter.
