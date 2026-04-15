@@ -3,6 +3,13 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [in_progress] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
+  - Контекст: зафиксирован runtime-gap в headless day-plan и необходимость принять архитектурное решение `controlled migration` vs `pristine-reset`.
+  - Артефакт:
+    - `DS-strategy/inbox/WP-61-strategist-24x7-stabilization-and-pristine-reset-decision (Стабилизация Strategist 24x7 и решение по pristine-reset).md`
+  - Приоритет: critical
+  - Бюджет: 2-4h
+
 - [priority-tomorrow] 2026-04-12: [KE] Обработать заметки про стаканы и Telegram через экстрактор
   - Контекст: две личные заметки из Telegram разблокированы (сняты [analyzed]), готовы к обработке. Inbox-check не смог создать отчёт сегодня (verification failed). Начать день с этой задачи.
   - Что сделать:
