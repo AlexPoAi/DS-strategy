@@ -1,7 +1,7 @@
 ---
 wp: 60
 title: СИСТЕМА: Переделка opening/open-contract контура — перенос modern upstream с truthful governance
-status: pending
+status: in_progress
 created: 2026-04-11
 source: пользователь инициировал отдельный инженерный WP после диагностики strategist/opening contract
 verification_class: closed-loop
@@ -32,10 +32,10 @@ verification_class: closed-loop
 - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.036-tseren-vs-target-model-gap-analysis (Сверка реализации Церена с нашим эталоном).md`
 
 ## Критерий готовности
-- [ ] Определён полный список затронутых агентов и runtime-checks
-- [ ] Зафиксирован эталон: что берём у Церена, что сохраняем своим
-- [ ] Согласован безопасный порядок переноса
-- [ ] Каждый шаг переноса проверяется отдельно и не ломает strategist / scheduler / extractor / open-close loop
+- [x] Определён полный список затронутых агентов и runtime-checks
+- [x] Зафиксирован эталон: что берём у Церена, что сохраняем своим
+- [x] Согласован безопасный порядок переноса
+- [x] Каждый шаг переноса проверяется отдельно и не ломает strategist / scheduler / extractor / open-close loop
 - [ ] opening/open-contract контур приведён к новой целевой модели без legacy-дрейфа
 
 ## Бюджет
@@ -111,11 +111,29 @@ verification_class: closed-loop
 - Backup/mirror не может быть самостоятельным source-of-truth.
 - После каждого шага обязательна отдельная диагностика итога до следующего шага.
 
+## Фаза 3 — выполненный цикл (2026-04-15)
+
+### Что сделано
+- Выполнен bounded migration цикл по формуле `Церен -> эталон -> риск -> точечный фикс`.
+- Выровнен canonical route в целевых слоях: `FMT/CLAUDE.md`, strategist docs/prompts, `DS-strategy/exocortex` mirrors.
+- Убраны legacy формулировки `MEMORY.md` без canonical пути в ключевых operator/docs файлах.
+- Уточнён runtime contract для `strategist` (day-close только через canonical `memory/protocol-close.md`).
+- В `DS-strategy/exocortex` выровнены `protocol-open.md` и `checklists.md` под `memory/MEMORY.md`.
+
+### Evidence (коммиты)
+- `DS-strategy`: `79bf65b` — normalize exocortex opening memory route.
+- `FMT-exocortex-template`: `85cca4d`, `a3082dd`, `35451fe`, `64b09f2`, `46bb385` — поэтапное выравнивание canonical route в docs/strategist/learning.
+
+### Verification
+- `opening-contract-check.sh` проходит в зелёном статусе после каждого цикла (`OK canonical_memory_route`, `OK opening_contract_files`).
+- Деревья `FMT-exocortex-template` и `DS-strategy` оставлялись чистыми после каждого завершённого цикла.
+
 ## Следующий шаг (следующий отдельный цикл)
-- выполнить шаг 1: зафиксировать целевой canonical protocol route и список файлов, которые обязаны ссылаться только на него;
-- после реализации отдельно прогнать checker/runtime-диагностику и только потом переходить к skill/hook alignment.
+- закрыть оставшийся хвост критерия «без legacy-дрейфа» в менее критичных справочных файлах (`DS-strategy/exocortex/claude-md-maintenance.md`, onboarding/docs where applicable);
+- после правок прогнать checker и health-check отчётным циклом;
+- зафиксировать окончательный статус WP-60 как `done`, если новых дрейфов не обнаружится.
 
 ## Осталось
-- реализовать шаг 1 как отдельный truthful цикл;
-- после него отдельно проверить checker/runtime verdict;
-- пройти шаги 2-5 отдельными закрываемыми блоками.
+- добить оставшиеся legacy-упоминания в низкорисковых справочных документах;
+- выполнить финальный диагностический прогон (`opening-contract-check.sh` + health-check summary);
+- перевести WP-60 в `done` после подтверждения отсутствия drift по контуру.
