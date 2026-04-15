@@ -42,4 +42,6 @@ tags: [engineering, strategist, runtime, 24x7, upstream]
 - Подтверждён и устранён root-cause зависания headless day-plan (ошибочный route на `protocol-open`).
 - Runtime policy/scope возвращены в `split + product-only`, локальный dispatch включён.
 - Добавлен единый инженерный таймлайн для анти-дублирования работ и быстрого входа новых агентов.
+- Подтверждён живой morning-run: `strategist-morning.status=success` (2026-04-15 19:35), DayPlan материализован.
+- Фактический контур дня в DayPlan: `#58 in_progress`, `#51 blocked` (ожидание документов), `#59 pending`.
 - Открытый хвост: зафиксировать свежие `success` status-окна для strategist-сценариев и закрыть decision memo A/B.
