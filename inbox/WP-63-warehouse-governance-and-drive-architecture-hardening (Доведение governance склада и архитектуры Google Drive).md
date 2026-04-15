@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-15 21:05
+updated: 2026-04-15 21:20
 tags: [warehouse, governance, drive, telegram, vk-offee]
 ---
 
@@ -55,6 +55,14 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
 6. **Production закрепление 24/7**
    - Подтвердить целевой `WAREHOUSE_REPORT_CHAT_ID` на VPS.
    - Подтвердить минимум 2-3 стабильных цикла подряд.
+
+## Прогресс на 2026-04-15 21:20
+- Итерация 1 (реестр) выполнена:
+  1. В `warehouse_reports_pipeline.py` добавлен постоянный реестр `WH.REGISTRY.001-documents.csv`.
+  2. Для каждого входящего CSV фиксируются: `source_file`, `mtime`, `size`, `hash`, `report_type`, `status`, `card_path`, `error`.
+  3. Реализованы статусы: `new`, `processed`, `duplicate`, `error`.
+  4. Повторный прогон показывает idempotent-поведение по реестру (`duplicate` вместо повторной генерации карточек).
+  5. Сводка `WH.REPORT.002` теперь содержит операционные счётчики `received/processed/duplicate/error`.
 
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.

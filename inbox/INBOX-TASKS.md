@@ -44,6 +44,10 @@ created: 2026-03-04
 
 - [in_progress] 2026-04-15: [WAREHOUSE] Довести governance склада и архитектуру Google Drive до production-уровня
   - Контекст: базовый автоконтур уже работает (`WP-62`), но нужны реестр документов, DLQ, идемпотентность, контракт структуры Drive и операционный health-report.
+  - Прогресс на 2026-04-15 21:20:
+    1. Добавлен `WH.REGISTRY.001-documents.csv` в pipeline с полями `source/mtime/size/hash/status/card/error`
+    2. Реализованы статусы `new/processed/duplicate/error`
+    3. Сводка склада теперь показывает `received/processed/duplicate/error`
   - Наняты агенты:
     - `Code Engineer` — реализация registry/DLQ/idempotency/health-loop
     - `VK Coffee Analyst` — верификация ценности складских выжимек и сигналов
