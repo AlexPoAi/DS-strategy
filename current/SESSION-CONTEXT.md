@@ -85,3 +85,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - 🟡 [2026-04-15 18:45] Открыт decision-slice: сравнить стоимость полного pristine-reset от шаблона Церена vs controlled migration с сохранением текущих артефактов и истории.
 - ✅ [2026-04-15 19:33] Собран единый инженерный таймлайн `current/ENGINEERING-CHRONOLOGY.md` (вехи, открытые критичные хвосты, anti-rework протокол), чтобы новые агенты не дублировали уже сделанные циклы.
 - ✅ [2026-04-15 19:35] Strategist morning дошёл до `success`; DayPlan материализован с рабочим фокусом `#58 in_progress`, `#51 blocked`, `#59 pending`.
+- ✅ [2026-04-15 19:52] Починен `sync-google-sheets.py` для имен с `/`; свежие таблицы из Google Drive папки для бота (в т.ч. склад/комментарии Жанны) материализованы в `VK-offee/knowledge-base`.

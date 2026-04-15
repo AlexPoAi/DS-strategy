@@ -10,6 +10,17 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 2-4h
 
+- [in_progress] 2026-04-15: [ENGINEERING] Починить Google Sheets sync для актуальных данных Жанны (папка для бота)
+  - Контекст: sync падал на `FileNotFoundError` из-за `/` в именах sheet/table; свежие складские данные не доезжали в knowledge-base.
+  - Что сделано:
+    1. В `sync-google-sheets.py` добавлен filename sanitizer
+    2. Sync через `venv` перезапущен, свежие CSV материализованы
+  - Ограничение: остались частичные `429 rate limit` ошибки Google Sheets API
+  - Артефакт:
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.039-google-sheets-sync-filename-hardening (Починка sync-google-sheets для имен файлов с slash).md`
+  - Приоритет: high
+  - Бюджет: 1-2h
+
 - [priority-tomorrow] 2026-04-12: [KE] Обработать заметки про стаканы и Telegram через экстрактор
   - Контекст: две личные заметки из Telegram разблокированы (сняты [analyzed]), готовы к обработке. Inbox-check не смог создать отчёт сегодня (verification failed). Начать день с этой задачи.
   - Что сделать:
