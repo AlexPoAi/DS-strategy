@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
-updated: 2026-04-15 20:35
+updated: 2026-04-15 21:05
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -17,6 +17,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 4. 2026-04-08 → 2026-04-13: агентный hardening + target-capability implementation + recovery loop + opening/open-contract modernization (`ENG.WP.030`..`ENG.WP.038`, `WP-60`).
 5. 2026-04-15: найден и закрыт root-cause зависаний `strategist morning` (ошибочный route `day-plan -> protocol-open`), открыт `WP-61` для финальной стабилизации 24/7 и решения по pristine-reset.
 6. 2026-04-15: в `WP-62` материализован складской автоконтур (`sync -> cards -> bot kb -> telegram`), добавлены quota-retry/backoff и launchd full-loop entrypoint.
+7. 2026-04-15: открыт `WP-63` как production-hardening слой для склада (registry, DLQ, idempotency, Drive contract, daily health-report).
 
 ## Что критично открыто (не закрыто)
 1. `WP-61`: довести strategist 24/7 до подтверждённых `success` окон и финализировать архитектурный выбор `controlled migration` vs `pristine-reset`.
@@ -24,6 +25,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 3. Connector parity Codex/Claude (`Google Drive + Gmail`) — критичный pending в `INBOX-TASKS`.
 4. Ритуальные WP (`WP-21/WP-28/WP-29`) — закрывать только после синхронизации всех трекеров.
 5. `WP-62`: подтвердить финальный warehouse Telegram chat routing (`WAREHOUSE_REPORT_CHAT_ID`) и стабильность 2+ циклов подряд.
+6. `WP-63`: внедрить storage-governance склада и закрепить архитектуру поставки документов из Google Drive.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
@@ -37,4 +39,5 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 - `DS-strategy/inbox/WP-60-opening-open-contract-modernization (Переделка opening и open-contract контура).md`
 - `DS-strategy/inbox/WP-61-strategist-24x7-stabilization-and-pristine-reset-decision (Стабилизация Strategist 24x7 и решение по pristine-reset).md`
 - `DS-strategy/inbox/WP-62-warehouse-autocontour-cards-and-telegram-reports (Складской автоконтур карточек и Telegram-отчетов).md`
+- `DS-strategy/inbox/WP-63-warehouse-governance-and-drive-architecture-hardening (Доведение governance склада и архитектуры Google Drive).md`
 - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.000-repair-registry (Реестр инженерных работ по экосистеме).md`

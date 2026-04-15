@@ -42,6 +42,16 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 3-5h
 
+- [in_progress] 2026-04-15: [WAREHOUSE] Довести governance склада и архитектуру Google Drive до production-уровня
+  - Контекст: базовый автоконтур уже работает (`WP-62`), но нужны реестр документов, DLQ, идемпотентность, контракт структуры Drive и операционный health-report.
+  - Наняты агенты:
+    - `Code Engineer` — реализация registry/DLQ/idempotency/health-loop
+    - `VK Coffee Analyst` — верификация ценности складских выжимек и сигналов
+  - Артефакт:
+    - `DS-strategy/inbox/WP-63-warehouse-governance-and-drive-architecture-hardening (Доведение governance склада и архитектуры Google Drive).md`
+  - Приоритет: critical
+  - Бюджет: 3-6h
+
 - [in_progress] 2026-04-15: [ENGINEERING] Починить GitHub Actions `validate` (exit code 1) и миграцию Node 20 -> Node 24
   - Контекст: в CI пришли `1 error + 1 warning`; `validate` завершился с `exit code 1`. Дополнительно GitHub предупреждает, что `actions/checkout@v4` сейчас на Node.js 20 и с `2026-06-02` раннеры переходят на Node.js 24 по умолчанию (`Node 20` удаляется `2026-09-16`).
   - Что сделать:
