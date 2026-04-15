@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-04-15 20:35
 tags: [warehouse, automation, telegram, vk-offee]
 ---
 
@@ -29,11 +29,19 @@ tags: [warehouse, automation, telegram, vk-offee]
    - собирает сводный отчет `PACK-warehouse/04-work-products/WH.REPORT.002-warehouse-sync-summary-latest.md`;
    - пытается отправить Telegram summary.
 3. `sync-google-sheets.py` теперь автоматически запускает складской pipeline после sync.
+4. Добавлен retry/backoff для Google API в `sync-google-sheets.py` (устойчивость к `429 quota`).
+5. В `warehouse_reports_pipeline.py` добавлен Telegram env fallback:
+   - `WAREHOUSE_REPORT_CHAT_ID` / `TELEGRAM_CHAT_ID`,
+   - `telegram-bot/.env`,
+   - `~/.config/aist/env`,
+   - `~/.config/exocortex/telegram-chat-id` + `telegram-token`.
+6. Добавлен регулярный full-loop entrypoint и launchd-шаблон:
+   - `PACK-warehouse/tools/warehouse_full_loop.sh`
+   - `PACK-warehouse/tools/com.vkoffee.warehouse-full-loop.plist` (каждые 30 минут).
 
 ## Открытые хвосты
-1. Telegram отправка пока даёт `chat not found` — нужно зафиксировать правильный `WAREHOUSE_REPORT_CHAT_ID`.
-2. Часть листов получает `429 quota` — нужен backoff/retry для полного прогона.
-3. Нужно зафиксировать регулярный cron/launchd запуск этого full-loop (sync + cards + telegram).
+1. Подтвердить целевой Telegram chat назначения (оставить текущий `TELEGRAM_CHAT_ID` или зафиксировать отдельный `WAREHOUSE_REPORT_CHAT_ID`).
+2. Прогнать 1-2 полных цикла в фоне и убедиться, что Telegram summary стабильно доходит после sync.
 
 ## Acceptance
 - Каждый новый складской CSV формирует отдельную карточку.

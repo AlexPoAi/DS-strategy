@@ -23,6 +23,14 @@ created: 2026-03-04
 
 - [in_progress] 2026-04-15: [WAREHOUSE] Отдельный складской контур: карточки по каждому отчету + Telegram автоотчеты
   - Контекст: Жанна загружает документы в Google Drive папку для бота; нужен автоконтур `sync -> карточки -> бот -> telegram`.
+  - Прогресс на 2026-04-15 20:35:
+    1. Реализованы `report-cards` + `bot cards` + summary-отчет
+    2. В sync добавлен quota `retry/backoff` для `429`
+    3. Добавлен launchd full-loop entrypoint (`warehouse_full_loop.sh` + `.plist` шаблон)
+    4. Telegram routing расширен fallback-слоем (`telegram-bot/.env`, `~/.config/aist/env`, `~/.config/exocortex/*`)
+  - Остаток до close:
+    1. Подтвердить целевой `WAREHOUSE_REPORT_CHAT_ID`
+    2. Подтвердить 2+ успешных фоновых цикла подряд
   - Наняты агенты:
     - `Code Engineer` — реализация pipeline и интеграций
     - `VK Coffee Analyst` — валидация складских выжимек и приоритетов
