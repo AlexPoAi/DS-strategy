@@ -10,6 +10,7 @@ tags: [engineering, strategist, runtime, 24x7, upstream]
 # WP-61: Стабилизация Strategist 24x7 и решение по pristine-reset
 
 ## Контекст
+- `WP-60` (opening/open-contract modernization) закрыт; текущий цикл продолжает уже завершённую нормализацию маршрутов открытия.
 - В runtime-контуре подтверждён блокер: headless `strategist morning` запускал интерактивный opening-протокол вместо неинтерактивного day-plan сценария.
 - Исправления в `strategist.sh` уже внесены: route для `day-plan` переведён на `roles/strategist/prompts/day-plan.md`, добавлен codex path fallback и codex-first fallback порядок.
 - Нужен управляемый выбор архитектурного пути: продолжать controlled migration текущего контура или выполнить pristine-reset от шаблона Церена с переносом наших кастомизаций по whitelist.
@@ -35,3 +36,10 @@ tags: [engineering, strategist, runtime, 24x7, upstream]
 - `FMT-exocortex-template/roles/strategist/scripts/strategist.sh`
 - `DS-strategy/current/RUNTIME-MODE.md`
 - `DS-strategy/current/SESSION-CONTEXT.md`
+- `DS-strategy/current/ENGINEERING-CHRONOLOGY.md`
+
+## Прогресс на 2026-04-15
+- Подтверждён и устранён root-cause зависания headless day-plan (ошибочный route на `protocol-open`).
+- Runtime policy/scope возвращены в `split + product-only`, локальный dispatch включён.
+- Добавлен единый инженерный таймлайн для анти-дублирования работ и быстрого входа новых агентов.
+- Открытый хвост: зафиксировать свежие `success` status-окна для strategist-сценариев и закрыть decision memo A/B.

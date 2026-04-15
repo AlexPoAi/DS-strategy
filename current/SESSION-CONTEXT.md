@@ -83,3 +83,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-15 18:42] В `strategist.sh` добавлен fallback-resolver пути Codex (`/Applications/...`, `/usr/local/bin`, `/opt/homebrew/bin`, `~/.local/bin`) и codex-first fallback-порядок при недоступности runtime-arbiter.
 - ✅ [2026-04-15 18:44] Health-check подтверждает provider-plane `codex available`, control-plane `local available`; strategist-morning фиксируется как `running` в status-артефакте в момент smoke.
 - 🟡 [2026-04-15 18:45] Открыт decision-slice: сравнить стоимость полного pristine-reset от шаблона Церена vs controlled migration с сохранением текущих артефактов и истории.
+- ✅ [2026-04-15 19:33] Собран единый инженерный таймлайн `current/ENGINEERING-CHRONOLOGY.md` (вехи, открытые критичные хвосты, anti-rework протокол), чтобы новые агенты не дублировали уже сделанные циклы.
