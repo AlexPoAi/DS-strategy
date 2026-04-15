@@ -1,7 +1,7 @@
 ---
 wp: 60
 title: СИСТЕМА: Переделка opening/open-contract контура — перенос modern upstream с truthful governance
-status: in_progress
+status: done
 created: 2026-04-11
 source: пользователь инициировал отдельный инженерный WP после диагностики strategist/opening contract
 verification_class: closed-loop
@@ -36,7 +36,7 @@ verification_class: closed-loop
 - [x] Зафиксирован эталон: что берём у Церена, что сохраняем своим
 - [x] Согласован безопасный порядок переноса
 - [x] Каждый шаг переноса проверяется отдельно и не ломает strategist / scheduler / extractor / open-close loop
-- [ ] opening/open-contract контур приведён к новой целевой модели без legacy-дрейфа
+- [x] opening/open-contract контур приведён к новой целевой модели без legacy-дрейфа
 
 ## Бюджет
 ~3h
@@ -127,13 +127,10 @@ verification_class: closed-loop
 ### Verification
 - `opening-contract-check.sh` проходит в зелёном статусе после каждого цикла (`OK canonical_memory_route`, `OK opening_contract_files`).
 - Деревья `FMT-exocortex-template` и `DS-strategy` оставлялись чистыми после каждого завершённого цикла.
+- Дополнительно выровнены зеркальные memory-копии в `DS-strategy/exocortex/memory/*` (`protocol-close`, `claude-md-maintenance`, `wp-gate-lesson`, `MEMORY.md`).
 
 ## Следующий шаг (следующий отдельный цикл)
-- закрыть оставшийся хвост критерия «без legacy-дрейфа» в менее критичных справочных файлах (`DS-strategy/exocortex/claude-md-maintenance.md`, onboarding/docs where applicable);
-- после правок прогнать checker и health-check отчётным циклом;
-- зафиксировать окончательный статус WP-60 как `done`, если новых дрейфов не обнаружится.
+- открыть отдельный WP на поддержку этой модели как регулярного maintenance-check (чтобы не копить drift в docs/runtime снова).
 
 ## Осталось
-- добить оставшиеся legacy-упоминания в низкорисковых справочных документах;
-- выполнить финальный диагностический прогон (`opening-contract-check.sh` + health-check summary);
-- перевести WP-60 в `done` после подтверждения отсутствия drift по контуру.
+- в рамках WP-60 незакрытых хвостов нет; дальнейшие улучшения — отдельными WP.
