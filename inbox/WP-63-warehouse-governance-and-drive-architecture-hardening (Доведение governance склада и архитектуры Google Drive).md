@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-16 19:55
+updated: 2026-04-16 20:47
 tags: [warehouse, governance, drive, telegram, vk-offee]
 ---
 
@@ -71,6 +71,12 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
   3. В реестр документов добавлено поле `dlq_path`.
   4. Сводка `WH.REPORT.002` теперь показывает отдельный счётчик `DLQ`.
   5. Поведение проверено smoke-test'ом на пустом CSV: файл ушёл в quarantine с причиной `empty csv`, после проверки тестовые артефакты удалены.
+
+## Прогресс на 2026-04-16 20:47
+- На VPS (`72.56.4.61`) зафиксирован явный `WAREHOUSE_REPORT_CHAT_ID` (в `/root/.config/aist/env` и `telegram-bot/.env`).
+- Поднят `systemd` timer `vk-warehouse-full-loop.timer` для запуска каждые 30 минут.
+- Выявлен production-blocker: отсутствует `/opt/vk-offee/VK-offee/.github/scripts/credentials.json` для Google Sheets OAuth.
+- Сервис переведён в безопасный режим `exec-condition` (graceful skip без ложного crash-loop), пока не доставлен `credentials.json`.
 
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.

@@ -87,6 +87,10 @@ created: 2026-03-04
     1. Добавлен `DLQ/quarantine` контур для проблемных CSV
     2. Pipeline пишет `WH.DLQ.001-quarantine-report.md` и сохраняет `dlq_path` в реестре
     3. Smoke-test на пустом CSV подтверждён, тестовые артефакты удалены после проверки
+  - Прогресс на 2026-04-16 20:47:
+    1. На VPS зафиксирован `WAREHOUSE_REPORT_CHAT_ID` и поднят `vk-warehouse-full-loop.timer` (каждые 30 минут)
+    2. Найден blocker: отсутствует `.github/scripts/credentials.json` (Google OAuth) — без него sync не стартует
+    3. Таймер переведён в `graceful skip` до загрузки credentials, чтобы не плодить false-fail
   - Наняты агенты:
     - `Code Engineer` — реализация registry/DLQ/idempotency/health-loop
     - `VK Coffee Analyst` — верификация ценности складских выжимек и сигналов

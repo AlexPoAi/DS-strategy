@@ -24,6 +24,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 11. 2026-04-16: устранён runtime-gap `extractor inbox-check` (headless hardening + актуальный extraction-report), статус экзокортекса возвращён в зелёный контур.
 12. 2026-04-16: открыт `WP-64` для рефактора инженерного backlog (дедупликация задач, единый closeout-порядок и anti-rework контракт).
 13. 2026-04-16: `WP-61` закрыт — зафиксированы success-окна strategist, выбран путь `controlled migration`, материализован rollback runbook до `pristine-reset`.
+14. 2026-04-16: по `WP-63` на VPS зафиксирован `WAREHOUSE_REPORT_CHAT_ID` и установлен `vk-warehouse-full-loop.timer`; выявлен blocker `credentials.json` (Google OAuth) для старта sync, сервис переведён в graceful-skip до загрузки секрета.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
