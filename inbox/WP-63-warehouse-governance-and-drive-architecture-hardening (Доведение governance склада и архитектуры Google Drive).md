@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-15 21:20
+updated: 2026-04-16 19:55
 tags: [warehouse, governance, drive, telegram, vk-offee]
 ---
 
@@ -63,6 +63,14 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
   3. Реализованы статусы: `new`, `processed`, `duplicate`, `error`.
   4. Повторный прогон показывает idempotent-поведение по реестру (`duplicate` вместо повторной генерации карточек).
   5. Сводка `WH.REPORT.002` теперь содержит операционные счётчики `received/processed/duplicate/error`.
+
+## Прогресс на 2026-04-16 19:55
+- Итерация 2 (DLQ / quarantine) выполнена:
+  1. В pipeline добавлен quarantine-контур `PACK-warehouse/03-quarantine/dlq-files/`.
+  2. Для проблемных файлов формируется отчёт `WH.DLQ.001-quarantine-report.md`.
+  3. В реестр документов добавлено поле `dlq_path`.
+  4. Сводка `WH.REPORT.002` теперь показывает отдельный счётчик `DLQ`.
+  5. Поведение проверено smoke-test'ом на пустом CSV: файл ушёл в quarantine с причиной `empty csv`, после проверки тестовые артефакты удалены.
 
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.

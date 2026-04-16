@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
-updated: 2026-04-15 21:20
+updated: 2026-04-16 19:55
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -19,6 +19,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 6. 2026-04-15: в `WP-62` материализован складской автоконтур (`sync -> cards -> bot kb -> telegram`), добавлены quota-retry/backoff и launchd full-loop entrypoint.
 7. 2026-04-15: открыт `WP-63` как production-hardening слой для склада (registry, DLQ, idempotency, Drive contract, daily health-report).
 8. 2026-04-15: в `WP-63` реализована итерация `WH.REGISTRY` — pipeline фиксирует статусы `new/processed/duplicate/error` и показывает операционные счётчики в warehouse summary.
+9. 2026-04-16: в `WP-63` реализован `DLQ/quarantine` для склада — проблемные CSV уходят в quarantine-folder и получают отдельный DLQ-report.
 
 ## Что критично открыто (не закрыто)
 1. `WP-61`: довести strategist 24/7 до подтверждённых `success` окон и финализировать архитектурный выбор `controlled migration` vs `pristine-reset`.

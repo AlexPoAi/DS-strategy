@@ -48,6 +48,10 @@ created: 2026-03-04
     1. Добавлен `WH.REGISTRY.001-documents.csv` в pipeline с полями `source/mtime/size/hash/status/card/error`
     2. Реализованы статусы `new/processed/duplicate/error`
     3. Сводка склада теперь показывает `received/processed/duplicate/error`
+  - Прогресс на 2026-04-16 19:55:
+    1. Добавлен `DLQ/quarantine` контур для проблемных CSV
+    2. Pipeline пишет `WH.DLQ.001-quarantine-report.md` и сохраняет `dlq_path` в реестре
+    3. Smoke-test на пустом CSV подтверждён, тестовые артефакты удалены после проверки
   - Наняты агенты:
     - `Code Engineer` — реализация registry/DLQ/idempotency/health-loop
     - `VK Coffee Analyst` — верификация ценности складских выжимек и сигналов
