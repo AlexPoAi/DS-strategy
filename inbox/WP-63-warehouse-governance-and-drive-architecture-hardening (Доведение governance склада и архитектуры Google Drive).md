@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-16 20:47
+updated: 2026-04-16 20:55
 tags: [warehouse, governance, drive, telegram, vk-offee]
 ---
 
@@ -77,6 +77,12 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
 - Поднят `systemd` timer `vk-warehouse-full-loop.timer` для запуска каждые 30 минут.
 - Выявлен production-blocker: отсутствует `/opt/vk-offee/VK-offee/.github/scripts/credentials.json` для Google Sheets OAuth.
 - Сервис переведён в безопасный режим `exec-condition` (graceful skip без ложного crash-loop), пока не доставлен `credentials.json`.
+
+## Прогресс на 2026-04-16 20:55
+- Блокер `credentials.json` закрыт: на VPS доставлены `credentials.json` и `token.pickle` в `.github/scripts/`.
+- На VPS установлен Python `venv` для `.github/scripts` и поставлены зависимости Google API.
+- `vk-warehouse-full-loop.service` запущен, выполняет длинный sync (виден активный прогон с `429` retry/backoff).
+- Следующий шаг для финального acceptance: зафиксировать завершение минимум 2-3 циклов подряд без hard-fail и убедиться, что summary/telegram-routing обновляются стабильно.
 
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.

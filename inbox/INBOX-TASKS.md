@@ -91,6 +91,10 @@ created: 2026-03-04
     1. На VPS зафиксирован `WAREHOUSE_REPORT_CHAT_ID` и поднят `vk-warehouse-full-loop.timer` (каждые 30 минут)
     2. Найден blocker: отсутствует `.github/scripts/credentials.json` (Google OAuth) — без него sync не стартует
     3. Таймер переведён в `graceful skip` до загрузки credentials, чтобы не плодить false-fail
+  - Прогресс на 2026-04-16 20:55:
+    1. `credentials.json` + `token.pickle` доставлены на VPS, blocker снят
+    2. На VPS поставлены Python-зависимости `.github/scripts` (Google API stack)
+    3. `vk-warehouse-full-loop.service` выполняет рабочий sync; остаётся подтвердить 2-3 последовательных цикла для close
   - Наняты агенты:
     - `Code Engineer` — реализация registry/DLQ/idempotency/health-loop
     - `VK Coffee Analyst` — верификация ценности складских выжимек и сигналов
