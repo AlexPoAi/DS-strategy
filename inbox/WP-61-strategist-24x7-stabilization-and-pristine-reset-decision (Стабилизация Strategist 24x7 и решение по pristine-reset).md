@@ -3,7 +3,7 @@ type: wp-context
 status: active
 owner: environment-engineer
 created: 2026-04-15
-updated: 2026-04-15
+updated: 2026-04-16
 tags: [engineering, strategist, runtime, 24x7, upstream]
 ---
 
@@ -45,3 +45,8 @@ tags: [engineering, strategist, runtime, 24x7, upstream]
 - Подтверждён живой morning-run: `strategist-morning.status=success` (2026-04-15 19:35), DayPlan материализован.
 - Фактический контур дня в DayPlan: `#58 in_progress`, `#51 blocked` (ожидание документов), `#59 pending`.
 - Открытый хвост: зафиксировать свежие `success` status-окна для strategist-сценариев и закрыть decision memo A/B.
+
+## Прогресс на 2026-04-16
+- В `AGENTS-STATUS` подтверждены зелёные статусы по strategist и синхронизатору.
+- `health-check` проходит без critical-ошибок; opening-contract и runtime-arbiter в зелёной зоне.
+- Оставшийся блокер `WP-61`: не техническая стабильность, а архитектурное решение `A/B` (`controlled migration` vs `pristine-reset`) и явный rollback runbook.

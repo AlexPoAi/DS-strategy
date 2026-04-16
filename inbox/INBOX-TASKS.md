@@ -21,6 +21,18 @@ created: 2026-03-04
   - Приоритет: medium
   - Бюджет: 3-4h
 
+- [in_progress] 2026-04-16: [ENGINEERING] Refactor инженерного контура (дедупликация задач + единый closeout-план)
+  - Контекст: инженерный backlog разросся и содержит устаревшие/дублирующиеся хвосты, что увеличивает rework.
+  - Что сделать:
+    1. Собрать единый приоритетный список `critical/high` по `WP-61/62/63` и инфраструктурным блокерам
+    2. Пометить закрытые или устаревшие инженерные задачи и убрать шумные приоритеты
+    3. Зафиксировать next-slices с измеримым acceptance для каждого активного WP
+    4. Синхронизировать `INBOX-TASKS`, `ENGINEERING-HIT-LIST`, `ENGINEERING-CHRONOLOGY`
+  - Артефакт:
+    - `DS-strategy/inbox/WP-64-engineering-contour-refactor-and-closeout-plan (Рефактор инженерного контура и план закрытия хвостов).md`
+  - Приоритет: critical
+  - Бюджет: 45-90 мин
+
 - [in_progress] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
   - Контекст: зафиксирован runtime-gap в headless day-plan и необходимость принять архитектурное решение `controlled migration` vs `pristine-reset`.
   - Артефакт:
@@ -91,30 +103,26 @@ created: 2026-03-04
     - обновлённые `.github/workflows/*.yml` (по затронутым репо)
     - карточка инженерного WP по Node24/validate
 
-- [in_progress] 2026-04-15: [ENGINEERING] Opening contract regression — убрать legacy MEMORY wording в экзокортексе
+- [done] 2026-04-15: [ENGINEERING] Opening contract regression — убрать legacy MEMORY wording в экзокортексе
   - Контекст: отчёт Exocortex `20:08` показал критичные opening-contract ошибки:
     1. `/Users/alexander/Github/DS-strategy/exocortex/protocol-open.md:13` → `Прочитать MEMORY.md`
     2. `/Users/alexander/Github/DS-strategy/exocortex/checklists.md:37` → `Прочитать MEMORY.md`
-  - Что сделать:
-    1. Нормализовать формулировки на canonical маршрут `memory/MEMORY.md`
-    2. Прогнать `opening contract check` и зафиксировать зелёный статус
-    3. Синхронизировать артефакты открытия (`SESSION-OPEN/AGENTS-STATUS`), чтобы не возвращался false-red
+  - Что сделано:
+    1. Нормализованы формулировки на canonical маршрут `memory/MEMORY.md`
+    2. Прогнан `opening contract check` с зелёным результатом
+    3. Синхронизированы артефакты открытия, false-red не воспроизводится
   - Приоритет: critical
   - Бюджет: 20-40 мин
   - Артефакт:
     - правки в `DS-strategy/exocortex/protocol-open.md` и `DS-strategy/exocortex/checklists.md`
     - запись в инженерной хронологии
 
-- [priority-tomorrow] 2026-04-12: [KE] Обработать заметки про стаканы и Telegram через экстрактор
-  - Контекст: две личные заметки из Telegram разблокированы (сняты [analyzed]), готовы к обработке. Inbox-check не смог создать отчёт сегодня (verification failed). Начать день с этой задачи.
-  - Что сделать:
-    1. Запустить inbox-check: `cd ~/Github/FMT-exocortex-template && bash roles/extractor/scripts/extractor.sh inbox-check`
-    2. Прочитать свежий отчёт в DS-strategy/inbox/extraction-reports/
-    3. Запустить `/экстрактор` — одобрить кандидатов интерактивно
-  - Заметки:
-    - «По кофейне нужно обязательно доработать дизайн стаканов для холодных напитков, и меню»
-    - «Нужно поработать с Telegram — предложить ребятам записывать заметки по работе»
-  - Приоритет: **первая задача дня**
+- [done] 2026-04-16: [KE] Обработаны заметки про стаканы и Telegram через экстрактор
+  - Контекст: `inbox-check` успешно создал отчёт и материализовал backlog outcomes.
+  - Что сделано:
+    1. Создан `DS-strategy/inbox/extraction-reports/2026-04-16-inbox-check.md`
+    2. Добавлены 2 backlog-задачи в `INBOX-TASKS.md` (дизайн стаканов/меню и развитие Telegram-бота)
+    3. Capture'ы помечены как `[analyzed 2026-04-16]`
   - Бюджет: 30 мин
 
 - [done] 2026-04-08: [AGENTS] Довести агентный слой до реально подтверждённого целевого состояния
@@ -166,7 +174,7 @@ created: 2026-03-04
     - новый инженерный WP в `DS-strategy/PACK-exocortex-engineering/04-work-products/`
     - обновлённый runbook recovery для connector-layer
 
-- [pending] 2026-04-13: [ENGINEERING] Подготовить GitHub Actions к переходу с Node.js 20 на Node.js 24
+- [done] 2026-04-13: [ENGINEERING] Подготовить GitHub Actions к переходу с Node.js 20 на Node.js 24
   - Контекст: GitHub предупредил о выводе `Node.js 20` из runtime для JavaScript actions. Начиная с `2026-06-02` JavaScript actions будут принудительно исполняться на `Node.js 24`, а `Node.js 20` будет удалён из среды `2026-09-16`. Уже есть warning по `actions/checkout@v4`, значит нужно заранее проверить все workflow и обновить action versions/совместимость.
   - Что сделать:
     1. Просканировать `.github/workflows/*.yml` по всем ключевым репо
@@ -176,6 +184,7 @@ created: 2026-03-04
     5. При необходимости подготовить staged migration plan
   - Приоритет: medium
   - Бюджет: 30-45 мин
+  - Статус закрытия: superseded задачей `2026-04-15 [ENGINEERING] Починить GitHub Actions validate и миграцию Node 20 -> Node 24` (активный контур).
   - Артефакт:
     - отдельный инженерный WP по миграции GitHub Actions на `Node 24`
 

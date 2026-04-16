@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
-updated: 2026-04-16 19:55
+updated: 2026-04-16 20:25
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -21,6 +21,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 8. 2026-04-15: в `WP-63` реализована итерация `WH.REGISTRY` — pipeline фиксирует статусы `new/processed/duplicate/error` и показывает операционные счётчики в warehouse summary.
 9. 2026-04-16: в `WP-63` реализован `DLQ/quarantine` для склада — проблемные CSV уходят в quarantine-folder и получают отдельный DLQ-report.
 10. 2026-04-16: найден production-risk в Telegram bot layer — `monitor_bot.py` мог использовать тот же `TELEGRAM_BOT_TOKEN`, что и product bot. Контур разделён на отдельный `MONITOR_BOT_TOKEN`, чтобы не создавать повторный `409 Conflict` своими же руками.
+11. 2026-04-16: устранён runtime-gap `extractor inbox-check` (headless hardening + актуальный extraction-report), статус экзокортекса возвращён в зелёный контур.
+12. 2026-04-16: открыт `WP-64` для рефактора инженерного backlog (дедупликация задач, единый closeout-порядок и anti-rework контракт).
 
 ## Что критично открыто (не закрыто)
 1. `WP-61`: довести strategist 24/7 до подтверждённых `success` окон и финализировать архитектурный выбор `controlled migration` vs `pristine-reset`.
@@ -29,6 +31,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 4. Ритуальные WP (`WP-21/WP-28/WP-29`) — закрывать только после синхронизации всех трекеров.
 5. `WP-62`: подтвердить финальный warehouse Telegram chat routing (`WAREHOUSE_REPORT_CHAT_ID`) и стабильность 2+ циклов подряд.
 6. `WP-63`: внедрить storage-governance склада и закрепить архитектуру поставки документов из Google Drive.
+7. `WP-64`: завершить дедупликацию инженерных задач и удерживать единый weekly closeout-порядок.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
@@ -43,4 +46,5 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 - `DS-strategy/inbox/WP-61-strategist-24x7-stabilization-and-pristine-reset-decision (Стабилизация Strategist 24x7 и решение по pristine-reset).md`
 - `DS-strategy/inbox/WP-62-warehouse-autocontour-cards-and-telegram-reports (Складской автоконтур карточек и Telegram-отчетов).md`
 - `DS-strategy/inbox/WP-63-warehouse-governance-and-drive-architecture-hardening (Доведение governance склада и архитектуры Google Drive).md`
+- `DS-strategy/inbox/WP-64-engineering-contour-refactor-and-closeout-plan (Рефактор инженерного контура и план закрытия хвостов).md`
 - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.000-repair-registry (Реестр инженерных работ по экосистеме).md`

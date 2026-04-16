@@ -1,19 +1,21 @@
 ---
 type: engineering-hit-list
-updated: 2026-04-15 19:36
+updated: 2026-04-16 20:25
 ---
 
 # Engineering Hit List (W16)
 
 ## Сначала (critical)
 1. `WP-61`: закрыть strategist 24/7 (убрать зависшие `running`, получить свежие `success` окна, зафиксировать A/B решение по reset от Церена).
-2. `ENG.WP.031`: завершить target-capability слой агентов (Extractor/Synchronizer/Strategist без потерь и с проверяемыми артефактами).
-3. Connector parity Codex/Claude (`Google Drive + Gmail`) из `INBOX-TASKS` — убрать runtime gap в app-connectors.
+2. `WP-62` + `WP-63`: закрыть складской production-tail (`WAREHOUSE_REPORT_CHAT_ID`, 2-3 стабильных цикла, Drive 00/10/90 + health digest).
+3. GitHub Actions `validate` + Node 24 migration: устранить `exit code 1` и зафиксировать безопасный переход до дедлайнов GitHub.
+4. `WP-64`: провести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
 
 ## Далее (high)
-1. `WP-21 / WP-28 / WP-29`: синхронизировать ritual/atomicity контур и закрыть расхождения между трекерами.
-2. `ENG.WP.020/021/038`: закрыть хвосты strategist-hardening и связать их с `WP-61` как единый контракт.
-3. `UPSTREAM audit` (`ENG.WP.029`): проверить обновления Церена и применить только whitelist-изменения.
+1. Connector parity Codex/Claude (`Google Drive + Gmail`) — убрать runtime gap в app-connectors.
+2. `ENG.WP.031`: завершить target-capability слой агентов (Extractor/Synchronizer/Strategist без потерь и с проверяемыми артефактами).
+3. `ENG.WP.020/021/038` + ritual WP (`WP-21/WP-28/WP-29`): синхронизировать hardening и закрытие трекеров в одном цикле.
+4. `UPSTREAM audit` (`ENG.WP.029`): проверить обновления Церена и применять только whitelist-изменения.
 
 ## Контроль против повторов
 1. Перед началом каждой задачи сверять: `ENGINEERING-CHRONOLOGY.md` + `WP-xx` + `INBOX-TASKS.md`.
