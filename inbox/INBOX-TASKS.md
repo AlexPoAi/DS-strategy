@@ -33,8 +33,13 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 45-90 мин
 
-- [in_progress] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
+- [done] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
   - Контекст: зафиксирован runtime-gap в headless day-plan и необходимость принять архитектурное решение `controlled migration` vs `pristine-reset`.
+  - Что сделано:
+    1. Подтверждены `success` окна для strategist-сценариев (`morning/note-review/week-review`)
+    2. Синхронизированы runtime-артефакты (`RUNTIME-MODE`, `AGENTS-STATUS`, `SESSION-OPEN`)
+    3. Зафиксирован A/B verdict: выбран `controlled migration`, `pristine-reset` оставлен как rollback path
+    4. Материализован rollback runbook в `WP-61`
   - Артефакт:
     - `DS-strategy/inbox/WP-61-strategist-24x7-stabilization-and-pristine-reset-decision (Стабилизация Strategist 24x7 и решение по pristine-reset).md`
   - Приоритет: critical

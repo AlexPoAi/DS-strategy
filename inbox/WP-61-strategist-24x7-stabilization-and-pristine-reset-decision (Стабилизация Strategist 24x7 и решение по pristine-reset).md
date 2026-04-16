@@ -1,9 +1,9 @@
 ---
 type: wp-context
-status: active
+status: done
 owner: environment-engineer
 created: 2026-04-15
-updated: 2026-04-16
+updated: 2026-04-16 20:35
 tags: [engineering, strategist, runtime, 24x7, upstream]
 ---
 
@@ -49,4 +49,49 @@ tags: [engineering, strategist, runtime, 24x7, upstream]
 ## Прогресс на 2026-04-16
 - В `AGENTS-STATUS` подтверждены зелёные статусы по strategist и синхронизатору.
 - `health-check` проходит без critical-ошибок; opening-contract и runtime-arbiter в зелёной зоне.
-- Оставшийся блокер `WP-61`: не техническая стабильность, а архитектурное решение `A/B` (`controlled migration` vs `pristine-reset`) и явный rollback runbook.
+- Закрыт оставшийся блокер `A/B`: выбран `Option A (controlled migration)` с явным rollback runbook до `Option B`.
+
+## Decision Memo (A/B)
+
+### Вариант A: controlled migration (выбран)
+- Суть: сохраняем текущий рабочий контур, переносим только проверенные upstream-изменения по whitelist.
+- Плюсы:
+  1. Нет потери рабочих артефактов и ритуальных контекстов.
+  2. Меньше риск обрушить `24/7` в процессе пересборки.
+  3. Можно делать изменения итерациями с быстрым откатом.
+- Минусы:
+  1. Требует дисциплины дедупликации и регулярного upstream-audit.
+
+### Вариант B: pristine-reset от Церена
+- Суть: полный пересбор от шаблона с повторным переносом локальных кастомизаций.
+- Плюсы:
+  1. Чистая база без исторического дрейфа.
+- Минусы:
+  1. Высокий риск потерять рабочие интеграции/артефакты.
+  2. Существенная цена в токенах и времени.
+  3. На период пересборки растёт риск деградации `24/7` контура.
+
+### Вердикт
+- Выбран `Option A (controlled migration)` как основной архитектурный путь для W16.
+- `Option B` оставлен как аварийный rollback-сценарий, а не как baseline.
+
+## Rollback Runbook (A -> B)
+1. Зафиксировать snapshot текущего состояния: `DS-strategy`, `FMT-exocortex-template`, `DS-agent-workspace` (commit + tag/snapshot note).
+2. Зафиксировать whitelist кастомизаций, которые обязательны после reset:
+   - runtime policy (`split + product-only`);
+   - canonical memory/opening routes;
+   - strategist headless day-plan route;
+   - extractor headless guard/fallback policy;
+   - scheduler/status artifacts contract.
+3. Развернуть clean-template ветку и применить whitelist-перенос по слоям: docs -> prompts -> scripts -> launch/runtime.
+4. Прогнать acceptance-пакет:
+   - `health-check` без critical;
+   - `strategist-morning`, `strategist-note-review`, `strategist-week-review` = success;
+   - `synchronizer-code-scan`, `synchronizer-daily-report`, `extractor-inbox-check` = success.
+5. Только после зелёного acceptance переводить reset-ветку в основной runtime.
+
+## Итог закрытия WP-61
+- `strategist-morning/day-plan/week-review` подтверждены как `success` в статус-артефактах.
+- Runtime-артефакты синхронизированы (`RUNTIME-MODE`, `AGENTS-STATUS`, `SESSION-OPEN`).
+- A/B решение зафиксировано (`controlled migration`).
+- Rollback runbook материализован и проверяем.

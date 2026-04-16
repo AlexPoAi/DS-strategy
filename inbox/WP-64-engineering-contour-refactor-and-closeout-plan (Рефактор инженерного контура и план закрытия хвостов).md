@@ -45,6 +45,11 @@ tags: [engineering, refactor, governance, backlog, exocortex]
 - У каждого активного WP есть next-slice и измеримый критерий завершения.
 - Хронология обновлена и отражает фактическое состояние контура.
 
+## Прогресс на 2026-04-16 20:35
+- Обновлены `INBOX-TASKS`, `ENGINEERING-HIT-LIST`, `ENGINEERING-CHRONOLOGY`.
+- Устаревшие/дублирующиеся инженерные пункты помечены `done/superseded`.
+- `WP-61` переведён в `done` с decision memo и rollback runbook.
+
 ## Артефакты
 - `DS-strategy/inbox/INBOX-TASKS.md`
 - `DS-strategy/current/ENGINEERING-HIT-LIST.md`

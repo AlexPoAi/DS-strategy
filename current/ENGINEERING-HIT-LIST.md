@@ -6,10 +6,9 @@ updated: 2026-04-16 20:25
 # Engineering Hit List (W16)
 
 ## Сначала (critical)
-1. `WP-61`: закрыть strategist 24/7 (убрать зависшие `running`, получить свежие `success` окна, зафиксировать A/B решение по reset от Церена).
-2. `WP-62` + `WP-63`: закрыть складской production-tail (`WAREHOUSE_REPORT_CHAT_ID`, 2-3 стабильных цикла, Drive 00/10/90 + health digest).
-3. GitHub Actions `validate` + Node 24 migration: устранить `exit code 1` и зафиксировать безопасный переход до дедлайнов GitHub.
-4. `WP-64`: провести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
+1. `WP-62` + `WP-63`: закрыть складской production-tail (`WAREHOUSE_REPORT_CHAT_ID`, 2-3 стабильных цикла, Drive 00/10/90 + health digest).
+2. GitHub Actions `validate` + Node 24 migration: устранить `exit code 1` и зафиксировать безопасный переход до дедлайнов GitHub.
+3. `WP-64`: провести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
 
 ## Далее (high)
 1. Connector parity Codex/Claude (`Google Drive + Gmail`) — убрать runtime gap в app-connectors.

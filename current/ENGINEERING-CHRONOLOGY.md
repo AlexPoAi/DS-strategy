@@ -23,15 +23,15 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 10. 2026-04-16: найден production-risk в Telegram bot layer — `monitor_bot.py` мог использовать тот же `TELEGRAM_BOT_TOKEN`, что и product bot. Контур разделён на отдельный `MONITOR_BOT_TOKEN`, чтобы не создавать повторный `409 Conflict` своими же руками.
 11. 2026-04-16: устранён runtime-gap `extractor inbox-check` (headless hardening + актуальный extraction-report), статус экзокортекса возвращён в зелёный контур.
 12. 2026-04-16: открыт `WP-64` для рефактора инженерного backlog (дедупликация задач, единый closeout-порядок и anti-rework контракт).
+13. 2026-04-16: `WP-61` закрыт — зафиксированы success-окна strategist, выбран путь `controlled migration`, материализован rollback runbook до `pristine-reset`.
 
 ## Что критично открыто (не закрыто)
-1. `WP-61`: довести strategist 24/7 до подтверждённых `success` окон и финализировать архитектурный выбор `controlled migration` vs `pristine-reset`.
-2. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
-3. Connector parity Codex/Claude (`Google Drive + Gmail`) — критичный pending в `INBOX-TASKS`.
-4. Ритуальные WP (`WP-21/WP-28/WP-29`) — закрывать только после синхронизации всех трекеров.
-5. `WP-62`: подтвердить финальный warehouse Telegram chat routing (`WAREHOUSE_REPORT_CHAT_ID`) и стабильность 2+ циклов подряд.
-6. `WP-63`: внедрить storage-governance склада и закрепить архитектуру поставки документов из Google Drive.
-7. `WP-64`: завершить дедупликацию инженерных задач и удерживать единый weekly closeout-порядок.
+1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
+2. Connector parity Codex/Claude (`Google Drive + Gmail`) — критичный pending в `INBOX-TASKS`.
+3. Ритуальные WP (`WP-21/WP-28/WP-29`) — закрывать только после синхронизации всех трекеров.
+4. `WP-62`: подтвердить финальный warehouse Telegram chat routing (`WAREHOUSE_REPORT_CHAT_ID`) и стабильность 2+ циклов подряд.
+5. `WP-63`: внедрить storage-governance склада и закрепить архитектуру поставки документов из Google Drive.
+6. `WP-64`: завершить дедупликацию инженерных задач и удерживать единый weekly closeout-порядок.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
