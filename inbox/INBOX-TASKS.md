@@ -3,6 +3,18 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-04-17: [НАПОМИНАНИЕ][ENGINEERING] Контроль appeal Anthropic + контроль возврата средств
+  - Контекст: по org `2e8cf63d-7da9-4588-8f78-243b5cf16659` отправлен appeal в Trust & Safety; в биллинге виден статус `Refund`, есть риск потерять timeline контроля.
+  - Что проверить:
+    1. `2026-04-22` — если нет ответа, отправить follow-up по appeal + запросить ETA по refund
+    2. `2026-04-24` — контрольная дата (в уведомлении фигурирует удаление Francis org); проверить статус кейса и финальный verdict
+    3. После ответа — обновить `ENG-SUPPORT-ANTHROPIC-2026-04-17` и `WP-69`
+  - Артефакт:
+    - `DS-strategy/inbox/ENG-SUPPORT-ANTHROPIC-2026-04-17 (Appeal по disabled organization).md`
+    - `DS-strategy/inbox/WP-69-exocortex-pristine-alignment-with-tseren (Pristine-выравнивание экзокортекса под Церен).md`
+  - Приоритет: critical
+  - Бюджет: 15-30m
+
 - [pending] 2026-04-16: Доработать дизайн стаканов для холодных напитков и меню
   - Контекст: extracted from inbox-check 2026-04-16, кандидат #1
   - Источник: capture "По кофейне нужно обязательно доработать дизайн стаканов..."
