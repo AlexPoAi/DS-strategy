@@ -39,7 +39,7 @@
 | `extractor.session-watcher` | ✅ | каждые 5 мин |
 | `health-check` | ✅ | каждый час |
 
-**Критично:** Все требуют OAuth. При сбросе → `claude /login`.
+**Критично:** Все требуют OAuth. При сбросе → `claude auth login`.
 
 **Мониторинг:** `health-check` проверяет статус всех агентов каждый час. При ошибках отправляет уведомления (macOS + Telegram). Логи: `~/logs/health-check/`.
 
