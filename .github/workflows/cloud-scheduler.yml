@@ -29,6 +29,7 @@ on:
 
 env:
   TZ: Europe/Moscow
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 permissions:
   contents: read
