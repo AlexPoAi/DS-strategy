@@ -25,12 +25,20 @@ status: in_progress
 2. `FMT-exocortex-template`: `memory/MEMORY.md` возвращён в формат скелета (валидация проходит).
 3. `FMT-exocortex-template`: `setup/validate-template.sh` теперь проходит полностью (`ALL CHECKS PASSED`).
 4. `DS-strategy/exocortex`: устранён legacy wording в opening contract (`MEMORY.md` -> `memory/MEMORY.md`) в `protocol-open.md` и `checklists.md`.
+5. В post-check выявлен повторный drift root-копий `exocortex/*`; canonical wording восстановлен повторно и добавлен в обязательный контрольный прогон.
+
+## Внешний блокер (2026-04-17)
+
+1. На стороне Anthropic зафиксирован инцидент `organization disabled` для org `2e8cf63d-7da9-4588-8f78-243b5cf16659`.
+2. Подан официальный appeal в Trust & Safety; статус — `waiting-response`.
+3. До ответа Anthropic удерживаем инженерный контур через fallback-провайдеры и не используем чужие credentials.
 
 ## Следующий срез
 
-1. Прогнать live-postcheck экзокортекса после синка (статусы opening/runtime/extractor).
-2. Закрыть остаточные красные статусы в brain verdict (если сохраняются после нормализации маршрутов).
-3. Зафиксировать финальный closeout по WP-69 с rollback-note.
+1. Прогнать live-postcheck экзокортекса после синка (статусы opening/runtime/extractor/brain verdict).
+2. Дождаться решения по appeal и зафиксировать post-incident contract по credentials/org.
+3. Закрыть остаточные красные статусы, если воспроизводятся после нормализации маршрутов.
+4. Зафиксировать финальный closeout по WP-69 с rollback-note.
 
 ## Нанятый агент
 

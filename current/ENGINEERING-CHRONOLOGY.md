@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
-updated: 2026-04-17 21:05
+updated: 2026-04-17 22:05
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -27,6 +27,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 14. 2026-04-16: по `WP-63` на VPS зафиксирован `WAREHOUSE_REPORT_CHAT_ID` и установлен `vk-warehouse-full-loop.timer`; выявлен blocker `credentials.json` (Google OAuth) для старта sync, сервис переведён в graceful-skip до загрузки секрета.
 15. 2026-04-16: blocker `WP-63` снят — `credentials.json` и `token.pickle` доставлены на VPS, установлен Python venv для `.github/scripts`, запущен длинный warehouse sync с рабочим retry/backoff на `429`.
 16. 2026-04-17: открыт `WP-69` для pristine-выравнивания под Церен; в `FMT-exocortex-template` убраны персональные хардкоды и восстановлен skeleton-контур `memory/MEMORY.md` (`validate-template` снова зелёный), в `DS-strategy/exocortex` нормализован opening contract (`memory/MEMORY.md` вместо legacy `MEMORY.md`).
+17. 2026-04-17: в post-check `WP-69` выявлен повторный drift root-копий `exocortex/protocol-open.md` и `exocortex/checklists.md`; canonical маршрут `memory/MEMORY.md` повторно восстановлен и закреплён как обязательная проверка перед close.
+18. 2026-04-17: зафиксирован внешний blocker `Anthropic organization disabled`; оформлен support-case и отправлен appeal в Trust & Safety. До ответа включена policy: только свои credentials + fallback runtime для непрерывности инженерного контура.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -36,6 +38,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 5. `WP-63`: внедрить storage-governance склада и закрепить архитектуру поставки документов из Google Drive.
 6. `WP-64`: завершить дедупликацию инженерных задач и удерживать единый weekly closeout-порядок.
 7. `WP-69`: закрыть финальный postcheck по brain verdict после template-first выравнивания.
+8. `WP-62/WP-63`: подтвердить 2-3 стабильных warehouse цикла на VPS и закрыть production-tail.
+9. `WP-69`: дождаться verdict по Anthropic appeal и зафиксировать post-incident credentials contract.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
@@ -52,4 +56,5 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 - `DS-strategy/inbox/WP-63-warehouse-governance-and-drive-architecture-hardening (Доведение governance склада и архитектуры Google Drive).md`
 - `DS-strategy/inbox/WP-64-engineering-contour-refactor-and-closeout-plan (Рефактор инженерного контура и план закрытия хвостов).md`
 - `DS-strategy/inbox/WP-69-exocortex-pristine-alignment-with-tseren (Pristine-выравнивание экзокортекса под Церен).md`
+- `DS-strategy/inbox/ENG-SUPPORT-ANTHROPIC-2026-04-17 (Appeal по disabled organization).md`
 - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.000-repair-registry (Реестр инженерных работ по экосистеме).md`

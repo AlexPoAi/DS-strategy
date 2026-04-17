@@ -33,6 +33,24 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 45-90 мин
 
+- [in_progress] 2026-04-17: [ENGINEERING] Pristine-выравнивание экзокортекса под Церен (template-first)
+  - Контекст: бесконечные мелкие ремонты возникают из-за drift между шаблоном, форком и документацией открытия. Нужен disciplined template-first контур как у Церена.
+  - Что сделано:
+    1. В `FMT-exocortex-template` устранены персональные хардкоды и восстановлен skeleton `memory/MEMORY.md`
+    2. `setup/validate-template.sh` стабильно проходит (`ALL CHECKS PASSED`)
+    3. В `DS-strategy/exocortex` нормализуется canonical route `memory/MEMORY.md` (без legacy wording)
+  - Остаток до close:
+    1. Зафиксировать стабильный post-check по opening/runtime/brain-verdict
+    2. Дождаться ответа Trust & Safety по appeal `organization disabled` и обновить credentials-contract
+    3. Свести финальный rollback-note и closeout запись в хронологию
+  - Внешний блокер:
+    - Anthropic org `2e8cf63d-7da9-4588-8f78-243b5cf16659` в статусе disabled; appeal отправлен, ожидаем решение
+  - Артефакт:
+    - `DS-strategy/inbox/WP-69-exocortex-pristine-alignment-with-tseren (Pristine-выравнивание экзокортекса под Церен).md`
+    - `DS-strategy/inbox/ENG-SUPPORT-ANTHROPIC-2026-04-17 (Appeal по disabled organization).md`
+  - Приоритет: critical
+  - Бюджет: 2-4h
+
 - [done] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
   - Контекст: зафиксирован runtime-gap в headless day-plan и необходимость принять архитектурное решение `controlled migration` vs `pristine-reset`.
   - Что сделано:
@@ -103,7 +121,7 @@ created: 2026-03-04
   - Приоритет: critical
   - Бюджет: 3-6h
 
-- [in_progress] 2026-04-15: [ENGINEERING] Починить GitHub Actions `validate` (exit code 1) и миграцию Node 20 -> Node 24
+- [done] 2026-04-15: [ENGINEERING] Починить GitHub Actions `validate` (exit code 1) и миграцию Node 20 -> Node 24
   - Контекст: в CI пришли `1 error + 1 warning`; `validate` завершился с `exit code 1`. Дополнительно GitHub предупреждает, что `actions/checkout@v4` сейчас на Node.js 20 и с `2026-06-02` раннеры переходят на Node.js 24 по умолчанию (`Node 20` удаляется `2026-09-16`).
   - Что сделать:
     1. Поднять точный лог падения `validate` и зафиксировать root-cause ошибки
@@ -115,6 +133,9 @@ created: 2026-03-04
   - Артефакт:
     - обновлённые `.github/workflows/*.yml` (по затронутым репо)
     - карточка инженерного WP по Node24/validate
+  - Статус закрытия:
+    - в `DS-strategy/.github/workflows/cloud-scheduler.yml` добавлен `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"`
+    - workflow после правки проходит успешно, validate warning переведён в контролируемый transitional режим Node24
 
 - [done] 2026-04-15: [ENGINEERING] Opening contract regression — убрать legacy MEMORY wording в экзокортексе
   - Контекст: отчёт Exocortex `20:08` показал критичные opening-contract ошибки:

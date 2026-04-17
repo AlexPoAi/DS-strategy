@@ -1,14 +1,15 @@
 ---
 type: engineering-hit-list
-updated: 2026-04-16 20:25
+updated: 2026-04-17 22:05
 ---
 
 # Engineering Hit List (W16)
 
 ## Сначала (critical)
 1. `WP-62` + `WP-63`: закрыть складской production-tail (`WAREHOUSE_REPORT_CHAT_ID`, 2-3 стабильных цикла, Drive 00/10/90 + health digest).
-2. GitHub Actions `validate` + Node 24 migration: устранить `exit code 1` и зафиксировать безопасный переход до дедлайнов GitHub.
-3. `WP-64`: провести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
+2. `WP-69`: завершить pristine-выравнивание экзокортекса под Церен (post-check + rollback-note + финальный closeout).
+3. `Anthropic appeal`: дождаться Trust & Safety verdict по `organization disabled` и закрепить обновлённый credentials-contract.
+4. `WP-64`: довести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
 
 ## Далее (high)
 1. Connector parity Codex/Claude (`Google Drive + Gmail`) — убрать runtime gap в app-connectors.
