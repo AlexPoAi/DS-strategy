@@ -1,6 +1,6 @@
 ---
 type: runtime-mode
-updated: 2026-04-17 19:24:16
+updated: 2026-04-18 04:30:42
 provider_policy: auto
 provider_preference: codex
 runtime_policy: split
@@ -14,7 +14,7 @@ cloud_takeover_scope: product-only
 - Primary provider: `codex`
 - Why: `both_available_preference_codex`
 - Codex: `available` (`login_ok`)
-- Claude: `available` (`auth_helper_ok`)
+- Claude: `available` (`auth_status_ok`)
 
 ## Runtime Plane
 
