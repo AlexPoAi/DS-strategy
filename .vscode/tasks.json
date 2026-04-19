@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Codex: Open DS-strategy (Desktop)",
+      "type": "shell",
+      "command": "codex app \"${workspaceFolder}\"",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "Exocortex: Open Day (morning)",
+      "type": "shell",
+      "command": "bash /Users/alexander/Github/FMT-exocortex-template/roles/strategist/scripts/strategist.sh morning",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "Exocortex: Work (day-plan)",
+      "type": "shell",
+      "command": "bash /Users/alexander/Github/FMT-exocortex-template/roles/strategist/scripts/strategist.sh day-plan",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "Exocortex: Notes Review",
+      "type": "shell",
+      "command": "bash /Users/alexander/Github/FMT-exocortex-template/roles/strategist/scripts/strategist.sh note-review",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}
