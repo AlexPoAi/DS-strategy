@@ -3,6 +3,7 @@
 > **Триггер:** «закрываю», «всё», «закрывай», или РП завершён.
 > **«Закрывай» = push сразу без вопросов.**
 > **Runtime contract:** закрытие provider-agnostic. Если текущий агент работает в `Codex`, протокол выполняется прямо там. `claude /login` нужен только для Claude-specific route и не должен блокировать close в `Codex`.
+> **Анти-петля (блокирующее):** если получен ответ `Not logged in · Please run /login`, ЗАПРЕЩЕНО повторять тот же slash-route. Агент обязан сразу перейти на manual execution этого протокола по шагам в текущем рабочем агенте.
 
 ---
 
@@ -39,7 +40,7 @@
    - in_progress + ≥2 сессий → обновить `inbox/WP-{N}-{slug}.md`
    - done → `mv inbox/WP-{N}-*.md → archive/wp-contexts/`
 
-> Этот список шагов и есть канонический route для любого агента. `/run-protocol day-close` — только optional convenience layer для Claude-среды. В `Codex` и других агентах шаги выполняются вручную по этому файлу.
+> Этот список шагов и есть канонический route. `/run-protocol *` и Claude-route не являются обязательными.
 
 ---
 
