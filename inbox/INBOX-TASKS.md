@@ -143,6 +143,23 @@ created: 2026-03-04
     - главная weak zone остаётся `Engineering / utilities`;
     - следующий шаг: сделать skill `Knowledge Registry Curator` `SRT-aware`.
 
+- [done] 2026-04-19: [SYSTEM][AGENCY] Сделать Knowledge Registry Curator SRT-aware
+  - Контекст: после `WP-87` и `WP-88` стало видно, что `Knowledge Registry Curator` полезен как registry/handoff слой, но ему не хватает тонкой `SRT`-раскладки для зрелых domain slices.
+  - Что сделать:
+    1. Добавить в skill поле `srt_slot`
+    2. Зафиксировать `SRT` как placement layer, а не source-of-truth
+    3. Обновить карточку агента без расширения роли сверх меры
+    4. Удержать guardrails против смешения с `FPF/SPF` и weekly-решениями
+  - Артефакт:
+    - `DS-strategy/inbox/WP-90-knowledge-registry-curator-srt-aware-upgrade (SRT-aware апгрейд Knowledge Registry Curator).md`
+  - Приоритет: high
+  - Бюджет: 45-75 мин
+  - Статус закрытия:
+    - в skill добавлен `srt_slot`;
+    - добавлен явный `SRT Guardrail`;
+    - карточка агента обновлена без превращения Библиотекаря в владельца domain boundaries;
+    - следующий шаг: прогнать новый live-slice уже с `srt_slot`.
+
 - [pending] 2026-04-19: [ENGINEERING][FUTURE] Подготовить агентный слой и skills для SRT и SPF
   - Контекст: после предметного pilot по `Park` стало видно, что `SRT` и `SPF` могут стать отдельными методологическими агентными слоями, но делать это раньше времени опасно. Сначала нужно доказать полезность модели на живом домене, затем уже поднимать инженерную реализацию.
   - Что сделать:
