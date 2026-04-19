@@ -1,22 +1,22 @@
 # Статус агентов
 
-- Мозг экзокортекса: **🟡 требует внимания**
+- Мозг экзокортекса: **🟢 зелёный**
 - Планировщик: **🟢 зелёный**
 - Проверка среды: **🟢 зелёный**
 - Помощник авторизации: **🟢 зелёный**
 - Canonical protocol route: **🟢 зелёный**
-- Runtime arbiter: **🟡 требует внимания**
+- Runtime arbiter: **🟢 зелёный**
 - Статус-артефакты: **🟢 зелёный**
 - Стратег: **🟢 зелёный**
 - Экстрактор: **🟢 зелёный**
-- Обновлено: **2026-04-19 14:58**
+- Обновлено: **2026-04-19 22:50**
 
 ## Runtime
 
 - Provider primary: **codex**
-- Provider reason: **only_codex_available**
+- Provider reason: **both_available_preference_codex**
 - Codex: **available**
-- Claude: **degraded**
+- Claude: **available**
 - Runtime policy: **split**
 - Local control plane: **available**
 - Cloud RAG: **unknown**

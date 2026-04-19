@@ -2,6 +2,7 @@
 
 > **Триггер:** «закрываю», «всё», «закрывай», или РП завершён.
 > **«Закрывай» = push сразу без вопросов.**
+> **Runtime contract:** закрытие provider-agnostic. Если текущий агент работает в `Codex`, протокол выполняется прямо там. `claude /login` нужен только для Claude-specific route и не должен блокировать close в `Codex`.
 
 ---
 
@@ -16,6 +17,8 @@
 ---
 
 ## Алгоритм Close
+
+0. **Runtime preflight:** если `Claude` не залогинен, но текущий агент/`Codex` работает — продолжать в текущем агенте. Truthful blocker только если нет ни одного рабочего аутентифицированного runtime.
 
 1. **Pull:** `cd DS-strategy && git pull --rebase`
 2. **Knowledge Extraction:**
@@ -35,6 +38,8 @@
 8. **WP Context File:**
    - in_progress + ≥2 сессий → обновить `inbox/WP-{N}-{slug}.md`
    - done → `mv inbox/WP-{N}-*.md → archive/wp-contexts/`
+
+> Если `/run-protocol day-close` или Claude-route недоступны, этот список шагов выполняется вручную в текущем аутентифицированном агенте и считается каноническим safe-route.
 
 ---
 

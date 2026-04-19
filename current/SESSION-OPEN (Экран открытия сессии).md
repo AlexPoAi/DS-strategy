@@ -1,11 +1,11 @@
 # Экзокортекс: открытие сессии
 
-## 🟡 Мозг экзокортекса — требует внимания
+## 🟢 Мозг экзокортекса — готов к работе
 
 - Режим открытия: **Продолжать только после явного подтверждения пользователя.**
-- Итоговый verdict: **🟡 yellow**
-- Время проверки: **2026-04-19 14:58:07**
-- Последнее обновление статус-артефактов: **2026-04-19 14:58:07**
+- Итоговый verdict: **🟢 green**
+- Время проверки: **2026-04-19 22:50:11**
+- Последнее обновление статус-артефактов: **2026-04-19 22:50:11**
 
 ## Приборная панель среды
 
@@ -13,12 +13,12 @@
 - Проверка среды: **🟢 green**
 - Помощник авторизации: **🟢 green**
 - Canonical protocol route: **🟢 green**
-- Runtime arbiter: **🟡 yellow**
-- Статус-артефакты: **🟡 yellow**
+- Runtime arbiter: **🟢 green**
+- Статус-артефакты: **🟢 green**
 
 ## Runtime mode
 
-- Provider plane: **primary=codex, codex=available, claude=degraded**
+- Provider plane: **primary=codex, codex=available, claude=available**
 - Runtime policy: **split**
 - Local control plane: **available**
 - Cloud RAG: **unknown**
