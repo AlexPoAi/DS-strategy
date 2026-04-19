@@ -2,6 +2,28 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Codex: New Agent (one click)",
+      "type": "shell",
+      "command": "open 'vscode://command/chatgpt.newCodexPanel'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "label": "Codex: New Thread (sidebar)",
+      "type": "shell",
+      "command": "open 'vscode://command/chatgpt.newChat'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
       "label": "Codex: Open DS-strategy (Desktop)",
       "type": "shell",
       "command": "codex app \"${workspaceFolder}\"",
