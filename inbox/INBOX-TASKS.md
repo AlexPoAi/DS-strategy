@@ -38,6 +38,11 @@ created: 2026-03-04
     6. Добавить проверку после перезапуска VS Code и VPN-flap (устойчивость состояния)
   - Артефакт:
     - `DS-strategy/inbox/WP-70-codex-pro-activation-and-vscode-ux-hardening (Активация Codex Pro и hardening UX в VS Code).md`
+    - `DS-strategy/current/CODEX-PRO-RUNBOOK.md`
+  - Прогресс:
+    - runbook + recovery для `loading model` зафиксированы;
+    - naming/storage контракт для визуалов зафиксирован;
+    - остаток до close: один живой image-пилот с ссылкой на визуальный артефакт в отчёте.
   - Приоритет: critical
   - Бюджет: 2-4h
 

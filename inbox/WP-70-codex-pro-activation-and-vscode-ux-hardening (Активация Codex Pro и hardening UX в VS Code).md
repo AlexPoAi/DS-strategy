@@ -33,5 +33,12 @@ updated: 2026-04-19
 
 # Next slice
 
-1. Довести status-check для `loading model` зависаний и добавить recovery-runbook.
-2. Описать naming/storage стандарт для визуалов (где лежат, как ссылаться в отчётах).
+1. ✅ Довести status-check для `loading model` зависаний и добавить recovery-runbook.
+2. ✅ Описать naming/storage стандарт для визуалов (где лежат, как ссылаться в отчётах).
+3. ⏳ Провести live-пилот image-workflow с реальным визуальным артефактом в отчёте (последний незакрытый acceptance).
+
+# Прогресс (2026-04-19)
+
+1. Codex-first запуск и hotkey `New Codex Agent` зафиксированы.
+2. Добавлен runbook: `DS-strategy/current/CODEX-PRO-RUNBOOK.md`.
+3. UX-контур стабилизирован для ежедневной работы; в открытом хвосте остаётся только live-пилот визуального артефакта.
