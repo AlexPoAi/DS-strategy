@@ -84,6 +84,16 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
 - `vk-warehouse-full-loop.service` запущен, выполняет длинный sync (виден активный прогон с `429` retry/backoff).
 - Следующий шаг для финального acceptance: зафиксировать завершение минимум 2-3 циклов подряд без hard-fail и убедиться, что summary/telegram-routing обновляются стабильно.
 
+## Прогресс на 2026-04-19 15:45
+- Выполнен VPS post-check (`72.56.4.61`):
+  1. `vk-warehouse-full-loop.timer` — `active (waiting)`, запуск каждые 30 минут подтверждён.
+  2. `vk-warehouse-full-loop.service` выполняется как oneshot и завершает цикл без hard-fail.
+  3. Логи в `/opt/vk-offee/VK-offee/.github/scripts/sync.log` показывают: авторизация Google успешна, но в папке `Новое` найдено `0` таблиц (`Найдено таблиц: 0`).
+  4. Telegram summary корректно уходит в `skip:no-new-cards`, когда новых входов нет.
+- Новый операционный фокус:
+  1. Подтвердить, что новые входящие от Жанны появляются именно в целевой папке `Новое`.
+  2. Проверить ingestion не только Google Sheets, но и `.xlsx/.csv` источников в production-копии `/opt/vk-offee/VK-offee` (сверка версии `sync-google-sheets.py`).
+
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.
 - Ошибочные/непарсабельные документы фиксируются в DLQ и не теряются.

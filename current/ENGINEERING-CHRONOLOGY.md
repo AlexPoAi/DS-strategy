@@ -32,6 +32,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 19. 2026-04-19: выполнен Codex-first UX hardening в VS Code (startup без Welcome, one-click/hotkey на `New Codex Agent`, удаление конфликтных chat-расширений) и открыт `WP-70` для production-мультимодальности Codex Pro.
 20. 2026-04-19: как приоритет недели W16 открыт `WP-71` — предметные агенты и skill-контур для `VK-offee` (бар/кухня/сервис/маркетинг/финансы) с привязкой к репозиторию и практическим артефактам.
 21. 2026-04-19: `WP-64` закрыт — выполнена повторная дедупликация `INBOX-TASKS`, сняты устаревшие инженерные pending и нормализован набор `in_progress` до фактически активных контуров.
+22. 2026-04-19: открыт `WP-75` под складского предметного агента (`Warehouse Demand Analyst`) и проведён VPS post-check: `vk-warehouse-full-loop.timer` активен, но в папке `Новое` сейчас `0` таблиц; следующий шаг — подтверждение intake для `.xlsx/.csv` и появление ABC-файлов в рабочем окне.
+23. 2026-04-19: в план дня добавлен критичный `WP-76` после red-сигнала Exocortex (`Планировщик экзокортекса не загружен`) с обязательным bootstrap recovery и post-check.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -45,6 +47,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 9. `WP-69`: дождаться verdict по Anthropic appeal и зафиксировать post-incident credentials contract.
 10. `WP-70`: подтвердить стабильность Codex UX после restart/VPN-flap и зафиксировать image-workflow runbook.
 11. `WP-71`: материализовать минимум 3 доменных агента VK-coffee и провести live-пилот.
+12. `WP-75`: закрепить складской агентный протокол и получить стабильные actionable карточки на каждой новой поставке данных Жанны.
+13. `WP-76`: восстановить загрузку планировщика экзокортекса и закрыть red-сигнал в health-report.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
