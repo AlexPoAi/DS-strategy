@@ -58,6 +58,19 @@ created: 2026-03-04
   - Приоритет: medium
   - Бюджет: 15-30 мин
 
+- [done] 2026-04-19: [SYSTEM][AGENCY] Создать skill для Knowledge Registry Curator
+  - Контекст: после создания агента `Knowledge Registry Curator` нужен отдельный repeatable skill, чтобы агент стабильно вёл `Notes Registry`, строил `Domain Map` и готовил strategist handoff.
+  - Что сделать:
+    1. Создать skill `notes-registry-and-domain-mapping`
+    2. Зафиксировать входы, выходы, режимы работы и quality gates
+    3. Привязать skill к карточке агента
+    4. Отразить skill как будущий кандидат на миграцию в `PACK-agent-skills`
+  - Артефакт:
+    - `DS-strategy/inbox/WP-84-knowledge-registry-curator-skill (Skill для Knowledge Registry Curator).md`
+    - `DS-agent-workspace/agency/skills/knowledge-registry-curator/notes-registry-and-domain-mapping.md`
+  - Приоритет: high
+  - Бюджет: 45-75 мин
+
 - [in_progress] 2026-04-19: [ENGINEERING][CRITICAL] Восстановить загрузку планировщика экзокортекса
   - Контекст: в отчёте Экзокортекса `15:46` пришёл красный сигнал `Планировщик экзокортекса не загружен`.
   - Что сделать:

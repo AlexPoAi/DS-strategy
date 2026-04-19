@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** `WP-80` закрыт: внутренний агент `Knowledge Registry Curator` создан и внесён в агентский реестр.
+**Статус:** `WP-84` закрыт: для `Knowledge Registry Curator` создан первый skill `notes-registry-and-domain-mapping`.
 **Активный РП:** новый bounded slice ещё не открыт.
-**Следующий шаг:** открыть отдельный slice на `skill` для `Knowledge Registry Curator`; затем отдельно отразить capability в инженерном контуре.
+**Следующий шаг:** открыть первый live-slice на применение skill к реальному notes/backlog набору и отдельно удержать будущую миграцию в `PACK-agent-skills`.
 
 ---
 
@@ -130,3 +130,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 16:18] По новому slice `WP-80` согласовано русское описание агента `Библиотекарь`; `Supreme HR` подтвердил slug `knowledge-registry-curator`, контур `Extractor -> Knowledge Registry Curator -> Strategist` и внешний benchmark `ZK Steward`.
 - ✅ [2026-04-19 16:26] `WP-80` закрыт: создан агент `Knowledge Registry Curator`, карточка добавлена в `DS-agent-workspace/agency/agents/`, реестр агентства обновлён; следующий обязательный шаг — отдельный `skill` для `Knowledge Registry Curator`.
 - ✅ [2026-04-19 16:34] `WP-83` закрыт: primary naming выровнен на английский (`Knowledge Registry Curator`), русское `Библиотекарь` оставлено как вторичное описание роли.
+- ✅ [2026-04-19 16:48] `WP-84` закрыт: создан skill `notes-registry-and-domain-mapping` для `Knowledge Registry Curator`, skill привязан к карточке агента и помечен как кандидат на будущую миграцию в `PACK-agent-skills` (`WP-82`).
