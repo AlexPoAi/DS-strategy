@@ -1,5 +1,6 @@
 {
   "workbench.startupEditor": "none",
   "window.restoreWindows": "all",
-  "window.newWindowProfile": "Default"
+  "window.newWindowProfile": "Default",
+  "chatgpt.openOnStartup": true
 }
