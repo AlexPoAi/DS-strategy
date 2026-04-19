@@ -19,24 +19,27 @@
 
 ## Алгоритм Close
 
-0. **Runtime preflight:** если `Claude` не залогинен, но текущий агент/`Codex` работает — продолжать в текущем агенте. Truthful blocker только если нет ни одного рабочего аутентифицированного runtime.
+0. **Auth-independent entrypoint (обязательно):**
+   - `bash ~/Github/FMT-exocortex-template/scripts/day-close-safe.sh`
+   - Этот шаг не требует `claude /login` и не использует slash-route.
+1. **Runtime preflight:** если `Claude` не залогинен, но текущий агент/`Codex` работает — продолжать в текущем агенте. Truthful blocker только если нет ни одного рабочего аутентифицированного runtime.
 
-1. **Pull:** `cd DS-strategy && git pull --rebase`
-2. **Knowledge Extraction:**
+2. **Pull:** `cd DS-strategy && git pull --rebase`
+3. **Knowledge Extraction:**
    - Собрать captures
    - Классифицировать → маршрутизировать
    - Показать Extraction Report → одобрение
    - Применить (accept → Pack/CLAUDE.md/memory)
-3. **Обновить SESSION-CONTEXT.md:**
+4. **Обновить SESSION-CONTEXT.md:**
    - "Где мы находимся" → timestamp
    - "Что делаем" → статус РП
    - "Следующий шаг" → что делать дальше
    - Добавить: `- 🔒 [HH:MM] Сессия закрыта`
-4. **Обновить `memory/MEMORY.md`** (статус РП)
-5. **Закоммитить** (с подтверждением)
-6. **Обновить WeekPlan** (статусы РП)
-7. **Backup:** `memory/ + CLAUDE.md → DS-strategy/exocortex/`
-8. **WP Context File:**
+5. **Обновить `memory/MEMORY.md`** (статус РП)
+6. **Закоммитить** (с подтверждением)
+7. **Обновить WeekPlan** (статусы РП)
+8. **Backup:** `memory/ + CLAUDE.md → DS-strategy/exocortex/`
+9. **WP Context File:**
    - in_progress + ≥2 сессий → обновить `inbox/WP-{N}-{slug}.md`
    - done → `mv inbox/WP-{N}-*.md → archive/wp-contexts/`
 
