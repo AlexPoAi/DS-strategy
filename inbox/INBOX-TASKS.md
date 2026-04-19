@@ -99,6 +99,32 @@ created: 2026-03-04
     - подтверждено, что skill даёт полезный domain view;
     - следующий обязательный хвост: `Knowledge Registry Curator 24/7 VPS runtime`.
 
+- [done] 2026-04-19: [PARK][REGISTRY] Собрать первый domain-subdomain map для Knowledge Registry Curator
+  - Контекст: после методологической цепочки `FPF -> SRT -> SPF` домен `Park` стал пригоден для первого pilot map. Нужно было собрать поддомены, coverage state, existing registries, missing layers и проверить, не перебивает ли новая модель других агентов и соответствует ли эталону экзокортекса.
+  - Что сделать:
+    1. Собрать `Park domain map`
+    2. Зафиксировать `coverage_state` по поддоменам
+    3. Выделить `existing registries` и `missing layers`
+    4. Прогнать `interference check` и `etalon check`
+  - Артефакт:
+    - `DS-strategy/inbox/WP-87-park-domain-subdomain-map-for-curator (Park domain-subdomain map для Knowledge Registry Curator).md`
+  - Приоритет: high
+  - Бюджет: 45-90 мин
+  - Статус закрытия:
+    - первый `Park` pilot map собран;
+    - доказано, что `Knowledge Registry Curator` можно делать `SRT-aware`, не перебивая `Extractor`, `Strategist` и `Park Architect`;
+    - следующий шаг: bounded deep-slice по `Park` на `10-20` живых entries.
+
+- [pending] 2026-04-19: [ENGINEERING][FUTURE] Подготовить агентный слой и skills для SRT и SPF
+  - Контекст: после предметного pilot по `Park` стало видно, что `SRT` и `SPF` могут стать отдельными методологическими агентными слоями, но делать это раньше времени опасно. Сначала нужно доказать полезность модели на живом домене, затем уже поднимать инженерную реализацию.
+  - Что сделать:
+    1. Вернуться к этой задаче после подтверждённого pilot-а `Park`
+    2. Спроектировать отдельного `SRT`-агента и его skill
+    3. Спроектировать отдельного `SPF`-агента и его skill
+    4. Сверить это с эталоном экзокортекса и interference-рискaми
+  - Приоритет: medium
+  - Бюджет: TBD after Park pilot
+
 - [in_progress] 2026-04-19: [ENGINEERING][CRITICAL] Восстановить загрузку планировщика экзокортекса
   - Контекст: в отчёте Экзокортекса `15:46` пришёл красный сигнал `Планировщик экзокортекса не загружен`.
   - Что сделать:

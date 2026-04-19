@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** `WP-85` закрыт: выполнен первый live-slice `Knowledge Registry Curator` на реальном notes/backlog слое.
+**Статус:** `WP-87` закрыт: собран первый `Park domain-subdomain map` для `Knowledge Registry Curator` с `coverage_state`, `missing layers`, `interference check` и `etalon check`.
 **Активный РП:** новый bounded slice ещё не открыт.
-**Следующий шаг:** открыть более глубокий registry-slice на 10-20 реальных entries и отдельно открыть инженерный runtime-slice `Knowledge Registry Curator 24/7 VPS`.
+**Следующий шаг:** открыть bounded deep-slice по `Park` на `10-20` живых entries; будущую инженерную задачу по `SRT/SPF` агентам держать в `INBOX` до завершения предметного пилота.
 
 ---
 
@@ -132,3 +132,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 16:34] `WP-83` закрыт: primary naming выровнен на английский (`Knowledge Registry Curator`), русское `Библиотекарь` оставлено как вторичное описание роли.
 - ✅ [2026-04-19 16:48] `WP-84` закрыт: создан skill `notes-registry-and-domain-mapping` для `Knowledge Registry Curator`, skill привязан к карточке агента и помечен как кандидат на будущую миграцию в `PACK-agent-skills` (`WP-82`).
 - ✅ [2026-04-19 17:02] `WP-85` закрыт: выполнен первый live rollout skill на реальном strategic slice; собраны `Notes Registry Update`, `Domain Map` и `Strategist Handoff`; отдельно зафиксировано новое обязательное требование — будущий `Knowledge Registry Curator 24/7 VPS runtime`.
+- ✅ [2026-04-19 17:34] `WP-87` закрыт: после цепочки `FPF -> SRT -> SPF` собран первый `Park domain-subdomain map`; `Knowledge Registry Curator` переосмыслен как `SRT-aware` registry-слой, а будущая инженерная задача по `SRT/SPF` агентам вынесена в `INBOX` как отдельный future task.
