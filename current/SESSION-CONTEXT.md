@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** `WP-80` закрыт: внутренний агент `Knowledge Registry Curator — Библиотекарь` создан и внесён в агентский реестр.
+**Статус:** `WP-80` закрыт: внутренний агент `Knowledge Registry Curator` создан и внесён в агентский реестр.
 **Активный РП:** новый bounded slice ещё не открыт.
-**Следующий шаг:** открыть отдельный slice на `skill` для Библиотекаря; затем отдельно отразить capability в инженерном контуре.
+**Следующий шаг:** открыть отдельный slice на `skill` для `Knowledge Registry Curator`; затем отдельно отразить capability в инженерном контуре.
 
 ---
 
@@ -127,5 +127,6 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 15:06] Создан draft `WeekPlan W17 2026-04-20.md`: труба Парка зафиксирована как критичный фокус следующей недели вместе с `WP-59` и `WP-56`.
 - ✅ [2026-04-19 15:19] Полная стратегическая сессия W16 материализована в `WeekReport W16 2026-04-19`: итоги недели, заметки недели, truthful carry-over и фокус W17 сведены в один weekly-артефакт.
 - ✅ [2026-04-19 16:05] `WP-79` закрыт: создан roadmap capability `Notes Registry`, нанят `Supreme HR` на подбор ролей, подтверждён DS-native gap и рекомендован новый внутренний агент `Knowledge Registry Curator`; внешний `Workflow Architect` оставлен как опциональный следующий slice.
-- ✅ [2026-04-19 16:18] По новому slice `WP-80` согласовано пользовательское имя агента `Библиотекарь`; `Supreme HR` подтвердил slug `knowledge-registry-curator`, контур `Extractor -> Библиотекарь -> Strategist` и внешний benchmark `ZK Steward`.
-- ✅ [2026-04-19 16:26] `WP-80` закрыт: создан агент `Knowledge Registry Curator — Библиотекарь`, карточка добавлена в `DS-agent-workspace/agency/agents/`, реестр агентства обновлён; следующий обязательный шаг — отдельный `skill` для Библиотекаря.
+- ✅ [2026-04-19 16:18] По новому slice `WP-80` согласовано русское описание агента `Библиотекарь`; `Supreme HR` подтвердил slug `knowledge-registry-curator`, контур `Extractor -> Knowledge Registry Curator -> Strategist` и внешний benchmark `ZK Steward`.
+- ✅ [2026-04-19 16:26] `WP-80` закрыт: создан агент `Knowledge Registry Curator`, карточка добавлена в `DS-agent-workspace/agency/agents/`, реестр агентства обновлён; следующий обязательный шаг — отдельный `skill` для `Knowledge Registry Curator`.
+- ✅ [2026-04-19 16:34] `WP-83` закрыт: primary naming выровнен на английский (`Knowledge Registry Curator`), русское `Библиотекарь` оставлено как вторичное описание роли.

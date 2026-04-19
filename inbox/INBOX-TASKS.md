@@ -30,12 +30,12 @@ created: 2026-03-04
     - roadmap materialized;
     - `Supreme HR` подтвердил: roadmap ведёт `Strategist`, на workflow можно брать внешний `Workflow Architect`, а DS-native gap закрывается новым агентом `Knowledge Registry Curator`.
 
-- [done] 2026-04-19: [SYSTEM][AGENCY] Создать внутреннего агента Библиотекарь для notes registry
+- [done] 2026-04-19: [SYSTEM][AGENCY] Создать внутреннего агента Knowledge Registry Curator для notes registry
   - Контекст: после `WP-79` и HR-verdict подтверждено, что для DS-native контура нужен отдельный агент между `Extractor` и `Strategist`, который ведёт реестр заметок, доменную карту и pack coverage.
   - Что сделать:
-    1. Создать карточку агента `Knowledge Registry Curator — Библиотекарь`
+    1. Создать карточку агента `Knowledge Registry Curator`
     2. Добавить агента в `agency/REGISTRY.md`
-    3. Зафиксировать его место в контуре `Extractor -> Библиотекарь -> Strategist`
+    3. Зафиксировать его место в контуре `Extractor -> Knowledge Registry Curator -> Strategist`
     4. Подготовить переход к следующему slice на skill
   - Артефакт:
     - `DS-strategy/inbox/WP-80-knowledge-librarian-agent-creation (Создание агента Библиотекарь).md`
@@ -43,9 +43,20 @@ created: 2026-03-04
   - Приоритет: high
   - Бюджет: 45-75 мин
   - Статус закрытия:
-    - агент `Knowledge Registry Curator — Библиотекарь` создан;
+    - агент `Knowledge Registry Curator` создан;
     - добавлен в `agency/REGISTRY.md`;
-    - следующий обязательный slice: `skill` для Библиотекаря.
+    - следующий обязательный slice: `skill` для `Knowledge Registry Curator`.
+
+- [done] 2026-04-19: [SYSTEM][AGENCY] Выровнять primary naming агента Knowledge Registry Curator
+  - Контекст: после создания агента стало видно, что контур ролей смешивает английские и русские имена (`Extractor -> Библиотекарь -> Strategist`). Для устойчивого агентного слоя основное имя роли должно быть английским.
+  - Что сделать:
+    1. Выровнять ключевые стратегические артефакты под primary naming `Knowledge Registry Curator`
+    2. Оставить `Библиотекарь` как русское описание, а не основное имя
+    3. Зафиксировать cleanup отдельным маленьким WP
+  - Артефакт:
+    - `DS-strategy/inbox/WP-83-knowledge-registry-curator-primary-naming-cleanup (Выравнивание primary naming для Knowledge Registry Curator).md`
+  - Приоритет: medium
+  - Бюджет: 15-30 мин
 
 - [in_progress] 2026-04-19: [ENGINEERING][CRITICAL] Восстановить загрузку планировщика экзокортекса
   - Контекст: в отчёте Экзокортекса `15:46` пришёл красный сигнал `Планировщик экзокортекса не загружен`.
