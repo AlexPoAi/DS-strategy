@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** `WP-84` закрыт: для `Knowledge Registry Curator` создан первый skill `notes-registry-and-domain-mapping`.
+**Статус:** `WP-85` закрыт: выполнен первый live-slice `Knowledge Registry Curator` на реальном notes/backlog слое.
 **Активный РП:** новый bounded slice ещё не открыт.
-**Следующий шаг:** открыть первый live-slice на применение skill к реальному notes/backlog набору и отдельно удержать будущую миграцию в `PACK-agent-skills`.
+**Следующий шаг:** открыть более глубокий registry-slice на 10-20 реальных entries и отдельно открыть инженерный runtime-slice `Knowledge Registry Curator 24/7 VPS`.
 
 ---
 
@@ -131,3 +131,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 16:26] `WP-80` закрыт: создан агент `Knowledge Registry Curator`, карточка добавлена в `DS-agent-workspace/agency/agents/`, реестр агентства обновлён; следующий обязательный шаг — отдельный `skill` для `Knowledge Registry Curator`.
 - ✅ [2026-04-19 16:34] `WP-83` закрыт: primary naming выровнен на английский (`Knowledge Registry Curator`), русское `Библиотекарь` оставлено как вторичное описание роли.
 - ✅ [2026-04-19 16:48] `WP-84` закрыт: создан skill `notes-registry-and-domain-mapping` для `Knowledge Registry Curator`, skill привязан к карточке агента и помечен как кандидат на будущую миграцию в `PACK-agent-skills` (`WP-82`).
+- ✅ [2026-04-19 17:02] `WP-85` закрыт: выполнен первый live rollout skill на реальном strategic slice; собраны `Notes Registry Update`, `Domain Map` и `Strategist Handoff`; отдельно зафиксировано новое обязательное требование — будущий `Knowledge Registry Curator 24/7 VPS runtime`.

@@ -35,6 +35,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 22. 2026-04-19: открыт `WP-75` под складского предметного агента (`Warehouse Demand Analyst`) и проведён VPS post-check: `vk-warehouse-full-loop.timer` активен, но в папке `Новое` сейчас `0` таблиц; следующий шаг — подтверждение intake для `.xlsx/.csv` и появление ABC-файлов в рабочем окне.
 23. 2026-04-19: в план дня добавлен критичный `WP-76` после red-сигнала Exocortex (`Планировщик экзокортекса не загружен`) с обязательным bootstrap recovery и post-check.
 24. 2026-04-19: для нового агента `Knowledge Registry Curator` создан первый агентский skill `notes-registry-and-domain-mapping`; capability зафиксирован до будущей миграции в `PACK-agent-skills` (`WP-82`).
+25. 2026-04-19: выполнен первый live proof run `Knowledge Registry Curator`; дополнительно зафиксировано новое обязательное инженерное требование — этот агент должен получить отдельный `24/7 VPS runtime` контур.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.

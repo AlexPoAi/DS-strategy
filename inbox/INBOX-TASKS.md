@@ -71,6 +71,22 @@ created: 2026-03-04
   - Приоритет: high
   - Бюджет: 45-75 мин
 
+- [done] 2026-04-19: [SYSTEM][AGENCY] Провести первый live-slice Knowledge Registry Curator
+  - Контекст: после создания skill нужен был первый truthful proof run на реальном notes/backlog слое, чтобы проверить, даёт ли новый capability полезный bounded output Стратегу.
+  - Что сделать:
+    1. Взять текущий стратегический срез (`SESSION-CONTEXT`, `INBOX`, `WeekPlan`, `UNPROCESSED-NOTES-REPORT`)
+    2. Собрать representative `Notes Registry Update`
+    3. Собрать `Domain Map`
+    4. Зафиксировать `Strategist Handoff`
+  - Артефакт:
+    - `DS-strategy/inbox/WP-85-knowledge-registry-curator-first-live-slice (Первый live-slice Knowledge Registry Curator).md`
+  - Приоритет: high
+  - Бюджет: 45-90 мин
+  - Статус закрытия:
+    - первый proof run выполнен;
+    - подтверждено, что skill даёт полезный domain view;
+    - следующий обязательный хвост: `Knowledge Registry Curator 24/7 VPS runtime`.
+
 - [in_progress] 2026-04-19: [ENGINEERING][CRITICAL] Восстановить загрузку планировщика экзокортекса
   - Контекст: в отчёте Экзокортекса `15:46` пришёл красный сигнал `Планировщик экзокортекса не загружен`.
   - Что сделать:
