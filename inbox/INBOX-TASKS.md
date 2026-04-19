@@ -115,6 +115,22 @@ created: 2026-03-04
     - доказано, что `Knowledge Registry Curator` можно делать `SRT-aware`, не перебивая `Extractor`, `Strategist` и `Park Architect`;
     - следующий шаг: bounded deep-slice по `Park` на `10-20` живых entries.
 
+- [done] 2026-04-19: [PARK][REGISTRY] Собрать глубокий Park registry slice на 15 живых entries
+  - Контекст: после `WP-87` нужно было проверить модель не только на уровне subdomain-карты, но и на уровне конкретных документов, коммуникаций и blocker-карточек.
+  - Что сделать:
+    1. Выбрать 10-20 живых entries из Park
+    2. Присвоить им `subdomain`, `coverage_state`, `status`, `primary_source`, `next_action`
+    3. Проверить, выдерживает ли модель уровень конкретных артефактов
+    4. Подготовить strategist handoff
+  - Артефакт:
+    - `DS-strategy/inbox/WP-88-park-deep-registry-slice-15-live-entries (Глубокий Park registry slice на 15 живых entries).md`
+  - Приоритет: high
+  - Бюджет: 45-90 мин
+  - Статус закрытия:
+    - модель выдержала уровень конкретных артефактов;
+    - главная weak zone остаётся `Engineering / utilities`;
+    - следующий шаг: сделать skill `Knowledge Registry Curator` `SRT-aware`.
+
 - [pending] 2026-04-19: [ENGINEERING][FUTURE] Подготовить агентный слой и skills для SRT и SPF
   - Контекст: после предметного pilot по `Park` стало видно, что `SRT` и `SPF` могут стать отдельными методологическими агентными слоями, но делать это раньше времени опасно. Сначала нужно доказать полезность модели на живом домене, затем уже поднимать инженерную реализацию.
   - Что сделать:
