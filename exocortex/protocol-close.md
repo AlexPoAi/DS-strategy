@@ -39,7 +39,7 @@
    - in_progress + ≥2 сессий → обновить `inbox/WP-{N}-{slug}.md`
    - done → `mv inbox/WP-{N}-*.md → archive/wp-contexts/`
 
-> Если `/run-protocol day-close` или Claude-route недоступны, этот список шагов выполняется вручную в текущем аутентифицированном агенте и считается каноническим safe-route.
+> Этот список шагов и есть канонический route для любого агента. `/run-protocol day-close` — только optional convenience layer для Claude-среды. В `Codex` и других агентах шаги выполняются вручную по этому файлу.
 
 ---
 
