@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
- updated: 2026-04-19 16:48
+ updated: 2026-04-19 22:30
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -36,6 +36,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 23. 2026-04-19: в план дня добавлен критичный `WP-76` после red-сигнала Exocortex (`Планировщик экзокортекса не загружен`) с обязательным bootstrap recovery и post-check.
 24. 2026-04-19: для нового агента `Knowledge Registry Curator` создан первый агентский skill `notes-registry-and-domain-mapping`; capability зафиксирован до будущей миграции в `PACK-agent-skills` (`WP-82`).
 25. 2026-04-19: выполнен первый live proof run `Knowledge Registry Curator`; дополнительно зафиксировано новое обязательное инженерное требование — этот агент должен получить отдельный `24/7 VPS runtime` контур.
+26. 2026-04-19: по `WP-75` материализован supplier-layer склада — архитектура цикла кладовщика, supplier map по PDF-накладным, индекс supplier cards, manager-friendly карточки поставщиков с оборотом периода и частично подтверждёнными контактами из баристского supplier-файла.
+27. 2026-04-19: в `WP-89` зафиксирован следующий системный slice — единый `DOCUMENT-REGISTRY` по всей базе знаний как master-layer над локальными registry по доменам.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -51,6 +53,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 11. `WP-71`: материализовать минимум 3 доменных агента VK-coffee и провести live-пилот.
 12. `WP-75`: закрепить складской агентный протокол и получить стабильные actionable карточки на каждой новой поставке данных Жанны.
 13. `WP-76`: восстановить загрузку планировщика экзокортекса и закрыть red-сигнал в health-report.
+14. `WP-75`: довести decision-layer `low-stock -> supplier -> contact -> deadline` и получить первую manager-ready закупочную карточку.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.

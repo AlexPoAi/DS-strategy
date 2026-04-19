@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-19 18:26
+**Последнее обновление:** 2026-04-19 22:30
 **Сессия:** W16, активная неделя 2026-04-13 → 2026-04-19
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** `WP-90` закрыт: `Knowledge Registry Curator` обновлён до `SRT-aware` слоя без расширения роли сверх меры.
-**Активный РП:** новый bounded slice ещё не открыт.
-**Следующий шаг:** прогнать следующий live domain-slice уже с `srt_slot`, затем решить, масштабируем ли такую же модель на другие домены.
+**Статус:** дневная сессия закрывается на truthful handoff.
+**Активный РП:** `WP-75` — складской агент спроса и decision-layer кладовщика.
+**Следующий шаг:** утром открыть день и продолжить `WP-75` с фокуса `low-stock -> supplier -> contact -> deadline`.
 
 ---
 
@@ -135,3 +135,12 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 17:34] `WP-87` закрыт: после цепочки `FPF -> SRT -> SPF` собран первый `Park domain-subdomain map`; `Knowledge Registry Curator` переосмыслен как `SRT-aware` registry-слой, а будущая инженерная задача по `SRT/SPF` агентам вынесена в `INBOX` как отдельный future task.
 - ✅ [2026-04-19 17:52] `WP-88` закрыт: глубокий `Park` registry slice на `15` живых entries подтвердил, что модель `subdomain -> coverage_state -> next_action` выдерживает уровень конкретных артефактов; следующий логичный шаг — сделать `Knowledge Registry Curator` `SRT-aware`.
 - ✅ [2026-04-19 18:26] `WP-90` закрыт: skill и карточка `Knowledge Registry Curator` обновлены до `SRT-aware` режима; добавлены `srt_slot`, `SRT Placement View` и guardrail, что `SRT` — это placement layer, а не source-of-truth для domain boundaries.
+- ✅ [2026-04-19 22:30] `WP-75` переведён в предметный складской slice: материализованы `WH.WP.006`, `WH.CONTRACT.001`, `WH.WP.007`, supplier directory, supplier index и отдельные supplier cards по активным поставщикам.
+- ✅ [2026-04-19 22:30] В supplier cards добавлены manager-friendly таблицы, оборот за период, средний чек, последняя закупка и подтверждённые контакты из баристского supplier-файла там, где совпадение надёжное.
+- ✅ [2026-04-19 22:30] `PACK-warehouse/DOCUMENT-REGISTRY.md` расширен до supplier-layer; в `INBOX` добавлен `WP-89` на единый реестр документов по всей базе знаний.
+
+## Закрытие дня
+
+- Сессия закрыта с понятным следующим лучом: не Telegram, а decision-layer кладовщика.
+- Truthful verdict дня: архитектура кладовщика стала сильнее, но operational контур ещё не завершён.
+- Главный carry-over на завтра: связка `low-stock -> supplier card -> actionable procurement recommendation`.
