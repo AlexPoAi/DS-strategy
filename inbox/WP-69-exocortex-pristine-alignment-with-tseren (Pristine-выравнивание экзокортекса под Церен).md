@@ -4,7 +4,7 @@ id: WP-69
 date: 2026-04-17
 priority: critical
 category: engineering
-status: in_progress
+status: done
 ---
 
 # WP-69 — Pristine-выравнивание экзокортекса под Церен
@@ -35,11 +35,22 @@ status: in_progress
 
 ## Следующий срез
 
-1. Прогнать live-postcheck экзокортекса после синка (статусы opening/runtime/extractor/brain verdict).
-2. Дождаться решения по appeal и зафиксировать post-incident contract по credentials/org.
-3. Закрыть остаточные красные статусы, если воспроизводятся после нормализации маршрутов.
-4. Зафиксировать финальный closeout по WP-69 с rollback-note.
+1. ✅ Прогнать live-postcheck экзокортекса после синка (статусы opening/runtime/extractor/brain verdict).
+2. ✅ Зафиксировать сверку с эталоном Церена (upstream/main) и текущий drift.
+3. ⏳ Ожидать решения по appeal и зафиксировать post-incident contract по credentials/org (вынесено в отдельный reminder-трек, не блокирует инженерный closeout WP-69).
+4. ✅ Зафиксировать финальный closeout по WP-69 с rollback-note.
 
 ## Нанятый агент
 
 - Environment Engineer (роль: выравнивание инженерного контура и runtime-контракта).
+
+## Post-check (2026-04-19)
+
+1. `health-check`: критичных сбоев нет, opening/runtime контуры зелёные.
+2. `validate-template`: `ALL CHECKS PASSED`.
+3. Сверка с `upstream/main` (Церен) выполнена, новые апстрим-коммиты обнаружены и зафиксированы для отдельного whitelist-аудита.
+4. Runtime truthful state: primary `codex`, fallback работает, canonical memory route стабилен.
+
+## Закрытие
+
+WP-69 закрыт как инженерный контур выравнивания. Внешний процесс `Anthropic appeal/refund` остаётся в отдельном reminder-треке и не считается незавершённым инженерным ремонтом этого WP.

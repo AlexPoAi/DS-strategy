@@ -27,7 +27,16 @@ tags: [warehouse, drive, sync, vk-offee]
 
 ## Acceptance
 
-- [ ] `warehouse_full_loop.sh` синкает папку Жанны перед pipeline
-- [ ] Новые файлы (ABC-анализ 1 и 2) появляются в `knowledge-base/` и обрабатываются pipeline
-- [ ] Переменная `WAREHOUSE_DRIVE_FOLDER_ID` зафиксирована отдельно
-- [ ] Проверен локальный прогон
+- [x] `warehouse_full_loop.sh` синкает папку Жанны перед pipeline
+- [~] Новые файлы (ABC-анализ 1 и 2) появляются в `knowledge-base/` и обрабатываются pipeline
+- [x] Переменная `WAREHOUSE_DRIVE_FOLDER_ID` зафиксирована отдельно
+- [~] Проверен локальный прогон
+
+## Прогресс на 2026-04-19
+
+1. В `warehouse_full_loop.sh` подтверждён отдельный sync папки Жанны (`WAREHOUSE_DRIVE_FOLDER_ID`) перед запуском pipeline.
+2. `WAREHOUSE_DRIVE_FOLDER_ID` и `WAREHOUSE_DRIVE_PROCESSED_FOLDER_ID` используются как отдельный контракт.
+3. В `sync-google-sheets.py` добавлена обработка non-GoogleSheet файлов из Drive:
+   - `text/csv` синкается напрямую;
+   - `.xlsx` конвертируется в CSV по листам (через `openpyxl`, если доступен).
+4. Остаток до close: подтверждение на live-данных Жанны (VPS/runbook) и фиксация стабильного цикла в отчёте.

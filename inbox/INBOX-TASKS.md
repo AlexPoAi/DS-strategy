@@ -118,7 +118,7 @@ created: 2026-03-04
     - 2026-04-19 выполнена дополнительная зачистка устаревших инженерных хвостов;
     - in-progress контур нормализован до реально активных задач.
 
-- [in_progress] 2026-04-17: [ENGINEERING] Pristine-выравнивание экзокортекса под Церен (template-first)
+- [done] 2026-04-17: [ENGINEERING] Pristine-выравнивание экзокортекса под Церен (template-first)
   - Контекст: бесконечные мелкие ремонты возникают из-за drift между шаблоном, форком и документацией открытия. Нужен disciplined template-first контур как у Церена.
   - Что сделано:
     1. В `FMT-exocortex-template` устранены персональные хардкоды и восстановлен skeleton `memory/MEMORY.md`
@@ -135,6 +135,9 @@ created: 2026-03-04
     - `DS-strategy/inbox/ENG-SUPPORT-ANTHROPIC-2026-04-17 (Appeal по disabled organization).md`
   - Приоритет: critical
   - Бюджет: 2-4h
+  - Статус закрытия:
+    - инженерный контур выравнивания закрыт post-check'ом 2026-04-19;
+    - внешний appeal/refund оставлен в отдельной reminder-задаче и не блокирует close WP-69.
 
 - [done] 2026-04-15: [ENGINEERING] Stabilize Strategist 24/7 + решение по pristine-reset от шаблона Церена
   - Контекст: зафиксирован runtime-gap в headless day-plan и необходимость принять архитектурное решение `controlled migration` vs `pristine-reset`.
