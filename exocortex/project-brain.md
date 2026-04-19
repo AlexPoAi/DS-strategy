@@ -39,7 +39,7 @@
 | `extractor.session-watcher` | ✅ | каждые 5 мин |
 | `health-check` | ✅ | каждый час |
 
-**Критично:** Все требуют OAuth. При сбросе → `claude /login`.
+**Критично:** Агентный слой больше не `Claude-only`. Runtime provider выбирается policy-слоем: если `Codex` доступен, протоколы `open/work/close` и локальные агенты могут работать через `Codex` без `claude /login`. `claude /login` требуется только для Claude-specific route или когда runtime-arbiter truthfully показывает, что доступен только Claude-path.
 
 **Мониторинг:** `health-check` проверяет статус всех агентов каждый час. При ошибках отправляет уведомления (macOS + Telegram). Логи: `~/logs/health-check/`.
 
