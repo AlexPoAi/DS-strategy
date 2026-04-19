@@ -31,6 +31,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 18. 2026-04-17: зафиксирован внешний blocker `Anthropic organization disabled`; оформлен support-case и отправлен appeal в Trust & Safety. До ответа включена policy: только свои credentials + fallback runtime для непрерывности инженерного контура.
 19. 2026-04-19: выполнен Codex-first UX hardening в VS Code (startup без Welcome, one-click/hotkey на `New Codex Agent`, удаление конфликтных chat-расширений) и открыт `WP-70` для production-мультимодальности Codex Pro.
 20. 2026-04-19: как приоритет недели W16 открыт `WP-71` — предметные агенты и skill-контур для `VK-offee` (бар/кухня/сервис/маркетинг/финансы) с привязкой к репозиторию и практическим артефактам.
+21. 2026-04-19: `WP-64` закрыт — выполнена повторная дедупликация `INBOX-TASKS`, сняты устаревшие инженерные pending и нормализован набор `in_progress` до фактически активных контуров.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.

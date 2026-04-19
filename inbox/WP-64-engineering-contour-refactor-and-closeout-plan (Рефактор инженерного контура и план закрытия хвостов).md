@@ -1,9 +1,9 @@
 ---
 type: wp-context
-status: active
+status: done
 owner: environment-engineer
 created: 2026-04-16
-updated: 2026-04-16
+updated: 2026-04-19
 tags: [engineering, refactor, governance, backlog, exocortex]
 ---
 
@@ -54,3 +54,13 @@ tags: [engineering, refactor, governance, backlog, exocortex]
 - `DS-strategy/inbox/INBOX-TASKS.md`
 - `DS-strategy/current/ENGINEERING-HIT-LIST.md`
 - `DS-strategy/current/ENGINEERING-CHRONOLOGY.md`
+
+## Прогресс на 2026-04-19 15:20
+- Проведена точечная чистка ранних инженерных хвостов в `INBOX-TASKS`:
+  - закрыты устаревшие pending по `strategist hardening/runtime`, `daily-telegram`, `extractor inbox-check`, `SESSION-CONTEXT stale`, `startup screen gate`;
+  - сняты ложные `in_progress` (перевод в `done/pending` по фактическому состоянию).
+- `INBOX-TASKS` синхронизирован с фактической рабочей картиной: в `in_progress` оставлены только реально активные контуры.
+- Обновлён weekly hit-list с приоритетами W16, включая новые критические контуры `WP-70` и `WP-71`.
+
+## Закрытие
+WP-64 закрыт: критерии acceptance выполнены, инженерный контур очищен от ключевых устаревших хвостов и приведён к рабочему shortlist-формату.
