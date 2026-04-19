@@ -30,6 +30,23 @@ created: 2026-03-04
     - roadmap materialized;
     - `Supreme HR` подтвердил: roadmap ведёт `Strategist`, на workflow можно брать внешний `Workflow Architect`, а DS-native gap закрывается новым агентом `Knowledge Registry Curator`.
 
+- [done] 2026-04-19: [SYSTEM][AGENCY] Создать внутреннего агента Библиотекарь для notes registry
+  - Контекст: после `WP-79` и HR-verdict подтверждено, что для DS-native контура нужен отдельный агент между `Extractor` и `Strategist`, который ведёт реестр заметок, доменную карту и pack coverage.
+  - Что сделать:
+    1. Создать карточку агента `Knowledge Registry Curator — Библиотекарь`
+    2. Добавить агента в `agency/REGISTRY.md`
+    3. Зафиксировать его место в контуре `Extractor -> Библиотекарь -> Strategist`
+    4. Подготовить переход к следующему slice на skill
+  - Артефакт:
+    - `DS-strategy/inbox/WP-80-knowledge-librarian-agent-creation (Создание агента Библиотекарь).md`
+    - `DS-agent-workspace/agency/agents/knowledge-registry-curator.md`
+  - Приоритет: high
+  - Бюджет: 45-75 мин
+  - Статус закрытия:
+    - агент `Knowledge Registry Curator — Библиотекарь` создан;
+    - добавлен в `agency/REGISTRY.md`;
+    - следующий обязательный slice: `skill` для Библиотекаря.
+
 - [in_progress] 2026-04-19: [ENGINEERING][CRITICAL] Восстановить загрузку планировщика экзокортекса
   - Контекст: в отчёте Экзокортекса `15:46` пришёл красный сигнал `Планировщик экзокортекса не загружен`.
   - Что сделать:
