@@ -1,6 +1,6 @@
 ---
 type: engineering-hit-list
-updated: 2026-04-17 22:05
+updated: 2026-04-19 15:02
 ---
 
 # Engineering Hit List (W16)
@@ -10,6 +10,8 @@ updated: 2026-04-17 22:05
 2. `WP-69`: завершить pristine-выравнивание экзокортекса под Церен (post-check + rollback-note + финальный closeout).
 3. `Anthropic appeal`: дождаться Trust & Safety verdict по `organization disabled` и закрепить обновлённый credentials-contract.
 4. `WP-64`: довести дедупликацию инженерного backlog и удержать единый closeout-порядок без rework.
+5. `WP-70`: довести Codex Pro UX/multimodal контур до стабильного production-режима (`new agent`, hotkey, image workflows).
+6. `WP-71`: поднять предметных агентов VK-coffee (бар/кухня/сервис/маркетинг/финансы) как приоритет недели W16.
 
 ## Далее (high)
 1. Connector parity Codex/Claude (`Google Drive + Gmail`) — убрать runtime gap в app-connectors.

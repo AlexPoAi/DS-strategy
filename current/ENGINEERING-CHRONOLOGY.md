@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
-updated: 2026-04-17 22:05
+updated: 2026-04-19 15:02
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -29,6 +29,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 16. 2026-04-17: открыт `WP-69` для pristine-выравнивания под Церен; в `FMT-exocortex-template` убраны персональные хардкоды и восстановлен skeleton-контур `memory/MEMORY.md` (`validate-template` снова зелёный), в `DS-strategy/exocortex` нормализован opening contract (`memory/MEMORY.md` вместо legacy `MEMORY.md`).
 17. 2026-04-17: в post-check `WP-69` выявлен повторный drift root-копий `exocortex/protocol-open.md` и `exocortex/checklists.md`; canonical маршрут `memory/MEMORY.md` повторно восстановлен и закреплён как обязательная проверка перед close.
 18. 2026-04-17: зафиксирован внешний blocker `Anthropic organization disabled`; оформлен support-case и отправлен appeal в Trust & Safety. До ответа включена policy: только свои credentials + fallback runtime для непрерывности инженерного контура.
+19. 2026-04-19: выполнен Codex-first UX hardening в VS Code (startup без Welcome, one-click/hotkey на `New Codex Agent`, удаление конфликтных chat-расширений) и открыт `WP-70` для production-мультимодальности Codex Pro.
+20. 2026-04-19: как приоритет недели W16 открыт `WP-71` — предметные агенты и skill-контур для `VK-offee` (бар/кухня/сервис/маркетинг/финансы) с привязкой к репозиторию и практическим артефактам.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -40,6 +42,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 7. `WP-69`: закрыть финальный postcheck по brain verdict после template-first выравнивания.
 8. `WP-62/WP-63`: подтвердить 2-3 стабильных warehouse цикла на VPS и закрыть production-tail.
 9. `WP-69`: дождаться verdict по Anthropic appeal и зафиксировать post-incident credentials contract.
+10. `WP-70`: подтвердить стабильность Codex UX после restart/VPN-flap и зафиксировать image-workflow runbook.
+11. `WP-71`: материализовать минимум 3 доменных агента VK-coffee и провести live-пилот.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
