@@ -3,6 +3,20 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-20: [ENGINEERING][CRITICAL] Починить legacy MEMORY wording в opening contract экзокортекса
+  - Контекст: утром `health-check` давал 2 критичные ошибки `legacy_memory_wording` в `DS-strategy/exocortex/protocol-open.md` и `.../checklists.md`.
+  - Что сделано:
+    1. Сверка с Цереном (upstream) выполнена.
+    2. Эталон для нашего контура зафиксирован как `memory/MEMORY.md`.
+    3. Legacy wording заменён в source + mirrors.
+    4. Прогнан post-check.
+  - Артефакты:
+    - `DS-strategy/inbox/WP-93-exocortex-opening-contract-legacy-memory-wording-fix (Починка legacy MEMORY wording в opening contract).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.040-opening-contract-legacy-memory-wording-fix (Починка legacy MEMORY wording в opening contract).md`
+  - Итог:
+    - `opening_contract_files:8` -> `OK`;
+    - критичные opening-contract ошибки сняты.
+
 - [pending] 2026-04-19: [SYSTEM][KNOWLEDGE] Создать единый DOCUMENT-REGISTRY по всей базе знаний
   - Контекст: сейчас реестры документов существуют фрагментарно по отдельным Pack/контурам (`PACK-warehouse`, `PACK-park-development`, отдельные csv/md в knowledge-base), но нет единого верхнеуровневого реестра по всей базе VK-offee/DS-контуров. Это мешает видеть полноту базы, источники истины и пробелы по доменам.
   - Что сделать:
