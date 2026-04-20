@@ -35,6 +35,30 @@ date: 2026-04-20
 3. Перевести маршруты на truthful `Codex-primary`, сохранив `Claude` только как fallback.
 4. Прогнать post-check по ключевым агентам и ритуалам.
 
+## Slice 1 — Root-cause narrowing
+
+### Findings
+
+- В исполняемом `day-close` обязательный `Claude-first` path уже снят.
+- Живой хвост найден в `roles/strategist/scripts/strategist.sh`:
+  legacy/debug override `week-review -> Claude`.
+- В `DS-strategy/docs/ARCHITECTURE.md` оставалась устаревшая глобальная формулировка
+  про обязательный `claude /login` для всех агентов.
+- В `scripts/day-close.sh` был устаревший комментарий, будто route вызывается именно Claude.
+
+### Применённый safe fix
+
+- `week-review` legacy override теперь gated:
+  требуется не один, а два явных debug-флага, чтобы случайно не включить Claude-first path.
+- Архитектурная документация выровнена под `Codex-primary / Claude-fallback`.
+- Комментарий `day-close.sh` выровнен под provider-agnostic контракт.
+
+### Первичный verdict
+
+На этом этапе symptom `Not logged in · Please run /login` больше выглядит как
+локальный legacy/debug хвост и documentation drift, а не как текущий обязательный
+route `day-close`.
+
 ## Связанные контексты
 
 - `DS-strategy/inbox/WP-96-canonical-route-auth-independence-and-claude-path-removal (Убрать обязательный Claude auth из канонических маршрутов).md`

@@ -44,3 +44,28 @@ created: 2026-04-20
 - любой агент может пройти канонический ритуал без ручного `claude /login`, если `Codex` доступен;
 - `Claude` остаётся только fallback / optional provider path;
 - инженерный контур перестаёт зависеть от disabled / expired Anthropic auth.
+
+## Slice 1 — Диагностика и первый safe fix
+
+### Что подтвердилось
+
+- В `day-close` больше не найден живой обязательный `Claude-first` route.
+- Реальный хвост остался в `strategist week-review` как legacy/debug override:
+  `STRATEGIST_WEEK_REVIEW_FORCE_CLAUDE=1`.
+- В документации оставался устаревший тезис, что весь агентный контур требует `claude /login`.
+
+### Что исправлено
+
+1. Legacy override `week-review -> Claude` больше не может включиться случайно:
+   теперь он требует сразу два флага:
+   - `STRATEGIST_WEEK_REVIEW_FORCE_CLAUDE=1`
+   - `STRATEGIST_ALLOW_LEGACY_CLAUDE_OVERRIDE=1`
+2. `DS-strategy/docs/ARCHITECTURE.md` выровнен под фактический контракт:
+   `Codex-primary / Claude-fallback`.
+3. Комментарий в `FMT-exocortex-template/scripts/day-close.sh` выровнен:
+   это provider-agnostic route, а не `Claude-only`.
+
+### Проверка
+
+- `bash -n roles/strategist/scripts/strategist.sh` — OK
+- `bash -n scripts/day-close.sh` — OK
