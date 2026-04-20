@@ -39,6 +39,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 26. 2026-04-19: по `WP-75` материализован supplier-layer склада — архитектура цикла кладовщика, supplier map по PDF-накладным, индекс supplier cards, manager-friendly карточки поставщиков с оборотом периода и частично подтверждёнными контактами из баристского supplier-файла.
 27. 2026-04-19: в `WP-89` зафиксирован следующий системный slice — единый `DOCUMENT-REGISTRY` по всей базе знаний как master-layer над локальными registry по доменам.
 28. 2026-04-20: открыт `WP-96` / `ENG.WP.042` на системную ликвидацию оставшихся `Claude-first` canonical routes; symptom `Not logged in · Please run /login (Claude path)` признан не локальным auth-хвостом, а инженерным дефектом route-layer.
+29. 2026-04-20: открыт `WP-98` по складу для bounded hardening manager-layer: устранение битого SKU, удержание `WH.SESSION.001` как decision board и разведение supplier routing `Тэйсти Кофе` / `Субмарина`.
+30. 2026-04-20: дополнительно зафиксирован guardrail: временные sidecar-аудиторы без согласования не считаются допустимым шаблоном; повторяющиеся складские задачи должны усиливать skill постоянного агента `Кладовщик VK Coffee`, а не подменять его новым агентом.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.

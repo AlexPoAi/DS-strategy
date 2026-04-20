@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт новый bounded slice по складу
 **Активный РП:** `WP-98` — нормализация SKU склада и доведение decision board
-**Следующий шаг:** убрать битый SKU из manager-layer, удержать `WH.SESSION.001` как decision board и развести supplier routing `Тэйсти Кофе` / `Субмарина`.
+**Следующий шаг:** убрать битый SKU из manager-layer, удержать `WH.SESSION.001` как decision board и развести supplier routing `Тэйсти Кофе` / `Субмарина` через усиление skill постоянного агента `Кладовщик VK Coffee`.
 
 ---
 
