@@ -37,6 +37,12 @@ prefix: ENG
 
 ---
 
+## Активные методы
+
+- `ENG.METHOD.001` — `03-methods/ENG.METHOD.001-engineer-ritual-sequence (Ритуал инженерной починки и согласования).md`
+
+---
+
 ## Домен
 
 **Система:** Экзокортекс (FMT-exocortex-template + DS-strategy + агенты)
