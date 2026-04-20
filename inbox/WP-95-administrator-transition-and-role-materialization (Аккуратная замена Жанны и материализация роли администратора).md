@@ -199,6 +199,111 @@ Guardrail:
 - следующий bounded шаг теперь не “описать вакансию”, а одинаково оценивать кандидатов и показывать bounded карту обязанностей;
 - разумный следующий артефакт после этого слоя: onboarding checklist.
 
+## Ритуальный режим исполнения
+
+Для `WP-95` дальше действует явный ритуальный контур.
+
+Каждый новый slice должен содержать:
+
+1. явную карточку открытия итерации;
+2. явную фиксацию, какой именно bounded slice делаем сейчас;
+3. явную карточку закрытия итерации с verdict и следующим шагом.
+
+Без этого slice не считается завершённым по ритуалу, даже если артефакт уже materialized.
+
+## Ritual Log
+
+### Итерация 1 — открытие `WP-95` и transition-layer
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: открыть `WP-95` как отдельный кадрово-операционный work-product
+- РП: `WP-95`
+- Slice: определить target state, домен, fixed responsibilities и transition logic
+- Метод: `FPF -> SRT -> SPF`
+- Статус: `opened`
+
+#### Что именно делали в этом slice
+
+Bounded slice:
+
+- отделяли роль от конкретного человека;
+- фиксировали, почему контур больше нельзя держать на Жанне;
+- материализовали transition-model `Жанна -> новый менеджер`;
+- определяли узкий `Phase 1` scope и переходную модель `35 000 ₽ / 35 000 ₽`.
+
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: собрать source-of-truth по переходу
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-administrator-transition-and-role-materialization`
+  - `WP-95-transition-role-split-v1`
+  - `WP-95-hiring-card-v1`
+- Truthful verdict:
+  - переходный контур описан достаточно, чтобы перейти в execution-layer найма;
+  - `Phase 1` определён как bounded учётно-складской scope, а не полный operational management.
+- Следующий шаг:
+  - materialize `Vacancy Text v1`
+
+### Итерация 2 — перевод в execution-layer найма
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: перевести `WP-95` из общего hiring contour в практический execution-layer
+- РП: `WP-95`
+- Slice: оформить вакансию, интервью-оценку и карту обязанностей кандидата
+- Метод: materialization from source-of-truth
+- Статус: `opened`
+
+#### Что именно делали в этом slice
+
+Bounded slice:
+
+- собирали текст вакансии для поиска;
+- собирали scorecard, чтобы кандидатов сравнивать по одной шкале;
+- собирали duty map, чтобы у кандидата сразу была bounded карта обязанностей.
+
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: довести hiring contour до execution-ready слоя
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-vacancy-text-v1`
+  - `WP-95-interview-scorecard-v1`
+  - `WP-95-candidate-duty-map-v1`
+- Truthful verdict:
+  - hiring contour больше не держится только на описательных drafts;
+  - роль можно уже не только обсуждать, но и показывать кандидату, публиковать и использовать на собеседовании.
+- Следующий шаг:
+  - materialize `Onboarding Checklist v1`
+
+### Текущая открытая итерация
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: перевести `WP-95` из hiring-ready в onboarding-ready
+- РП: `WP-95`
+- Slice: `Onboarding Checklist v1`
+- Метод: bounded execution slice
+- Статус: `opened`
+
+#### Что именно делаем сейчас
+
+Нужно materialize:
+
+- порядок передачи роли новому человеку;
+- первые шаги входа в `Phase 1`;
+- checklist проверки после первого operational cycle;
+- критерии, что ownership реально передан, а не только объявлен.
+
 ## Первый управленческий ход
 
 Первый практический шаг:
