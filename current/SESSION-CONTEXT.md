@@ -140,6 +140,10 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-19 22:30] `WP-75` переведён в предметный складской slice: материализованы `WH.WP.006`, `WH.CONTRACT.001`, `WH.WP.007`, supplier directory, supplier index и отдельные supplier cards по активным поставщикам.
 - ✅ [2026-04-19 22:30] В supplier cards добавлены manager-friendly таблицы, оборот за период, средний чек, последняя закупка и подтверждённые контакты из баристского supplier-файла там, где совпадение надёжное.
 - ✅ [2026-04-19 22:30] `PACK-warehouse/DOCUMENT-REGISTRY.md` расширен до supplier-layer; в `INBOX` добавлен `WP-89` на единый реестр документов по всей базе знаний.
+- ✅ [2026-04-20] VK Coffee: открыта и уточнена кадрово-операционная карточка `WP-95` по замене Жанны и материализации роли администратора; зафиксированы target state `вывод Жанны из роли до 3 месяцев`, цель перейти на постоянного менеджера и расширенный draft обязанностей (`Google Drive`, `Telegram`, автооповещения, поручения руководителя, участие в планёрке).
+- ✅ [2026-04-20] VK Coffee: `WP-95` прошёл `FPF -> SRT -> SPF` gate, собраны verdict'ы `Supreme HR` и `VK Coffee Analyst`, materialized `WP-95-transition-role-split-v1` с ownership-картой `Жанна -> новый менеджер` и `Phase 1` split-моделью `35 000 ₽ / 35 000 ₽`.
+- ✅ [2026-04-20] VK Coffee: materialized `WP-95-hiring-card-v1` для нового менеджера из Симферополя под узкий `Phase 1` scope (`остатки`, `накладные`, `Saby`, `Честный знак`, `поставщики`, `недостачи`) с оплатой `35 000 ₽`.
+- ✅ [2026-04-20] VK Coffee: `WP-95` переведён в execution-layer найма — materialized `WP-95-vacancy-text-v1` с короткой и полной версией вакансии, screening-вопросами и красными флагами для первого контакта с кандидатом.
 
 ---
 
