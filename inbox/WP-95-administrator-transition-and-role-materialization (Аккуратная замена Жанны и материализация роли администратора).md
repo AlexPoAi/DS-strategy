@@ -505,6 +505,39 @@ Bounded slice:
 - почему именно он, а не всё сразу;
 - какие блоки пока сознательно не открываем.
 
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: выбрать первый bounded block после `Phase 1`
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-phase-2-candidate-slice-v1`
+- Truthful verdict:
+  - самым безопасным первым кандидатом на `Phase 2` выбран `Google Drive` и операционные документы;
+  - `Telegram`, кухня и найм сознательно не выбраны как первый post-phase1 expansion block.
+- Следующий шаг:
+  - materialize `Phase 2 Google Drive Slice v1`
+
+### Следующая открытая итерация
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: описать первый реальный bounded block расширения роли
+- РП: `WP-95`
+- Slice: `Phase 2 Google Drive Slice v1`
+- Метод: bounded execution slice
+- Статус: `opened`
+
+#### Что именно делаем сейчас
+
+Нужно materialize:
+
+- что именно будет входить в `Google Drive` block;
+- какие документы и папки считаются в scope;
+- какие изменения пока остаются вне этого slice.
+
 ## Первый управленческий ход
 
 Первый практический шаг:

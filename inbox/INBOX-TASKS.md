@@ -39,6 +39,7 @@ created: 2026-03-04
     - `DS-strategy/inbox/WP-95-phase-1-launch-verdict-template-v1 (Шаблон verdict запуска Phase 1).md`
     - `DS-strategy/inbox/WP-95-live-meeting-factual-update-v1 (Фактическое обновление после планерки с Жанной 2026-04-20).md`
     - `DS-strategy/inbox/WP-95-phase-2-readiness-gate-v1 (Гейт готовности к Phase 2).md`
+    - `DS-strategy/inbox/WP-95-phase-2-candidate-slice-v1 (Первый кандидатный slice для Phase 2).md`
   - Приоритет: high
   - Бюджет: 1.5-3h
   - Статус итерации:
@@ -51,7 +52,8 @@ created: 2026-03-04
     - phase 1 launch verdict template materialized
     - live factual update after meeting materialized
     - phase 2 readiness gate materialized
-    - следующий bounded шаг: `Phase 2 Candidate Slice v1`
+    - phase 2 candidate slice materialized
+    - следующий bounded шаг: `Phase 2 Google Drive Slice v1`
 
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)
   - Контекст: после починки opening-contract оставалось предупреждение `strategist-week-review status=failed`.
