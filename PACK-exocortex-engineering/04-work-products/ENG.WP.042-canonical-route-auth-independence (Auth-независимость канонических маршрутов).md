@@ -89,3 +89,29 @@ route `day-close`.
 ### Verdict
 
 Execution-layer, status-layer и report-layer для `synchronizer` снова выровнены. Это не новый runtime capability, а repair на truthful evidence path внутри уже открытого `ENG.WP.042`.
+
+## Slice 3 — Telegram outbox evidence
+
+### Root cause
+
+- Delivery-логи подтверждали, что Telegram-сообщение ушло, но не сохраняли его текст 1:1.
+- Telegram Bot API не дал прямого чтения уже отправленной истории через `getUpdates`, поэтому factual verification сообщения оставался reconstruction-only.
+
+### Applied fix
+
+- В `notify.sh` добавлен локальный outbox archive path `~/logs/notify-outbox/YYYY-MM-DD/`.
+- Для каждого notify run теперь materialize:
+  - `*.message.html`
+  - `*.buttons.json`
+  - `*.meta.env`
+  - `*.response.json` при наличии ответа API
+- Архивируются статусы `sent`, `failed` и `empty_skip`, чтобы evidence-layer оставался truthful и не показывал только зелёные события.
+
+### Post-check
+
+- `bash -n roles/synchronizer/scripts/notify.sh` — OK
+- логика архивации стоит на фактическом send-path и пишет именно тот текст, который уходит в `sendMessage`
+
+### Verdict
+
+Telegram transport-layer больше не остаётся black-box после отправки. Следующий factual audit сможет читать прямой outbox evidence вместо реконструкции по шаблонам и коммитам.

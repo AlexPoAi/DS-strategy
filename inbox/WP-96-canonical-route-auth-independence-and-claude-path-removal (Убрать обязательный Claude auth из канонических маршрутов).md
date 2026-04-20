@@ -105,3 +105,41 @@ created: 2026-04-20
 - Статус: `completed`
 - Verdict: `synchronizer` больше не зависит от отдельного ручного refresh, чтобы его status-layer выглядел свежим и truthful; execution, health и report-layer снова выровнены между собой
 - Следующий шаг: продолжать `WP-96` только если найдутся другие canonical route-хвосты, где execution и evidence-layer снова расходятся
+
+## Slice 3 — Telegram outbox evidence
+
+### Карточка открытия
+
+- Агент: `Engineer`
+- Работа: materialize локальный outbox след для реальных Telegram-сообщений
+- Slice: `notify outbox evidence`
+- Причина: фактическую доставку по логам видно, но точный текст уже отправленного сообщения потом приходится восстанавливать по шаблонам и git-снимкам
+
+### Что подтвердилось
+
+- `notify.sh` умел отправлять и логировать `sent / failed / empty skip`, но не сохранял сам фактический текст сообщения.
+- `Bot API` через `getUpdates` не дал историю уже отправленных сообщений, поэтому post-factum verification упирается в ограничение API.
+- Значит truthful verification transport-layer требует локального `outbox`-следа прямо в момент отправки.
+
+### Что исправлено
+
+1. В `roles/synchronizer/scripts/notify.sh` добавлен outbox-архиватор.
+2. Для каждого сценария теперь сохраняются:
+   - фактический `message.html`,
+   - `buttons.json`,
+   - `meta.env`,
+   - `response.json` от Telegram API при наличии.
+3. Архивация происходит не только для `sent`, но и для `failed` и `empty_skip`, чтобы транспортный след оставался truthful.
+
+### Проверка
+
+- `bash -n roles/synchronizer/scripts/notify.sh` — OK
+- структура записи проверена по коду: архивируется именно тот текст, который уходит в `sendMessage` после truncation-safe подготовки
+
+### Карточка закрытия
+
+- Агент: `Engineer`
+- Slice: `notify outbox evidence`
+- Статус: `completed`
+- Verdict: дальше Telegram-сообщения не нужно будет восстанавливать по косвенным следам; у transport-layer появился прямой локальный outbox evidence
+- Следующий шаг: при ближайшей реальной отправке проверить, что в `~/logs/notify-outbox/YYYY-MM-DD/` появляются `message.html + response.json`
