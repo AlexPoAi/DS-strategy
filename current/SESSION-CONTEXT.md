@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-19 23:25
+**Последнее обновление:** 2026-04-20 20:05
 **Сессия:** W16, активная неделя 2026-04-13 → 2026-04-19
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — day close: completed WP-92 and reran standard day-close protocol
-**Активный РП:** W16 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
+**Статус:** открыта новая инженерная сессия по route/auth контуру экзокортекса
+**Активный РП:** `WP-96` / `ENG.WP.042` — auth-независимость канонических маршрутов
+**Следующий шаг:** найти и убрать оставшиеся `Claude-first` route-хвосты, из-за которых ритуалы упираются в `Not logged in · Please run /login`.
 
 ---
 
@@ -148,11 +148,10 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до onboarding-ready слоя — materialized `WP-95-onboarding-checklist-v1` с handoff-checklist до старта, на первой неделе и после первого полного operational cycle.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до handoff-ready слоя — materialized `WP-95-handoff-conversation-script-v1` с рабочими формулировками для разговора с Жанной, новым кандидатом и внутренней фиксации позиции руководителя.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до launch-ready слоя — materialized `WP-95-phase-1-launch-plan-v1` с wave-порядком запуска, ролями в старте и критериями verdict после первого operational cycle.
+- ✅ [2026-04-20 20:05] Инженерный ритуал открытия выполнен: открыт `WP-96` / `ENG.WP.042` под системный дефект `Claude path auth-blocker`; sidecar-аудит отдан агенту `Archimedes`.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до verdict-ready слоя — materialized `WP-95-phase-1-launch-verdict-template-v1`, чтобы запуск `Phase 1` оценивался по единому шаблону `success / partial / fail`.
 
 ---
 
 ## Закрытие дня
-- Сессия закрыта с понятным следующим лучом: не Telegram, а decision-layer кладовщика.
-- Truthful verdict дня: архитектура кладовщика стала сильнее, но operational контур ещё не завершён.
-- Главный carry-over на завтра: связка `low-stock -> supplier card -> actionable procurement recommendation`.
+- Новый carry-over/focus: canonical route layer экзокортекса должен стать auth-независимым и не зависеть от ручного `claude /login`.
