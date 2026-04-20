@@ -304,6 +304,39 @@ Bounded slice:
 - checklist проверки после первого operational cycle;
 - критерии, что ownership реально передан, а не только объявлен.
 
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: довести `WP-95` до onboarding-ready состояния
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-onboarding-checklist-v1`
+- Truthful verdict:
+  - `WP-95` теперь покрывает не только transition и hiring, но и bounded handoff нового человека в роль;
+  - передача `Phase 1` больше не должна интерпретироваться как устное обещание без operational checklist.
+- Следующий шаг:
+  - materialize `Handoff Conversation Script v1`
+
+### Следующая открытая итерация
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: сделать переходный разговорный контур по `WP-95` управляемым и нехаотичным
+- РП: `WP-95`
+- Slice: `Handoff Conversation Script v1`
+- Метод: bounded execution slice
+- Статус: `opened`
+
+#### Что именно делаем сейчас
+
+Нужно materialize:
+
+- как говорить с Жанной про передачу без лишней эскалации;
+- как объяснять новому человеку границы `Phase 1`;
+- какие формулировки удерживают transition-split, а не размывают его.
+
 ## Первый управленческий ход
 
 Первый практический шаг:

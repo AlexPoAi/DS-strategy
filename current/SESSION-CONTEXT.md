@@ -145,6 +145,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20] VK Coffee: materialized `WP-95-hiring-card-v1` для нового менеджера из Симферополя под узкий `Phase 1` scope (`остатки`, `накладные`, `Saby`, `Честный знак`, `поставщики`, `недостачи`) с оплатой `35 000 ₽`.
 - ✅ [2026-04-20] VK Coffee: `WP-95` переведён в execution-layer найма — materialized `WP-95-vacancy-text-v1` с короткой и полной версией вакансии, screening-вопросами и красными флагами для первого контакта с кандидатом.
 - ✅ [2026-04-20] VK Coffee: для `WP-95` materialized `WP-95-interview-scorecard-v1` и `WP-95-candidate-duty-map-v1`, чтобы кандидатов можно было оценивать по одной шкале и сразу показывать bounded карту обязанностей на `Phase 1`.
+- ✅ [2026-04-20] VK Coffee: `WP-95` доведён до onboarding-ready слоя — materialized `WP-95-onboarding-checklist-v1` с handoff-checklist до старта, на первой неделе и после первого полного operational cycle.
 
 ---
 

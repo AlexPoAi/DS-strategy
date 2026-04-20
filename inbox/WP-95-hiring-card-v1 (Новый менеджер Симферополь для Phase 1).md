@@ -173,3 +173,4 @@ tags: [vk-coffee, hiring, manager, simferopol, phase1]
 - `DS-strategy/inbox/WP-95-vacancy-text-v1 (Вакансия локального учётно-складского менеджера Симферополь).md`
 - `DS-strategy/inbox/WP-95-interview-scorecard-v1 (Скоркарта собеседования для локального учётно-складского менеджера).md`
 - `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`
+- `DS-strategy/inbox/WP-95-onboarding-checklist-v1 (Онбординг локального учётно-складского менеджера Phase 1).md`
