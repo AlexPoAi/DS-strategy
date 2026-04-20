@@ -40,6 +40,8 @@ created: 2026-03-04
     - `DS-strategy/inbox/WP-95-live-meeting-factual-update-v1 (Фактическое обновление после планерки с Жанной 2026-04-20).md`
     - `DS-strategy/inbox/WP-95-phase-2-readiness-gate-v1 (Гейт готовности к Phase 2).md`
     - `DS-strategy/inbox/WP-95-phase-2-candidate-slice-v1 (Первый кандидатный slice для Phase 2).md`
+    - `DS-strategy/inbox/WP-95-context-brief-v1 (Краткий контекст для быстрого возврата).md`
+    - `DS-strategy/inbox/WP-95-document-registry-v1 (Реестр документов по WP-95).md`
   - Приоритет: high
   - Бюджет: 1.5-3h
   - Статус итерации:
@@ -53,7 +55,10 @@ created: 2026-03-04
     - live factual update after meeting materialized
     - phase 2 readiness gate materialized
     - phase 2 candidate slice materialized
-    - следующий bounded шаг: `Phase 2 Google Drive Slice v1`
+    - context brief materialized
+    - document registry materialized
+    - truthful stop: ждём process-map / описание роли от Жанны
+    - следующий bounded шаг только после входа от Жанны: `Phase 2 Google Drive Slice v1`
 
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)
   - Контекст: после починки opening-contract оставалось предупреждение `strategist-week-review status=failed`.
