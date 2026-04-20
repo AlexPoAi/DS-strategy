@@ -22,6 +22,7 @@ created: 2026-03-04
     - `DS-strategy/inbox/WP-95-onboarding-checklist-v1 (Онбординг локального учётно-складского менеджера Phase 1).md`
     - `DS-strategy/inbox/WP-95-handoff-conversation-script-v1 (Сценарий разговора о передаче Phase 1).md`
     - `DS-strategy/inbox/WP-95-phase-1-launch-plan-v1 (План запуска Phase 1).md`
+    - `DS-strategy/inbox/WP-95-phase-1-launch-verdict-template-v1 (Шаблон verdict запуска Phase 1).md`
   - Приоритет: high
   - Бюджет: 1.5-3h
   - Статус итерации:
@@ -31,7 +32,8 @@ created: 2026-03-04
     - onboarding checklist materialized
     - handoff conversation script materialized
     - phase 1 launch plan materialized
-    - следующий bounded шаг: `Phase 1 Launch Verdict Template v1`
+    - phase 1 launch verdict template materialized
+    - следующий bounded шаг: `Phase 2 Readiness Gate v1`
 
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)
   - Контекст: после починки opening-contract оставалось предупреждение `strategist-week-review status=failed`.

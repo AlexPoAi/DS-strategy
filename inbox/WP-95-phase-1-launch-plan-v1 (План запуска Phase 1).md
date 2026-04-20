@@ -214,3 +214,4 @@ Done when:
 - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
 - `DS-strategy/inbox/WP-95-onboarding-checklist-v1 (Онбординг локального учётно-складского менеджера Phase 1).md`
 - `DS-strategy/inbox/WP-95-handoff-conversation-script-v1 (Сценарий разговора о передаче Phase 1).md`
+- `DS-strategy/inbox/WP-95-phase-1-launch-verdict-template-v1 (Шаблон verdict запуска Phase 1).md`
