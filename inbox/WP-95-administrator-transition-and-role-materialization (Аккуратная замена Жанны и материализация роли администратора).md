@@ -337,6 +337,40 @@ Bounded slice:
 - как объяснять новому человеку границы `Phase 1`;
 - какие формулировки удерживают transition-split, а не размывают его.
 
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: собрать разговорный контур передачи `Phase 1`
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-handoff-conversation-script-v1`
+- Truthful verdict:
+  - у `WP-95` теперь есть не только transition-docs и onboarding-checklists, но и явные формулировки для аккуратного разговора;
+  - риск хаотичного или обвинительного переходного разговора снижен.
+- Следующий шаг:
+  - materialize `Phase 1 Launch Plan v1`
+
+### Следующая открытая итерация
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: перевести `WP-95` из handoff-ready в launch-ready состояние
+- РП: `WP-95`
+- Slice: `Phase 1 Launch Plan v1`
+- Метод: bounded execution slice
+- Статус: `opened`
+
+#### Что именно делаем сейчас
+
+Нужно materialize:
+
+- порядок запуска `Phase 1` по времени;
+- кто что делает на старте;
+- как проходит первая проверка handoff;
+- какой launch verdict считаем достаточным.
+
 ## Первый управленческий ход
 
 Первый практический шаг:

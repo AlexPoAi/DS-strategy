@@ -226,3 +226,4 @@ Checklist используется:
 - `DS-strategy/inbox/WP-95-hiring-card-v1 (Новый менеджер Симферополь для Phase 1).md`
 - `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`
 - `DS-strategy/inbox/WP-95-interview-scorecard-v1 (Скоркарта собеседования для локального учётно-складского менеджера).md`
+- `DS-strategy/inbox/WP-95-handoff-conversation-script-v1 (Сценарий разговора о передаче Phase 1).md`
