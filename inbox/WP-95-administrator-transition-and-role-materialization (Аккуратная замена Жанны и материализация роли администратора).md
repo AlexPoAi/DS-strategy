@@ -371,6 +371,39 @@ Bounded slice:
 - как проходит первая проверка handoff;
 - какой launch verdict считаем достаточным.
 
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: перевести `WP-95` в launch-ready состояние
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-phase-1-launch-plan-v1`
+- Truthful verdict:
+  - у `WP-95` теперь есть не только переходная логика, найм, onboarding и handoff, но и явный launch-порядок;
+  - запуск `Phase 1` можно вести как последовательность wave'ов с проверяемым verdict, а не как абстрактное “пора запускать”.
+- Следующий шаг:
+  - materialize `Phase 1 Launch Verdict Template v1`
+
+### Следующая открытая итерация
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: сделать verdict запуска `Phase 1` шаблонным и repeatable
+- РП: `WP-95`
+- Slice: `Phase 1 Launch Verdict Template v1`
+- Метод: bounded execution slice
+- Статус: `opened`
+
+#### Что именно делаем сейчас
+
+Нужно materialize:
+
+- шаблон verdict после первого цикла;
+- единые поля для `success / partial / fail`;
+- правила, когда идти в `Phase 2`, а когда не идти.
+
 ## Первый управленческий ход
 
 Первый практический шаг:

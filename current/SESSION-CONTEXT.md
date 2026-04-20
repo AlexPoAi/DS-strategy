@@ -147,6 +147,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20] VK Coffee: для `WP-95` materialized `WP-95-interview-scorecard-v1` и `WP-95-candidate-duty-map-v1`, чтобы кандидатов можно было оценивать по одной шкале и сразу показывать bounded карту обязанностей на `Phase 1`.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до onboarding-ready слоя — materialized `WP-95-onboarding-checklist-v1` с handoff-checklist до старта, на первой неделе и после первого полного operational cycle.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до handoff-ready слоя — materialized `WP-95-handoff-conversation-script-v1` с рабочими формулировками для разговора с Жанной, новым кандидатом и внутренней фиксации позиции руководителя.
+- ✅ [2026-04-20] VK Coffee: `WP-95` доведён до launch-ready слоя — materialized `WP-95-phase-1-launch-plan-v1` с wave-порядком запуска, ролями в старте и критериями verdict после первого operational cycle.
 
 ---
 

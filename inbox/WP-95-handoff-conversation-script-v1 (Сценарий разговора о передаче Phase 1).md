@@ -179,3 +179,4 @@ tags: [vk-coffee, handoff, transition, script, zhanna, manager, phase1]
 - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
 - `DS-strategy/inbox/WP-95-onboarding-checklist-v1 (Онбординг локального учётно-складского менеджера Phase 1).md`
 - `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`
+- `DS-strategy/inbox/WP-95-phase-1-launch-plan-v1 (План запуска Phase 1).md`
