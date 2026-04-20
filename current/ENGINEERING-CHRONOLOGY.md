@@ -41,6 +41,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 28. 2026-04-20: открыт `WP-96` / `ENG.WP.042` на системную ликвидацию оставшихся `Claude-first` canonical routes; symptom `Not logged in · Please run /login (Claude path)` признан не локальным auth-хвостом, а инженерным дефектом route-layer.
 29. 2026-04-20: открыт `WP-98` по складу для bounded hardening manager-layer: устранение битого SKU, удержание `WH.SESSION.001` как decision board и разведение supplier routing `Тэйсти Кофе` / `Субмарина`.
 30. 2026-04-20: дополнительно зафиксирован guardrail: временные sidecar-аудиторы без согласования не считаются допустимым шаблоном; повторяющиеся складские задачи должны усиливать skill постоянного агента `Кладовщик VK Coffee`, а не подменять его новым агентом.
+31. 2026-04-20: в рамках `WP-96` / `ENG.WP.042` закрыт отдельный repair-slice `synchronizer status freshness`: `scheduler.sh` и `daily-report.sh` теперь materialize свежие `.status` для `synchronizer-code-scan` и `synchronizer-daily-report`, чтобы execution-layer, health-check и report-layer больше не расходились по evidence.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.

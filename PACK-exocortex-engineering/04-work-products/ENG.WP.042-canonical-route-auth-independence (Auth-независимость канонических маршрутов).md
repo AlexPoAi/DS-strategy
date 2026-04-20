@@ -64,3 +64,28 @@ route `day-close`.
 - `DS-strategy/inbox/WP-96-canonical-route-auth-independence-and-claude-path-removal (Убрать обязательный Claude auth из канонических маршрутов).md`
 - `ENG.WP.041` — локальная починка `week-review`
 - `ENG.WP.010` / `ENG.WP.013` / `ENG.WP.021` — история route-layer и ritual-layer
+
+## Slice 2 — Synchronizer status freshness
+
+### Root cause
+
+- `scheduler.sh` truthfully запускал `code-scan` и `daily-report`, но после success обновлял только legacy markers.
+- `daily-report.sh` умел refresh report-artifacts (`AGENTS-STATUS`, `SESSION-OPEN`, `RUNTIME-MODE`), но не materialize `synchronizer` `.status`.
+- В результате `health/report` могли опираться на derived-success, а сами `status/*.status` оставались stale по дате.
+
+### Applied fix
+
+- В `scheduler.sh` добавлен explicit writer для `synchronizer-code-scan` и `synchronizer-daily-report` status-artifacts в dispatch-path.
+- В `daily-report.sh` добавлен refresh-path, который materialize `synchronizer` status-artifacts при `--refresh-status-artifacts`.
+- Для marker-derived success устранён drift timestamps: текущий success window теперь записывается как живой evidence, а не как исторический хвост старого `.status`.
+
+### Post-check
+
+- `bash -n roles/synchronizer/scripts/scheduler.sh` — OK
+- `bash -n roles/synchronizer/scripts/daily-report.sh` — OK
+- `daily-report.sh --refresh-status-artifacts` — OK
+- `health-check.sh` после фикса: `synchronizer-code-scan status=success`, `synchronizer-daily-report status=success`, итог `✅ Среда исправна`
+
+### Verdict
+
+Execution-layer, status-layer и report-layer для `synchronizer` снова выровнены. Это не новый runtime capability, а repair на truthful evidence path внутри уже открытого `ENG.WP.042`.

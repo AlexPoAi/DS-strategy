@@ -69,3 +69,39 @@ created: 2026-04-20
 
 - `bash -n roles/strategist/scripts/strategist.sh` — OK
 - `bash -n scripts/day-close.sh` — OK
+
+## Slice 2 — Synchronizer status freshness
+
+### Карточка открытия
+
+- Агент: `Engineer`
+- Работа: убрать drift между живым execution и status-artifacts у `synchronizer`
+- Slice: `synchronizer status freshness + truthful health artifacts`
+- Причина: `health-check` и report-layer уже могли быть зелёными, но `.status`-артефакты для `synchronizer-code-scan` и `synchronizer-daily-report` оставались с датой `2026-03-26`
+
+### Что подтвердилось
+
+- `scheduler.sh` после успешного `code-scan` и `daily-report` обновлял только legacy daily markers (`STATE_DIR/task-DATE`), но не переписывал `status/*.status`.
+- `daily-report.sh --refresh-status-artifacts` обновлял `AGENTS-STATUS`, `SESSION-OPEN` и `RUNTIME-MODE`, но сам `.status`-layer `synchronizer` не materialize.
+- Из-за этого execution-layer был живой, а evidence-layer частично дрейфовал до следующего ручного refresh.
+
+### Что исправлено
+
+1. В `roles/synchronizer/scripts/scheduler.sh` добавлен явный writer для `synchronizer-code-scan` и `synchronizer-daily-report` status-artifacts прямо в обычном dispatch-path.
+2. В `roles/synchronizer/scripts/daily-report.sh` добавлена materialization-фаза для `synchronizer` status-artifacts при `--refresh-status-artifacts`.
+3. Для marker-derived success теперь сохраняются truthful `UPDATED_AT / LAST_SUCCESS_AT / START_TS / END_TS` вместо исторического дрейфа из старых `.status`.
+
+### Проверка
+
+- `bash -n roles/synchronizer/scripts/scheduler.sh` — OK
+- `bash -n roles/synchronizer/scripts/daily-report.sh` — OK
+- `bash roles/synchronizer/scripts/daily-report.sh --refresh-status-artifacts` — OK
+- `bash roles/synchronizer/scripts/health-check.sh` — `✅ Среда исправна`
+
+### Карточка закрытия
+
+- Агент: `Engineer`
+- Slice: `synchronizer status freshness + truthful health artifacts`
+- Статус: `completed`
+- Verdict: `synchronizer` больше не зависит от отдельного ручного refresh, чтобы его status-layer выглядел свежим и truthful; execution, health и report-layer снова выровнены между собой
+- Следующий шаг: продолжать `WP-96` только если найдутся другие canonical route-хвосты, где execution и evidence-layer снова расходятся

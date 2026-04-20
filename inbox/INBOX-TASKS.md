@@ -11,11 +11,15 @@ created: 2026-03-04
     3. Убрать обязательность `claude /login` там, где это нарушает контракт
     4. Подтвердить, что любой агент проходит ритуал через рабочий `Codex path`
     5. Зафиксировать anti-regression note в инженерном контуре
+    6. Удержать truthful evidence-layer: `scheduler`, `daily-report` и `health-check` не должны расходиться по статусам `synchronizer`
   - Артефакты:
     - `DS-strategy/inbox/WP-96-canonical-route-auth-independence-and-claude-path-removal (Убрать обязательный Claude auth из канонических маршрутов).md`
     - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.042-canonical-route-auth-independence (Auth-независимость канонических маршрутов).md`
   - Приоритет: critical
   - Бюджет: 45-120m
+  - Статус итерации:
+    - slice 1: снят живой `week-review -> Claude-first` хвост и выровнена документация под `Codex-primary / Claude-fallback`
+    - slice 2: materialized `synchronizer status freshness`; `.status`-layer для `code-scan` и `daily-report` больше не дрейфует отдельно от execution/report слоя
 
 - [in_progress] 2026-04-20: [VK-COFFEE][STAFF] Аккуратно подготовить замену Жанны и материализовать роль администратора
   - Контекст: есть признаки, что Жанна перестаёт держать работу в сети как приоритет; при этом административный и складской контур всё ещё заметно зависит от неё. Обновлённый управленческий вывод: Жанну нужно выводить из роли в горизонте `до 3 месяцев` и переходить на постоянного менеджера. Нужен не резкий конфликтный разрыв, а аккуратный переход с фиксацией роли, задач и ownership.
