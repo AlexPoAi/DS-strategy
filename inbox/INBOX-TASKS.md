@@ -3,6 +3,21 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)
+  - Контекст: после починки opening-contract оставалось предупреждение `strategist-week-review status=failed`.
+  - Root cause:
+    1. принудительный week-review override в Claude path;
+    2. строка `Not logged in · Please run /login` не считалась auth-failure.
+  - Что сделано:
+    - в `strategist.sh` override переведён на явный флаг `STRATEGIST_WEEK_REVIEW_FORCE_CLAUDE=1`;
+    - auth pattern расширен на `Not logged in .*Please run /login`.
+  - Верификация:
+    - ручной запуск `week-review` успешен через Codex;
+    - `health-check`: `strategist-week-review status=success`, среда исправна.
+  - Артефакты:
+    - `DS-strategy/inbox/WP-94-strategist-week-review-provider-recovery (Восстановление week-review через Codex primary).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.041-strategist-week-review-provider-recovery (Восстановление week-review через Codex primary).md`
+
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Починить legacy MEMORY wording в opening contract экзокортекса
   - Контекст: утром `health-check` давал 2 критичные ошибки `legacy_memory_wording` в `DS-strategy/exocortex/protocol-open.md` и `.../checklists.md`.
   - Что сделано:
