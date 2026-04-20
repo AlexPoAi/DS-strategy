@@ -37,6 +37,7 @@ created: 2026-03-04
     - `DS-strategy/inbox/WP-95-handoff-conversation-script-v1 (Сценарий разговора о передаче Phase 1).md`
     - `DS-strategy/inbox/WP-95-phase-1-launch-plan-v1 (План запуска Phase 1).md`
     - `DS-strategy/inbox/WP-95-phase-1-launch-verdict-template-v1 (Шаблон verdict запуска Phase 1).md`
+    - `DS-strategy/inbox/WP-95-live-meeting-factual-update-v1 (Фактическое обновление после планерки с Жанной 2026-04-20).md`
   - Приоритет: high
   - Бюджет: 1.5-3h
   - Статус итерации:
@@ -47,6 +48,7 @@ created: 2026-03-04
     - handoff conversation script materialized
     - phase 1 launch plan materialized
     - phase 1 launch verdict template materialized
+    - live factual update after meeting materialized
     - следующий bounded шаг: `Phase 2 Readiness Gate v1`
 
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)

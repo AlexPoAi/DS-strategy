@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-20 20:05
+**Последнее обновление:** 2026-04-20 22:57
 **Сессия:** W16, активная неделя 2026-04-13 → 2026-04-19
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыта новая инженерная сессия по route/auth контуру экзокортекса
-**Активный РП:** `WP-96` / `ENG.WP.042` — auth-независимость канонических маршрутов
-**Следующий шаг:** найти и убрать оставшиеся `Claude-first` route-хвосты, из-за которых ритуалы упираются в `Not logged in · Please run /login`.
+**Статус:** открыт новый bounded slice по складу
+**Активный РП:** `WP-98` — нормализация SKU склада и доведение decision board
+**Следующий шаг:** убрать битый SKU из manager-layer, удержать `WH.SESSION.001` как decision board и развести supplier routing `Тэйсти Кофе` / `Субмарина`.
 
 ---
 
@@ -152,6 +152,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20 20:18] `WP-96` slice 1: root-cause narrowed — `day-close` не является живым Claude-first route; найден legacy/debug хвост в `week-review` override и documentation drift про обязательный `claude /login`; применён safe fix и выровнена документация.
 - ✅ [2026-04-20 20:26] По складу повторно закреплён правильный исполнитель: следующий bounded slice должен идти через `Warehouse Demand Analyst` как primary executor; инженер остаётся только support-слоем для pipeline/runtime.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до verdict-ready слоя — materialized `WP-95-phase-1-launch-verdict-template-v1`, чтобы запуск `Phase 1` оценивался по единому шаблону `success / partial / fail`.
+- ✅ [2026-04-20] VK Coffee: после живой планёрки с Жанной materialized `WP-95-live-meeting-factual-update-v1`; подтверждено, что тема поиска replacement уже озвучена, Жанне запрошено описание процессов, а в live-контуре появились конкретные даты инвентаризации и обязательный `Google Drive/Новые документы` workflow для отчетов бота.
 
 ---
 

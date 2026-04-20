@@ -192,6 +192,7 @@ Guardrail:
 3. `Vacancy Text v1`
 4. `Interview Scorecard v1`
 5. `Candidate Duty Map v1`
+6. `Live Meeting Factual Update v1`
 
 Это означает:
 
@@ -212,6 +213,40 @@ Guardrail:
 Без этого slice не считается завершённым по ритуалу, даже если артефакт уже materialized.
 
 ## Ritual Log
+
+### Внеочередная factual-итерация — синхронизация после планёрки `2026-04-20`
+
+#### Карточка открытия итерации
+
+- Агент: `Strategist`
+- Работа: синхронизировать `WP-95` с живым разговором и новым factual evidence
+- РП: `WP-95`
+- Slice: `Live Meeting Factual Update v1`
+- Метод: factual sync from transcript + user report
+- Статус: `opened`
+
+#### Что именно делаем в этом slice
+
+Bounded slice:
+
+- извлекаем реальные сигналы из планёрки с Жанной;
+- сверяем их с уже materialized transition / handoff / launch контуром;
+- отдельно фиксируем, что является новым фактом, а не только нашей design-гипотезой.
+
+#### Карточка закрытия итерации
+
+- Агент: `Strategist`
+- Работа: зафиксировать factual update после живой планёрки
+- РП: `WP-95`
+- Slice verdict: `completed`
+- Materialized:
+  - `WP-95-live-meeting-factual-update-v1`
+- Truthful verdict:
+  - transition уже начат не только в документах, но и в живом разговоре;
+  - роль replacement подтверждается как `owner`, а не `helper`;
+  - в контуре появились конкретные даты и bot-folder workflow, которые нужно учитывать дальше.
+- Следующий шаг:
+  - вернуться к `Phase 2 Readiness Gate v1`
 
 ### Итерация 1 — открытие `WP-95` и transition-layer
 
