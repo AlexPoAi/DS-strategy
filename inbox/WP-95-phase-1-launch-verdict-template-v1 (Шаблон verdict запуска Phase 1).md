@@ -164,3 +164,4 @@ tags: [vk-coffee, verdict, launch, manager, phase1, template]
 - `DS-strategy/inbox/WP-95-phase-1-launch-plan-v1 (План запуска Phase 1).md`
 - `DS-strategy/inbox/WP-95-onboarding-checklist-v1 (Онбординг локального учётно-складского менеджера Phase 1).md`
 - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
+- `DS-strategy/inbox/WP-95-phase-2-readiness-gate-v1 (Гейт готовности к Phase 2).md`

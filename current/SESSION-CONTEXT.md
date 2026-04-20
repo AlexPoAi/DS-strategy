@@ -153,6 +153,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20 20:26] По складу повторно закреплён правильный исполнитель: следующий bounded slice должен идти через `Warehouse Demand Analyst` как primary executor; инженер остаётся только support-слоем для pipeline/runtime.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до verdict-ready слоя — materialized `WP-95-phase-1-launch-verdict-template-v1`, чтобы запуск `Phase 1` оценивался по единому шаблону `success / partial / fail`.
 - ✅ [2026-04-20] VK Coffee: после живой планёрки с Жанной materialized `WP-95-live-meeting-factual-update-v1`; подтверждено, что тема поиска replacement уже озвучена, Жанне запрошено описание процессов, а в live-контуре появились конкретные даты инвентаризации и обязательный `Google Drive/Новые документы` workflow для отчетов бота.
+- ✅ [2026-04-20] VK Coffee: `WP-95` доведён до phase-2-gated состояния — materialized `WP-95-phase-2-readiness-gate-v1`; зафиксировано, что расширение роли запрещено до подтверждённого `Phase 1 success`.
 
 ---
 
