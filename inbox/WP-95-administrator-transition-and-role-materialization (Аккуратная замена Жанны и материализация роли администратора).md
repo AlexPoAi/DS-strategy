@@ -190,12 +190,14 @@ Guardrail:
 1. `Transition Role Split v1`
 2. `Hiring Card v1`
 3. `Vacancy Text v1`
+4. `Interview Scorecard v1`
+5. `Candidate Duty Map v1`
 
 Это означает:
 
 - роль уже переведена из общего обсуждения в execution-ready hiring contour;
-- следующий bounded шаг теперь не “описать вакансию”, а одинаково оценивать кандидатов;
-- разумный следующий артефакт: `Interview Scorecard v1`.
+- следующий bounded шаг теперь не “описать вакансию”, а одинаково оценивать кандидатов и показывать bounded карту обязанностей;
+- разумный следующий артефакт после этого слоя: onboarding checklist.
 
 ## Первый управленческий ход
 
@@ -1292,3 +1294,5 @@ core роли лучше строить не от “всего полезног
 - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
 - `DS-strategy/inbox/WP-95-hiring-card-v1 (Новый менеджер Симферополь для Phase 1).md`
 - `DS-strategy/inbox/WP-95-vacancy-text-v1 (Вакансия локального учётно-складского менеджера Симферополь).md`
+- `DS-strategy/inbox/WP-95-interview-scorecard-v1 (Скоркарта собеседования для локального учётно-складского менеджера).md`
+- `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`

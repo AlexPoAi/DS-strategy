@@ -179,11 +179,14 @@ tags: [vk-coffee, hiring, vacancy, manager, simferopol, phase1]
 После этой вакансии логично materialize:
 
 - `Interview Scorecard v1`
+- `Candidate Duty Map v1`
 
-чтобы не только привлечь отклики, но и одинаково оценивать кандидатов по `Phase 1` критериям.
+чтобы не только привлечь отклики, но и одинаково оценивать кандидатов по `Phase 1` критериям, а также заранее показывать bounded карту обязанностей.
 
 ## Связанные артефакты
 
 - `DS-strategy/inbox/WP-95-administrator-transition-and-role-materialization (Аккуратная замена Жанны и материализация роли администратора).md`
 - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
 - `DS-strategy/inbox/WP-95-hiring-card-v1 (Новый менеджер Симферополь для Phase 1).md`
+- `DS-strategy/inbox/WP-95-interview-scorecard-v1 (Скоркарта собеседования для локального учётно-складского менеджера).md`
+- `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`

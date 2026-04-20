@@ -17,12 +17,15 @@ created: 2026-03-04
     - `DS-strategy/inbox/WP-95-transition-role-split-v1 (Переходная карта роли Жанна -> новый менеджер).md`
     - `DS-strategy/inbox/WP-95-hiring-card-v1 (Новый менеджер Симферополь для Phase 1).md`
     - `DS-strategy/inbox/WP-95-vacancy-text-v1 (Вакансия локального учётно-складского менеджера Симферополь).md`
+    - `DS-strategy/inbox/WP-95-interview-scorecard-v1 (Скоркарта собеседования для локального учётно-складского менеджера).md`
+    - `DS-strategy/inbox/WP-95-candidate-duty-map-v1 (Карта обязанностей кандидата на локального учётно-складского менеджера).md`
   - Приоритет: high
   - Бюджет: 1.5-3h
   - Статус итерации:
     - role-card и transition logic materialized
     - hiring contour materialized до уровня vacancy text
-    - следующий bounded шаг: `Interview Scorecard v1` для одинаковой оценки кандидатов
+    - scorecard и duty map materialized
+    - следующий bounded шаг: onboarding checklist для передачи роли в исполнение
 
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Восстановить `strategist-week-review` (убрать auth-blocker Claude route)
   - Контекст: после починки opening-contract оставалось предупреждение `strategist-week-review status=failed`.
