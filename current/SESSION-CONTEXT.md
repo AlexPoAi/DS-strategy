@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** сессия закрывается после выноса Obsidian human-layer из `Черновиков` на верхний уровень vault
 **Активный РП:** `WP-99` / human-layer Obsidian как часть общей системы экзокортекса
-**Следующий шаг:** Завтра не расширять архитектуру дальше, а truthfully наполнить верхнеуровневый `Банк экстрактора` из реального массива заметок и проверить extractor-route по доменам.
+**Следующий шаг:** Завтра первый приоритет — доделать `Obsidian как мозг`: наполнить верхнеуровневый `Банк экстрактора` из реального массива заметок и проверить extractor-route по доменам. После этого отдельно вернуться к контуру `Библиотекаря` и определить честный bounded slice на его доведение.
 
 ---
 
@@ -48,6 +48,7 @@
 - ✅ [2026-04-21 22:24] Зафиксирован найденный UX/architecture defect: системные папки human-layer нельзя держать внутри `2. Черновики`, потому что там они смешиваются с личными и доменными черновиками пользователя.
 - ✅ [2026-04-21 22:24] `Банк экстрактора`, `Доска выбора` и `Доска стратега` вынесены на верхний уровень live-vault `Творческий конвеер`; `health-check`, `daily-report` и `sync_obsidian.sh` переведены на новые пути.
 - ✅ [2026-04-21 22:24] Truthful next step на завтра зафиксирован явно: текущий `Банк экстрактора` — это только scaffold/snapshot, а не реальный разбор всего существующего массива заметок; нужен отдельный bounded slice на наполнение банка и проверку extractor-route.
+- ✅ [2026-04-21 22:28] Дополнительно зафиксирован завтрашний приоритетный порядок: сначала довести `Obsidian как мозг`, затем проверить недоделанный контур `Библиотекаря`, чтобы он не потерялся за работой по human-layer.
 - ✅ [2026-04-21 19:40] Кладовщик переведён на supplier-card формат: `Срочно заказать`, `WH.SESSION.001` и Telegram-слой больше не дублируют контакт на каждой строке, а группируют позиции под одной карточкой поставщика.
 - ✅ [2026-04-21 19:40] В `WP-97` выполнен первый production-minded hardening `ABC`: `warehouse_reports_pipeline.py` теперь умеет разбирать `xlsx` по листам, выбирать лучший `ABC`-лист по matched-quality и сохранять `status / sheet / matched / unmatched`.
 - ✅ [2026-04-21 19:40] Truthful post-refactor verdict по складу: manager-layer заметно усилен, но `ABC` всё ещё не попадает в живой цикл как реальный source, а `PDF`-накладные пока не дошли до line-item extraction.
@@ -169,7 +170,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20 20:05] Инженерный ритуал открытия выполнен: открыт `WP-96` / `ENG.WP.042` под системный дефект `Claude path auth-blocker`; sidecar-аудит отдан агенту `Archimedes`.
 - ✅ [2026-04-20 20:18] `WP-96` slice 1: root-cause narrowed — `day-close` не является живым Claude-first route; найден legacy/debug хвост в `week-review` override и documentation drift про обязательный `claude /login`; применён safe fix и выровнена документация.
 - ✅ [2026-04-20 20:26] По складу повторно закреплён правильный исполнитель: следующий bounded slice должен идти через `Warehouse Demand Analyst` как primary executor; инженер остаётся только support-слоем для pipeline/runtime.
-- ✅ [2026-04-21] `WP-97`: найден factual root-cause по `ABC` — intake-path уже починен и файлы физически найдены в Google Drive, но исходные `ABC анализ1/2.xlsx` содержат только header/title слой без таблицы позиций; следующий шаг уже не в парсере, а в получении корректного `ABC`-экспорта плюс отдельном продолжении `PDF invoice line-item` слоя.
+- ✅ [2026-04-21] `WP-97`: corrected verdict по `ABC` — intake-path починен, а прошлый вывод про `header-only` оказался ложным; root-cause был в нашем `xlsx`-reader (`openpyxl read_only=True` обрезал файл до первых 10 строк). После фикса и live sync `ABC` вошёл в production summary: `320` SKU с ABC-категорией.
 - ✅ [2026-04-20 23:32] Инженерный slice `WP-96` / `ENG.WP.042`: починен `synchronizer status freshness` — `scheduler` и `daily-report` теперь materialize свежие `.status` для `code-scan` и `daily-report`, поэтому health/report слой больше не опирается на stale evidence от `2026-03-26`.
 - ✅ [2026-04-21 00:10] `WP-96` / `ENG.WP.042` закрыт полностью: Telegram transport-layer получил `notify outbox evidence`, поэтому фактически отправленные сообщения теперь можно читать локально без реконструкции по шаблонам и коммитам.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до verdict-ready слоя — materialized `WP-95-phase-1-launch-verdict-template-v1`, чтобы запуск `Phase 1` оценивался по единому шаблону `success / partial / fail`.
