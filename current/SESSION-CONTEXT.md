@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-21 18:05
+**Последнее обновление:** 2026-04-21 19:40
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт следующий bounded slice по складу — WP-97: ABC intake + PDF invoice intelligence hardening
 **Активный РП:** W17 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Усилить `Warehouse Demand Analyst` по двум главным хвостам: стабильный weekly `ABC` и production-minded разбор `PDF`-накладных.
+**Следующий шаг:** После supplier-card рефактора кладовщика добить intake `ABC` как реальный вход в pipeline и перейти к line-item разбору `PDF`-накладных.
 
 ---
 
@@ -45,6 +45,9 @@
 ---
 
 ## Что сделано сегодня (2026-04-21)
+- ✅ [2026-04-21 19:40] Кладовщик переведён на supplier-card формат: `Срочно заказать`, `WH.SESSION.001` и Telegram-слой больше не дублируют контакт на каждой строке, а группируют позиции под одной карточкой поставщика.
+- ✅ [2026-04-21 19:40] В `WP-97` выполнен первый production-minded hardening `ABC`: `warehouse_reports_pipeline.py` теперь умеет разбирать `xlsx` по листам, выбирать лучший `ABC`-лист по matched-quality и сохранять `status / sheet / matched / unmatched`.
+- ✅ [2026-04-21 19:40] Truthful post-refactor verdict по складу: manager-layer заметно усилен, но `ABC` всё ещё не попадает в живой цикл как реальный source, а `PDF`-накладные пока не дошли до line-item extraction.
 - ✅ [2026-04-21 18:05] Открыт следующий warehouse-slice в `WP-97`: согласовано, что основной исполнитель — `Warehouse Demand Analyst`, а инженер усиливает только skill/method/pipeline вокруг него.
 - ✅ [2026-04-21 18:05] Зафиксирован plan-of-work для `WP-97`: 1) стабильный intake `ABC`, 2) каскадный `PDF invoice parser`, 3) затем реализация и живой прогон кладовщика.
 - ✅ [2026-04-21 17:34] WP-98 closed truthfully: warehouse decision layer strengthened, manager report and decision board rebuilt, Telegram digest sent

@@ -119,3 +119,30 @@ domain: warehouse
 Этот РП не считается завершённым, пока не появятся оба признака:
 - хотя бы один стабильный прогон `ABC` -> decision layer;
 - хотя бы один качественный `PDF invoice` parse -> line items / supplier / date / price / confidence.
+
+## Прогресс 2026-04-21 — post-refactor verdict
+
+### Что уже materialized
+
+- Кладовщик переведён на supplier-card формат в верхнем слое:
+  - `WH.REPORT.002`
+  - `WH.SESSION.001`
+  - Telegram digest
+- Контакт и канал поставщика больше не дублируются на каждой строке SKU.
+- `ABC`-парсер усилен:
+  - `xlsx` читается по листам;
+  - выбирается лучший лист по quality signal;
+  - сохраняются `sheet / status / matched / unmatched`.
+
+### Что truthful ещё не готово
+
+- `ABC` ещё не проходит как живой factual input через intake и поэтому не влияет на manager-report в production-цикле.
+- `PDF`-накладные всё ещё остаются на уровне text extraction / header metrics, а не line-item extraction.
+- Price delta по накладным ещё не опирается на invoice ledger.
+
+### Следующие bounded улучшения
+
+1. Довести `ABC` до реального intake-path в pipeline.
+2. Привязать `ABC` evidence к `manual review`, если matched/unmatched плохого качества.
+3. Реализовать `PDF invoice cascade` до строк накладной.
+4. После этого пересобрать кладовщика и заново оценить manager-layer уже на обогащённом входе.

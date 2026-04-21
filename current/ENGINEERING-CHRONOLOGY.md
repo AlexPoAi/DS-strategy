@@ -1,6 +1,6 @@
 ---
 type: engineering-chronology
- updated: 2026-04-20 20:05
+ updated: 2026-04-21 19:40
 source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/04-work-products
 ---
 
@@ -44,6 +44,9 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 31. 2026-04-20: в рамках `WP-96` / `ENG.WP.042` закрыт отдельный repair-slice `synchronizer status freshness`: `scheduler.sh` и `daily-report.sh` теперь materialize свежие `.status` для `synchronizer-code-scan` и `synchronizer-daily-report`, чтобы execution-layer, health-check и report-layer больше не расходились по evidence.
 32. 2026-04-20: `WP-96` / `ENG.WP.042` закрыт полностью: дополнительно materialized `notify outbox evidence`, поэтому Telegram transport-layer теперь оставляет прямой локальный след сообщений, а не только косвенные delivery-логи.
 33. 2026-04-21: `WP-76` закрыт truthfully до конца — найден semantic-tail в `strategist-week-review` skip-path (`STALENESS_BUDGET_SEC=86400` вместо weekly `604800`), из-за которого opening/status artifacts ложнопоказывали `yellow/stale` на следующий день; после точечного фикса в `strategist.sh` и refresh `daily-report.sh --refresh-status-artifacts` `SESSION-OPEN` и `AGENTS-STATUS` вернулись в полностью зелёный контур.
+34. 2026-04-21: открыт planning-контур `WP-99` / `ENG.WP.043` на превращение `Obsidian` в human-facing мозг поверх `Extractor` и `Strategist`: зафиксирована целевая архитектура `Obsidian = human layer`, `captures = machine queue`, `DS-strategy = governance`, `Pack = knowledge source-of-truth`, а первым bounded slice выбран `Selection Board v1` с safety-beacons.
+35. 2026-04-21: в `WP-97` выполнен первый warehouse hardening после ритуального согласования — кладовщик переведён на supplier-card manager format: `WH.REPORT.002`, `WH.SESSION.001` и Telegram-слой теперь группируют срочный заказ по поставщику с общим каналом и общим базовым дедлайном вместо повторения контактов на каждой SKU-строке.
+36. 2026-04-21: в `WP-97` усилен `ABC`-слой кладовщика: `warehouse_reports_pipeline.py` научен читать `xlsx` по листам, выбирать лучший `ABC`-лист по quality signal (`matched_rows / unmatched_rows / total_rows`) и материализовать evidence `sheet/status/matched/unmatched`; truthful verdict после live run — кодовый слой усилен, но в живом intake `ABC` пока ещё не подхватывается как реальный источник.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -59,6 +62,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 11. `WP-71`: материализовать минимум 3 доменных агента VK-coffee и провести live-пилот.
 12. `WP-75`: закрепить складской агентный протокол и получить стабильные actionable карточки на каждой новой поставке данных Жанны.
 14. `WP-75`: довести decision-layer `low-stock -> supplier -> contact -> deadline` и получить первую manager-ready закупочную карточку.
+15. `WP-97`: довести `ABC` до реального intake-path и затем реализовать `PDF invoice -> line items -> supplier/date/price/confidence`.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.
