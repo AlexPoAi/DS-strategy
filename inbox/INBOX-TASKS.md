@@ -1732,6 +1732,18 @@ created: 2026-03-04
     3. Рассмотреть альтернативы: прямое чтение Obsidian, webhook, file watcher
     4. Предложить оптимальную архитектуру с обоснованием
 
+- [pending] 2026-04-21: [SYSTEM] Obsidian как human-facing мозг для Extractor и Strategist
+  - Контекст: пользователь прямо не доверяет текущему machine-first UX экстрактора и не чувствует Strategist как видимого стратега. Нужен отдельный human layer в Obsidian: банк мыслей по доменам, ручка выбора, strategist board и safety-маяки.
+  - Связанные контуры: `WP-99`, `ENG.WP.043`, `WP-56`, `WP-74`, `WP-82`
+  - Цель:
+    1. Сделать `Obsidian` главным human-readable интерфейсом к мыслям и приоритетам
+    2. Не ломая текущий intake `Obsidian/Telegram -> captures`
+    3. Добавить объяснимый слой Strategist и проверяемые beacons
+  - Следующий шаг:
+    1. Materialize `Selection Board v1`
+    2. Зафиксировать contract matrix слоёв истины
+    3. Определить strategist skill plan для human-facing verdict
+
 - [pending] 2026-03-04: Обработка архива и необработанных документов экстрактором
   - Контекст: Архив создан с БАР, Персонал, ДЛЯ ШЕФА + документы на Google Drive
   - Приоритет: high
