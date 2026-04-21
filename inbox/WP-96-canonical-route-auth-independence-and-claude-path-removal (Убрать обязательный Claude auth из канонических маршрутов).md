@@ -2,7 +2,7 @@
 type: wp-context
 wp: 96
 title: Убрать обязательный Claude auth из канонических маршрутов
-status: in_progress
+status: done
 priority: critical
 owner: engineer
 created: 2026-04-20
@@ -143,3 +143,9 @@ created: 2026-04-20
 - Статус: `completed`
 - Verdict: дальше Telegram-сообщения не нужно будет восстанавливать по косвенным следам; у transport-layer появился прямой локальный outbox evidence
 - Следующий шаг: при ближайшей реальной отправке проверить, что в `~/logs/notify-outbox/YYYY-MM-DD/` появляются `message.html + response.json`
+
+## Финальный verdict по WP
+
+- Статус WP: `done`
+- Итог: известные на сегодня `Claude-first` и evidence-drift хвосты из canonical route layer сняты; `open / review / close / report / telegram evidence` больше не зависят от ручного `claude /login` и не требуют реконструкции по косвенным следам
+- Residual risk: cloud-plane наблюдаем только частично (`Cloud RAG: unknown` без health URL), но это уже отдельный monitoring-gap, а не blocker канонического ритуала

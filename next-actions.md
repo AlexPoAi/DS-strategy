@@ -13,7 +13,6 @@
 | 🔴 | Проверить, пришло ли описание роли / process-map от Жанны | Это главный factual gate для следующего возврата в `WP-95`; без него не детализировать `Phase 2` | `WP-95` |
 | 🔴 | Если input от Жанны пришёл, сверить его с контуром `WP-95` | Нужен bounded factual sync вместо продолжения “в воздухе” | `WP-95` |
 | 🟡 | Если input от Жанны не пришёл, не трогать `Phase 2` и переключиться в складской slice | Следующий честный рабочий вариант вне `WP-95` — `WP-98` через warehouse-layer | `WP-98` |
-| 🟡 | Удержать auth-independent close/open route как canonical | `day-close-safe.sh` уже сработал; при следующем инженерном возврате проверить, что маршрут остаётся живым без ручного `claude /login` | `WP-96` / `ENG.WP.042` |
 | 🟡 | Обновить недельный фокус W17 от реального старта недели | Зафиксировать, что `WP-95` ушёл в truthful pause, а не в потерянный хвост | `W17` |
 
 ## Backlog
@@ -35,8 +34,9 @@
 - ✅ После живой планёрки с Жанной собран factual update: подтверждено, что тема replacement уже озвучена, запрошено описание роли, появилась живая транскрипция и короткая `.mmd`-карточка для быстрого входа
 - ✅ Для `WP-95` созданы `context brief` и `document registry`, чтобы следующий агент входил в предметную область без перечитывания всей истории
 - ✅ Зафиксирован truthful stop: `Phase 2` не детализировать до process-map / описания роли от Жанны
+- ✅ `WP-96` / `ENG.WP.042` закрыт: canonical route layer выровнен под `Codex-primary`, `synchronizer` status freshness materialized, Telegram transport получил локальный `outbox evidence`
 - ✅ Инженерный close-route проверен: `day-close-safe.sh` отработал как auth-independent day-close
-- ✅ `SESSION-CONTEXT` и `next-actions` синхронизированы под закрытие дня и следующий возврат
+- ✅ `SESSION-CONTEXT` и `next-actions` синхронизированы под финальное закрытие дня и следующий возврат
 
 ---
 

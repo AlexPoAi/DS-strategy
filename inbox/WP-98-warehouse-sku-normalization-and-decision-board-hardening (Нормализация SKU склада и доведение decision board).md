@@ -1,10 +1,10 @@
 ---
 type: work-product
 id: WP-98
-status: in_progress
+status: done
 priority: high
 created: 2026-04-20
-updated: 2026-04-20
+updated: 2026-04-21
 owner: Engineer
 domain: warehouse
 ---
@@ -31,6 +31,37 @@ domain: warehouse
 ## Truthful статус
 
 Открыт как отдельный bounded slice после прямого замечания владельца по качеству warehouse-отчёта.
+
+## Что сделано
+
+1. Удержан manager-facing слой без битых `????` SKU и мусорной нормализации.
+2. `WH.SESSION.001` переведён из списка позиций в action-board по поставщику:
+   - одно действие;
+   - поставщик;
+   - канал;
+   - дедлайн;
+   - позиции внутри заказа.
+3. `WH.REPORT.002` получил новый `Executive Summary`:
+   - число критичных SKU;
+   - число поставщиков в цикле;
+   - главный риск периода;
+   - честная пометка про отсутствие `ABC`.
+4. Telegram digest и локальный manager-report пересобраны на живых данных.
+5. Живой manual-run выполнен, Telegram-отчёт отправлен.
+
+## Truthful результат
+
+`WP-98` как bounded slice завершён.
+
+Что закрыто:
+- decision board больше не скатывается в файловый шум;
+- supplier-based action layer для срочного заказа materialized;
+- верхний summary стал manager-readable.
+
+Что сознательно НЕ закрыто этим РП:
+- полноценный OCR по PDF-накладным (`WP-97`);
+- достройка `ABC` как входа в текущий цикл;
+- полное разведение `Тэйсти Кофе` / `Субмарина` по live invoice evidence для всех drip SKU.
 
 ## Ритуальная пометка
 

@@ -117,18 +117,19 @@
 
 ---
 
-## РП текущей недели (W14: 30 мар – 5 апр)
+## РП текущей недели (W17: 20 апр – 26 апр)
 
 > Порядок: in_progress → pending → done.
 
 | # | РП | Бюджет | Статус | Дедлайн |
 |---|-----|--------|--------|---------|
-| 50 | Каталог готовых блюд из кассы Сабы (KITCHEN.WP.011) | 1h | pending | — |
-| 48 | Полное тестирование Telegram-бота VK-offee | 1h | in_progress | 03.04 |
-| 47 | Редизайн workflow Extractor (captures → inbox → Pack) | 3h | pending | 01.04 |
-| 42 | PACK-warehouse — накладные, остатки, поставщики как карточки | 2h | pending | — |
-| 44 | FPF-моделирование PACK-kitchen — FM-уровень | 2h | partial | — |
-| 45 | Система продвижения в Яндекс Картах | 3-4h | pending | — |
+| 73 | ПАРК: статус канализационной трубы + официальный следующий шаг | 1.5-2h | pending | 2026-04-22 |
+| 59 | Telegram-бот: роль управляющего + быстрые ссылки на day/week report | 1.5-2h | partial | 2026-04-23 |
+| 74 | Карта backlog `110` задач по предметным областям | 1.5-3h | pending | 2026-04-24 |
+| 56 | Truthful rebase backlog и recovery | 1-1.5h | partial | 2026-04-24 |
+| 63 | Склад: verification production-ready verdict | 1-2h | partial | 2026-04-24 |
+| 76 | Планировщик экзокортекса: финальный closeout после post-check | 0.5-1h | partial | 2026-04-21 |
+| 89 | Master document registry по всей базе знаний | 2-4h | pending | 2026-04-26 |
 
 ---
 

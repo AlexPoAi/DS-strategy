@@ -3,7 +3,7 @@ type: inbox
 created: 2026-03-04
 ---
 
-- [in_progress] 2026-04-20: [ENGINEERING][CRITICAL] Убрать обязательный Claude auth из канонических маршрутов
+- [done] 2026-04-20: [ENGINEERING][CRITICAL] Убрать обязательный Claude auth из канонических маршрутов
   - Контекст: повторяется вчерашний системный блокер `Not logged in · Please run /login (Claude path)`. Это уже не локальная проблема `week-review`, а признак того, что часть canonical routes всё ещё может заходить в обязательный `Claude path`, хотя эталон уже зафиксирован как `Codex-primary / provider-agnostic`.
   - Что сделать:
     1. Найти все оставшиеся `Claude-first` route-хвосты в canonical layer
@@ -20,6 +20,10 @@ created: 2026-03-04
   - Статус итерации:
     - slice 1: снят живой `week-review -> Claude-first` хвост и выровнена документация под `Codex-primary / Claude-fallback`
     - slice 2: materialized `synchronizer status freshness`; `.status`-layer для `code-scan` и `daily-report` больше не дрейфует отдельно от execution/report слоя
+    - slice 3: materialized `notify outbox evidence`; Telegram-сообщения теперь сохраняются локально 1:1
+  - Итог:
+    - `WP-96` / `ENG.WP.042` закрыты
+    - канонический route layer больше не имеет известных обязательных `Claude-first` хвостов
 
 - [in_progress] 2026-04-20: [VK-COFFEE][STAFF] Аккуратно подготовить замену Жанны и материализовать роль администратора
   - Контекст: есть признаки, что Жанна перестаёт держать работу в сети как приоритет; при этом административный и складской контур всё ещё заметно зависит от неё. Обновлённый управленческий вывод: Жанну нужно выводить из роли в горизонте `до 3 месяцев` и переходить на постоянного менеджера. Нужен не резкий конфликтный разрыв, а аккуратный переход с фиксацией роли, задач и ownership.

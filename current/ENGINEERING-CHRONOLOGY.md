@@ -42,6 +42,8 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 29. 2026-04-20: открыт `WP-98` по складу для bounded hardening manager-layer: устранение битого SKU, удержание `WH.SESSION.001` как decision board и разведение supplier routing `Тэйсти Кофе` / `Субмарина`.
 30. 2026-04-20: дополнительно зафиксирован guardrail: временные sidecar-аудиторы без согласования не считаются допустимым шаблоном; повторяющиеся складские задачи должны усиливать skill постоянного агента `Кладовщик VK Coffee`, а не подменять его новым агентом.
 31. 2026-04-20: в рамках `WP-96` / `ENG.WP.042` закрыт отдельный repair-slice `synchronizer status freshness`: `scheduler.sh` и `daily-report.sh` теперь materialize свежие `.status` для `synchronizer-code-scan` и `synchronizer-daily-report`, чтобы execution-layer, health-check и report-layer больше не расходились по evidence.
+32. 2026-04-20: `WP-96` / `ENG.WP.042` закрыт полностью: дополнительно materialized `notify outbox evidence`, поэтому Telegram transport-layer теперь оставляет прямой локальный след сообщений, а не только косвенные delivery-логи.
+33. 2026-04-21: `WP-76` закрыт truthfully до конца — найден semantic-tail в `strategist-week-review` skip-path (`STALENESS_BUDGET_SEC=86400` вместо weekly `604800`), из-за которого opening/status artifacts ложнопоказывали `yellow/stale` на следующий день; после точечного фикса в `strategist.sh` и refresh `daily-report.sh --refresh-status-artifacts` `SESSION-OPEN` и `AGENTS-STATUS` вернулись в полностью зелёный контур.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -56,9 +58,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 10. `WP-70`: подтвердить стабильность Codex UX после restart/VPN-flap и зафиксировать image-workflow runbook.
 11. `WP-71`: материализовать минимум 3 доменных агента VK-coffee и провести live-пилот.
 12. `WP-75`: закрепить складской агентный протокол и получить стабильные actionable карточки на каждой новой поставке данных Жанны.
-13. `WP-76`: восстановить загрузку планировщика экзокортекса и закрыть red-сигнал в health-report.
 14. `WP-75`: довести decision-layer `low-stock -> supplier -> contact -> deadline` и получить первую manager-ready закупочную карточку.
-15. `WP-96` / `ENG.WP.042`: убрать обязательный `Claude auth` из канонических маршрутов и подтвердить, что ритуалы проходят через рабочий `Codex path`.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.

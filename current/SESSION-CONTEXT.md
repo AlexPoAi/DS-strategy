@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-20 23:59
+**Последнее обновление:** 2026-04-21 17:26
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** день закрыт; `WP-95` поставлен на truthful pause до process-map от Жанны
+**Статус:** день открыт; `WP-76` и `WP-98` закрыты truthfully, `WP-95` остаётся главным carry-over
 **Активный РП:** `WP-95` — аккуратная замена Жанны и материализация роли администратора
-**Следующий шаг:** при следующем входе сначала проверить, пришло ли описание роли / процессов от Жанны; если пришло — сверить с контуром `WP-95`, если нет — не детализировать `Phase 2` дальше и отдельно решить, переключаемся ли в складской slice `WP-98`.
+**Следующий шаг:** использовать новый factual input из Google Drive (`Протокол планерки`) как bounded input v1 для `WP-95` и сверить его с текущим duty/handoff контуром, не разворачивая `Phase 2` раньше времени.
 
 ---
 
@@ -37,10 +37,19 @@
 ---
 
 ## Следующий шаг
-- 🔒 [23:59] Сессия закрыта
+- 🔒 [00:18] Сессия закрыта
 1. Открыть следующий вход с [WP-95-context-brief-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-context-brief-v1%20%28%D0%9A%D1%80%D0%B0%D1%82%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0%29.md:1) и [WP-95-document-registry-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-document-registry-v1%20%28%D0%A0%D0%B5%D0%B5%D1%81%D1%82%D1%80%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BF%D0%BE%20WP-95%29.md:1).
 2. Проверить, пришёл ли factual input от Жанны: описание роли / process-map.
-3. Если нового input нет, не продолжать `Phase 2` по `WP-95` и отдельно выбрать, идём ли в `WP-98`.
+3. Если нового input нет, не продолжать `Phase 2` по `WP-95`, а отдельно выбрать между `WP-98` и weekly focus rebase `W17`.
+
+---
+
+## Что сделано сегодня (2026-04-21)
+- ✅ [2026-04-21 17:26] Выполнен ритуал открытия дня: `SESSION-OPEN` и `AGENTS-STATUS` пересобраны, мозг экзокортекса вернулся в `🟢 green`.
+- ✅ [2026-04-21 17:26] `WP-76` закрыт truthfully: найден и исправлен semantic-tail в `strategist-week-review` skip-path, из-за которого weekly success ложно старел уже через 24 часа.
+- ✅ [2026-04-21 17:26] `exocortex/memory/MEMORY.md` выровнен на актуальный weekly-портфель W17, чтобы `WP Gate` больше не ссылался на устаревший слой W14.
+- ✅ [2026-04-21 17:26] В Google Drive найден новый factual input для `WP-95`: документ `Протокол планерки` с блоками про обязанности помощника и карту должности.
+- ✅ [2026-04-21 17:27] `WP-98` закрыт как bounded warehouse-slice: `WH.REPORT.002` получил manager-readable executive summary, `WH.SESSION.001` переведён в supplier-based action board, manual-run выполнен и Telegram digest отправлен.
 
 ---
 
@@ -152,6 +161,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-20 20:18] `WP-96` slice 1: root-cause narrowed — `day-close` не является живым Claude-first route; найден legacy/debug хвост в `week-review` override и documentation drift про обязательный `claude /login`; применён safe fix и выровнена документация.
 - ✅ [2026-04-20 20:26] По складу повторно закреплён правильный исполнитель: следующий bounded slice должен идти через `Warehouse Demand Analyst` как primary executor; инженер остаётся только support-слоем для pipeline/runtime.
 - ✅ [2026-04-20 23:32] Инженерный slice `WP-96` / `ENG.WP.042`: починен `synchronizer status freshness` — `scheduler` и `daily-report` теперь materialize свежие `.status` для `code-scan` и `daily-report`, поэтому health/report слой больше не опирается на stale evidence от `2026-03-26`.
+- ✅ [2026-04-21 00:10] `WP-96` / `ENG.WP.042` закрыт полностью: Telegram transport-layer получил `notify outbox evidence`, поэтому фактически отправленные сообщения теперь можно читать локально без реконструкции по шаблонам и коммитам.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до verdict-ready слоя — materialized `WP-95-phase-1-launch-verdict-template-v1`, чтобы запуск `Phase 1` оценивался по единому шаблону `success / partial / fail`.
 - ✅ [2026-04-20] VK Coffee: после живой планёрки с Жанной materialized `WP-95-live-meeting-factual-update-v1`; подтверждено, что тема поиска replacement уже озвучена, Жанне запрошено описание процессов, а в live-контуре появились конкретные даты инвентаризации и обязательный `Google Drive/Новые документы` workflow для отчетов бота.
 - ✅ [2026-04-20] VK Coffee: `WP-95` доведён до phase-2-gated состояния — materialized `WP-95-phase-2-readiness-gate-v1`; зафиксировано, что расширение роли запрещено до подтверждённого `Phase 1 success`.
@@ -164,4 +174,4 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 
 ## Закрытие дня
 - Новый carry-over/focus: canonical route layer экзокортекса должен стать auth-независимым и не зависеть от ручного `claude /login`.
-- ✅ [2026-04-20 23:59] День закрыт по ритуалу: `day-close-safe.sh` отработал без auth-зависимости, `SESSION-CONTEXT` и `next-actions` синхронизированы с truthful stop по `WP-95`, следующий вход переведён в режим `check Zhanna input first`.
+- ✅ [2026-04-21 00:18] Финальный closeout: `day-close-safe.sh` выполнен, `WP-96` закрыт truthfully, `SESSION-CONTEXT` и `next-actions` обновлены под реальный carry-over `WP-95 -> wait Zhanna input`.

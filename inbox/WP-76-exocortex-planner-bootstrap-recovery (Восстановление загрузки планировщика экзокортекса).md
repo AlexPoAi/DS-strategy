@@ -1,11 +1,11 @@
 ---
 id: WP-76
 title: "Exocortex planner bootstrap recovery"
-status: active
+status: done
 priority: critical
 owner: "Environment Engineer + Code Engineer"
 created: 2026-04-19
-updated: 2026-04-19
+updated: 2026-04-21
 ---
 
 # Контекст
@@ -64,3 +64,21 @@ updated: 2026-04-19
 - `health-check.sh` после фикса показывает:
   - ✅ `ОК: планировщик загружен (systemd)` — red по планировщику устранён.
   - ⚠️ Остальные ошибки относятся к неполному составу репозиториев/контрактов на VPS, не к scheduler bootstrap.
+
+# Финальный closeout (2026-04-21)
+
+1. Найден и устранён остаточный semantic-tail в local status layer:
+   - `strategist-week-review` при skip-path `already completed earlier this week-window` записывал `STALENESS_BUDGET_SEC=86400`;
+   - из-за этого уже на следующий день `SESSION-OPEN` и `AGENTS-STATUS` рисовали ложный `yellow/stale`, хотя weekly window был закрыт успешно.
+2. В `FMT-exocortex-template/roles/strategist/scripts/strategist.sh` добавлен явный weekly staleness budget `604800` для skip-path week-review.
+3. Выполнена верификация:
+   - `bash .../strategist.sh week-review` → `SKIP: week-review already completed in current week-window`;
+   - `bash .../daily-report.sh --refresh-status-artifacts` пересобрал `AGENTS-STATUS.md` и `SESSION-OPEN`.
+4. Итог:
+   - `current/SESSION-OPEN (Экран открытия сессии).md` → `🟢 green`;
+   - `current/AGENTS-STATUS.md` → все ключевые агенты и задачи зелёные;
+   - `strategist-week-review.status` теперь truthfully хранит `STALENESS_BUDGET_SEC=604800`.
+
+# Verdict
+
+`WP-76` закрыт truthfully: red-сигнал по planner bootstrap снят ранее, а 2026-04-21 добит последний observability-tail, из-за которого opening screen ещё оставался жёлтым.
