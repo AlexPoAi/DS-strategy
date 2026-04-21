@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-21 17:34
+**Последнее обновление:** 2026-04-21 18:05
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-98 closed truthfully: warehouse decision layer strengthened, manager report and decision board rebuilt, Telegram digest sent
+**Статус:** открыт следующий bounded slice по складу — WP-97: ABC intake + PDF invoice intelligence hardening
 **Активный РП:** W17 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
+**Следующий шаг:** Усилить `Warehouse Demand Analyst` по двум главным хвостам: стабильный weekly `ABC` и production-minded разбор `PDF`-накладных.
 
 ---
 
@@ -45,6 +45,8 @@
 ---
 
 ## Что сделано сегодня (2026-04-21)
+- ✅ [2026-04-21 18:05] Открыт следующий warehouse-slice в `WP-97`: согласовано, что основной исполнитель — `Warehouse Demand Analyst`, а инженер усиливает только skill/method/pipeline вокруг него.
+- ✅ [2026-04-21 18:05] Зафиксирован plan-of-work для `WP-97`: 1) стабильный intake `ABC`, 2) каскадный `PDF invoice parser`, 3) затем реализация и живой прогон кладовщика.
 - ✅ [2026-04-21 17:34] WP-98 closed truthfully: warehouse decision layer strengthened, manager report and decision board rebuilt, Telegram digest sent
 - ✅ [2026-04-21 17:26] Выполнен ритуал открытия дня: `SESSION-OPEN` и `AGENTS-STATUS` пересобраны, мозг экзокортекса вернулся в `🟢 green`.
 - ✅ [2026-04-21 17:26] `WP-76` закрыт truthfully: найден и исправлен semantic-tail в `strategist-week-review` skip-path, из-за которого weekly success ложно старел уже через 24 часа.

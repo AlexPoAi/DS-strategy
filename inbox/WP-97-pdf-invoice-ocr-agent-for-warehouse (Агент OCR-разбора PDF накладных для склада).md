@@ -4,7 +4,7 @@ id: WP-97
 status: open
 priority: high
 created: 2026-04-20
-updated: 2026-04-20
+updated: 2026-04-21
 owner: Engineer
 domain: warehouse
 ---
@@ -79,3 +79,43 @@ domain: warehouse
 
 Пока это ещё не реализованный production-agent.
 Сейчас открывается отдельным рабочим продуктом как high-priority next layer для склада.
+
+## Slice 2026-04-21 — ABC + PDF hardening
+
+### Согласованный исполнитель
+
+Основной агент:
+`Warehouse Demand Analyst`
+
+Инженер в этом РП:
+- не подменяет доменного агента;
+- не нанимает новый постоянный агентный контур;
+- усиливает skill, метод и pipeline вокруг кладовщика.
+
+### Согласованный scope
+
+1. Стабилизировать weekly intake для `ABC`:
+- находить актуальный `ABC`-файл;
+- извлекать правильный лист/таблицу;
+- нормализовать SKU;
+- жёстко логировать unmatched/ambiguous позиции;
+- использовать `A/B/C` в manager-facing приоритете закупки.
+
+2. Создать production-minded каскад для `PDF`-накладных:
+- сначала определять `text PDF` vs `scanned PDF`;
+- для text PDF использовать table/text extraction;
+- для scanned PDF использовать OCR + confidence;
+- собирать line-item ledger, а не preview text;
+- выводить спорные строки только в `manual review`.
+
+### Целевой результат slice
+
+- `ABC` перестаёт быть случайным входом и становится регулярным приоритетным сигналом.
+- `PDF`-накладные становятся пригодным источником для price delta и supplier evidence.
+- Кладовщик получает новый capability-слой, а не временный обходной костыль.
+
+### Truthful критерий завершения
+
+Этот РП не считается завершённым, пока не появятся оба признака:
+- хотя бы один стабильный прогон `ABC` -> decision layer;
+- хотя бы один качественный `PDF invoice` parse -> line items / supplier / date / price / confidence.
