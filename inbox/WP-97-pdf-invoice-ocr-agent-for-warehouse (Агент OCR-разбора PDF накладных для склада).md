@@ -172,3 +172,32 @@ domain: warehouse
 1. Удержать новый `xlsx`-reader как production-default для warehouse intake.
 2. Проверить, какие SKU из low-stock всё ещё не получают `ABC`-категорию и почему.
 3. Параллельно продолжать `PDF invoice -> line items` слой.
+
+## End-of-day 2026-04-21
+
+### Что truthfully закрыто сегодня
+
+- `ABC intake` доведён до production-уровня:
+  - найден и исправлен root-cause в `xlsx`-reader;
+  - live sync подтверждён;
+  - `ABC` снова вошёл в manager report (`320` SKU с ABC-категорией).
+- `PDF invoice` слой улучшен:
+  - убран header-noise из item names;
+  - снят duplicate effect по одинаковым PDF из разных папок;
+  - supplier cards и `WH.WP.007` пересобраны на более честной базе.
+- Агент `Warehouse Demand Analyst` усилен отдельными skill-слоями:
+  - spreadsheet ingestion excellence;
+  - ABC intake and matching;
+  - PDF line-item intelligence.
+
+### Что не закрыто и идёт carry-over на завтра
+
+- Не все `low-stock` позиции уже получили корректный `ABC`-match.
+- `PDF` всё ещё не доведён до полноценного `price delta ledger`.
+- Нужен следующий рефактор кладовщика уже на новом skill-stack, а не только точечные фиксы парсинга.
+
+### Старт завтра
+
+1. Проверить, почему часть `low-stock` SKU (`drip` и часть других позиций) всё ещё без `ABC`-категории.
+2. Довести `ABC matching` до более полного покрытия между остатками, продажами и weekly ABC.
+3. Перейти к следующему bounded slice: `PDF -> price delta / supplier price change`.
