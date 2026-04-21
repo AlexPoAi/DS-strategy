@@ -1,13 +1,13 @@
 # Контекст текущей сессии
 
 > **Читать при обрыве.** Это живой handoff-файл, а не исторический лог.
-> Последнее обновление: 2026-04-20
+> Последнее обновление: 2026-04-21
 > Полный архив старого хвоста: `archive/session-context-log/SESSION-CONTEXT-archive-through-2026-04-08 (Архив SESSION-CONTEXT до 08 апреля 2026).md`
 
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-21 17:26
+**Последнее обновление:** 2026-04-21 17:34
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** день открыт; `WP-76` и `WP-98` закрыты truthfully, `WP-95` остаётся главным carry-over
-**Активный РП:** `WP-95` — аккуратная замена Жанны и материализация роли администратора
-**Следующий шаг:** использовать новый factual input из Google Drive (`Протокол планерки`) как bounded input v1 для `WP-95` и сверить его с текущим duty/handoff контуром, не разворачивая `Phase 2` раньше времени.
+**Статус:** задача закрыта — WP-98 closed truthfully: warehouse decision layer strengthened, manager report and decision board rebuilt, Telegram digest sent
+**Активный РП:** W17 / текущий рабочий цикл экзокортекса
+**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
 
 ---
 
@@ -37,14 +37,15 @@
 ---
 
 ## Следующий шаг
-- 🔒 [00:18] Сессия закрыта
-1. Открыть следующий вход с [WP-95-context-brief-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-context-brief-v1%20%28%D0%9A%D1%80%D0%B0%D1%82%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0%29.md:1) и [WP-95-document-registry-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-document-registry-v1%20%28%D0%A0%D0%B5%D0%B5%D1%81%D1%82%D1%80%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BF%D0%BE%20WP-95%29.md:1).
-2. Проверить, пришёл ли factual input от Жанны: описание роли / process-map.
-3. Если нового input нет, не продолжать `Phase 2` по `WP-95`, а отдельно выбрать между `WP-98` и weekly focus rebase `W17`.
+- 🔒 [17:34] Сессия закрыта
+1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
+2. Открыть следующий рабочий цикл от текущего truthful состояния.
+3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
 
 ---
 
 ## Что сделано сегодня (2026-04-21)
+- ✅ [2026-04-21 17:34] WP-98 closed truthfully: warehouse decision layer strengthened, manager report and decision board rebuilt, Telegram digest sent
 - ✅ [2026-04-21 17:26] Выполнен ритуал открытия дня: `SESSION-OPEN` и `AGENTS-STATUS` пересобраны, мозг экзокортекса вернулся в `🟢 green`.
 - ✅ [2026-04-21 17:26] `WP-76` закрыт truthfully: найден и исправлен semantic-tail в `strategist-week-review` skip-path, из-за которого weekly success ложно старел уже через 24 часа.
 - ✅ [2026-04-21 17:26] `exocortex/memory/MEMORY.md` выровнен на актуальный weekly-портфель W17, чтобы `WP Gate` больше не ссылался на устаревший слой W14.
