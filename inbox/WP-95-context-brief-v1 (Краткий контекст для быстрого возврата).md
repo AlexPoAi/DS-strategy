@@ -3,7 +3,7 @@ type: wp-context-brief
 status: active
 owner: strategist
 created: 2026-04-20
-updated: 2026-04-20
+updated: 2026-04-22
 parent_wp: WP-95
 tags: [vk-coffee, context, brief, zhanna, manager]
 ---
@@ -40,6 +40,7 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 12. `WP-95-phase-2-readiness-gate-v1`
 13. `WP-95-phase-2-candidate-slice-v1`
 14. `WP-95-document-registry-v1`
+15. `WP-95-zhanna-handoff-drive-folder-v1`
 
 ## Главный truthful verdict
 
@@ -61,6 +62,12 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 - появился обязательный `Google Drive / Новые документы` workflow для отчётов в бот;
 - появились живые даты инвентаризации и fallback milestones.
 
+Дополнительный factual input на `2026-04-22`:
+
+- Жанна создала отдельную папку `Google Drive` под передачу дел новому менеджеру;
+- папка зафиксирована как отдельный artifact;
+- следующий допустимый slice теперь включает анализ её содержимого, а не только ожидание process-map в абстрактном виде.
+
 ## Чем закончилась работа сегодня
 
 Работа сегодня закончилась не новым расширением, а честной паузой:
@@ -80,7 +87,7 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 
 1. Прочитать этот файл.
 2. Прочитать [WP-95-live-meeting-factual-update-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-live-meeting-factual-update-v1%20%28%D0%A4%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BF%D0%BB%D0%B0%D0%BD%D0%B5%D1%80%D0%BA%D0%B8%20%D1%81%20%D0%96%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%202026-04-20%29.md:1).
-3. Посмотреть, пришло ли описание роли / процессов от Жанны.
+3. Посмотреть, пришло ли описание роли / процессов от Жанны или появился ли новый материал в её handoff-папке.
 4. Только после этого продолжать следующий slice.
 
 ## Следующий допустимый slice
@@ -89,6 +96,11 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 
 - сверка её process-map с нашим контуром;
 - затем уточнение `Phase 2 Google Drive Slice v1`.
+
+Если описание роли не пришло, но handoff-папка начала наполняться:
+
+- сначала сделать `contents analysis` этой папки;
+- затем сверить найденные документы с нашим контуром `WP-95`.
 
 Если описание роли не пришло:
 

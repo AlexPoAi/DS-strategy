@@ -40,6 +40,7 @@ tags: [vk-coffee, registry, documents, zhanna, manager]
 | [WP-95-phase-1-launch-plan-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-launch-plan-v1%20%28%D0%9F%D0%BB%D0%B0%D0%BD%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%20Phase%201%29.md:1) | `launch-plan` | draft | запуск `Phase 1` по wave-логике |
 | [WP-95-phase-1-launch-verdict-template-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-launch-verdict-template-v1%20%28%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20verdict%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0%20Phase%201%29.md:1) | `verdict-template` | draft | verdict `success / partial / fail` |
 | [WP-95-live-meeting-factual-update-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-live-meeting-factual-update-v1%20%28%D0%A4%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BF%D0%BB%D0%B0%D0%BD%D0%B5%D1%80%D0%BA%D0%B8%20%D1%81%20%D0%96%D0%B0%D0%BD%D0%BD%D0%BE%D0%B9%202026-04-20%29.md:1) | `factual-update` | draft | factual sync после планёрки |
+| [WP-95-zhanna-handoff-drive-folder-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-zhanna-handoff-drive-folder-v1%20%28%D0%9F%D0%B0%D0%BF%D0%BA%D0%B0%20Google%20Drive%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B5%D0%BB%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | `drive-folder` | active | отдельная handoff-папка Жанны в Google Drive для передачи дел |
 | [WP-95-phase-2-readiness-gate-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-2-readiness-gate-v1%20%28%D0%93%D0%B5%D0%B9%D1%82%20%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BA%20Phase%202%29.md:1) | `readiness-gate` | draft | gate перед расширением роли |
 | [WP-95-phase-2-candidate-slice-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-2-candidate-slice-v1%20%28%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20slice%20%D0%B4%D0%BB%D1%8F%20Phase%202%29.md:1) | `phase2-candidate` | draft | первый безопасный кандидатный block после `Phase 1` |
 | [WP-95-context-brief-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-context-brief-v1%20%28%D0%9A%D1%80%D0%B0%D1%82%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0%29.md:1) | `wp-context-brief` | active | быстрый re-entry в тему |
@@ -50,12 +51,14 @@ tags: [vk-coffee, registry, documents, zhanna, manager]
 |---|---|---|---|
 | [Запись встречи 20.04.2026 20-32-01 - запись.txt](/Users/alexander/Транскрипция%20встреч/Запись%20встречи%2020.04.2026%2020-32-01%20-%20запись.txt) | `meeting transcript` | live input | factual evidence после планёрки с Жанной |
 | [WP-95-meeting-2026-04-20-zhanna-digest-v1.mmd](/Users/alexander/Github/DS-strategy/inbox/WP-95-meeting-2026-04-20-zhanna-digest-v1.mmd:1) | `meeting digest` | active | короткая MMD-карточка, чтобы не перечитывать весь transcript |
+| [WP-95-zhanna-handoff-drive-folder-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-zhanna-handoff-drive-folder-v1%20%28%D0%9F%D0%B0%D0%BF%D0%BA%D0%B0%20Google%20Drive%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B5%D0%BB%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | `drive-folder` | live input | отдельная папка Google Drive, куда Жанна начала складывать handoff-материалы |
 
 ## Чего ещё не хватает
 
 1. Process-map / описание роли от Жанны
 2. Реальный `Phase 1 Launch Verdict`
 3. Подтверждённый input, можно ли двигать `Phase 2`
+4. Анализ содержимого handoff-папки Жанны в Google Drive
 
 ## Truthful stop
 
