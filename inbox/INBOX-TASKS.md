@@ -3,6 +3,24 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [in_progress] 2026-04-22: [ENGINEERING][CRITICAL] Убрать duplicate daily-telegram-report между local и VPS и закрепить один source of truth
+  - Контекст: в один и тот же Telegram-чат пришли два ежедневных отчёта экзокортекса из двух runtime-контуров: корректный local `launchctl/codex` (`09:03`) и устаревший/аварийный VPS `systemd/claude` (`08:15`).
+  - Что сделать:
+    1. Зафиксировать current-state senders локально и на VPS
+    2. Сверить с эталоном, должен ли быть один sender или split-channels
+    3. Оценить риск отключения дубля
+    4. Выбрать канонический sender daily-status
+    5. Фундаментально отключить или развести лишнюю отправку
+    6. Зафиксировать anti-regression guardrail
+  - Артефакты:
+    - `DS-strategy/inbox/WP-101-dedupe-exocortex-daily-telegram-source-and-runtime-authority (Убрать дубли daily-telegram и закрепить один источник истины статуса).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.044-daily-telegram-single-source-of-truth (Единый источник ежедневного Telegram-отчёта экзокортекса).md`
+  - Приоритет: critical
+  - Бюджет: 45-120m
+  - Truthful status:
+    - factual diagnosis done: local and VPS both send daily-report into one chat
+    - next step is architecture decision before runtime changes
+
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Убрать обязательный Claude auth из канонических маршрутов
   - Контекст: повторяется вчерашний системный блокер `Not logged in · Please run /login (Claude path)`. Это уже не локальная проблема `week-review`, а признак того, что часть canonical routes всё ещё может заходить в обязательный `Claude path`, хотя эталон уже зафиксирован как `Codex-primary / provider-agnostic`.
   - Что сделать:
