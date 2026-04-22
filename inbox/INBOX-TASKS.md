@@ -21,6 +21,18 @@ created: 2026-03-04
     - factual diagnosis done: local and VPS both send daily-report into one chat
     - next step is architecture decision before runtime changes
 
+- [pending] 2026-04-22: [ENGINEERING][VK-COFFEE] Разобраться, почему RAG-бот в Telegram отвечает ошибкой
+  - Контекст: пользователь отправил запрос в Telegram `RAG`-боту, а бот вернул ошибку вместо ответа. Это отдельный баг сегодняшнего дня, его нужно не потерять на фоне работы по экзокортексу и складу.
+  - Что сделать:
+    1. Снять точный текст ошибки и runtime evidence
+    2. Проверить жив ли `VK-offee-rag` API и связан ли он с Telegram-ботом
+    3. Понять, transport это, auth, health-check или upstream API issue
+    4. Зафиксировать safest fix без поломки работающего bot/runtime слоя
+  - Приоритет: high
+  - Бюджет: 30-90m
+  - Truthful status:
+    - пока только зафиксировано, что ошибка есть и требует отдельного bounded slice
+
 - [done] 2026-04-20: [ENGINEERING][CRITICAL] Убрать обязательный Claude auth из канонических маршрутов
   - Контекст: повторяется вчерашний системный блокер `Not logged in · Please run /login (Claude path)`. Это уже не локальная проблема `week-review`, а признак того, что часть canonical routes всё ещё может заходить в обязательный `Claude path`, хотя эталон уже зафиксирован как `Codex-primary / provider-agnostic`.
   - Что сделать:

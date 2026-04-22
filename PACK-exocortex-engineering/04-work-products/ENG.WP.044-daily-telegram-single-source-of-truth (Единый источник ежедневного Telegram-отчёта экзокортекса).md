@@ -47,3 +47,16 @@ status: active
 ## Target
 
 Один канонический sender daily-status в основной Telegram-чат.
+
+## Решение
+
+- `daily-report` и `daily-telegram-report` остаются `local-primary`.
+- VPS не должен быть вторым truth-producing sender для экзокортекса.
+- На VPS фикс применяется через `SCHEDULER-RUNTIME.env`:
+  - `EXOCORTEX_RUNTIME_TARGET=vps`
+  - `EXOCORTEX_DISABLE_LOCAL_DISPATCH=1`
+
+Это даёт безопасный режим `standby`:
+- unit и cloud host сохраняются;
+- product runtimes на VPS не затрагиваются;
+- duplicate daily-status в основной чат больше не должен возникать.

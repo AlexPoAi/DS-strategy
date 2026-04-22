@@ -79,13 +79,25 @@ domain: exocortex
 - закрепить source-of-truth в runtime/policy/документации;
 - сделать anti-regression guardrail, чтобы dual-send не вернулся.
 
+## Решение
+
+После сверки с `ENG.WP.015` и runtime policy принято решение:
+
+- **основной daily status = local `launchctl/codex`**
+- **VPS scheduler = standby для agent-dispatch**
+- **product services на VPS не трогаются**
+
+Практическая форма фикса:
+
+- на VPS `SCHEDULER-RUNTIME.env` переводится в `EXOCORTEX_DISABLE_LOCAL_DISPATCH=1`;
+- `daily-telegram-report` остаётся канонически только у локального контура;
+- сам `systemd` unit не удаляется и не ломается, но перестаёт быть truth-producing sender daily-status.
+
 ## Предварительный инженерный verdict
 
 На текущий момент safest-default выглядит так:
 - **основной daily status = локальный `launchctl/codex`**
 - **VPS daily status = отключить или увести в отдельный техканал**
-
-Но это ещё не финальное решение до сверки с эталоном и оценки риска.
 
 ## Критерий завершения
 
