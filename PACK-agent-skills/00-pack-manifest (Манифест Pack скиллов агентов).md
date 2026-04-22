@@ -27,4 +27,4 @@ prefix: AGENT.SKILL
 ## Активные скиллы
 
 - `AGENT.SKILL.001` — `03-skills/AGENT.SKILL.001-engineer-ritual-sequence (Скилл инженера: ритуал реализации инженерной задачи).md`
-
+- `AGENT.SKILL.002` — `03-skills/AGENT.SKILL.002-park-official-document-cycle (Скилл официального документного цикла Park).md`
