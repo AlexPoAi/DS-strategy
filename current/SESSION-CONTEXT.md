@@ -275,3 +275,16 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - checklist прогресса доведения кладовщика до сильного доменного агента;
   - formalized `Document-to-Decision Contract`;
   - зафиксирован следующий важный слой: `cost / margin cards`.
+
+## 2026-04-23 — WP-97 ABC manager signals increment
+
+- `ABC` upgraded from category-source to manager-signal source.
+- Manual-check:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+- Фактический результат:
+  - в `WH.REPORT.002` появился отдельный блок `ABC и себестоимость`;
+  - после фильтрации leaf-rows блок показывает реальные позиции, а не только верхние агрегаты;
+  - в отчёте появились concrete signals по лидерам `ABC`, cost-heavy позициям и `C`-позициям под пересмотр.
+- Следующий truthful хвост:
+  - отфильтровать служебные / внутренние позиции (`персонал` и похожие);
+  - materialize отдельные `cost / margin cards`.
