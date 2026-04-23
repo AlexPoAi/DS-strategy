@@ -12,7 +12,8 @@
 
 ## Verified facts
 
-- `Google Calendar connector` работает от `alexpoipad@gmail.com`
+- канонический `Google Drive` контур переведён на `alexpoaiagent@gmail.com`
+- канонический `Google Calendar connector` переведён на `alexpoaiagent@gmail.com`
 - `Gmail connector` по Park работает от `oooterrasimf@gmail.com`
 - локальный `VK-offee` token видит папку `Парк` `12GgllpEOiRnGviQhivVm_bcAzX53E2wK`
 - app-created старый `PARK.DOC.036` не виден локальному `VK-offee` token
@@ -23,10 +24,12 @@
 - `ENG.WP.047` — проверочный прогон Google Drive и Google Calendar
 - `WP-109` — bounded slice на сборку единого контракта и skill-слоя
 - `WP-110` — bounded slice на end-to-end verification и acceptance gate
+- `WP-111` — миграция канонического Google-контура на `alexpoaiagent@gmail.com`
 
 ## Open technical tails
 
 - выявить точный аккаунт `Google Drive app connector`
-- свести `connector parity` между `Drive / Gmail / Calendar`
-- решить, оставляем ли role-based split аккаунтов или сводим всё к одному canonical owner
+- решить стратегию `Gmail`:
+  - один активный connector
+  - или параллельная multi-account модель
 - убрать Park document drift и задокументировать cleanup-порядок

@@ -38,17 +38,16 @@ status: active
 Контур:
 
 - `Google Calendar connector`
-- профиль `alexpoipad@gmail.com`
+- профиль `alexpoaiagent@gmail.com`
 
 Прогон:
 
 1. Создано тестовое событие:
-   - `TEST Codex Google Calendar verification`
+   - `TEST Codex Calendar on alexpoaiagent`
 2. Событие прочитано по `event_id`.
 3. Событие обновлено:
    - новый title
    - новое описание
-   - новое время
 4. Событие удалено.
 
 ## Truthful verdict
@@ -58,5 +57,5 @@ status: active
 Это не закрывает весь `Google account drift`, но подтверждает:
 
 - локальный Drive API контур реально рабочий;
-- Calendar connector реально рабочий;
+- Calendar connector реально рабочий на `alexpoaiagent@gmail.com`;
 - acceptance по этим двум контурам пройдена не на словах, а на реальном lifecycle.

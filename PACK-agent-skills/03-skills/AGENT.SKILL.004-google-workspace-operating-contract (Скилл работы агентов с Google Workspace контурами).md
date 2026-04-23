@@ -41,10 +41,10 @@ updated: 2026-04-23
    - `drive-write`
 
 2. Определить канонический контур:
-   - `calendar reminders / deadlines` → `Google Calendar connector`
+   - `calendar reminders / deadlines` → `Google Calendar connector` на `alexpoaiagent@gmail.com`
    - `official Park mail` → `Gmail connector` на `ООО ТЕРРА`
    - `quick Drive read/search` → `Google Drive app connector`
-   - `guaranteed Park document write` → локальный `VK-offee` Drive API token
+   - `guaranteed Park document write` → локальный `VK-offee` Drive API token на `alexpoaiagent@gmail.com`
 
 3. Проверить, verified ли этот контур.
 
@@ -83,3 +83,12 @@ updated: 2026-04-23
 - агент явно назвал, через какой Google-контур он работает;
 - документ/письмо/событие materialized в каноническом месте;
 - при drift это не замаскировано, а зафиксировано как отдельный дефект.
+
+## Каноническая модель на сейчас
+
+- `personal`: `alexpoipad@gmail.com`
+- `workspace Google`:
+  - `Drive` → `alexpoaiagent@gmail.com`
+  - `Calendar` → `alexpoaiagent@gmail.com`
+- `external Park mail`:
+  - `Gmail` → `oooterrasimf@gmail.com`

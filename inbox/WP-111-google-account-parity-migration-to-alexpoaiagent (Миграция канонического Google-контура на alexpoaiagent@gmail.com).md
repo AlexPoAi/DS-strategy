@@ -3,7 +3,7 @@ type: work-plan
 wp_id: 111
 title: Миграция канонического Google-контура на alexpoaiagent@gmail.com
 created: 2026-04-23
-status: in_progress
+status: done
 owner: Environment Engineer
 support:
   - Strategist
@@ -62,11 +62,30 @@ truthful verdict должен быть `blocked by reconnect`, а не `done`.
   - move
   - delete
 
-Единственный оставшийся blocker внутри этого slice:
+Финально подтверждено:
 
-- `Google Calendar connector` всё ещё привязан к `alexpoipad@gmail.com`
-- для финального completion нужен reconnect на `alexpoaiagent@gmail.com`
+- `Google Calendar connector` переподключён на `alexpoaiagent@gmail.com`;
+- live-profile календаря показывает `alexpoaiagent@gmail.com`;
+- проведён полный lifecycle test:
+  - create
+  - read
+  - update
+  - delete
+- каноническая модель теперь такая:
+  - `personal`: `alexpoipad@gmail.com`
+  - `canonical workspace`: `alexpoaiagent@gmail.com`
+  - `Park external mail`: `oooterrasimf@gmail.com`
 
 ## Truthful status
 
-Сейчас это не `done`, а `partial / waiting for reconnect`.
+`WP-111` закрыт как `done`.
+
+Что этот slice закрыл:
+
+- канонический `Google Drive` закреплён за `alexpoaiagent@gmail.com`;
+- канонический `Google Calendar` закреплён за `alexpoaiagent@gmail.com`.
+
+Что остаётся отдельным следующим slice:
+
+- стратегия по `Gmail`, если потребуется параллельная работа с несколькими
+  почтовыми Google-контурами без ручного переключения.

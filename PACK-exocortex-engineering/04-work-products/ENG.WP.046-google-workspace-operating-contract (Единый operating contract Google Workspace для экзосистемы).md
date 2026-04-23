@@ -29,10 +29,15 @@ status: active
 ### 1. Google Calendar connector
 
 - Профиль подтверждён live-tool вызовом:
-  - `Александр Подгаевский`
-  - `alexpoipad@gmail.com`
+  - `alexpoaiagent`
+  - `alexpoaiagent@gmail.com`
+- Проведён lifecycle test:
+  - create
+  - read
+  - update
+  - delete
 - Значение:
-  - это текущий канонический connector для calendar reminders, deadlines и follow-up.
+  - это канонический connector для calendar reminders, deadlines и follow-up.
 
 ### 2. Gmail connector
 
@@ -64,11 +69,11 @@ status: active
 
 У нас не один Google-контур, а минимум три:
 
-1. `Google Calendar connector` → `alexpoipad@gmail.com`
+1. `Google Calendar connector` → `alexpoaiagent@gmail.com`
 2. `Gmail connector` → `oooterrasimf@gmail.com`
 3. `Google Drive`:
    - app-connector
-   - локальный `VK-offee` OAuth-token
+   - локальный `VK-offee` OAuth-token на `alexpoaiagent@gmail.com`
 
 Именно этот split и породил дефект:
 
@@ -121,8 +126,17 @@ status: active
 5. Если `connector-created` документ не виден локальному token-контурy,
    это считается `account drift`, а не просто “неудачной загрузкой”.
 
+## Canonical model на 2026-04-23
+
+- `personal`: `alexpoipad@gmail.com`
+- `canonical workspace`:
+  - `Google Drive` → `alexpoaiagent@gmail.com`
+  - `Google Calendar` → `alexpoaiagent@gmail.com`
+- `Park external mail`:
+  - `Gmail` → `oooterrasimf@gmail.com`
+
 ## Что ещё не утверждено
 
 - Явно не подтверждено, к какому аккаунту привязан текущий `Google Drive app connector`.
-- Не закрыт вопрос, нужно ли сводить все Google-контуры к одному аккаунту или оставлять role-based split.
+- Не закрыт вопрос, можно ли держать `Gmail` в multi-account режиме без ручного reconnect.
 - Не вычищены старые дубликаты документов, созданные в другом Drive-контуре.
