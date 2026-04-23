@@ -20,7 +20,9 @@
 ## Materialized work
 
 - `ENG.WP.046` — operating contract по Google Workspace
+- `ENG.WP.047` — проверочный прогон Google Drive и Google Calendar
 - `WP-109` — bounded slice на сборку единого контракта и skill-слоя
+- `WP-110` — bounded slice на end-to-end verification и acceptance gate
 
 ## Open technical tails
 
