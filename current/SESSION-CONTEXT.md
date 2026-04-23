@@ -196,3 +196,22 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 ## Закрытие дня
 - Новый carry-over/focus: canonical route layer экзокортекса должен стать auth-независимым и не зависеть от ручного `claude /login`.
 - ✅ [2026-04-21 00:18] Финальный closeout: `day-close-safe.sh` выполнен, `WP-96` закрыт truthfully, `SESSION-CONTEXT` и `next-actions` обновлены под реальный carry-over `WP-95 -> wait Zhanna input`.
+## 2026-04-23 — WP-97 warehouse manual-check slice
+
+- Продолжен `WP-97` как главный складской РП.
+- Truthful root-cause дня: узкая заявка на `Тэйсти Кофе` была не только вопросом данных, а дефектом decision-layer — low-stock слой искусственно обрезался до первых `3` SKU.
+- Исправлено:
+  - снят clipping `top_low_items[:3]`;
+  - order-loop больше не режется по первым `12` позициям;
+  - добавлен `family-level ABC fallback`;
+  - `xlsx`-reader закреплён на `read_only=False`.
+- Manual-check выполнен локально:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+- Фактический результат после прогона:
+  - `SKU с остатками в анализе = 55`;
+  - supplier-ready блок `Тэйсти Кофе` расширен и стал materially closer к реальной заявке;
+  - артефакт `капельница` в текущем manager-report не воспроизводится.
+- Живые хвосты после итерации:
+  - `supplier routing` для части SKU всё ещё падает в `Уточнить у Жанны`;
+  - нет подтверждённых каналов заказа для `UNICAVA` и `Субмарина`;
+  - `PDF -> price delta ledger` остаётся главным незакрытым bounded slice.

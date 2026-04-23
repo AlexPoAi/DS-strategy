@@ -173,6 +173,38 @@ domain: warehouse
 2. Проверить, какие SKU из low-stock всё ещё не получают `ABC`-категорию и почему.
 3. Параллельно продолжать `PDF invoice -> line items` слой.
 
+## Iteration 2026-04-23 - Low-stock coverage and ABC fallback
+
+### Что truthfully сделано
+
+- Найден главный дефект decision-layer: кладовщик сам обрезал low-stock слой до первых `3` SKU ещё на уровне `insight["top_low_items"]`, из-за чего заявка поставщикам была искусственно узкой.
+- Убран этот clipping в `warehouse_reports_pipeline.py`, а order-loop больше не режется на первых `12` позициях до расчёта решения.
+- Добавлен `family-level ABC fallback`: для drip SKU и похожих позиций `ABC` теперь может подтягиваться по семейству товара, а не только по полному строковому совпадению.
+- `xlsx`-reader дополнительно выровнен на normal mode (`read_only=False`) как production-default для складского intake.
+
+### Ручная проверка
+
+- Выполнен manual-run:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+- Итог manual-check:
+  - `SKU с остатками в анализе` выросли с `3` до `55`;
+  - `Тэйсти Кофе` теперь получает широкую готовую заявку, а не только `3` drip-позиции;
+  - в отчёте больше нет артефакта `капельница`, текущий manager-layer использует `дрип`/`Drip`-формат.
+
+### Truthful verdict по состоянию после итерации
+
+- Прогресс реальный: кладовщик перестал терять основную массу low-stock SKU.
+- Но контур ещё не идеален:
+  - supplier-routing для части SKU всё ещё падает в `Уточнить у Жанны`;
+  - `UNICAVA` и `Субмарина` пока без подтверждённого канала заказа;
+  - `PDF -> price delta ledger` всё ещё не доведён до production-ready слоя.
+
+### Следующий bounded step
+
+1. Дожать supplier mapping для `Уточнить у Жанны`, `UNICAVA`, `Субмарина`.
+2. Продолжить `PDF invoice -> line items -> price delta`.
+3. Потом ещё раз перепроверить, не перегружен ли supplier-order block лишними позициями и нужен ли category-aware compression.
+
 ## End-of-day 2026-04-21
 
 ### Что truthfully закрыто сегодня
