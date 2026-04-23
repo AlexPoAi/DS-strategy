@@ -265,3 +265,13 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - Truthful next step:
   - продолжать калибровать price-layer;
   - отдельно добить подтверждённые каналы заказа для `UNICAVA` и `Субмарина`.
+
+## 2026-04-23 — WP-97 structural contract layer
+
+- Зафиксирован следующий архитектурный приоритет для кладовщика:
+  - не только extraction,
+  - а `document -> extracted fields -> derived metrics -> manager output`.
+- Materialized:
+  - checklist прогресса доведения кладовщика до сильного доменного агента;
+  - formalized `Document-to-Decision Contract`;
+  - зафиксирован следующий важный слой: `cost / margin cards`.

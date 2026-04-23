@@ -310,6 +310,16 @@ domain: warehouse
   - фильтрация пока rule-based и требует дальнейшей калибровки;
   - подтверждённые каналы заказа `UNICAVA` и `Субмарина` по-прежнему не закрыты.
 
+## Structural next layer
+
+Следующий обязательный слой `WP-97` — не только парсинг, а полный contract:
+`документ -> extracted fields -> derived metrics -> manager output`.
+
+Это означает:
+- по каждому входящему типу документа должен быть явно описан semantic pipeline;
+- кладовщик должен иметь checklist buildout-progress;
+- дальше развитие идёт уже не только в extraction, но и в `cost / margin cards`.
+
 ## End-of-day 2026-04-21
 
 ### Что truthfully закрыто сегодня
