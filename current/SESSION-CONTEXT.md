@@ -218,6 +218,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 
 ## End-of-day 2026-04-23
 
+- ✅ [2026-04-23 13:12] `WP-97` очередной manual-checked increment: в `ABC` manager-layer убраны служебные/internal позиции (`персонал` и похожие маркеры), materialized отдельный supporting artifact `WH.REPORT.003-cost-margin-signals-latest.md`, а в `WH.REPORT.002` появился отдельный слой `Маржа под давлением`.
+- ✅ [2026-04-23 13:12] Truthful remaining tail по складу narrowed: чтение документов и PDF-layer живы, а следующий bounded шаг уже не в ingestion, а в бизнес-нормализации manager-layer (`Молоко / 50 гр` и похожие модификаторы) плюс доведение связки `закупочная цена -> цена продажи -> базовая маржа`.
+
 - День закрывается с честным carry-over по `WP-97`, без ложного `done`.
 - Что реально зафиксировано сегодня:
   - low-stock coverage выросло с `3` до `55` SKU;

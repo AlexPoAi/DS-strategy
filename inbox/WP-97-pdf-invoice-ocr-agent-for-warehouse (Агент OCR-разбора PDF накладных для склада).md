@@ -379,3 +379,32 @@ domain: warehouse
 1. Проверить, почему часть `low-stock` SKU (`drip` и часть других позиций) всё ещё без `ABC`-категории.
 2. Довести `ABC matching` до более полного покрытия между остатками, продажами и weekly ABC.
 3. Перейти к следующему bounded slice: `PDF -> price delta / supplier price change`.
+
+## Iteration 2026-04-23 - ABC manager cleanup and first cost/margin artifact
+
+### Что truthfully сделано
+
+- В `warehouse_reports_pipeline.py` добавлен manager-filter для `ABC`-сигналов:
+  - служебные/internal позиции с маркерами вроде `персонал`, `staff`, `внутрен`, `служеб` больше не должны попадать в manager-facing `ABC`-блок;
+  - расходники исключены из `ABC/cost` manager-layer как шумовой слой.
+- Materialized новый supporting artifact:
+  - `WH.REPORT.003-cost-margin-signals-latest.md`
+- В manager-report появился отдельный слой:
+  - `Маржа под давлением`
+- Выполнен manual-run:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+
+### Что подтверждено ручной проверкой
+
+- Артефакт `Молоко персонал` ушёл из manager-facing блока `ABC и себестоимость`.
+- Новый `WH.REPORT.003` реально собирается после живого прогона и показывает:
+  - тяжёлые по себестоимости позиции;
+  - позиции с прижатой валовой маржой.
+- Главный отчёт `WH.REPORT.002` теперь ссылается на отдельный `cost/margin` artifact как supporting layer.
+
+### Truthful хвост после инкремента
+
+- `ABC/cost` manager-layer стал чище, но ещё не идеален:
+  - позиция `Молоко / 50 гр` всё ещё попадает в cost/margin signals;
+  - это уже не defect чтения файла, а следующий bounded слой бизнес-нормализации товарных/модификаторных SKU.
+- Связка `закупочная цена -> цена продажи -> базовая маржа` ещё не завершена на production-уровне.
