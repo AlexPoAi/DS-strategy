@@ -16,6 +16,7 @@
 | Domain | Engineering branch | Context | Latest WP | Статус |
 |---|---|---|---|---|
 | `management` | `engineering-branches/management/` | `engineering-branches/management/ENGINEERING-CONTEXT.md` | `ENG.WP.045` | seeded |
+| `google-workspace` | `engineering-branches/google-workspace/` | `engineering-branches/google-workspace/ENGINEERING-CONTEXT.md` | `ENG.WP.046` | active |
 
 ## Следующие кандидаты
 
