@@ -215,3 +215,15 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - `supplier routing` для части SKU всё ещё падает в `Уточнить у Жанны`;
   - нет подтверждённых каналов заказа для `UNICAVA` и `Субмарина`;
   - `PDF -> price delta ledger` остаётся главным незакрытым bounded slice.
+
+## End-of-day 2026-04-23
+
+- День закрывается с честным carry-over по `WP-97`, без ложного `done`.
+- Что реально зафиксировано сегодня:
+  - low-stock coverage выросло с `3` до `55` SKU;
+  - supplier-order block `Тэйсти Кофе` materially расширен;
+  - `капельница` в актуальном manager-report не воспроизводится;
+  - manual-run выполнен и подтверждён.
+- Главный стартовый контур на следующий возврат:
+  1. supplier mapping: `UNICAVA`, `Субмарина`, `Уточнить у Жанны`;
+  2. `PDF invoice -> price delta ledger`.

@@ -205,6 +205,29 @@ domain: warehouse
 2. Продолжить `PDF invoice -> line items -> price delta`.
 3. Потом ещё раз перепроверить, не перегружен ли supplier-order block лишними позициями и нужен ли category-aware compression.
 
+## End-of-day 2026-04-23
+
+### Что truthfully закрыто сегодня
+
+- Исправлен главный дефект decision-layer: low-stock покрытие выросло с `3` до `55` SKU.
+- `Тэйсти Кофе` теперь получает materially wider supplier-order block, а не урезанную заявку на несколько позиций.
+- Добавлен `family-level ABC fallback`, поэтому часть drip SKU перестала выпадать из decision-layer при несовпадении полного названия.
+- Выполнен manual-check:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+  - текущий manager-report и decision-queue пересобраны на живых данных.
+
+### Что не закрыто и уходит в carry-over
+
+- supplier-routing для части SKU всё ещё падает в `Уточнить у Жанны`;
+- нет подтверждённых каналов заказа для `UNICAVA` и `Субмарина`;
+- `PDF -> line items -> price delta ledger` остаётся главным незавершённым bounded slice;
+- `WP-97` не закрыт, а честно остаётся открытым carry-over РП.
+
+### Старт следующей итерации
+
+1. Дожать supplier mapping для `UNICAVA`, `Субмарина` и `Уточнить у Жанны`.
+2. После этого перейти в `PDF invoice -> price delta ledger`.
+
 ## End-of-day 2026-04-21
 
 ### Что truthfully закрыто сегодня
