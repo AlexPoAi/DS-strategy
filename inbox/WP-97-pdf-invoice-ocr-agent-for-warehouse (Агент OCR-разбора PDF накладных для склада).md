@@ -256,6 +256,36 @@ domain: warehouse
   - supplier-order block `Тэйсти Кофе` уже просит следующего category-aware compression;
   - `PDF -> price delta ledger` остаётся главным незакрытым bounded slice.
 
+## Iteration 2026-04-23 - PDF invoice line-items into manager report
+
+### Что truthfully сделано
+
+- В `кладовщика` встроен line-item слой по PDF-накладным:
+  - разбор invoice blocks;
+  - извлечение строк товара, цены, количества и даты накладной;
+  - dedupe PDF по canonical key;
+  - построение `price delta` по двум последним найденным ценам на один и тот же SKU у поставщика.
+- `Изменение цен` в manager-report теперь строится не только по каталогам, а в первую очередь по реальным PDF-накладным.
+- Выполнен manual-run:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+
+### Результат ручной проверки
+
+- В актуальном `WH.REPORT.002` появился живой блок `Изменение цен`.
+- Примеры сигналов из PDF:
+  - `МФУД: Соба / Удон с курицей Мфуд (180.00 -> 215.00) (+19.4%)`
+  - `Барсервис: Сироп (Закуп), на розлив (840.00 -> 930.00) (+10.7%)`
+  - `Тэйсти Кофе: Tasty Coffee, моносорт эспрессо (322.38 -> 349.02) (+8.3%)`
+- Это уже подтверждает, что PDF-контур перестал быть только текстовым превью и начал давать управленческий сигнал по ценам.
+
+### Truthful verdict
+
+- Да, PDF-слой стал materially полезнее.
+- Но `WP-97` ещё не закрыт:
+  - price delta пока строится по простому last-two comparison и ещё требует фильтрации аномалий;
+  - не все extracted price changes одинаково manager-ready;
+  - supplier channels для `UNICAVA` и `Субмарина` всё ещё не подтверждены.
+
 ## End-of-day 2026-04-21
 
 ### Что truthfully закрыто сегодня

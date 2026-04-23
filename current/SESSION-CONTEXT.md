@@ -241,3 +241,17 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - нет подтверждённого канала заказа у `UNICAVA` и `Субмарина`;
   - supplier-order block `Тэйсти Кофе` требует следующей сессии на category-aware compression;
   - главный незакрытый слой всё ещё `PDF -> price delta ledger`.
+
+## 2026-04-23 — WP-97 PDF price-delta increment
+
+- В кладовщика встроен line-item слой по PDF-накладным.
+- Manual-check:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+- Фактический результат:
+  - в `WH.REPORT.002` появился живой блок `Изменение цен` из PDF-накладных;
+  - manager-layer уже видит рост цен по `МФУД`, `Барсервис`, `Тэйсти Кофе` и другие price signals;
+  - формулировка data gap выровнена: PDF уже частично разобраны до SKU-уровня, а незакрытый хвост теперь в coverage/quality, а не в полном отсутствии extraction.
+- Живой следующий хвост:
+  - отфильтровать аномальные price deltas;
+  - сделать price-layer более manager-ready;
+  - подтвердить каналы заказа `UNICAVA` и `Субмарина`.
