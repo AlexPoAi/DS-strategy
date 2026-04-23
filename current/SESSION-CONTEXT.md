@@ -227,3 +227,17 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - Главный стартовый контур на следующий возврат:
   1. supplier mapping: `UNICAVA`, `Субмарина`, `Уточнить у Жанны`;
   2. `PDF invoice -> price delta ledger`.
+
+## 2026-04-23 — WP-97 supplier-routing increment
+
+- Выполнен отдельный increment по supplier mapping.
+- Manual-check:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+- Фактический результат:
+  - `Уточнить у Жанны` исчез как supplier bucket из актуального manager-report;
+  - часть зерна ушла в `Тэйсти Кофе`, часть шоколадного ассортимента — в `UNICAVA`;
+  - шум `TBD TBD` убран, теперь при отсутствии данных канал отображается как `TBD`.
+- Остаточные хвосты:
+  - нет подтверждённого канала заказа у `UNICAVA` и `Субмарина`;
+  - supplier-order block `Тэйсти Кофе` требует следующей сессии на category-aware compression;
+  - главный незакрытый слой всё ещё `PDF -> price delta ledger`.

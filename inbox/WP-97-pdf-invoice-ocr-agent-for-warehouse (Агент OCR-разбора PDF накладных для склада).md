@@ -228,6 +228,34 @@ domain: warehouse
 1. Дожать supplier mapping для `UNICAVA`, `Субмарина` и `Уточнить у Жанны`.
 2. После этого перейти в `PDF invoice -> price delta ledger`.
 
+## Iteration 2026-04-23 - Supplier routing refinement
+
+### Что truthfully сделано
+
+- Усилен supplier-routing слой кладовщика:
+  - часть зерновых SKU (`Бэрри 250`, `Фрутти 250`, `Коста Рика Сан Хосе 1 Кг`, `Эфиопия Мукера 120 Часов 250 Гр` и др.) теперь автоматически уходит в `Тэйсти Кофе`, а не в `Уточнить у Жанны`;
+  - часть шоколадных SKU (`плитки`, `какао классический`) теперь уходит в `UNICAVA`.
+- Убран шум `TBD TBD` из supplier-channel layer: если контакта нет, канал теперь честно отображается как `TBD`, а не как сдвоенный мусор.
+- Выполнен manual-run:
+  - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
+
+### Результат ручной проверки
+
+- В manager-report больше нет supplier-блока `Уточнить у Жанны`.
+- В decision queue остались только реальные supplier buckets:
+  - `UNICAVA`
+  - `Субмарина`
+  - `Тэйсти Кофе`
+- `UNICAVA` и `Субмарина` всё ещё без подтверждённых каналов заказа, но это уже factual gap, а не routing noise.
+
+### Truthful verdict
+
+- Прогресс реальный: supplier mapping стал заметно лучше и чище.
+- Но `WP-97` всё ещё не закрыт:
+  - `UNICAVA` и `Субмарина` требуют подтверждённых каналов;
+  - supplier-order block `Тэйсти Кофе` уже просит следующего category-aware compression;
+  - `PDF -> price delta ledger` остаётся главным незакрытым bounded slice.
+
 ## End-of-day 2026-04-21
 
 ### Что truthfully закрыто сегодня
