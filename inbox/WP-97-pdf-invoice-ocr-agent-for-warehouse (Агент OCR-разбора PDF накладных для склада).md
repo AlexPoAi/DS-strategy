@@ -408,3 +408,30 @@ domain: warehouse
   - позиция `Молоко / 50 гр` всё ещё попадает в cost/margin signals;
   - это уже не defect чтения файла, а следующий bounded слой бизнес-нормализации товарных/модификаторных SKU.
 - Связка `закупочная цена -> цена продажи -> базовая маржа` ещё не завершена на production-уровне.
+
+## Iteration 2026-04-23 - Document-to-decision skill materialization
+
+### Что truthfully сделано
+
+- Для `Warehouse Demand Analyst` materialized отдельный skill:
+  - `warehouse-document-to-decision-mapping.md`
+- Skill закрепляет путь:
+  - `документ -> extracted fields -> derived metrics -> manager output`
+- Skill привязан к карточке агента и синхронизирован с pack-методом:
+  - `WH.METHOD.003`
+- Warehouse checklist обновлён: document-to-decision map по ключевым типам документов теперь formalized, а не держится только в обсуждении.
+
+### Что это меняет practically
+
+- Теперь кладовщик обязан уметь объяснить путь любого документа до manager-report.
+- Дальнейшие итерации по складу можно вести не “по ощущениям”, а по map-цепочке:
+  - что извлекаем;
+  - что считаем;
+  - что попадает руководителю.
+
+### Truthful next bounded step
+
+Следующий сильный slice после этого skill-layer:
+- пройти по живым типам документов уже не в теории, а на реальных данных;
+- проверить, где document-chain ещё не дотянут до идеала;
+- отдельно добить модификаторы/внутренние SKU в manager-layer.
