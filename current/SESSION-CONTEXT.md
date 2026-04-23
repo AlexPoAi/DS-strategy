@@ -218,6 +218,8 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 
 ## End-of-day 2026-04-23
 
+- ✅ [2026-04-23 22:25] После выявленного хвоста в дереве открыт и сразу закрыт `WP-104` / `ENG.WP.046`: в `AGENT.SKILL.001` materialized жёсткий `Iteration Closure Gate`, запрещающий переход к следующему инкременту без цикла `manual check -> commit -> push -> clean tree`.
+
 - ✅ [2026-04-23 13:12] `WP-97` очередной manual-checked increment: в `ABC` manager-layer убраны служебные/internal позиции (`персонал` и похожие маркеры), materialized отдельный supporting artifact `WH.REPORT.003-cost-margin-signals-latest.md`, а в `WH.REPORT.002` появился отдельный слой `Маржа под давлением`.
 - ✅ [2026-04-23 13:12] Truthful remaining tail по складу narrowed: чтение документов и PDF-layer живы, а следующий bounded шаг уже не в ingestion, а в бизнес-нормализации manager-layer (`Молоко / 50 гр` и похожие модификаторы) плюс доведение связки `закупочная цена -> цена продажи -> базовая маржа`.
 - ✅ [2026-04-23 13:20] `WP-97` structural increment: для кладовщика materialized отдельный skill `warehouse-document-to-decision-mapping`, который фиксирует цепочку `документ -> поля -> метрики -> управленческий вывод`; agent card, `WH.METHOD.003` и warehouse checklist синхронизированы с этим слоем.

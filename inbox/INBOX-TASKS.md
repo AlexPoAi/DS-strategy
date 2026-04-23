@@ -3,6 +3,21 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-23: [ENGINEERING][CRITICAL] Ввести жёсткий gate закрытия инженерной итерации
+  - Контекст: во время работы по `WP-97` локальные правки и generated-артефакты несколько раз оставались в дереве между инкрементами. Это показало дефект не в одном репозитории, а в самом инженерном протоколе: не было materialized запрета переходить дальше без `manual check -> commit -> push -> clean tree`.
+  - Что сделано:
+    1. Открыт отдельный `WP-104`
+    2. Materialized `ENG.WP.046`
+    3. В `AGENT.SKILL.001` добавлен `Iteration Closure Gate`
+    4. Добавлены truthful language rule и generated artifacts rule
+  - Артефакты:
+    - `DS-strategy/inbox/WP-104-engineer-iteration-closure-gate (Жёсткий gate закрытия итерации инженера).md`
+    - `DS-strategy/PACK-exocortex-engineering/04-work-products/ENG.WP.046-engineer-iteration-closure-gate (Жёсткий gate закрытия инженерной итерации).md`
+    - `DS-strategy/PACK-agent-skills/03-skills/AGENT.SKILL.001-engineer-ritual-sequence (Скилл инженера: ритуал реализации инженерной задачи).md`
+  - Итог:
+    - переход к следующему шагу с собственным грязным деревом теперь считается нарушением skill-контракта
+    - следующий день должен тестировать уже новый gate, а не устную договорённость
+
 - [in_progress] 2026-04-22: [ENGINEERING][CRITICAL] Убрать duplicate daily-telegram-report между local и VPS и закрепить один source of truth
   - Контекст: в один и тот же Telegram-чат пришли два ежедневных отчёта экзокортекса из двух runtime-контуров: корректный local `launchctl/codex` (`09:03`) и устаревший/аварийный VPS `systemd/claude` (`08:15`).
   - Что сделать:
