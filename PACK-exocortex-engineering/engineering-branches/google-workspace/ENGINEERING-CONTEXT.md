@@ -25,11 +25,11 @@
 - `WP-109` — bounded slice на сборку единого контракта и skill-слоя
 - `WP-110` — bounded slice на end-to-end verification и acceptance gate
 - `WP-111` — миграция канонического Google-контура на `alexpoaiagent@gmail.com`
+- `WP-112` — стратегия `Gmail` между `alexpoaiagent` и `ООО ТЕРРА`
 
 ## Open technical tails
 
 - выявить точный аккаунт `Google Drive app connector`
-- решить стратегию `Gmail`:
-  - один активный connector
-  - или параллельная multi-account модель
+- если понадобится исходящий `Gmail` от `alexpoaiagent@gmail.com`,
+  открыть отдельный bounded slice под это
 - убрать Park document drift и задокументировать cleanup-порядок
