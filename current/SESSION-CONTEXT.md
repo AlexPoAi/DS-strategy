@@ -255,3 +255,13 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - отфильтровать аномальные price deltas;
   - сделать price-layer более manager-ready;
   - подтвердить каналы заказа `UNICAVA` и `Субмарина`.
+
+## 2026-04-23 — WP-97 price-delta anomaly filter
+
+- Выполнен дополнительный manual-check после rule-based filtering.
+- Фактический результат:
+  - аномальный кейс `Смакотерия: Сосиска в тесте (-73.8%)` убран из основного блока `Изменение цен`;
+  - этот кейс теперь попадает в `Проверить вручную` как `Аномалия price delta по накладным`.
+- Truthful next step:
+  - продолжать калибровать price-layer;
+  - отдельно добить подтверждённые каналы заказа для `UNICAVA` и `Субмарина`.
