@@ -1,11 +1,11 @@
 ---
 id: WP-99
 title: "Obsidian as human brain layer for Extractor and Strategist"
-status: pending
+status: in_progress
 priority: high
 owner: "Strategist + Knowledge Registry Curator + Environment Engineer"
 created: 2026-04-21
-updated: 2026-04-21
+updated: 2026-04-24
 ---
 
 # Контекст
@@ -59,7 +59,7 @@ updated: 2026-04-21
 
 - Полная автоматическая двусторонняя синхронизация всех статусов между `Obsidian`, `DS-strategy`, `Pack` и `Telegram`.
 - Полный перенос source-of-truth задач из `DS-strategy` в `Obsidian`.
-- Массовая перестройка всей структуры `creativ-convector`.
+- Массовая перестройка всей структуры live Obsidian vault.
 
 # Acceptance
 
@@ -415,7 +415,14 @@ updated: 2026-04-21
 2. ✅ `Strategist Board v1`
    - открыт как отдельный bounded work product `WP-99-S1`
    - materialized в `Obsidian` как human-facing слой стратега
+3. ✅ `Live Obsidian vault cleanup and source unification`
+   - живой vault подтверждён как `/Users/alexander/Documents/Творческий конвеер`
+   - старое git-зеркало `/Users/alexander/Github/creativ-convector` удалено как источник путаницы
+   - runtime-маршруты `health-check`, `daily-report`, `unprocessed-notes-check`, `chain-report`, `obsidian-to-captures`, `session-tasks` переведены на live vault
+   - полезные архивные заметки возвращены во `1. Исчезающие заметки`
+   - пустые/технические Obsidian `base/canvas` оставлены в карантине, а не во входящих
+   - проверка: `health-check` завершился `✅ Среда исправна`
 
 # Следующий шаг
 
-После `Strategist Board v1` идти в `Safety Beacon v1` как следующий bounded slice с truthfully проверяемыми маяками.
+После унификации live vault идти в `Safety Beacon v1` как следующий bounded slice с truthfully проверяемыми маяками и drift-check между `Obsidian` и `captures`.
