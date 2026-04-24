@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-24 12:55
+**Последнее обновление:** 2026-04-24 13:00
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,7 +15,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-118: block broad close from committing out-of-scope dirty repos
+**Статус:** задача закрыта — WP-119: hardened Telegram note-flow against API timeouts
 **Активный РП:** W17 / текущий рабочий цикл экзокортекса
 **Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
 
@@ -37,7 +37,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [12:55] Сессия закрыта
+- 🔒 [13:00] Сессия закрыта
 1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
 2. Открыть следующий рабочий цикл от текущего truthful состояния.
 3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
@@ -309,6 +309,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 ---
 
 ## Что сделано сегодня (2026-04-24)
+- ✅ [2026-04-24 13:00] WP-119: hardened Telegram note-flow against API timeouts
 - ✅ [2026-04-24 12:55] WP-118: block broad close from committing out-of-scope dirty repos
 - ✅ [2026-04-24 12:51] WP-118: make sensitive WP approval one-shot
 - ✅ [2026-04-24 12:49] WP-118: mechanical sensitive WP gate added to close-task
