@@ -31,9 +31,9 @@
 ├── FMT-exocortex-template/   ← шаблон системы (платформа, только читать)
 ├── VK-offee/                 ← база знаний кофейни (source-of-truth)
 ├── DS-strategy/              ← этот репо: планы, отчёты, inbox агентов
-├── creativ-convector/        ← творческий конвейер: обработанные заметки
 ├── close-task.sh             ← скрипт закрытия задачи (обязательный)
-└── strategist-wrapper.sh     ← обёртка для запуска стратега
+├── open-codex-github.sh      ← открывает workspace в VS Code/Codex
+└── strategist-wrapper.sh     ← совместимый запуск стратега
 
 ~/Documents/
 └── creativ-convector.nocloud/ ← Obsidian vault (только локально, не в GitHub)
@@ -150,10 +150,9 @@ DS-strategy/exocortex/                    — backup памяти агента (
 
 ## Архитектурные решения — почему именно так
 
-**Почему wrapper для стратега, а не правка шаблона:**
-`FMT-exocortex-template` — платформенный репо, его нельзя менять под себя.
-`strategist.sh` хардкодит путь к Claude. Решение: `strategist-wrapper.sh` переопределяет
-путь перед вызовом. Шаблон остаётся чистым.
+**Почему wrapper для стратега ещё существует:**
+`strategist.sh` теперь сам резолвит Codex/Claude и workspace через шаблонный слой.
+`strategist-wrapper.sh` оставлен как совместимая точка входа для старых launchd/ручных запусков.
 
 **Почему scheduler, а не просто cron для каждого агента:**
 Без диспетчера агенты работают независимо и могут конфликтовать (два запуска Claude

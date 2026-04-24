@@ -18,7 +18,7 @@
 
 ## Архитектурные решения
 
-**Wrapper для strategist:** `strategist-wrapper.sh` переопределяет `CLAUDE_PATH` (FMT хардкодит путь).
+**Wrapper для strategist:** `strategist-wrapper.sh` — совместимая точка входа; provider/workspace резолвит шаблонный `strategist.sh`.
 
 **Scheduler — диспетчер:** Координирует агентов через маркеры в `~/.local/state/exocortex/`.
 
