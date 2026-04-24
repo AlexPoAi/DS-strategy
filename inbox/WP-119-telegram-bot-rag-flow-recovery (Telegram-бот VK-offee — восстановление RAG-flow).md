@@ -1,7 +1,7 @@
 ---
 id: WP-119
 title: "Telegram-бот VK-offee — восстановление RAG-flow"
-status: pending
+status: in_progress
 created: 2026-04-24
 priority: high
 domain: VK Coffee / product engineering
@@ -32,6 +32,24 @@ related_wp:
 - RAG API `/health` отвечал;
 - RAG-flow не закрыт: бот уже возвращал ошибку на `POST /query`;
 - therefore: note-flow и RAG-flow должны считаться двумя разными acceptance-gate.
+
+## Инцидент 2026-04-24: `📝 Заметка` молчит
+
+Пользователь нажал кнопку `📝 Заметка`, но ответ `Напишите текст заметки` не пришёл.
+
+Факты из VPS `72.56.4.61`:
+
+- `journalctl -u vk-telegram-bot` показал `telegram.error.TimedOut` на update с текстом `📝 Заметка`;
+- старый порядок был опасный: сначала `await reply_text("Напишите текст заметки")`, потом `waiting_for_note=True`;
+- если Telegram API timeout-ил reply, handler падал до установки состояния, поэтому контур заметки реально ломался;
+- отдельно подтверждён transport-level сбой: `curl -4/-6 -m 10 https://api.telegram.org` с VPS завершался timeout.
+
+Применённый bounded fix:
+
+- `waiting_for_note=True` ставится до отправки prompt;
+- все ответы переведены на `safe_reply()` с 3 попытками и без падения handler-state;
+- `run_polling(..., bootstrap_retries=-1, timeout=30)` добавлен, чтобы startup timeout не валил сервис в restart-loop;
+- добавлен регрессионный тест `telegram-bot/tests/test_note_flow.py`: даже если Telegram reply timeout-ит трижды, состояние ожидания заметки остаётся выставленным.
 
 # Цель
 
@@ -66,11 +84,15 @@ related_wp:
    - `GET /health` -> `status=healthy`;
    - `POST /query` -> HTTP 200 и ответ с `answer`, `routing`, `sources`.
 2. Telegram bot RAG-клиент корректно обрабатывает успешный и ошибочный ответ API.
-3. `WP-48` получает обновлённый чеклист по RAG:
+3. Note-flow устойчив к Telegram timeout:
+   - `📝 Заметка` ставит `waiting_for_note` до отправки prompt;
+   - `/note` без аргументов ставит `waiting_for_note` до отправки prompt;
+   - timeout Telegram API не ломает состояние handler-а.
+4. `WP-48` получает обновлённый чеклист по RAG:
    - кнопка `☕ Напитки`;
    - кнопка `📊 Статус`;
    - свободный вопрос `Как приготовить капучино?`.
-4. Если вносятся изменения в VPS-контур, есть evidence:
+5. Если вносятся изменения в VPS-контур, есть evidence:
    - systemd status;
    - проверка `/health`;
    - проверка `/query`;
@@ -85,4 +107,4 @@ related_wp:
 
 # Текущий verdict перед стартом
 
-Лучший следующий шаг: начать с локальной проверки `VK-offee-rag/src/api.py` и `VK-offee/telegram-bot/rag_client.py`, затем сравнить с VPS runtime.
+Лучший следующий шаг: после стабилизации note-flow проверить transport-route Telegram с VPS и затем вернуться к RAG `/query` acceptance.
