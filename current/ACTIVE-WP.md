@@ -3,7 +3,8 @@ id: WP-118
 title: Mechanical WP Gate for sensitive engineering changes
 status: in_progress
 approved: consumed
-approval_consumed_at: 2026-04-24 12:51
+approval_consumed_at: 2026-04-24 12:55
+approval_renewed_at: 2026-04-24
 approved_at: 2026-04-24
 approved_by: user
 sensitive_scope:
