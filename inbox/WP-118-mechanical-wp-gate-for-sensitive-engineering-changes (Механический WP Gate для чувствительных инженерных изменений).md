@@ -55,3 +55,55 @@ approved: true
 ## Ритуальное подтверждение
 
 Пользователь подтвердил внедрение: `да` после предложения открыть РП на механический WP Gate.
+
+## Engineering ritual check — correction pass 2026-04-24
+
+### 1. Upstream Церена
+
+Проверено после замечания пользователя: `git fetch upstream`, затем релевантные файлы `upstream/main`.
+
+Факт:
+- в `upstream/main` нет `scripts/close-task.sh`;
+- upstream close-flow описан через `memory/protocol-close.md` как Quick Close: commit/push, WP context, KE, MEMORY.md;
+- upstream даёт extension points (`extensions/protocol-close.checks.md`, `extensions/protocol-close.after.md`), но не содержит механического workspace-wide gate.
+
+Вывод: наш `close-task.sh` — локальный операционный слой поверх upstream, а не upstream-канон. Любые изменения в нём должны быть минимальным guardrail, а не расширением экосистемы в отдельную подсистему.
+
+### 2. Наш идеал
+
+Из `DS-strategy/exocortex/ritual-first.md`:
+- сначала РП и согласование;
+- для engineering-задач — сверка с эталоном;
+- затем работа;
+- переход от исследования к изменению = новый проход через WP Gate.
+
+Идеал для `WP-118`: один простой стоп-кран в `close-task.sh`, без новых агентов, без нового реестра, без сложной permission-системы.
+
+### 3. Наш факт
+
+Факт до `WP-118`:
+- текстовые правила уже были, но агент их обошёл;
+- `close-task.sh` закрывал broad scope и мог случайно закоммитить unrelated dirty repo;
+- `VK-offee` стал реальным примером: локальные изменения `telegram-bot/bot.py` и `telegram-bot/tests/` не относились к `WP-118`.
+
+Факт после correction:
+- `ACTIVE-WP.md` — один файл, approval одноразовый;
+- broad-close блокируется, если есть dirty paths вне active WP scope;
+- scoped-close остаётся минимальным маршрутом для bounded фикса.
+
+### 4. Gap
+
+Главный gap был не в отсутствии ещё одного правила, а в отсутствии mechanical stop перед commit/push.
+
+Второй gap: сам `WP-118` был начат без полной upstream/ideal/fact/gap последовательности. Этот раздел фиксирует correction-pass и оставляет явное правило: для дальнейших правок экосистемы сначала сверка с Цереном и нашим идеалом, потом код.
+
+### 5. Решение по текущему фиксу
+
+Оставить текущий gate как локальный minimal extension:
+- он не меняет upstream-протокол;
+- не добавляет новых сервисов;
+- не требует новых каталогов;
+- использует существующий `close-task.sh`;
+- предотвращает конкретно воспроизведённый failure mode.
+
+Не расширять `WP-118` дальше без отдельного подтверждения пользователя.

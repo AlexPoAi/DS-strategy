@@ -1,23 +1,21 @@
 ---
-id: WP-119
-title: Telegram-бот VK-offee — восстановление RAG-flow и note-flow stability
+id: WP-118
+title: Mechanical WP Gate for sensitive engineering changes
 status: in_progress
 approved: consumed
-approval_consumed_at: 2026-04-24 13:00
+approval_consumed_at: 2026-04-24 13:02
+approval_renewed_at: 2026-04-24
 approved_at: 2026-04-24
 approved_by: user
 sensitive_scope:
   - DS-strategy:current/ACTIVE-WP.md
-  - DS-strategy:current/SESSION-CONTEXT.md
-  - DS-strategy:inbox/WP-119-telegram-bot-rag-flow-recovery (Telegram-бот VK-offee — восстановление RAG-flow).md
-  - DS-strategy:inbox/WP-48-telegram-bot-testing.md
   - DS-strategy:inbox/WP-118-mechanical-wp-gate-for-sensitive-engineering-changes (Механический WP Gate для чувствительных инженерных изменений).md
-  - VK-offee:telegram-bot/bot.py
-  - VK-offee:telegram-bot/tests/test_note_flow.py
+  - FMT-exocortex-template:scripts/close-task.sh
+  - workspace-root:close-task.sh
 ---
 
-# ACTIVE-WP — WP-119
+# ACTIVE-WP — WP-118
 
-Telegram-бот VK-offee: восстановление RAG-flow и стабилизация note-flow после регрессии кнопки `📝 Заметка`.
+Механический gate для чувствительных инженерных изменений.
 
-Пользователь явно открыл новый РП по Telegram-боту и подтвердил, что контур заметок снова сломан и должен быть доведён до устойчивого состояния.
+Этот файл нужен не как память агента, а как machine-readable разрешение для `close-task.sh`.
