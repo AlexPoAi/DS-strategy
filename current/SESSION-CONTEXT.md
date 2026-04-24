@@ -1,13 +1,13 @@
 # Контекст текущей сессии
 
 > **Читать при обрыве.** Это живой handoff-файл, а не исторический лог.
-> Последнее обновление: 2026-04-21
+> Последнее обновление: 2026-04-24
 > Полный архив старого хвоста: `archive/session-context-log/SESSION-CONTEXT-archive-through-2026-04-08 (Архив SESSION-CONTEXT до 08 апреля 2026).md`
 
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-21 22:24
+**Последнее обновление:** 2026-04-24 12:05
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыт новый предметный slice по проекту Парк
-**Активный РП:** `WP-103` / skill для `Park Permitting & Infrastructure Coordinator`
-**Следующий шаг:** закрыть агентный слой по Park document cycle, затем открыть следующий bounded slice на реальное заполнение и сохранение двух писем по трубе.
+**Статус:** задача закрыта — WP-73: подготовлен пакет ручной подачи обращения в Водоканал и календарный follow-up
+**Активный РП:** W17 / текущий рабочий цикл экзокортекса
+**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
 
 ---
 
@@ -37,7 +37,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [17:34] Сессия закрыта
+- 🔒 [12:05] Сессия закрыта
 1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
 2. Открыть следующий рабочий цикл от текущего truthful состояния.
 3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
@@ -49,6 +49,8 @@
 - ✅ [2026-04-21 22:24] `Банк экстрактора`, `Доска выбора` и `Доска стратега` вынесены на верхний уровень live-vault `Творческий конвеер`; `health-check`, `daily-report` и `sync_obsidian.sh` переведены на новые пути.
 - ✅ [2026-04-21 22:24] Truthful next step на завтра зафиксирован явно: текущий `Банк экстрактора` — это только scaffold/snapshot, а не реальный разбор всего существующего массива заметок; нужен отдельный bounded slice на наполнение банка и проверку extractor-route.
 - ✅ [2026-04-21 22:28] Дополнительно зафиксирован завтрашний приоритетный порядок: сначала довести `Obsidian как мозг`, затем проверить недоделанный контур `Библиотекаря`, чтобы он не потерялся за работой по human-layer.
+
+---
 
 ## Что сделано сегодня (2026-04-22)
 - ✅ [2026-04-22] В `WP-95` зафиксирован новый factual input: Жанна создала отдельную папку `Google Drive` для передачи дел новому менеджеру; materialized `WP-95-zhanna-handoff-drive-folder-v1` с прямой ссылкой и следующим bounded шагом `contents analysis`.
@@ -196,8 +198,10 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 ## Закрытие дня
 - Новый carry-over/focus: canonical route layer экзокортекса должен стать auth-независимым и не зависеть от ручного `claude /login`.
 - ✅ [2026-04-21 00:18] Финальный closeout: `day-close-safe.sh` выполнен, `WP-96` закрыт truthfully, `SESSION-CONTEXT` и `next-actions` обновлены под реальный carry-over `WP-95 -> wait Zhanna input`.
-## 2026-04-23 — WP-97 warehouse manual-check slice
 
+---
+
+## 2026-04-23 — WP-97 warehouse manual-check slice
 - Продолжен `WP-97` как главный складской РП.
 - Truthful root-cause дня: узкая заявка на `Тэйсти Кофе` была не только вопросом данных, а дефектом decision-layer — low-stock слой искусственно обрезался до первых `3` SKU.
 - Исправлено:
@@ -216,8 +220,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - нет подтверждённых каналов заказа для `UNICAVA` и `Субмарина`;
   - `PDF -> price delta ledger` остаётся главным незакрытым bounded slice.
 
-## End-of-day 2026-04-23
+---
 
+## End-of-day 2026-04-23
 - ✅ [2026-04-23 22:25] После выявленного хвоста в дереве открыт и сразу закрыт `WP-104` / `ENG.WP.046`: в `AGENT.SKILL.001` materialized жёсткий `Iteration Closure Gate`, запрещающий переход к следующему инкременту без цикла `manual check -> commit -> push -> clean tree`.
 
 - ✅ [2026-04-23 13:12] `WP-97` очередной manual-checked increment: в `ABC` manager-layer убраны служебные/internal позиции (`персонал` и похожие маркеры), materialized отдельный supporting artifact `WH.REPORT.003-cost-margin-signals-latest.md`, а в `WH.REPORT.002` появился отдельный слой `Маржа под давлением`.
@@ -235,8 +240,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   1. supplier mapping: `UNICAVA`, `Субмарина`, `Уточнить у Жанны`;
   2. `PDF invoice -> price delta ledger`.
 
-## 2026-04-23 — WP-97 supplier-routing increment
+---
 
+## 2026-04-23 — WP-97 supplier-routing increment
 - Выполнен отдельный increment по supplier mapping.
 - Manual-check:
   - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
@@ -249,8 +255,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - supplier-order block `Тэйсти Кофе` требует следующей сессии на category-aware compression;
   - главный незакрытый слой всё ещё `PDF -> price delta ledger`.
 
-## 2026-04-23 — WP-97 PDF price-delta increment
+---
 
+## 2026-04-23 — WP-97 PDF price-delta increment
 - В кладовщика встроен line-item слой по PDF-накладным.
 - Manual-check:
   - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
@@ -263,8 +270,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - сделать price-layer более manager-ready;
   - подтвердить каналы заказа `UNICAVA` и `Субмарина`.
 
-## 2026-04-23 — WP-97 price-delta anomaly filter
+---
 
+## 2026-04-23 — WP-97 price-delta anomaly filter
 - Выполнен дополнительный manual-check после rule-based filtering.
 - Фактический результат:
   - аномальный кейс `Смакотерия: Сосиска в тесте (-73.8%)` убран из основного блока `Изменение цен`;
@@ -273,8 +281,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - продолжать калибровать price-layer;
   - отдельно добить подтверждённые каналы заказа для `UNICAVA` и `Субмарина`.
 
-## 2026-04-23 — WP-97 structural contract layer
+---
 
+## 2026-04-23 — WP-97 structural contract layer
 - Зафиксирован следующий архитектурный приоритет для кладовщика:
   - не только extraction,
   - а `document -> extracted fields -> derived metrics -> manager output`.
@@ -283,8 +292,9 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
   - formalized `Document-to-Decision Contract`;
   - зафиксирован следующий важный слой: `cost / margin cards`.
 
-## 2026-04-23 — WP-97 ABC manager signals increment
+---
 
+## 2026-04-23 — WP-97 ABC manager signals increment
 - `ABC` upgraded from category-source to manager-signal source.
 - Manual-check:
   - `python3 PACK-warehouse/tools/warehouse_reports_pipeline.py --hours 720 --manual`
@@ -295,3 +305,8 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - Следующий truthful хвост:
   - отфильтровать служебные / внутренние позиции (`персонал` и похожие);
   - materialize отдельные `cost / margin cards`.
+
+---
+
+## Что сделано сегодня (2026-04-24)
+- ✅ [2026-04-24 12:05] WP-73: подготовлен пакет ручной подачи обращения в Водоканал и календарный follow-up
