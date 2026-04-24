@@ -1,22 +1,23 @@
 ---
-id: WP-118
-title: Mechanical WP Gate for sensitive engineering changes
+id: WP-119
+title: Telegram-бот VK-offee — восстановление RAG-flow и note-flow stability
 status: in_progress
 approved: consumed
-approval_consumed_at: 2026-04-24 13:07
-approval_renewed_at: 2026-04-24
+approval_consumed_at: 2026-04-24 13:08
 approval_renewed_at: 2026-04-24
 approved_at: 2026-04-24
 approved_by: user
 sensitive_scope:
   - DS-strategy:current/ACTIVE-WP.md
-  - DS-strategy:inbox/WP-118-mechanical-wp-gate-for-sensitive-engineering-changes (Механический WP Gate для чувствительных инженерных изменений).md
-  - FMT-exocortex-template:scripts/close-task.sh
-  - workspace-root:close-task.sh
+  - DS-strategy:current/SESSION-CONTEXT.md
+  - DS-strategy:inbox/WP-119-telegram-bot-rag-flow-recovery (Telegram-бот VK-offee — восстановление RAG-flow).md
+  - DS-strategy:inbox/WP-48-telegram-bot-testing.md
+  - VK-offee:telegram-bot/bot.py
+  - VK-offee:telegram-bot/tests/test_note_flow.py
 ---
 
-# ACTIVE-WP — WP-118
+# ACTIVE-WP — WP-119
 
-Механический gate для чувствительных инженерных изменений.
+Telegram-бот VK-offee: восстановление RAG-flow и стабилизация note-flow.
 
-Этот файл нужен не как память агента, а как machine-readable разрешение для `close-task.sh`.
+Активный контекст возвращён с системного `WP-118` на фактический продуктовый `WP-119`.
