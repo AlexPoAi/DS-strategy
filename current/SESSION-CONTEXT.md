@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-24 12:36
+**Последнее обновление:** 2026-04-24 12:40
 **Сессия:** W17, активная неделя 2026-04-20 → 2026-04-26
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,7 +15,7 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — WP-99: unified Obsidian live vault and removed legacy creativ-convector runtime path
+**Статус:** задача закрыта — Simplify: platform root helpers moved to template source-of-truth
 **Активный РП:** W17 / текущий рабочий цикл экзокортекса
 **Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
 
@@ -37,7 +37,7 @@
 ---
 
 ## Следующий шаг
-- 🔒 [12:36] Сессия закрыта
+- 🔒 [12:40] Сессия закрыта
 1. Проверить, что SESSION-CONTEXT и рабочие продукты сохранены в одном контуре закрытия.
 2. Открыть следующий рабочий цикл от текущего truthful состояния.
 3. Если остались незакрытые хвосты, зафиксировать их отдельной задачей в INBOX.
@@ -309,6 +309,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 ---
 
 ## Что сделано сегодня (2026-04-24)
+- ✅ [2026-04-24 12:40] Simplify: platform root helpers moved to template source-of-truth
 - ✅ [2026-04-24 12:36] WP-99: unified Obsidian live vault and removed legacy creativ-convector runtime path
 - ✅ [2026-04-24 12:34] Cleanup: removed workspace junk files and ignored DS_Store
 - ✅ [2026-04-24 12:31] Cleanup: убран мусор из корня workspace
