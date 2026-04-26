@@ -125,26 +125,19 @@
 
 ---
 
-## РП текущей недели (W16: 13 апр – 19 апр)
+## РП текущей недели (W17: 20 апр – 26 апр)
 
-> Порядок: in_progress → pending → done. Обновлено: 2026-04-17.
+> Порядок: active/partial → pending → done. Обновлено: 2026-04-26.
 
 | # | РП | Бюджет | Статус | Приоритет |
 |---|-----|--------|--------|-----------|
-| 60 | СИСТЕМА: Переделка opening/open-contract контура — перенос modern upstream с truthful governance | 3h | ✅ done | High |
-| 58 | МАРАФОН: Ответы на вопросы Алёны — правки в тетради, доступ к репо | 2h | ✅ done | High |
-| 51 | ПАРК: Аудит счетов / подача АГО | 2h | ✅ done | 🔴 High |
-| 65 | СКЛАД: Синк папки склада Жанны в пайплайн | 45m | in_progress | 🔴 High |
-| 42 | PACK-warehouse — накладные, остатки, поставщики как карточки | 2h | pending | 🔴 High |
-| 52 | КУХНЯ: Оценка и выбор вакуума тора — модель, цена, ТТК, план B2B | 2h | pending | 🟡 Medium |
-| 53 | КОФЕЙНИ: Аналитика через Saby — первый срез, где теряем прибыль | 3h | pending | 🟡 Medium |
-| 54 | КОФЕЙНИ: Маркетинговый агент — ТЗ и аудит привлекательности продукта | 2h | pending | 🟡 Medium |
-| 55 | KE-быстрые: routing gap + 3 метода IWE | 45m | pending | 🟡 Medium |
-| 56 | СИСТЕМА: Аудит Pack — gap-анализ по всем доменам (что разработано, где слабо) | 3h | pending | 🟡 Medium |
-| 57 | СИСТЕМА: Реестры документов — REGISTRY.md в каждом Pack | 2h | pending | 🟡 Medium |
-| 44 | FM-уровень PACK-kitchen (FM-004..FM-013) | 2h | partial | 🟡 Medium |
-| 48 | Тестирование Telegram-бота VK-offee | 1h | partial | 🟡 Medium |
-| 45 | Яндекс Карты — система продвижения | 3-4h | pending | 🟡 Medium |
+| 73 | ПАРК: статус канализационной трубы + официальный следующий шаг | 1.5-2h | partial | 🔴 High |
+| 59 | Telegram-бот: роль управляющего + быстрые ссылки на day/week report | 1.5-2h | partial | 🔴 High |
+| 56 | СИСТЕМА: truthful rebase backlog и recovery | 1-1.5h | partial | 🔴 High |
+| 63 | СКЛАД: verification production-ready verdict | 1-2h | verdict issued: partial-ready | 🔴 High |
+| 74 | СИСТЕМА: карта backlog `110` задач по предметным областям | 1.5-3h | pending | 🟡 Medium |
+| 89 | СИСТЕМА: master document registry по всей базе знаний | 2-4h | pending | 🟡 Medium |
+| 76 | Планировщик экзокортекса: финальный closeout после post-check | 0.5-1h | ✅ done | 🟡 Medium |
 ---
 
 ## Экосистема репозиториев
