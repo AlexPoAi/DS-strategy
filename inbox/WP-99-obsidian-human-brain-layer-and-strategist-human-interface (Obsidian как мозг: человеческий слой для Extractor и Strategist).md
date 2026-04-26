@@ -417,7 +417,7 @@ updated: 2026-04-24
    - materialized в `Obsidian` как human-facing слой стратега
 3. ✅ `Live Obsidian vault cleanup and source unification`
    - живой vault подтверждён как `/Users/alexander/Documents/Творческий конвеер`
-   - старое git-зеркало `/Users/alexander/Github/creativ-convector` удалено как источник путаницы
+   - старое downstream git-зеркало удалено как источник путаницы
    - runtime-маршруты `health-check`, `daily-report`, `unprocessed-notes-check`, `chain-report`, `obsidian-to-captures`, `session-tasks` переведены на live vault
    - полезные архивные заметки возвращены во `1. Исчезающие заметки`
    - пустые/технические Obsidian `base/canvas` оставлены в карантине, а не во входящих

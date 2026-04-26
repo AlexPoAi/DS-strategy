@@ -139,7 +139,7 @@
 | Репо | Тип | Назначение | Путь |
 |------|-----|-----------|------|
 | **VK-offee** | Pack | База знаний кофейни (рецепты, процессы, люди) | ~/Github/VK-offee |
-| **creativ-convector** | Downstream | Творческий конвейер (заметки → черновики → Pack) | ~/Github/creativ-convector |
+| **Творческий конвеер** | Human brain | Obsidian-vault: заметки, черновики, сессии стратегирования | ~/Documents/Творческий конвеер |
 | **DS-strategy** | Governance | Стратегический хаб (планы, отчёты, inbox) | ~/Github/DS-strategy |
 | **FMT-exocortex-template** | Format | Шаблон системы, форк от Церена | ~/Github/FMT-exocortex-template |
 
@@ -153,7 +153,7 @@
 ✅ **Скрипт analyze_gaps.py** - автоматический поиск недостающей информации:
 - Анализирует пробелы в VK-offee (статус yellow/red)
 - Ищет информацию в творческом конвейере
-- Запуск: `cd ~/Github/creativ-convector/.github/scripts && python3 analyze_gaps.py`
+- Источник human-layer: `~/Documents/Творческий конвеер/`
 
 ---
 

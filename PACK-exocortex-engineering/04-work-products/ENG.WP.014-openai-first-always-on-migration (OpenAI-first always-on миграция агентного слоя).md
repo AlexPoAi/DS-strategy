@@ -52,7 +52,7 @@ author: Environment Engineer (Codex)
 |---|---|---|---|
 | [VK-offee-rag](/Users/alexander/Github/VK-offee-rag) | локальный FastAPI + `.env` | API-first, уже отделён от UI, OpenAI доступен | always-on service на VPS/сервере |
 | [VK-offee/telegram-bot](/Users/alexander/Github/VK-offee/telegram-bot) | локальный polling bot + `RAG_API_URL` | продуктовый бот может жить отдельно от desktop-агентов | always-on bot + remote RAG API |
-| `creativ-convector` AI workflows | GitHub Actions / scripts | уже близко к API-first модели | GitHub Actions + repo secrets |
+| legacy note-processing workflows | retired scripts / workflows | исторически были ближе к API-first модели | больше не считать частью живого target-contour |
 | отдельные util tools типа [fpf-consult.sh](/Users/alexander/Github/DS-strategy/tools/fpf-consult.sh) | shell + OpenAI env | не требуют локального `claude` раннера как архитектуры | API-first utility layer |
 
 ### 2. Requires refactor

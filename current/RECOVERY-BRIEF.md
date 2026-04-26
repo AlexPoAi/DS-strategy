@@ -14,17 +14,17 @@ owner: Strategist
 ## Элементы, требующие weekly/governance verdict
 
 - Переезд на Кипр/Таиланд как долгосрочная стратегия
-  - Источник: UNPROCESSED-NOTES-REPORT`, `CO.reject.012`, `creativ-convector
+  - Источник: `UNPROCESSED-NOTES-REPORT`, `CO.reject.012`, старый Obsidian human-layer
   - Статус recovery: new
   - Что уже сделано: возвращён в `INBOX` как отдельная стратегическая задача
   - Требуется verdict: WeekPlan / backlog / keep in recovery
 - Сайт по продаже кофе в Симферополе + доставка/оплата/TG
-  - Источник: UNPROCESSED-NOTES-REPORT`, `CO.reject.011`, `creativ-convector
+  - Источник: `UNPROCESSED-NOTES-REPORT`, `CO.reject.011`, старый Obsidian human-layer
   - Статус recovery: new
   - Что уже сделано: возвращён в `INBOX` как growth-задача
   - Требуется verdict: WeekPlan / backlog / keep in recovery
 - ИИ ассистенты для проработки
-  - Источник: UNPROCESSED-NOTES-REPORT`, `creativ-convector
+  - Источник: `UNPROCESSED-NOTES-REPORT`, старый Obsidian human-layer
   - Статус recovery: needs source recovery
   - Что уже сделано: файл-источник найден, но пустой; требуется восстановление контекста из исходных заметок/чата
   - Требуется verdict: WeekPlan / backlog / keep in recovery

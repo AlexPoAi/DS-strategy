@@ -71,7 +71,7 @@
 ## Контекст проекта
 ### Связка репозиториев
 - **VK-offee** (`~/Github/VK-offee`) — Pack, база знаний кофеен, source of truth
-- **creativ-convector** (`~/Documents/creativ-convector.nocloud`) — исчезающие заметки, черновики → питает VK-offee
+- **legacy downstream vault** — исчезающие заметки, черновики → питает VK-offee
 - **FMT-exocortex-template** (`~/Github/FMT-exocortex-template`) — операционка, протоколы Open-Work-Close
 - **DS-strategy** (`~/Github/DS-strategy`) — governance hub, WeekPlan, стратегия
 

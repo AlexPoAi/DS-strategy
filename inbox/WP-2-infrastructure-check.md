@@ -49,9 +49,9 @@ launchctl list | grep -E "(strategist|extractor|scheduler)"
 ### 4. Поставка данных Obsidian → экстрактор
 
 - [ ] Проверить `com.obsidian.sync` (launchctl list)
-- [ ] Проверить `~/Github/creativ-convector/sync_obsidian.sh`
-- [ ] Тестовая заметка в Obsidian → проверить появление в creativ-convector
-- [ ] Проверить цепочку: Obsidian → creativ-convector → DS-strategy/inbox/captures.md
+- [ ] Проверить Obsidian human-layer и актуальный маршрут заметок
+- [ ] Тестовая заметка в Obsidian → проверить появление в `Творческий конвеер`
+- [ ] Проверить цепочку: Obsidian → `Творческий конвеер` → `DS-strategy/inbox/captures.md`
 
 ### 5. Логика работы
 

@@ -775,7 +775,7 @@ created: 2026-03-04
     - `DS-strategy/inbox/RECOVERY-CATALOG-LOST-INPUTS-2026-04-08.md`
     - обновлённый `INBOX-TASKS.md`
   - Прогресс на 2026-04-08:
-    - источники recovery сверены: `captures`, extraction-reports, processed-sessions, WeekPlan, UNPROCESSED report, creativ-convector
+    - источники recovery сверены: `captures`, extraction-reports, processed-sessions, WeekPlan, `UNPROCESSED-NOTES-REPORT`, Obsidian human-layer
     - собран первичный recovery-каталог
     - подтверждено: часть хвостов уже tracked, но минимум 2 стратегические задачи действительно были потеряны между rejected/archive и `INBOX`
     - truthful limitation: это первый подтверждённый recovery-pass по основным источникам, а не гарантия, что уже найдены абсолютно все исторические потери экосистемы
@@ -807,7 +807,7 @@ created: 2026-03-04
     - отдельный growth work product later
 
 - [pending] 2026-04-08: [RECOVERY] Восстановить содержимое заметки `Ии ассистенты для проработки`
-  - Контекст: красный хвост из `UNPROCESSED-NOTES-REPORT.md` подтверждён, исходный файл найден в `creativ-convector`, но содержимое пустое. Сейчас это broken source recovery case.
+  - Контекст: красный хвост из `UNPROCESSED-NOTES-REPORT.md` подтверждён, исходный файл найден в старом Obsidian human-layer, но содержимое пустое. Сейчас это broken source recovery case.
   - Маршрутизация: хвост зафиксирован экстрактором как recovery-case, вести в связке с `WP-71` и recovery-контуром.
   - Что сделать:
     1. Проверить историю/версии Obsidian или соседние источники
@@ -1758,7 +1758,7 @@ created: 2026-03-04
   - Контекст: Проверка связки Obsidian → GitHub → Экстрактор
   - Приоритет: high
   - Действия:
-    1. Проверить синхронизацию Obsidian vault → creativ-convector GitHub
+    1. Проверить синхронизацию Obsidian vault → `Творческий конвеер`
     2. Убедиться что экстрактор видит исчезающие заметки и черновики
     3. Запустить полную цепочку: Obsidian → GitHub → Экстрактор → Captures → VK-offee Pack
     4. Протестировать сессию стратегирования end-to-end
@@ -1768,7 +1768,7 @@ created: 2026-03-04
   - Приоритет: high
   - Вопросы для проработки:
     1. Видит ли экстрактор все заметки после работы sync_obsidian.sh?
-    2. Правильно ли текущая схема: Obsidian → GitHub (creativ-convector) → Экстрактор?
+    2. Правильно ли текущая схема: Obsidian → `Творческий конвеер` → Экстрактор?
     3. Альтернатива: Экстрактор читает Obsidian напрямую (без GitHub промежутка)?
     4. Интеграция в DS-strategy: встроить Obsidian как источник данных?
   - Действия:

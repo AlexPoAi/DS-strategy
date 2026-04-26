@@ -22,7 +22,7 @@ scope: lost-inputs
 3. `DS-strategy/inbox/processed-sessions/*.md`
 4. `DS-strategy/current/UNPROCESSED-NOTES-REPORT.md`
 5. `DS-strategy/current/WeekPlan W15 2026-04-06.md`
-6. `creativ-convector/1. Исчезающие заметки/*.md`
+6. `legacy downstream / 1. Исчезающие заметки/*.md`
 7. `DS-strategy/inbox/archive/rejected/*.md`
 
 ## Краткий вывод
@@ -36,9 +36,9 @@ scope: lost-inputs
 
 | # | Элемент | Источник | Статус recovery | Что сделано |
 |---|---|---|---|---|
-| 1 | Переезд на Кипр/Таиланд как долгосрочная стратегия | `UNPROCESSED-NOTES-REPORT`, `CO.reject.012`, `creativ-convector` | `new` | возвращён в `INBOX` как отдельная стратегическая задача |
-| 2 | Сайт по продаже кофе в Симферополе + доставка/оплата/TG | `UNPROCESSED-NOTES-REPORT`, `CO.reject.011`, `creativ-convector` | `new` | возвращён в `INBOX` как growth-задача |
-| 3 | ИИ ассистенты для проработки | `UNPROCESSED-NOTES-REPORT`, `creativ-convector` | `needs source recovery` | файл-источник найден, но пустой; требуется восстановление контекста из исходных заметок/чата |
+| 1 | Переезд на Кипр/Таиланд как долгосрочная стратегия | `UNPROCESSED-NOTES-REPORT`, `CO.reject.012`, legacy downstream | `new` | возвращён в `INBOX` как отдельная стратегическая задача |
+| 2 | Сайт по продаже кофе в Симферополе + доставка/оплата/TG | `UNPROCESSED-NOTES-REPORT`, `CO.reject.011`, legacy downstream | `new` | возвращён в `INBOX` как growth-задача |
+| 3 | ИИ ассистенты для проработки | `UNPROCESSED-NOTES-REPORT`, legacy downstream | `needs source recovery` | файл-источник найден, но пустой; требуется восстановление контекста из исходных заметок/чата |
 | 4 | Разработки ПО для руководителя кофейни | `processed-sessions 2026-03-24 22:34` | `already tracked` | уже разложено в `INBOX` на задачи по ролям проекта и агенту оценки знаний сотрудников |
 | 5 | Система лояльности в Saby | `processed-sessions 2026-03-24 22:34` | `already tracked` | уже есть pending-задача в `INBOX` |
 | 6 | Замена мебели на Тургенева | `processed-sessions 2026-03-24 22:34` | `already tracked` | уже есть pending-задача и отдельный WP-след |
@@ -56,7 +56,7 @@ scope: lost-inputs
 ### 1. Переезд на Кипр/Таиланд
 
 **Почему это recovery, а не новый придуманный пункт:**
-- заметка есть в `creativ-convector/1. Исчезающие заметки/Переезд на кипр или тайланд.md`;
+- заметка есть в legacy downstream `1. Исчезающие заметки/Переезд на кипр или тайланд.md`;
 - extraction уже признал, что это не Pack-knowledge, а governance/personal strategy;
 - при этом задача так и не была поднята в `INBOX`.
 
@@ -68,7 +68,7 @@ scope: lost-inputs
 ### 2. Сайт по продаже кофе в Симферополе
 
 **Почему это recovery, а не новый придуманный пункт:**
-- заметка есть в `creativ-convector/1. Исчезающие заметки/Сайт по продаже кофе в Симферополе..md`;
+- заметка есть в legacy downstream `1. Исчезающие заметки/Сайт по продаже кофе в Симферополе..md`;
 - rejected-архив прямо указывает: это должно было попасть в `DS-strategy/inbox/INBOX-TASKS.md как новый рабочий продукт`;
 - этого не произошло.
 
@@ -82,7 +82,7 @@ scope: lost-inputs
 
 Что известно:
 - есть красный хвост в `UNPROCESSED-NOTES-REPORT.md`;
-- исходный файл найден в `creativ-convector/1. Исчезающие заметки/Ии ассистенты для проработки.md`;
+- исходный файл найден в legacy downstream `1. Исчезающие заметки/Ии ассистенты для проработки.md`;
 - содержимое файла пустое.
 
 Вывод:

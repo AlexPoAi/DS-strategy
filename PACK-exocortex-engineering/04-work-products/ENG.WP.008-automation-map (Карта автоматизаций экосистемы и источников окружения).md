@@ -53,7 +53,7 @@ author: Environment Engineer (Codex)
 | `FMT-exocortex-template` | launchd + shell automation | `roles/*/scripts`, `scheduler.sh`, `strategist.sh`, `extractor.sh` | локальная среда, `~/.config/...`, возможные GitHub secrets | `DS-strategy`, файловая система, Telegram, локальные watcher'ы | заметки, алерты, служебные артефакты | Очень высокая | Базовый execution-layer экзокортекса |
 | `VK-offee` | bot + local scripts + sync | `telegram-bot/*`, `.github/scripts/*` | `telegram-bot/.env`, Google OAuth files, внешние env | Telegram, Google Drive, Google Sheets, RAG/API | ответы бота, синхронизация знаний | Очень высокая | Source-of-truth домена + живой бот |
 | `VK-offee-rag` | local/backend service | runtime app / API слой | `.env` | `VK-offee`, векторный индекс, LLM/API | RAG API и поиск | Высокая | Инструментальный слой доступа к Pack |
-| `creativ-convector` | workflows + processing | repo scripts / GitHub Actions | `.env.example` как шаблон, реальные secrets вне git | `VK-offee`, заметки, AI APIs | извлечённые/обработанные материалы | Средняя/высокая | Downstream-контур, нельзя разорвать source-of-truth связь |
+| `legacy downstream repo` | retired | исторический слой | старые secrets/runtime | устаревшие note-processing сценарии | исторические артефакты | Низкая | Больше не считать частью живой архитектуры |
 | `DS-agent-workspace` | agent artifact bus | manual/agent-driven | зависит от локальной среды агента | агенты, `DS-strategy` | артефакты выполнения | Средняя | Не главный runtime, но важен для handoff |
 
 ---
@@ -68,7 +68,7 @@ author: Environment Engineer (Codex)
 | `FMT-exocortex-template` | `notify-update.yml` | [notify-update.yml](/Users/alexander/Github/FMT-exocortex-template/.github/workflows/notify-update.yml) | `BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET` | ежедневный дайджест изменений шаблона через bot webhook | Средняя |
 | `FMT-exocortex-template` | `validate-template.yml` | [validate-template.yml](/Users/alexander/Github/FMT-exocortex-template/.github/workflows/validate-template.yml) | GitHub runner env | CI-валидация шаблона, контроль hardcoded paths/placeholders | Средняя |
 | `DS-strategy` | `cloud-scheduler.yml` | [cloud-scheduler.yml](/Users/alexander/Github/DS-strategy/.github/workflows/cloud-scheduler.yml) | `BOT_HEALTH_URL`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | nightly health-check экзокортекса + Telegram отчёт | Высокая |
-| `creativ-convector` | `obsidian-ai-pr.yml` | [obsidian-ai-pr.yml](/Users/alexander/Github/creativ-convector/.github/workflows/obsidian-ai-pr.yml) | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | ручной AI enrichment заметок и PR | Средняя |
+| `legacy downstream repo` | retired workflow | исторический workflow | устаревшие secrets | больше не использовать | Низкая |
 
 ### Локальные launchd / shell automation
 
@@ -87,7 +87,7 @@ author: Environment Engineer (Codex)
 | `VK-offee` | Sheets importer | [sync-google-sheets.py](/Users/alexander/Github/VK-offee/.github/scripts/sync-google-sheets.py) | `credentials.json`, `token.pickle`, hardcoded folder id | импорт всех Google Sheets в CSV | CSV-файлы в `knowledge-base` | Высокая |
 | `VK-offee` | Saby scraper | [saby_scraper.py](/Users/alexander/Github/VK-offee/saby-integration/saby_scraper.py) | `.env` через `load_dotenv()` | веб-автоматизация Saby Presto | html, screenshots, извлечённые данные | Средняя |
 | `VK-offee-rag` | RAG API | [src/api.py](/Users/alexander/Github/VK-offee-rag/src/api.py) | `.env` через `load_dotenv()` | localhost API для поиска и ответа | FastAPI на `127.0.0.1`, `/health`, `/query` | Очень высокая |
-| `creativ-convector` | session launcher | [начать-сессию.sh](/Users/alexander/Github/creativ-convector/%D0%BD%D0%B0%D1%87%D0%B0%D1%82%D1%8C-%D1%81%D0%B5%D1%81%D1%81%D0%B8%D1%8E.sh) | локальная python-среда | запуск стратегической сессии | manual workflow / локальный run | Низкая/средняя |
+| `Творческий конвеер` | session notes | Obsidian папка `Сессия стратегирования/` | локальный vault | хранение human-facing сессий | локальные markdown notes | Средняя |
 
 ---
 
@@ -180,7 +180,7 @@ author: Environment Engineer (Codex)
 | `VK-offee monitor bot` | `~/.config/aist/env` | отдельный телеграм-контур, не тот же слой что `.env` бота |
 | `VK-offee Google Drive/Sheets sync` | `credentials.json`, `token.pickle`, `token_upload.pickle`, локальный git auth | после синка может делать commit/push |
 | `VK-offee-rag API` | `VK-offee-rag/.env` | localhost-only сервис для основного бота |
-| `creativ-convector AI PR` | GitHub Actions secrets | ручной workflow_dispatch |
+| `legacy downstream AI workflow` | retired | не использовать |
 
 ### Инженерное правило
 

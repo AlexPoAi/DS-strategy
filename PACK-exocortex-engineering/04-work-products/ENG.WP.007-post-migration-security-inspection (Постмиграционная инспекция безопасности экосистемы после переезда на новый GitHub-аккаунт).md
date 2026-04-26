@@ -28,7 +28,7 @@ author: Environment Engineer (Codex)
 - `DS-strategy`
 - `DS-agent-workspace`
 - `FMT-exocortex-template`
-- `creativ-convector`
+- `legacy downstream repo`
 - `PACK-iwe-culture`
 - `DS-Knowledge-Index-Tseren`
 - `agency-agents`
@@ -135,7 +135,7 @@ author: Environment Engineer (Codex)
 Подтверждено через `git ls-files` и `git check-ignore`:
 
 - [VK-offee-rag/.env.example](/Users/alexander/Github/VK-offee-rag/.env.example) — tracked
-- [creativ-convector/.env.example](/Users/alexander/Github/creativ-convector/.env.example) — tracked
+- legacy downstream `.env.example` — tracked
 - [FMT-exocortex-template/.claude/settings.json](/Users/alexander/Github/FMT-exocortex-template/.claude/settings.json) — tracked
 - [VK-offee/telegram-bot/.env](/Users/alexander/Github/VK-offee/telegram-bot/.env) — ignored, not tracked
 - [VK-offee-rag/.env](/Users/alexander/Github/VK-offee-rag/.env) — ignored, not tracked
@@ -147,8 +147,8 @@ author: Environment Engineer (Codex)
 
 | Секрет / группа | Где используется | Контур |
 |---|---|---|
-| `OPENAI_API_KEY` | `VK-offee-rag/src/*.py`, `VK-offee/plannings/*.py`, `DS-strategy/tools/fpf-consult.sh`, `creativ-convector` scripts/workflows | OpenAI API / embeddings / summarization |
-| `ANTHROPIC_API_KEY` | `VK-offee-rag/src/query.py`, `creativ-convector` workflows/scripts, token-monitor/docs | Anthropic/Claude API |
+| `OPENAI_API_KEY` | `VK-offee-rag/src/*.py`, `VK-offee/plannings/*.py`, `DS-strategy/tools/fpf-consult.sh`, legacy downstream scripts/workflows | OpenAI API / embeddings / summarization |
+| `ANTHROPIC_API_KEY` | `VK-offee-rag/src/query.py`, legacy downstream workflows/scripts, token-monitor/docs | Anthropic/Claude API |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `FMT` synchronizer/strategist/extractor scripts, `DS-strategy` workflows/tools, `VK-offee` bots | Telegram transport / monitor / alerts |
 | `SABY_EMAIL`, `SABY_PASSWORD`, `SABY_APP_CLIENT_ID`, `SABY_APP_SECRET`, `SABY_SECRET_KEY` | `VK-offee/saby-integration/*` | Saby integration |
 | `WAKATIME_API_KEY` | `FMT` strategist/synchronizer scripts | WakaTime collection |
@@ -204,7 +204,7 @@ author: Environment Engineer (Codex)
 Подтверждено дополнительной live-проверкой:
 
 - `remote.origin.url` в ключевых репозиториях сейчас без токенов в URL:
-  - `VK-offee`, `VK-offee-rag`, `DS-strategy`, `DS-agent-workspace`, `FMT-exocortex-template`, `creativ-convector`, `agency-agents`
+  - `VK-offee`, `VK-offee-rag`, `DS-strategy`, `DS-agent-workspace`, `FMT-exocortex-template`, legacy downstream repo, `agency-agents`
   - формат: `https://github.com/AlexPoAi/<repo>.git`
 - `PACK-iwe-culture` сейчас без `origin`; это не секрет-риск, но это operational gap для репозитория из scope.
 - `VK-offee/telegram-bot/.env`, `VK-offee-rag/.env`, `VK-offee/.github/scripts/credentials.json`, `token.pickle`, `token_upload.pickle`:
@@ -251,7 +251,7 @@ author: Environment Engineer (Codex)
 | `DS-strategy` | `.github/workflows/cloud-scheduler.yml` | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
 | `FMT-exocortex-template` | `.github/workflows/cloud-scheduler.yml` | `STRATEGY_REPO_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` |
 | `FMT-exocortex-template` | `.github/workflows/notify-update.yml` | `BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET` |
-| `creativ-convector` | `.github/workflows/obsidian-ai-pr.yml` | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
+| legacy downstream repo | retired workflow | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
 | `VK-offee`, `VK-offee-rag`, `DS-agent-workspace`, `PACK-iwe-culture`, `agency-agents` | workflow secrets usage not found in local workflow files | — |
 
 #### Truthful findings
@@ -272,7 +272,7 @@ author: Environment Engineer (Codex)
 #### Вывод для следующих волн ротации
 
 - Wave Telegram должна покрывать не только local runtime, но и GitHub Actions secrets в `DS-strategy` и `FMT-exocortex-template`.
-- Wave OpenAI/Anthropic должна включать GitHub Actions secrets в `creativ-convector`, иначе ручной/optional AI workflow останется на старых ключах.
+- Wave OpenAI/Anthropic раньше включала legacy downstream GitHub Actions secrets; сейчас этот контур retired.
 - `STRATEGY_REPO_TOKEN` и webhook secrets (`BOT_WEBHOOK_URL`, `TEMPLATE_WEBHOOK_SECRET`) требуют отдельной service-account inventory до ротации.
 
 ### 12. Service-account inventory for workflow secrets (2026-04-07)
@@ -396,7 +396,7 @@ author: Environment Engineer (Codex)
 
 - `VK-offee-rag/.env`
 - `VK-offee/telegram-bot/.env`
-- `creativ-convector` runtime `.env` / GitHub Actions secrets
+- legacy downstream runtime `.env` / GitHub Actions secrets
 - `DS-strategy/tools/fpf-consult.sh` depends on env source
 
 **Почему вторая волна**
@@ -408,7 +408,7 @@ author: Environment Engineer (Codex)
 
 - `VK-offee-rag` health/query
 - `VK-offee` bot с AI-сценарием
-- `creativ-convector` AI workflow smoke
+- legacy downstream AI workflow smoke
 
 ### Wave 3 — Google OAuth
 
@@ -483,7 +483,7 @@ author: Environment Engineer (Codex)
 | Secret group | Основные secret names | Где обновлять | Owner / layer | Smoke test | Статус |
 |---|---|---|---|---|---|
 | Telegram local/cloud | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `~/.config/aist/env`, `VK-offee/telegram-bot/.env`, repo secrets `DS-strategy`, `FMT-exocortex-template` | local runtime + GitHub Actions | `notify.sh`, cloud scheduler notification, product bot ping | partial |
-| OpenAI / Anthropic | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | `VK-offee-rag/.env`, `VK-offee/telegram-bot/.env`, `creativ-convector` secrets/runtime, env for `fpf-consult.sh` | app runtime + optional Actions | RAG query, bot AI scenario, `creativ-convector` workflow smoke | pending |
+| OpenAI / Anthropic | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` | `VK-offee-rag/.env`, `VK-offee/telegram-bot/.env`, legacy downstream secrets/runtime, env for `fpf-consult.sh` | app runtime + optional Actions | RAG query, bot AI scenario, legacy downstream workflow smoke | pending |
 | Google OAuth | `credentials.json`, `token.pickle`, `token_upload.pickle` | `VK-offee/.github/scripts/` runtime files | local/VPS sync runtime | Drive sync, Sheets sync, upload scenario | pending |
 | Saby | `SABY_EMAIL`, `SABY_PASSWORD`, `SABY_APP_CLIENT_ID`, `SABY_APP_SECRET`, `SABY_SECRET_KEY` | runtime `.env` / env-layer used by `saby-integration` | app/runtime only | `test_connection.py`, minimal scraper scenario | pending |
 | GitHub cloud machine token | `STRATEGY_REPO_TOKEN` | repo secret in `FMT-exocortex-template` | GitHub Actions machine secret | backup job, health-check clone, manual workflow rerun | pending |
@@ -600,7 +600,7 @@ ENG.WP.007 после этого обновления находится в со
 - `DS-strategy`
 - `DS-agent-workspace`
 - `FMT-exocortex-template`
-- `creativ-convector`
+- `legacy downstream repo`
 
 ### Критичные места хранения секретов
 

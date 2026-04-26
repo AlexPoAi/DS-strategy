@@ -15,11 +15,13 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыт день после обрыва; `WP-63` получил final verdict `partial-ready`
-**Активный РП:** W17 / `WP-63` — склад: final production-ready verdict
-**Следующий шаг:** продолжить W17 по DayPlan после `WP-63`: выбрать `WP-56`, `WP-59` или `WP-73`; если нужен склад до `ready`, открывать отдельный bounded production-tail по VPS full-intake acceptance.
+**Статус:** открыта сессия стратегирования; фокус переключён с локального склада на truthful weekly rebase и cash/priority decisions по W17
+**Активный РП:** W17 strategic session / weekly portfolio rebase
+**Следующий шаг:** собрать session verdict по `Парк / финансы / Самир / труба / менеджерский / инженерный` контурам и выбрать по одному главному ходу недели на контур.
 
 ## Что сделано сегодня (2026-04-26)
+- ✅ [2026-04-26 20:35] Открыт новый pending `WP-120` на создание контура `финансовый консультант / экономист`: зафиксирован repeatable use-case `cash discipline` для Парка и VK Coffee, а не разовый финансовый совет.
+- ✅ [2026-04-26 20:01] Открыта отдельная сессия стратегирования `Strategic Session 2026-04-26.md`: новый входящий слой из `captures` и `Obsidian` собран в один governance-контур; зафиксированы cash pressure по Парку (`3.6 млн` на руках против потребности `5-6 млн`) и правило недели `1 контур = 1 главный ход`.
 - ✅ [2026-04-26 19:20] День открыт повторно после обрыва связи: `SESSION-OPEN`, `AGENTS-STATUS`, `RUNTIME-MODE` пересобраны; мозг экзокортекса `🟡 yellow` из-за Obsidian human layer и stale extractor status, красного блокера нет.
 - ✅ [2026-04-26 19:24] По `WP-63` выполнен свежий локальный warehouse manual-run: `sources=57`, `cards=5`, `bot_cards=5`, `duplicates=52`, `errors=0`; обновлены `WH.REPORT.002`, `WH.REPORT.003`, `WH.SESSION.001`, `WH.REGISTRY.001` и procurement layer.
 - ✅ [2026-04-26 19:26] VPS evidence подтверждён: `vk-warehouse-full-loop.timer` active, последние пустые циклы завершаются `status=0/SUCCESS`, intake сейчас `0` файлов; stale `sync.error.log` не обновлялся с `2026-04-19`.
@@ -324,7 +326,7 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-24 12:51] WP-118: make sensitive WP approval one-shot
 - ✅ [2026-04-24 12:49] WP-118: mechanical sensitive WP gate added to close-task
 - ✅ [2026-04-24 12:40] Simplify: platform root helpers moved to template source-of-truth
-- ✅ [2026-04-24 12:36] WP-99: unified Obsidian live vault and removed legacy creativ-convector runtime path
+- ✅ [2026-04-24 12:36] WP-99: unified Obsidian live vault and removed legacy downstream runtime path
 - ✅ [2026-04-24 12:34] Cleanup: removed workspace junk files and ignored DS_Store
 - ✅ [2026-04-24 12:31] Cleanup: убран мусор из корня workspace
 - ✅ [2026-04-24 12:21] Security: убран Telegram token из логов и текущих файлов

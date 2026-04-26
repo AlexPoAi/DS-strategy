@@ -97,14 +97,14 @@ status: completed
 **Последняя синхронизация:** 342 файла (из project-brain.md)
 **Путь:** ~/Github/VK-offee/.github/scripts/auto-sync.sh
 
-### Obsidian → creativ-convector
+### Obsidian → legacy downstream
 
 **Агент:** com.obsidian.sync
 **Статус:** ✅ Работает (exit code 0)
 **Расписание:** Каждые 15 мин
-**Путь:** ~/Github/creativ-convector/sync_obsidian.sh
+**Путь:** historical legacy downstream sync script
 
-### creativ-convector → DS-strategy
+### legacy downstream → DS-strategy
 
 **Агент:** com.extractor.session-watcher
 **Статус:** ✅ Работает (exit code 0)

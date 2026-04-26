@@ -20,9 +20,8 @@ depends_on: WP-22
 ## Контур
 
 ### 1. Intake и стратегирование
-- `.nocloud` inbox заметок
-- sync в `creativ-convector`
-- `strategy_session.py`
+- Obsidian-vault `Творческий конвеер`
+- human-layer routing / strategic session flow
 - `pending-sessions/`
 
 ### 2. Extractor pipeline
@@ -54,7 +53,7 @@ depends_on: WP-22
 |--------|------------------|---------------------------|
 | Появились новые заметки | `.nocloud/1. Исчезающие заметки/` | файл физически существует |
 | Заметки увидены сессией | `strategy_session.py` + session file | счётчик найденных заметок + session file |
-| Заметки разложены | `creativ-convector/2. Черновики/` | каждая заметка либо в проекте, либо в manual-review, либо в error |
+| Заметки разложены | `Творческий конвеер/2. Черновики/` | каждая заметка либо в проекте, либо в рабочей зоне, либо требует ручного решения |
 | Сессия ушла в extractor | `DS-strategy/inbox/pending-sessions/` | session file в очереди |
 | Session import выполнен | `captures.md` + `processed-sessions/` | новые captures + перемещение session file |
 | Session tasks выполнен | `INBOX-TASKS.md` | секция задач с source по дате сессии |
