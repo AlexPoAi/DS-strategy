@@ -15,11 +15,12 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыта сессия стратегирования; фокус переключён с локального склада на truthful weekly rebase и cash/priority decisions по W17
+**Статус:** стратегическая сессия закрыта truthfully; день готов к safe closeout
 **Активный РП:** W17 strategic session / weekly portfolio rebase
-**Следующий шаг:** собрать session verdict по `Парк / финансы / Самир / труба / менеджерский / инженерный` контурам и выбрать по одному главному ходу недели на контур.
+**Следующий шаг:** закрыть день и завтра открыть неделю уже от materialized weekly portfolio verdict.
 
 ## Что сделано сегодня (2026-04-26)
+- ✅ [2026-04-26 21:05] Стратегическая сессия закрыта truthfully: собран weekly portfolio verdict, active контуры сужены до `кухня / Парк-труба / финансы / новый операционный менеджер / Самокиша`; `стекляшка`, `Самир`, личный `DS`, визуальная карта экзокортекса и лаборатория переведены в `keep warm`.
 - ✅ [2026-04-26 20:35] Открыт новый pending `WP-120` на создание контура `финансовый консультант / экономист`: зафиксирован repeatable use-case `cash discipline` для Парка и VK Coffee, а не разовый финансовый совет.
 - ✅ [2026-04-26 20:01] Открыта отдельная сессия стратегирования `Strategic Session 2026-04-26.md`: новый входящий слой из `captures` и `Obsidian` собран в один governance-контур; зафиксированы cash pressure по Парку (`3.6 млн` на руках против потребности `5-6 млн`) и правило недели `1 контур = 1 главный ход`.
 - ✅ [2026-04-26 19:20] День открыт повторно после обрыва связи: `SESSION-OPEN`, `AGENTS-STATUS`, `RUNTIME-MODE` пересобраны; мозг экзокортекса `🟡 yellow` из-за Obsidian human layer и stale extractor status, красного блокера нет.
@@ -335,3 +336,14 @@ Google Doc: https://docs.google.com/document/d/1ORX8CrZgd0Bj2_Qu49ymug3RwXa-TPF4
 - ✅ [2026-04-24 12:14] FMT: close-task обходит все git-репозитории workspace
 - ✅ [2026-04-24 12:13] FMT: закреплён close-task.sh как шаблонный source-of-truth
 - ✅ [2026-04-24 12:05] WP-73: подготовлен пакет ручной подачи обращения в Водоканал и календарный follow-up
+
+---
+
+## 2026-04-26 — GitHub trade-control recovery note
+- GitHub private repo access начал возвращать `403` с текстом `Due to U.S. trade controls law restrictions`.
+- Подготовлен и отправлен appeal в GitHub Support: владелец указал, что находится в Казахстане и ездит в Германию по работе.
+- Статус: ждём ответ GitHub Support.
+- Временная мера владельца: `VK-offee` переведён в public-доступ.
+- Проверка: `git ls-remote https://github.com/AlexPoAi/VK-offee.git HEAD` успешно возвращает `8e448880fcbc435648bb0e8db326c6822adaf5a8`.
+- До ответа GitHub private repos не считать надёжным remote; критичные документы дублировать в Google Drive, важные изменения держать local-first и при необходимости через bundle/patch.
+- Подробная карточка: `archive/notes/ENG-SUPPORT-GITHUB-2026-04-26 (Appeal по trade-control restriction).md`.
