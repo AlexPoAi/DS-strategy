@@ -1,9 +1,9 @@
 ---
 type: wp-context
-status: active
+status: verdict_issued_partial_ready
 owner: code-engineer
 created: 2026-04-15
-updated: 2026-04-16 20:55
+updated: 2026-04-26 19:30
 tags: [warehouse, governance, drive, telegram, vk-offee]
 ---
 
@@ -93,6 +93,22 @@ tags: [warehouse, governance, drive, telegram, vk-offee]
 - Новый операционный фокус:
   1. Подтвердить, что новые входящие от Жанны появляются именно в целевой папке `Новое`.
   2. Проверить ingestion не только Google Sheets, но и `.xlsx/.csv` источников в production-копии `/opt/vk-offee/VK-offee` (сверка версии `sync-google-sheets.py`).
+
+## Финальный verdict на 2026-04-26 19:30
+- Выпущен Pack-артефакт `VK-offee/PACK-warehouse/04-work-products/WH.WP.009-production-readiness-verdict-2026-04-26.md`.
+- Verdict: `partial-ready`.
+- Локальный manual-run подтверждён:
+  - `sources=57`
+  - `cards=5`
+  - `bot_cards=5`
+  - `duplicates=52`
+  - `errors=0`
+  - procurement refresh: `ok`
+- VPS evidence:
+  - `vk-warehouse-full-loop.timer` активен;
+  - последние service runs завершаются `status=0/SUCCESS`;
+  - текущий intake на VPS пустой (`0` таблиц, `0` файлов), поэтому подтверждены стабильные пустые циклы, а не полный боевой non-empty intake.
+- WP-63 можно закрывать как `verdict-issued / partial-ready`: hardening-слой материализован, но повышение до `ready` требует отдельного bounded production-tail.
 
 ## Acceptance
 - Есть рабочий `WH.REGISTRY` по входящим и обработанным документам.

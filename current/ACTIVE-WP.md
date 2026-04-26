@@ -1,23 +1,25 @@
 ---
-id: WP-119
-title: Telegram-бот VK-offee — восстановление RAG-flow и note-flow stability
-status: in_progress
+id: WP-63
+title: Склад — final production-ready verdict
+status: verdict_issued_partial_ready
 approved: consumed
-approval_consumed_at: 2026-04-24 13:08
-approval_renewed_at: 2026-04-24
-approved_at: 2026-04-24
+approval_consumed_at: 2026-04-26 19:20
+approval_renewed_at: 2026-04-26
+approved_at: 2026-04-26
 approved_by: user
 sensitive_scope:
   - DS-strategy:current/ACTIVE-WP.md
   - DS-strategy:current/SESSION-CONTEXT.md
-  - DS-strategy:inbox/WP-119-telegram-bot-rag-flow-recovery (Telegram-бот VK-offee — восстановление RAG-flow).md
-  - DS-strategy:inbox/WP-48-telegram-bot-testing.md
-  - VK-offee:telegram-bot/bot.py
-  - VK-offee:telegram-bot/tests/test_note_flow.py
+  - DS-strategy:inbox/WP-63-warehouse-governance-and-drive-architecture-hardening (Доведение governance склада и архитектуры Google Drive).md
+  - DS-strategy:current/DayPlan 2026-04-26.md
+  - DS-strategy:current/WeekPlan W17 2026-04-20.md
+  - VK-offee:PACK-warehouse/04-work-products/WH.WP.009-production-readiness-verdict-2026-04-26.md
+  - VK-offee:PACK-warehouse/04-work-products/WH.REPORT.002-warehouse-sync-summary-latest.md
 ---
 
-# ACTIVE-WP — WP-119
+# ACTIVE-WP — WP-63
 
-Telegram-бот VK-offee: восстановление RAG-flow и стабилизация note-flow.
+Склад: final production-ready verdict.
 
-Активный контекст возвращён с системного `WP-118` на фактический продуктовый `WP-119`.
+Контекст после обрыва связи переключён с прежнего `WP-119` на сегодняшний фокус `WP-63`.
+Итоговый verdict выпущен как `partial-ready`: складской контур рабочий для manager-report и ручного цикла, но VPS full-intake acceptance с новым входящим файлом ещё требует отдельного bounded tail.

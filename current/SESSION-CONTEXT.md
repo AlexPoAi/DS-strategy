@@ -15,9 +15,16 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** задача закрыта — Context: return ACTIVE-WP to WP-119
-**Активный РП:** W17 / текущий рабочий цикл экзокортекса
-**Следующий шаг:** Открыть следующий рабочий цикл из обновлённого SESSION-CONTEXT без потери уже сохранённых артефактов.
+**Статус:** открыт день после обрыва; `WP-63` получил final verdict `partial-ready`
+**Активный РП:** W17 / `WP-63` — склад: final production-ready verdict
+**Следующий шаг:** продолжить W17 по DayPlan после `WP-63`: выбрать `WP-56`, `WP-59` или `WP-73`; если нужен склад до `ready`, открывать отдельный bounded production-tail по VPS full-intake acceptance.
+
+## Что сделано сегодня (2026-04-26)
+- ✅ [2026-04-26 19:20] День открыт повторно после обрыва связи: `SESSION-OPEN`, `AGENTS-STATUS`, `RUNTIME-MODE` пересобраны; мозг экзокортекса `🟡 yellow` из-за Obsidian human layer и stale extractor status, красного блокера нет.
+- ✅ [2026-04-26 19:24] По `WP-63` выполнен свежий локальный warehouse manual-run: `sources=57`, `cards=5`, `bot_cards=5`, `duplicates=52`, `errors=0`; обновлены `WH.REPORT.002`, `WH.REPORT.003`, `WH.SESSION.001`, `WH.REGISTRY.001` и procurement layer.
+- ✅ [2026-04-26 19:26] VPS evidence подтверждён: `vk-warehouse-full-loop.timer` active, последние пустые циклы завершаются `status=0/SUCCESS`, intake сейчас `0` файлов; stale `sync.error.log` не обновлялся с `2026-04-19`.
+- ✅ [2026-04-26 19:30] Выпущен Pack verdict `WH.WP.009-production-readiness-verdict-2026-04-26`: итог `partial-ready`, не `ready`. Складской контур рабочий для manager-report и ручного цикла; non-empty VPS intake, move в `Обработано` и Telegram digest требуют отдельного bounded tail.
+- ✅ [2026-04-26 19:37] По новому входу склада `24.04 утро` (`зерно и чай Тэйсти / Бункер / Субмарина`) создана карточка и manager-readable разбор `WH.WP.010`: pipeline обработал файл как non-empty input (`processed=1`, `errors=0`), decision queue обновилась под срочный заказ `Субмарина` и `Тэйсти Кофе`; Google Drive move в `Обработано` не подтверждён из-за timeout общего sync.
 
 ---
 
