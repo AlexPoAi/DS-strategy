@@ -3,7 +3,7 @@ type: wp-context-brief
 status: active
 owner: strategist
 created: 2026-04-20
-updated: 2026-04-22
+updated: 2026-04-26
 parent_wp: WP-95
 tags: [vk-coffee, context, brief, zhanna, manager]
 ---
@@ -41,6 +41,8 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 13. `WP-95-phase-2-candidate-slice-v1`
 14. `WP-95-document-registry-v1`
 15. `WP-95-zhanna-handoff-drive-folder-v1`
+16. `WP-95-zhanna-handoff-folder-contents-analysis-v1`
+17. `WP-95-process-map-reconciliation-v1`
 
 ## Главный truthful verdict
 
@@ -67,6 +69,13 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 - Жанна создала отдельную папку `Google Drive` под передачу дел новому менеджеру;
 - папка зафиксирована как отдельный artifact;
 - следующий допустимый slice теперь включает анализ её содержимого, а не только ожидание process-map в абстрактном виде.
+
+Дополнительный factual input на `2026-04-26`:
+
+- handoff-папка Жанны начала наполняться: есть Miro-ссылка на `Карту должности`, старый документ `Дорожная карта Перезапуск роли операционного менеджера`, скринкасты по `Saby / кассе` и 3 скринкаста в `Складской учет / Отчетность`;
+- в `Складской учет` пока созданы две папки: `Отчетность` и `Инвентаризация`; папка `Инвентаризация` пока пустая;
+- стоп-условие `ждём process-map / описание роли` теперь частично снято, но не закрыто полностью: Miro-карта ещё не извлечена, а fixed list обязанностей всё ещё требует сверки;
+- новая важная развилка: прежняя transition-гипотеза `35 000 / 35 000` конфликтует с evidence из старого role-contract `55 000 руб. за 160-168 ч/мес` и требует пересчёта.
 
 ## Чем закончилась работа сегодня
 
@@ -101,6 +110,8 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 
 - сначала сделать `contents analysis` этой папки;
 - затем сверить найденные документы с нашим контуром `WP-95`.
+
+На `2026-04-26` `contents analysis` и первый `process-map reconciliation` уже сделаны. Следующий bounded slice: открыть Miro-карту должности, затем обновить reconciliation table `Жанна дала -> у нас уже есть -> нужно новому менеджеру -> missing / question`.
 
 Если описание роли не пришло:
 
