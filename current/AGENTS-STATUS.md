@@ -10,7 +10,7 @@
 - Статус-артефакты: **🟢 зелёный**
 - Стратег: **🟢 зелёный**
 - Экстрактор: **🟡 требует внимания**
-- Обновлено: **2026-04-27 09:02**
+- Обновлено: **2026-04-27 16:16**
 
 ## Runtime
 
@@ -19,7 +19,7 @@
 - Codex: **available**
 - Claude: **available**
 - Runtime policy: **split**
-- Local control plane: **available**
+- Local control plane: **degraded**
 - Cloud RAG: **unknown**
 - Cloud takeover scope: **product-only**
 - Cloud bot runtime: **vps**
