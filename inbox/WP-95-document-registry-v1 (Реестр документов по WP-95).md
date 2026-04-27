@@ -3,7 +3,7 @@ type: document-registry
 status: active
 owner: strategist
 created: 2026-04-20
-updated: 2026-04-26
+updated: 2026-04-27
 parent_wp: WP-95
 tags: [vk-coffee, registry, documents, zhanna, manager]
 ---
@@ -45,6 +45,7 @@ tags: [vk-coffee, registry, documents, zhanna, manager]
 | [WP-95-process-map-reconciliation-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-process-map-reconciliation-v1%20%28%D0%A1%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%20%D1%81%20Phase%201%29.md:1) | `process-map-reconciliation` | draft | сверка материалов Жанны с текущим `Phase 1` и missing blocks |
 | [WP-95-phase-1-scope-v2](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-scope-v2%20%28%D0%A1%D1%82%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20scope%20%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | `phase-1-scope` | draft | стартовый scope нового менеджера после материалов Жанны; фиксирует compensation conflict и next candidate pack |
 | [WP-95-candidate-pack-v2](/Users/alexander/Github/DS-strategy/inbox/WP-95-candidate-pack-v2%20%28%D0%9F%D0%B0%D0%BA%D0%B5%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B3%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0%20%D1%81%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%BE%D0%BC%20%D0%BD%D0%B0%20Phase%201%29.md:1) | `candidate-pack` | draft | пакет для первого разговора: роль, входит/не входит, вопросы, красные флаги, первые 2 недели |
+| [WP-95-manager-domain-materialization-gap-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-manager-domain-materialization-gap-v1%20%28%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BE%D1%82%20%D0%B6%D0%B8%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%D0%B8%D0%B7-%D0%B7%D0%B0%20%D1%81%D0%BB%D0%B0%D0%B1%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BC%D0%B5%D1%82%D0%BD%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%29.md:1) | `domain-gap-analysis` | active | фиксирует системную боль: роль менеджера пока не заменяемая, потому что предметная область не вынута из головы Жанны |
 | [WP-95-phase-2-readiness-gate-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-2-readiness-gate-v1%20%28%D0%93%D0%B5%D0%B9%D1%82%20%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BA%20Phase%202%29.md:1) | `readiness-gate` | draft | gate перед расширением роли |
 | [WP-95-phase-2-candidate-slice-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-2-candidate-slice-v1%20%28%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20slice%20%D0%B4%D0%BB%D1%8F%20Phase%202%29.md:1) | `phase2-candidate` | draft | первый безопасный кандидатный block после `Phase 1` |
 | [WP-95-context-brief-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-context-brief-v1%20%28%D0%9A%D1%80%D0%B0%D1%82%D0%BA%D0%B8%D0%B9%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B0%29.md:1) | `wp-context-brief` | active | быстрый re-entry в тему |
@@ -58,6 +59,7 @@ tags: [vk-coffee, registry, documents, zhanna, manager]
 | [WP-95-zhanna-handoff-drive-folder-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-zhanna-handoff-drive-folder-v1%20%28%D0%9F%D0%B0%D0%BF%D0%BA%D0%B0%20Google%20Drive%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B5%D0%BB%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | `drive-folder` | live input | отдельная папка Google Drive, куда Жанна начала складывать handoff-материалы |
 | [WP-95-zhanna-handoff-folder-contents-analysis-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-zhanna-handoff-folder-contents-analysis-v1%20%28%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%BC%D0%BE%D0%B3%D0%BE%20%D0%BF%D0%B0%D0%BF%D0%BA%D0%B8%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B5%D0%BB%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | `contents-analysis` | active | evidence, что handoff-папка уже содержит Saby/касса, 3 скринкаста по отчётности, Miro-карту и role-contract |
 | [WP-95-process-map-reconciliation-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-process-map-reconciliation-v1%20%28%D0%A1%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%20%D1%81%20Phase%201%29.md:1) | `process-map-reconciliation` | draft | first-pass сверка без Miro extraction |
+| [WP-95-manager-domain-materialization-gap-v1](/Users/alexander/Github/DS-strategy/inbox/WP-95-manager-domain-materialization-gap-v1%20%28%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BE%D1%82%20%D0%B6%D0%B8%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%D0%B8%D0%B7-%D0%B7%D0%B0%20%D1%81%D0%BB%D0%B0%D0%B1%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BC%D0%B5%D1%82%D0%BD%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%29.md:1) | `domain-gap-analysis` | active | Drive audit 2026-04-27 и framing `people contour + domain contour` |
 
 ## Чего ещё не хватает
 
@@ -66,6 +68,7 @@ tags: [vk-coffee, registry, documents, zhanna, manager]
 3. Подтверждённый input, можно ли двигать `Phase 2`
 4. Наполнение блока `Складской учет / Инвентаризация`
 5. Reconciliation table между материалами Жанны и текущим `WP-95`
+6. `Manager Domain Map v1`: карта зон менеджера с evidence, expected output, проверкой и missing documents
 
 ## Truthful stop
 

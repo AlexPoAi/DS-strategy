@@ -3,7 +3,7 @@ type: wp-context-brief
 status: active
 owner: strategist
 created: 2026-04-20
-updated: 2026-04-26
+updated: 2026-04-27
 parent_wp: WP-95
 tags: [vk-coffee, context, brief, zhanna, manager]
 ---
@@ -85,6 +85,15 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 - materialized `WP-95-candidate-pack-v2`: пакет для первого разговора с кандидатом, включая роль, границы, вопросы, красные флаги и первые 2 недели;
 - следующий bounded step: добрать missing instructions у Жанны и обновить vacancy/duty-map под `v2`.
 
+Дополнительный strategic input на `2026-04-27`:
+
+- главная неудовлетворенность владельца — зависимость от живых сотрудников и слабая описанность предметной области менеджеров;
+- выполнен повторный Google Drive audit папок `Операционный менеджер`;
+- подтверждено: Жанна добавила Miro-ссылку, old role-contract, screencasts по `Saby / кассе` и отчетности, но не создала полноценную текстовую систему роли;
+- папка `Складской учет / Инвентаризация` остается пустой;
+- materialized `WP-95-manager-domain-materialization-gap-v1`: `WP-95` теперь ведется как двойной контур `people contour + domain contour`;
+- следующий bounded step: `Manager Domain Map v1`.
+
 ## Чем закончилась работа сегодня
 
 Работа сегодня закончилась не новым расширением, а честной паузой:
@@ -119,7 +128,7 @@ tags: [vk-coffee, context, brief, zhanna, manager]
 - сначала сделать `contents analysis` этой папки;
 - затем сверить найденные документы с нашим контуром `WP-95`.
 
-На `2026-04-26` `contents analysis` и первый `process-map reconciliation` уже сделаны. Следующий bounded slice: открыть Miro-карту должности, затем обновить reconciliation table `Жанна дала -> у нас уже есть -> нужно новому менеджеру -> missing / question`.
+На `2026-04-26` `contents analysis` и первый `process-map reconciliation` уже сделаны. На `2026-04-27` добавлен systemic verdict: главная проблема не только в новом человеке, а в слабой материализации предметной области менеджера. Следующий bounded slice: `Manager Domain Map v1` с зонами роли, evidence, expected outputs, проверкой и missing documents.
 
 Если описание роли не пришло:
 
