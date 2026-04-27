@@ -44,6 +44,7 @@ tags: [vk-coffee, registry, documents, manager]
 | [Стартовый scope нового операционного менеджера после материалов Жанны](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-scope-v2%20%28%D0%A1%D1%82%D0%B0%D1%80%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20scope%20%D0%BD%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%D0%BF%D0%BE%D1%81%D0%BB%D0%B5%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | когда решаем, что отдавать новому человеку | границы Phase 1 |
 | [Карта предметной области операционного менеджера по материалам Жанны](/Users/alexander/Github/DS-strategy/inbox/WP-95-manager-domain-map-v1%20%28%D0%9A%D0%B0%D1%80%D1%82%D0%B0%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BC%D0%B5%D1%82%D0%BD%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%20%D0%BF%D0%BE%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B0%D0%BC%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%29.md:1) | когда нужно понять всю роль | зоны работы, частота, пробелы, что можно/нельзя в Phase 1 |
 | [Сверка материалов Жанны с Phase 1](/Users/alexander/Github/DS-strategy/inbox/WP-95-process-map-reconciliation-v1%20%28%D0%A1%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D0%BC%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%BE%D0%B2%20%D0%96%D0%B0%D0%BD%D0%BD%D1%8B%20%D1%81%20Phase%201%29.md:1) | когда проверяем, что покрыто материалами | что дала Жанна / что у нас есть / что отсутствует |
+| [Недостающие инструкции Phase 1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-missing-instructions-v1%20%28%D0%9D%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%8E%D1%89%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8%20Phase%201%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D1%80%D0%BE%D0%BB%D0%B8%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%29.md:1) | когда нужно запросить дозаполнение у Жанны | список недостающих инструкций и готовый текст запроса |
 | [Пакет для первого разговора с кандидатом на Phase 1](/Users/alexander/Github/DS-strategy/inbox/WP-95-candidate-pack-v2%20%28%D0%9F%D0%B0%D0%BA%D0%B5%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B3%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0%20%D1%81%20%D0%BA%D0%B0%D0%BD%D0%B4%D0%B8%D0%B4%D0%B0%D1%82%D0%BE%D0%BC%20%D0%BD%D0%B0%20Phase%201%29.md:1) | когда есть кандидат | как объяснять роль, вопросы, красные флаги, первые 2 недели |
 
 ## Источники фактов от Жанны
@@ -96,8 +97,8 @@ tags: [vk-coffee, registry, documents, manager]
 
 Следующий рабочий шаг:
 
-1. Составить список недостающих инструкций для Phase 1.
-2. Подготовить короткий запрос Жанне на подтверждение и дозаполнение.
+1. Использовать [Недостающие инструкции Phase 1](/Users/alexander/Github/DS-strategy/inbox/WP-95-phase-1-missing-instructions-v1%20%28%D0%9D%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%8E%D1%89%D0%B8%D0%B5%20%D0%B8%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D0%B8%D0%B8%20Phase%201%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D1%80%D0%BE%D0%BB%D0%B8%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BC%D0%B5%D0%BD%D0%B5%D0%B4%D0%B6%D0%B5%D1%80%D0%B0%29.md:1) как текущий запрос Жанне.
+2. Дождаться подтверждения и дозаполнения.
 3. После ответа Жанны обновить вакансию и карту обязанностей нового человека.
 
 Пока не делать:
