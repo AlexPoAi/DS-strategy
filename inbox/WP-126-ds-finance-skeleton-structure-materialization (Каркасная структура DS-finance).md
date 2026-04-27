@@ -6,6 +6,7 @@ created: 2026-04-27
 status: done
 owner: Strategist
 support:
+  - FPF Consultant
   - Environment Engineer
 domain: finance
 mode: domain-structure
@@ -22,6 +23,54 @@ mode: domain-structure
 ## Цель slice
 
 Создать минимальный, но канонический skeleton `DS-finance` внутри `DS-strategy`.
+
+## Агентный состав
+
+### Primary agent
+
+- `Strategist`
+  - держит доменную цель;
+  - различает, зачем нужен `DS-finance`;
+  - удерживает bounded scope этого slice.
+
+### Support agents
+
+- `FPF Consultant`
+  - помогает различить домен, а не подменять различение удобным naming;
+  - нужен на шаге `FPF`.
+
+- `Environment Engineer`
+  - materialize файловую структуру после того, как границы уже различены;
+  - нужен на шаге `SPF`.
+
+## Метод
+
+Этот slice должен был идти через `FPF -> SRT -> SPF`, а не только через
+быструю materialization структуры.
+
+### FPF
+
+- `DS-finance` различён как отдельный домен, а не как один `Pack` внутри `VK Coffee`;
+- его предмет — не "финансы вообще", а финансы системы создания;
+- source-of-truth:
+  - первичные данные остаются в родных доменах;
+  - здесь живут их финансовые представления и verdict-ы.
+
+### SRT
+
+- домен размещён как межконтурный governance/domain layer;
+- внутри него различены четыре стартовых `Pack`:
+  - `PACK-finance-views`
+  - `PACK-cash-discipline`
+  - `PACK-project-funding`
+  - `PACK-finance-agents`
+
+### SPF
+
+- materialized `WP-126`;
+- создан корневой доменный манифест;
+- создан первый концепт;
+- созданы четыре pack-manifest артефакта.
 
 ## Что materialized
 
