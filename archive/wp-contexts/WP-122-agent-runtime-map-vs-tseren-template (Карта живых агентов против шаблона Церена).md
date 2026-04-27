@@ -122,6 +122,30 @@ mode: runtime-audit
    - `/opt/homebrew/bin/codex`
    - `$HOME/.local/bin/codex`
    - актуальный binary внутри `~/.vscode/extensions/.../codex`
+5. Подтверждён ещё один глубинный runtime-defect:
+   - `runtime-arbiter.sh --env` через `source <(...)` в этой среде не давал раннерам устойчиво подхватывать resolved provider;
+   - из-за этого `Extractor` и потенциально `Strategist` могли молча сваливаться в `claude`-ветку, даже когда арбитр truthfully выбирал `codex`;
+   - fix: раннеры теперь грузят env арбитра через временный файл и обычный `source "$tmp_env"`.
+6. После фикса live evidence подтверждён:
+   - `2026-04-27 15:03:29` — `Provider primary resolved for inbox-check: codex`
+   - `2026-04-27 16:17:15` — повторный live run также стартует как `codex`
+   - `2026-04-27 16:20:57` — `extractor-inbox-check` завершён успешно с `provider=codex`
+
+## Второй слой cleanup после починки
+
+Safe cleanup без удаления смысловых хвостов:
+
+1. `DS-agent-workspace/CLAUDE.md` приведён к truth-описанию реальной структуры:
+   - `extractor/extraction-reports/`
+   - `scheduler/reports/`
+   - `scheduler/scheduler-reports/` как legacy historical path
+   - `verifier/` как placeholder
+2. Добавлены локальные truth-notes:
+   - `verifier/README.md`
+   - `scheduler/scheduler-reports/README.md`
+
+Это не удаляет исследовательские или архивные слои, но убирает ложное впечатление,
+будто все папки являются одинаково живыми runtime-агентами.
 
 ## Acceptance
 
