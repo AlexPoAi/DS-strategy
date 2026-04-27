@@ -22,7 +22,7 @@
 
 **Scheduler — диспетчер:** Координирует агентов через маркеры в `~/.local/state/exocortex/`.
 
-**Obsidian-vault не пушится:** человеческий мозг системы живёт локально в `Творческий конвеер`. Governance-след и work products materialize в `DS-strategy`.
+**.nocloud не пушится:** Obsidian vault = сырые мысли (локально). Очищенное → `creativ-convector` (GitHub).
 
 **Pack = source-of-truth:** VK-offee — единственное место формализованных знаний. Downstream следует за Pack.
 

@@ -11,7 +11,8 @@
 | `FMT-exocortex-template` | Base/Format | Шаблон: скрипты агентов, промпты, launchd-шаблоны. **Только читать** | ~/Github/FMT-exocortex-template |
 | `VK-offee` | Pack | Source-of-truth домена кофейни. Всё остальное следует за ним | ~/Github/VK-offee |
 | `DS-strategy` | Governance | Стратегический хаб: WeekPlan, SESSION-CONTEXT, inbox, отчёты | ~/Github/DS-strategy |
-| `Творческий конвеер` | Human brain | Obsidian vault: исчезающие заметки, черновики, сессии стратегирования. **Не пушится** | ~/Documents/Творческий конвеер |
+| `creativ-convector` | Downstream | Творческий конвейер: черновики, сессии стратегирования | ~/Github/creativ-convector |
+| `creativ-convector.nocloud` | Local only | Obsidian vault: исчезающие заметки, архив. **Не пушится** | ~/Documents/creativ-convector.nocloud |
 
 ---
 
@@ -33,10 +34,10 @@
 Obsidian (nocloud)
   └─ 1. Исчезающие заметки/
         ↓ strategy_session.py
-Творческий конвеер (Obsidian)
-  └─ 2. Черновики/{Проект}/
+creativ-convector (GitHub)
+  └─ 2. Черновики/{Проект}/{F1-F9}/
   └─ Сессия стратегирования/
-        ↓ session import / human review
+        ↓ run_session_import()
 DS-strategy/inbox/pending-sessions/
         ↓ session-watcher.sh (5 мин)
 extractor.sh session-import
@@ -56,7 +57,7 @@ VK-offee/ ← знания формализуются в Pack
 | Obsidian vault (.nocloud) | ✅ | ❌ |
 | Логи ~/logs/ | ✅ | ❌ |
 | Маркеры ~/.local/state/exocortex/ | ✅ | ❌ |
-| DS-strategy, VK-offee | ✅ | ✅ |
+| DS-strategy, VK-offee, creativ-convector | ✅ | ✅ |
 | FMT-exocortex-template | ✅ | ✅ |
 
 ---
@@ -67,7 +68,7 @@ VK-offee/ ← знания формализуются в Pack
 ~/Github/                          — все репо
 ~/Github/DS-strategy/inbox/        — captures, pending-sessions, extraction-reports
 ~/Github/DS-strategy/current/      — WeekPlan, SESSION-CONTEXT
-~/Documents/Творческий конвеер/ — Obsidian vault
+~/Documents/creativ-convector.nocloud/ — Obsidian vault
 ~/logs/strategist/, ~/logs/extractor/, ~/logs/synchronizer/ — логи агентов
 ~/.local/state/exocortex/          — маркеры состояния scheduler
 ~/.config/aist/env                 — переменные окружения (Telegram токены и др.)
