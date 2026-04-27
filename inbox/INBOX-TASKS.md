@@ -225,6 +225,28 @@ created: 2026-03-04
     - финансовый контур теперь различён как `DS`, а не как локальный pack внутри одного бизнеса
     - следующий bounded шаг — выпустить первые `Finance View` для `VK Coffee` и `Park`
 
+- [done] 2026-04-27: [STRATEGY][FINANCE] Materialize skeleton-структуру DS-finance
+  - Контекст: после различения `DS-finance` как домена нужно было перестать держать его только в виде идеи и создать реальную файловую структуру для будущих `Pack` и `Finance View`.
+  - Что сделано:
+    1. Открыт `WP-126`
+    2. Создан корневой манифест `DS-finance`
+    3. Зафиксирован базовый концепт `финансы системы создания`
+    4. Созданы стартовые `Pack`:
+       - `PACK-finance-views`
+       - `PACK-cash-discipline`
+       - `PACK-project-funding`
+       - `PACK-finance-agents`
+  - Артефакты:
+    - `DS-strategy/DS-finance/00-domain-manifest (Манифест домена финансов).md`
+    - `DS-strategy/DS-finance/01-concepts/FIN.CONCEPT.001-finance-of-creation-system (Финансы системы создания).md`
+    - `DS-strategy/DS-finance/PACK-finance-views/00-pack-manifest (Манифест Pack финансовых представлений).md`
+    - `DS-strategy/DS-finance/PACK-cash-discipline/00-pack-manifest (Манифест Pack cash-discipline).md`
+    - `DS-strategy/DS-finance/PACK-project-funding/00-pack-manifest (Манифест Pack проектного финансирования).md`
+    - `DS-strategy/DS-finance/PACK-finance-agents/00-pack-manifest (Манифест Pack финансовых агентов).md`
+  - Итог:
+    - `DS-finance` теперь существует как реальный skeleton домена
+    - следующий bounded ход — наполнять `Finance View — VK Coffee` и `Finance View — Park`
+
 - [done] 2026-04-23: [ENGINEERING][CRITICAL] Ввести жёсткий gate закрытия инженерной итерации
   - Контекст: во время работы по `WP-97` локальные правки и generated-артефакты несколько раз оставались в дереве между инкрементами. Это показало дефект не в одном репозитории, а в самом инженерном протоколе: не было materialized запрета переходить дальше без `manual check -> commit -> push -> clean tree`.
   - Что сделано:

@@ -2,6 +2,7 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 126 | Каркасная структура DS-finance | DS-strategy | 0.5-1h | done | High | structure |
 | 124 | DS-finance и агент финансового консультанта | DS-strategy + DS-agent-workspace | 1-2h | done | High | architecture |
 | 94 | Strategist week-review: recovery provider path (Codex primary) | FMT-exocortex-template + DS-strategy | 0.5h | done | Critical | critical |
 | 93 | Exocortex opening contract: починка legacy MEMORY wording | DS-strategy + memory | 0.5h | done | Critical | critical |
