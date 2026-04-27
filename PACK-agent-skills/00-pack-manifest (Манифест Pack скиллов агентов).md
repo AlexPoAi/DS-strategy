@@ -28,6 +28,5 @@ prefix: AGENT.SKILL
 
 - `AGENT.SKILL.001` — `03-skills/AGENT.SKILL.001-engineer-ritual-sequence (Скилл инженера: ритуал реализации инженерной задачи).md`
 - `AGENT.SKILL.002` — `03-skills/AGENT.SKILL.002-park-official-document-cycle (Скилл официального документного цикла Park).md`
-- `AGENT.SKILL.003` — `03-skills/AGENT.SKILL.003-bounded-work-product-ritual (Скилл ритуала чистого рабочего продукта).md`
 - `AGENT.SKILL.004` — `03-skills/AGENT.SKILL.004-google-workspace-operating-contract (Скилл работы агентов с Google Workspace контурами).md`
 - `AGENT.SKILL.006` — `03-skills/AGENT.SKILL.006-weekly-portfolio-balance-by-contour (Скилл стратега: недельный портфель по контурам).md`

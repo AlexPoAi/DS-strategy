@@ -192,6 +192,23 @@ created: 2026-03-04
   - Приоритет: medium
   - Бюджет: 30-60 мин
 
+- [done] 2026-04-27: [ENGINEERING][RITUAL] Удалить дублирующиеся bounded-work-product правила и оставить один канон
+  - Контекст: в `PACK-agent-skills` и `DS-agent-workspace` одновременно жили три пересекающихся ритуала про bounded `WP`, truthful closeout и `commit/push`. Это размывало source of truth вместо усиления дисциплины.
+  - Что сделано:
+    1. Открыт `WP-123`
+    2. `AGENT.SKILL.001` оставлен каноническим инженерным ритуалом
+    3. В `AGENT.SKILL.001` перенесен полезный `Acceptance Gate`
+    4. `AGENT.SKILL.003` удален как duplicate
+    5. `agency/skills/environment-engineer/bounded-work-product-ritual.md` удален как duplicate
+    6. `PACK-agent-skills/00-pack-manifest` и `environment-engineer.md` переведены на один source of truth
+  - Артефакты:
+    - `DS-strategy/inbox/WP-123-agent-skill-dedup-and-canonical-ritual-cleanup (Дедупликация скиллов агентов и канонический ритуал).md`
+    - `DS-strategy/PACK-agent-skills/03-skills/AGENT.SKILL.001-engineer-ritual-sequence (Скилл инженера: ритуал реализации инженерной задачи).md`
+    - `DS-agent-workspace/agency/agents/environment-engineer.md`
+  - Итог:
+    - bounded `WP` и truthful closure теперь живут в одном каноническом skill-файле
+    - локальные и параллельные duplicate-ритуалы удалены из active слоя
+
 - [done] 2026-04-23: [ENGINEERING][CRITICAL] Ввести жёсткий gate закрытия инженерной итерации
   - Контекст: во время работы по `WP-97` локальные правки и generated-артефакты несколько раз оставались в дереве между инкрементами. Это показало дефект не в одном репозитории, а в самом инженерном протоколе: не было materialized запрета переходить дальше без `manual check -> commit -> push -> clean tree`.
   - Что сделано:
