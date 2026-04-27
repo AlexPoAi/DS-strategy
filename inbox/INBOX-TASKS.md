@@ -209,6 +209,22 @@ created: 2026-03-04
     - bounded `WP` и truthful closure теперь живут в одном каноническом skill-файле
     - локальные и параллельные duplicate-ритуалы удалены из active слоя
 
+- [done] 2026-04-27: [STRATEGY][FINANCE] Различить DS-finance и нанять первого финансового агента
+  - Контекст: в стратегической сессии стало ясно, что финансовый контур касается не только `VK Coffee`, но и `Park`, стройки, кредитной нагрузки и будущих проектов. Значит, это уже отдельный домен со своими `Pack` и агентами.
+  - Что сделано:
+    1. Открыт `WP-124`
+    2. Materialized skeleton `DS-finance`
+    3. Зафиксированы стартовые внутренние `Pack`
+    4. Нанят первый доменный агент `Financial Consultant`
+    5. Определено, что `Strategist` и `Extractor` входят в supporting layer домена
+  - Артефакты:
+    - `DS-strategy/inbox/WP-124-ds-finance-domain-architecture-and-financial-consultant (DS-finance и агент финансового консультанта).md`
+    - `DS-strategy/docs/DS-finance-architecture (Архитектура домена финансов).md`
+    - `DS-agent-workspace/agency/agents/financial-consultant.md`
+  - Итог:
+    - финансовый контур теперь различён как `DS`, а не как локальный pack внутри одного бизнеса
+    - следующий bounded шаг — выпустить первые `Finance View` для `VK Coffee` и `Park`
+
 - [done] 2026-04-23: [ENGINEERING][CRITICAL] Ввести жёсткий gate закрытия инженерной итерации
   - Контекст: во время работы по `WP-97` локальные правки и generated-артефакты несколько раз оставались в дереве между инкрементами. Это показало дефект не в одном репозитории, а в самом инженерном протоколе: не было materialized запрета переходить дальше без `manual check -> commit -> push -> clean tree`.
   - Что сделано:
