@@ -28,6 +28,7 @@
 - ✅ Live-memory восстановлен в `~/.claude/projects/-Users-alexander-Github/memory`; root `MEMORY.md` и `memory/protocol-*.md` снова резолвятся.
 - ✅ `~/.iwe-paths` регенерирован через canonical `install-iwe-paths.sh` и снова экспортирует `IWE_RUNTIME` и `IWE_GOVERNANCE_REPO`.
 - ✅ Root hook scripts успешно запускаются из `DS-strategy`, то есть базовый manual route для `Claude/Codex` уже выровнен.
+- ✅ Первый verification pass `23:51` показал, что `health-check` и `scheduler status` идут по тому же canonical route: `launchd` загружен, protocol route зелёный, `strategist-morning/week-review` и `synchronizer-*` успешны, а вчерашний `{{IWE_RUNTIME}} not found` больше не воспроизводится.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
@@ -35,6 +36,7 @@
 - ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
 - 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
 - ✅ Root memory/protocol route repaired: `MEMORY.md` и `memory/protocol-*.md` снова указывают в живой project-memory.
+- 🟡 Остаточные хвосты verification pass: `selection board stale`, `extractor-inbox-check stale after reboot`, `AGENTS-STATUS.md` ещё не пересобран под новый pass.
 
 ---
 

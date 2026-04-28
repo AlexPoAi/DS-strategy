@@ -75,10 +75,27 @@ approved: true
 - root `MEMORY.md` и `memory/protocol-open.md` снова резолвятся;
 - root hook scripts успешно запускаются из `DS-strategy`.
 
+## Первый verification pass (2026-04-28 23:51)
+
+Свежий запуск `health-check.sh` + `scheduler.sh status` дал такой truthful результат:
+
+- `launchd` для scheduler и health-check загружен;
+- canonical protocol route теперь зелёный: `memory`, `MEMORY.md`, `protocol-open/work/close`;
+- runtime arbiter видит `provider=codex`, `codex=available`, `claude=available`;
+- `strategist-morning`, `strategist-week-review`, `synchronizer-code-scan`, `synchronizer-daily-report` — `success`;
+- вчерашний `{{IWE_RUNTIME}}/... not found` в свежем прогоне **не воспроизвёлся**.
+
+Остаточные предупреждения:
+
+- `selection board stale`;
+- `extractor-inbox-check` отмечен stale после перезагрузки;
+- `strategist-note-review` stale в пределах нормального окна после reboot;
+- `AGENTS-STATUS.md` как артефакт дня ещё не пересобран под новый verification pass, поэтому исторически остаётся жёлтым.
+
 ## Что осталось
 
-1. Подтвердить, что automation `scheduler/health-check` идёт тем же маршрутом.
-2. Найти и убрать оставшийся runtime drift, если launchd/scheduler всё ещё живут по старому path.
+1. Пересобрать status-артефакты (`AGENTS-STATUS`, при необходимости `SESSION-OPEN`) после нового verification pass.
+2. Проверить, почему `extractor-inbox-check` остаётся stale после reboot, если route уже зелёный.
 3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое отклонение.
 
 ## Критерий завершения
