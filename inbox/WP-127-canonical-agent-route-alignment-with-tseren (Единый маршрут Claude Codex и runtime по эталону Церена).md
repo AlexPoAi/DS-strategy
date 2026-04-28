@@ -180,10 +180,57 @@ Truthful вывод:
 - path/env drift для него уже был закрыт раньше;
 - текущий remaining yellow по `WP-127` больше не связан с `extractor-inbox-check`.
 
+## Extractor full-loop recovery (2026-04-29 00:40)
+
+Следующий truthful разрыв оказался глубже status-layer:
+
+- `inbox-check` уже был зелёным, но это не доказывало, что до него реально доходит intake из Obsidian;
+- live `Творческий конвеер/Сессия стратегирования/` содержал реальные session-files;
+- canonical queue `DS-strategy/inbox/pending-sessions/` физически отсутствовала;
+- `session-watcher` жил как локальный extractor-extension вне `upstream/main`, запускался из template-path, а не из `.iwe-runtime`;
+- prompts `session-tasks.md` и часть report-layer всё ещё ссылались на legacy path `System/Сессии стратегирования` и `2. Черновики/00-Ручной разбор`.
+
+Это значило:
+
+- ядро extractor было уже частично рабочим;
+- но связка `Obsidian brain -> Extractor` ещё не была восстановлена как единый canonical route.
+
+Что сделано:
+
+- `session-watcher.sh` и `com.extractor.session-watcher.plist` включены в runtime overlay, поэтому теперь materialize в `.iwe-runtime`, а не живут отдельным route;
+- live `LaunchAgent` `com.extractor.session-watcher` теперь идёт через `/Users/alexander/Github/.iwe-runtime/roles/extractor/scripts/session-watcher.sh`;
+- `roles/extractor/install.sh` расширен: теперь ставит оба extractor-агента, `inbox-check` и `session-watcher`, через один install-route;
+- `session-watcher.sh` восстановил bridge `Творческий конвеер/Сессия стратегирования -> DS-strategy/inbox/pending-sessions/`;
+- auto-queue ограничен только каноническими файлами вида `Сессия стратегирования YYYY-MM-DD_HH-MM.md`, чтобы не подхватывать governance-файлы `Strategic Session ...`;
+- добавлена защита от повторного захвата уже обработанных сессий из `processed-sessions` и `archive/notes/processed-sessions`;
+- prompts `session-import.md` и `session-tasks.md` выровнены на live path `Творческий конвеер/Сессия стратегирования`, с legacy fallback только как запасной маршрут;
+- `chain-report.sh` перестал ссылаться только на устаревший `00-Ручной разбор` и теперь truthfully показывает human-layer snapshot через `Банк экстрактора`.
+
+Live verification:
+
+- `session-watcher` сам создал `DS-strategy/inbox/pending-sessions/`;
+- первая сессия `2026-02-03` прошла полный маршрут:
+  - queued from Obsidian
+  - `session-import` success, commit `e0ca198`
+  - `session-tasks` success
+  - moved to `processed-sessions/`
+  - `chain-report` generated
+- вторая сессия `2026-02-16` прошла тот же маршрут:
+  - `session-import` success, commit `5d144f5`
+  - `session-tasks` success, commit `596d340`
+  - moved to `processed-sessions/`
+  - финальный `chain-report` показал `Pending sessions: 0`, `Processed sessions: 2`
+
+Truthful вывод:
+
+- для локального Obsidian-expanded контура `Extractor` снова работает end-to-end, а не только как isolated `inbox-check`;
+- это не “чистый upstream Tseren one-to-one”, потому что `session-watcher`, `session-tasks` и Obsidian bridge вообще отсутствуют в `upstream/main`;
+- но после фикса это локальное расширение снова живёт на том же install/runtime/env route, что и остальной agent layer, а не на отдельной поломанной траектории.
+
 ## Что осталось
 
 1. Проверить, является ли `strategist-note-review stale` нормальным состоянием окна на `23:59` или это отдельный scheduling-tail.
-2. Пересобрать итоговые status-артефакты после закрытия extractor reboot-tail.
+2. Пересобрать итоговые status-артефакты после extractor full-loop recovery.
 3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое локальное расширение.
 
 ## Критерий завершения

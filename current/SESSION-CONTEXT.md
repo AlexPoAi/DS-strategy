@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-29 00:26
+**Последнее обновление:** 2026-04-29 00:41
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт новый инженерный контур `WP-127`
 **Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
-**Следующий шаг:** проверить, что новый Codex bridge-skill реально срабатывает в следующем `day-open/day-close/extractor`, затем добить `strategist-note-review stale` и пересобрать статус-артефакты уже без extractor-tail.
+**Следующий шаг:** зафиксировать extractor full-loop recovery в `WP-127`, затем добить `strategist-note-review stale` и обновить итоговый verdict по совпадению с Цереном.
 
 ---
 
@@ -35,6 +35,9 @@
 - ✅ Найдена и закрыта причина `extractor-inbox-check stale after reboot`: живой `LaunchAgent` уже шёл по правильному runtime path, но в отличие от остального агентного контура оставался на `RunAtLoad=false`. После reboot/login он не стартовал сразу, и health-layer успевал видеть `stale`, хотя сам `extractor.sh` был рабочим.
 - ✅ `com.extractor.inbox-check.plist` выровнен с логикой остальных агентов и с историческим контуром `RunAtLoad для агентов`: в template и `.iwe-runtime` включён `RunAtLoad=true`, затем агент переустановлен через `roles/extractor/install.sh`.
 - ✅ Свежий `health-check` в `2026-04-29 00:25` подтвердил: `extractor-inbox-check status=success`; старый хвост `stale after reboot` больше не воспроизводится. Остался только `selection board stale`.
+- ✅ Восстановлен полный `Extractor` bridge между Obsidian-мозгом и canonical queue: `session-watcher` теперь материализуется в `.iwe-runtime`, ставится через тот же `install.sh`, читает live `Творческий конвеер/Сессия стратегирования`, создаёт `DS-strategy/inbox/pending-sessions/` и не хватает governance-файлы `Strategic Session ...`.
+- ✅ Подтверждён live full-loop recovery: две реальные Obsidian-сессии (`2026-02-03`, `2026-02-16`) прошли маршрут `Obsidian -> pending-sessions -> session-import -> captures.md -> session-tasks -> INBOX-TASKS.md -> processed-sessions -> chain-report`.
+- ✅ `chain-report` и prompts выровнены на текущий human-layer: fallback больше не смотрит только в legacy `System/Сессии стратегирования`, а human snapshot честно показывает `Банк экстрактора`.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
@@ -42,7 +45,7 @@
 - ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
 - 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
 - ✅ Root memory/protocol route repaired: `MEMORY.md` и `memory/protocol-*.md` снова указывают в живой project-memory.
-- 🟡 Остаточные хвосты verification pass: `selection board stale`; `strategist-note-review` и `extractor-inbox-check` как path/runtime tails больше не являются primary issue.
+- 🟡 Остаточные хвосты verification pass: `selection board stale`; `Extractor` как runtime/intake контур больше не является primary issue.
 
 ---
 
