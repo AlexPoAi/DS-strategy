@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт новый инженерный контур `WP-127`
 **Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
-**Следующий шаг:** проверить, что новый Codex bridge-skill реально срабатывает в следующем `day-close`, затем добить `strategist-note-review` и `extractor-inbox-check` stale.
+**Следующий шаг:** проверить, что новый Codex bridge-skill реально срабатывает в следующем `day-open/day-close`, затем добить `strategist-note-review` и `extractor-inbox-check` stale.
 
 ---
 
@@ -30,7 +30,7 @@
 - ✅ Root hook scripts успешно запускаются из `DS-strategy`, то есть базовый manual route для `Claude/Codex` уже выровнен.
 - ✅ Первый verification pass `23:51` показал, что `health-check` и `scheduler status` идут по тому же canonical route: `launchd` загружен, protocol route зелёный, `strategist-morning/week-review` и `synchronizer-*` успешны, а вчерашний `{{IWE_RUNTIME}} not found` больше не воспроизводится.
 - ✅ Второй verification pass `23:59` выявил отдельный локальный drift: в `daily-report.sh` после update выпал refresh-route `--refresh-status-artifacts`, хотя на него продолжали опираться `daily-telegram-report`, `AGENTS-STATUS` и `SESSION-OPEN`. Refresh-layer восстановлен, `RUNTIME-MODE`, `AGENTS-STATUS` и `SESSION-OPEN` снова materialize штатно.
-- ✅ Найдена причина различия Day Close отчётов Claude/Codex: Claude идёт через `.claude/skills/day-close/SKILL.md` и verifier-subagent `Haiku R23`, а Codex ранее шёл через manual/protocol route. Установлен локальный Codex bridge-skill `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`, который заставляет Codex читать live Claude skills как canonical method вместо копирования skills.
+- ✅ Найдена причина различия Day Close отчётов Claude/Codex: Claude идёт через `.claude/skills/day-close/SKILL.md` и verifier-subagent `Haiku R23`, а Codex ранее шёл через manual/protocol route. Установлен локальный Codex bridge-skill `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`, который заставляет Codex читать live Claude skills как canonical method вместо копирования skills; bridge теперь явно покрывает и `day-open`.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.

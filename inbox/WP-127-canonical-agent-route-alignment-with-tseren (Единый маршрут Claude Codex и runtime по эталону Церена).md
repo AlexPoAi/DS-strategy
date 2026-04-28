@@ -139,12 +139,13 @@ Truthful результат после пересборки:
 - `Codex` получает тонкий adapter/bridge;
 - при командах вроде `закрой день`, `day close`, `открой день`, `run protocol`, `проверь как Claude` Codex должен читать соответствующий live skill из `/Users/alexander/Github/.claude/skills/`;
 - если Claude skill требует subagent verifier, а Codex не может или не должен запускать subagent, Codex локально воспроизводит тот же verifier prompt/checklist и явно называет это `R23-style verification`.
+- для `day-open` Codex должен следовать Claude route: первым действием `date`, затем ordered Day Open steps, запись DayPlan, checks, commit/push и compact dashboard.
 
 Первый установленный adapter:
 
 - `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`
 
-Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь.
+Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь. На 2026-04-29 bridge явно покрывает `day-close` и `day-open`.
 
 ## Что осталось
 
