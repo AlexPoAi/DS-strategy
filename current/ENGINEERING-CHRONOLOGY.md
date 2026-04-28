@@ -49,6 +49,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 36. 2026-04-21: в `WP-97` усилен `ABC`-слой кладовщика: `warehouse_reports_pipeline.py` научен читать `xlsx` по листам, выбирать лучший `ABC`-лист по quality signal (`matched_rows / unmatched_rows / total_rows`) и материализовать evidence `sheet/status/matched/unmatched`; truthful verdict после live run — кодовый слой усилен, но в живом intake `ABC` пока ещё не подхватывается как реальный источник.
 37. 2026-04-21: в `WP-97` закрыт factual audit по `ABC intake`: warehouse sync переведён с intake-подпапки на весь warehouse root, `.xlsx`/`pdf` гарантированно materialize локально, а `ABC анализ1/2.xlsx` возвращены из `Обработано` в `Новые документы`.
 38. 2026-04-21: corrected verdict по `ABC` — исходные файлы не были пустыми; root-cause оказался в `sync-google-sheets.py`, где `openpyxl` в режиме `read_only=True` обрезал `ABC`-xlsx до первых 10 строк. После фикса на normal-mode и live sync кладовщик снова увидел `ABC`, а `WH.REPORT.002` поднялся до `320` SKU с ABC-категорией.
+39. 2026-04-28: открыт `WP-127` под canonical route alignment — после update из upstream Церена `v0.29.11` подтверждено требование пользователя: `Claude`, `Codex` и automation должны ходить по одному маршруту. Сверка с `upstream/main` показала канон `workspace root + memory symlink + .iwe-runtime + install-iwe-paths.sh`; первично уже выровнены root hooks, live-memory и `~/.iwe-paths`, дальше нужен runtime-check scheduler/health-check.
 
 ## Что критично открыто (не закрыто)
 1. `ENG.WP.031`: довести агентный слой до целевого состояния без зависших статусов и с подтверждённым full-loop.
@@ -65,6 +66,7 @@ source_of_truth: DS-strategy/inbox/INBOX-TASKS.md + PACK-exocortex-engineering/0
 12. `WP-75`: закрепить складской агентный протокол и получить стабильные actionable карточки на каждой новой поставке данных Жанны.
 14. `WP-75`: довести decision-layer `low-stock -> supplier -> contact -> deadline` и получить первую manager-ready закупочную карточку.
 15. `WP-97`: довести `ABC` до реального intake-path и затем реализовать `PDF invoice -> line items -> supplier/date/price/confidence`.
+16. `WP-127`: подтвердить, что manual-agent route и automation route совпадают и не расходятся между `Claude`, `Codex` и scheduler.
 
 ## Правило anti-rework (обязательный старт)
 1. Прочитать этот файл + `current/SESSION-CONTEXT.md`.

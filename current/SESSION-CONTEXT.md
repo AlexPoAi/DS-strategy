@@ -15,20 +15,26 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** день закрыт truthfully, экзокортекс остаётся `🟡`
-**Активный РП:** W18 / runtime recovery после update из upstream Церена + governance closeout
-**Следующий шаг:** завтра продолжить от `WP-73`, `WP-95`, `WP-120` и отдельного runtime tail по `WP-101`.
+**Статус:** открыт новый инженерный контур `WP-127`
+**Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
+**Следующий шаг:** добить runtime-check, чтобы ручной и автоматический контуры шли по одному и тому же route.
 
 ---
 
 ## Что сделано сегодня (2026-04-28)
+- ✅ Открыт новый инженерный `WP-127` на canonical route alignment: любой агент должен ходить тем же operational маршрутом, что и `Claude`, без отдельного `codex-only` path.
+- ✅ Сверка с `upstream/main` показала, что по Церену канон идёт через один `workspace root`, один `memory route`, один `.iwe-runtime` и `install-iwe-paths.sh` как source-of-truth.
+- ✅ Root hooks выровнены на workspace-root path, так что они больше не зависят от `cwd`.
+- ✅ Live-memory восстановлен в `~/.claude/projects/-Users-alexander-Github/memory`; root `MEMORY.md` и `memory/protocol-*.md` снова резолвятся.
+- ✅ `~/.iwe-paths` регенерирован через canonical `install-iwe-paths.sh` и снова экспортирует `IWE_RUNTIME` и `IWE_GOVERNANCE_REPO`.
+- ✅ Root hook scripts успешно запускаются из `DS-strategy`, то есть базовый manual route для `Claude/Codex` уже выровнен.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
 - ✅ Все dirty repos в `~/Github` доведены до `clean + pushed`.
 - ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
 - 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
-- 🟡 Root memory/protocol route broken: `MEMORY.md` указывает в пустой `memory/`, поэтому installation audit не даёт зелёный verdict.
+- ✅ Root memory/protocol route repaired: `MEMORY.md` и `memory/protocol-*.md` снова указывают в живой project-memory.
 
 ---
 

@@ -2,6 +2,7 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 127 | Exocortex: единый маршрут Claude/Codex/runtime по эталону Церена | DS-strategy + FMT-exocortex-template | 1-2h | in_progress | Critical | runtime |
 | 121 | Личный DS: энергия, питание, weekly slot саморазвития | DS-strategy / Obsidian | 1-1.5h | pending | Medium | wellbeing |
 | 120 | Финансовый консультант и контур cash-discipline | DS-strategy + DS-finance-private | 1.5-2.5h | partial | High | finance |
 | 101 | Exocortex: единый authority daily Telegram | DS-strategy + FMT-exocortex-template | 1-2h | open | High | runtime |
