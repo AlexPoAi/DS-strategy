@@ -3,7 +3,7 @@ type: work-product
 work_product: WP-128
 title: Доска выбора и Scout — truthful freshness и verdict
 date: 2026-04-29
-status: in_progress
+status: done
 owner: Codex
 parent: WP-127
 tags:
@@ -60,21 +60,24 @@ tags:
 - Truthful текущая гипотеза:
   - `Scout` существует, но сейчас stale и не подтверждён как active-green контур.
 
-## Решение на текущий момент
+## Финальное решение
 
 - `Доска выбора` не требует runtime-recovery: её нужно просто поддерживать свежей через beacon.
-- `Scout` нужно не "чинить вслепую", а отдельно решить на уровне governance:
-  - либо вернуть в активный weekly/day-open контур и снова регулярно materialize;
-  - либо truthfully оставить как local optional layer со статусом stale/archival.
+- `Scout` truthfully классифицирован как `local optional stale layer`, а не как обязательный зелёный runtime-core.
+- Пока `Scout` не возвращён в регулярный review/materialization loop, его нельзя считать active-green и нельзя использовать как аргумент, что экзокортекс "сломался".
 
 ## Acceptance
 
 - `selection board stale` снят как warning и объяснён как human-layer freshness, а не runtime defect.
-- Зафиксирован truthful verdict по `Scout`: `active`, `stale`, либо `archival`.
+- Зафиксирован truthful verdict по `Scout`: `local optional stale layer`.
 - В weekly/engineering context не смешиваются upstream core и локальные расширения.
 
-## Следующий шаг
+## Итог
 
-1. Проверить, есть ли у `Scout` живой launch/report route или это уже архивный слой.
-2. Принять truthful governance-verdict по `Scout`.
-3. Зафиксировать решение в контексте и закрыть `WP-128`.
+РП закрыт как `done`.
+
+Главный результат:
+
+- `selection board` больше не считается runtime-проблемой;
+- `Scout` больше не считается скрытым обязательным runtime-сервисом;
+- human-layer и upstream-core разведены truthfully.

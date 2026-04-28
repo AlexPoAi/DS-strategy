@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-29 00:43
+**Последнее обновление:** 2026-04-29 01:05
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыт новый инженерный контур `WP-128`
-**Активный РП:** `WP-128` — `Доска выбора` и `Scout`: truthful freshness и verdict
-**Следующий шаг:** truthfully решить статус `Scout` как active/stale/archival; `Доска выбора` уже переведена в fresh через штатный beacon refresh.
+**Статус:** day-close после закрытия `WP-127` и `WP-128`
+**Активный РП:** следующий инженерный carry-over `WP-101` — единый authority daily Telegram
+**Следующий шаг:** завтра открыть/продолжить `WP-101`, не трогая уже закрытый route-alignment и human-layer verdict.
 
 ---
 
@@ -40,6 +40,8 @@
 - ✅ `chain-report` и prompts выровнены на текущий human-layer: fallback больше не смотрит только в legacy `System/Сессии стратегирования`, а human snapshot честно показывает `Банк экстрактора`.
 - ✅ Сверка `selection board` показала: это не upstream core Церена и не отдельный Claude skill-route; текущий yellow вызван stale beacon `updated: 2026-04-27`, а не сломанным runtime.
 - ✅ Сверка `Scout` показала: локальный контур существует в `DS-agent-workspace/scout`, но последний раз обновлялся в марте (`analytics.md` → `2026-03-23`, файлы → `2026-03-26`), поэтому truthfully не считается свежим active слоем.
+- ✅ `WP-127` закрыт: canonical route `Claude/Codex/runtime` подтверждён как единый, а remaining deviations перечислены как осознанные локальные расширения, а не defects.
+- ✅ `WP-128` закрыт: `Доска выбора` сведена к freshness beacon, `Scout` классифицирован как local optional stale layer.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.

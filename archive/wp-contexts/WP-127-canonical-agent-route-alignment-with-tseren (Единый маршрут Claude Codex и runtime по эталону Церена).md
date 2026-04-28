@@ -1,7 +1,7 @@
 ---
 type: work-product
 id: WP-127
-status: in_progress
+status: done
 priority: critical
 created: 2026-04-28
 updated: 2026-04-29
@@ -227,16 +227,27 @@ Truthful вывод:
 - это не “чистый upstream Tseren one-to-one”, потому что `session-watcher`, `session-tasks` и Obsidian bridge вообще отсутствуют в `upstream/main`;
 - но после фикса это локальное расширение снова живёт на том же install/runtime/env route, что и остальной agent layer, а не на отдельной поломанной траектории.
 
-## Что осталось
+## Финальный verdict (2026-04-29)
 
-1. Проверить, является ли `strategist-note-review stale` нормальным состоянием окна на `23:59` или это отдельный scheduling-tail.
-2. Пересобрать итоговые status-артефакты после extractor full-loop recovery.
-3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое локальное расширение.
+РП закрыт как `done`.
 
-## Критерий завершения
+Что подтверждено:
 
-РП не считается закрытым, пока:
+- `Claude`, `Codex` и automation снова опираются на один workspace-root, один `memory` route и один `.iwe-runtime`;
+- hooks больше не зависят от `cwd`;
+- `~/.iwe-paths` восстановлен как source-of-truth для `IWE_*`;
+- status-artifacts materialize штатно;
+- `Extractor` подтверждён end-to-end, включая Obsidian bridge;
+- свежий `health-check` после refresh `Доски выбора` даёт `✅ Среда исправна`.
 
-- свежий runtime-check не подтвердит один и тот же route для ручного и автоматического контуров;
-- не будет явного списка `совпадает с Цереном / локально отклонено осознанно`;
-- пользователь не увидит одинаковую truthy-картину состояния у `Claude`, `Codex` и automation.
+Что сверено с Цереном и признано осознанным локальным расширением, а не drift-дефектом:
+
+- `Scout` — optional/local слой в `DS-agent-workspace`, не core-runtime;
+- `Доска выбора` — local human-layer beacon, не upstream-core;
+- `session-watcher` и Obsidian bridge у `Extractor` — локальное расширение поверх общего runtime route;
+- absolute root hook paths в `.claude/settings.json` — минимальное локальное отклонение ради одного маршрута из любого `cwd`.
+
+Итог:
+
+- единый canonical route для `Claude/Codex/runtime` восстановлен;
+- дальнейшие хвосты относятся уже не к route alignment, а к отдельным продуктовым/управленческим контурам вроде `WP-101`.
