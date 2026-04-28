@@ -21,6 +21,13 @@
 
 <!-- Captures добавляются ниже этой строки -->
 
+### Runtime update to Tseren v0.29.11 [source: Codex 2026-04-28]
+**Домен:** exocortex-engineering
+**Тип:** incident
+**Контент:**
+После обновления до Tseren v0.29.11 manifest удалил prompt-файлы Strategist, но runtime всё ещё ссылался на них; также runner'ы должны брать prompts из FMT и резолвить workspace через файл, а не executable-флаг. Исправление: восстановлен рабочий provider fallback/status runtime, добавлен params.yaml, пересобран .iwe-runtime.
+
+
 ### Extractor: session-watcher не должен хранить незамененные path placeholders [source: Agent 2026-04-28] [analyzed 2026-04-28]
 **Домен:** Экзокортекс / Extractor
 **Тип:** fm
