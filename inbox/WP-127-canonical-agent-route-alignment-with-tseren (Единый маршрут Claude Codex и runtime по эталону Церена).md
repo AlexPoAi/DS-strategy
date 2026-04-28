@@ -32,6 +32,13 @@ approved: true
 - `.iwe-runtime` и substituted launchd-plists уже существовали, но shell/env слой отставал;
 - upstream Церена подтверждает канон: один `workspace root`, один `memory route`, один `.iwe-runtime`, один `install-iwe-paths.sh`.
 
+Дополнительно 2026-04-29 подтверждена причина различия Day Close отчётов `Claude` и `Codex`:
+
+- `Claude` по умолчанию попадает в `/Users/alexander/Github/.claude/skills/day-close/SKILL.md`;
+- на шаге `11. Верификация (Haiku R23)` он запускает отдельного verifier-subagent с чеклистом Day Close;
+- именно этот verifier возвращает формат `PASS / PASS WITH WARNINGS / FAIL`;
+- `Codex` раньше шёл через manual/protocol route и не читал Claude skill как canonical method, поэтому выдавал другой формат.
+
 ## Сверка с Цереном
 
 Проверить и удерживать:
@@ -74,6 +81,7 @@ approved: true
 - `~/.iwe-paths` регенерирован через canonical `install-iwe-paths.sh`;
 - root `MEMORY.md` и `memory/protocol-open.md` снова резолвятся;
 - root hook scripts успешно запускаются из `DS-strategy`.
+- установлен локальный Codex bridge-skill `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`: он не копирует Claude skills, а заставляет Codex читать live `.claude/skills/*/SKILL.md` как canonical method для IWE-ритуалов.
 
 ## Первый verification pass (2026-04-28 23:51)
 
@@ -120,6 +128,23 @@ Truthful результат после пересборки:
 
 - сам `daily-report` refresh-layer является локальным расширением, а не прямым upstream-файлом `upstream/main`;
 - значит, тут не было задачи «вернуться один в один к Церену», а была задача не потерять локально принятый канонический route, который уже использует `daily-telegram-report` и инженерный протокол.
+
+## Codex bridge decision (2026-04-29)
+
+Принято решение не копировать все Claude skills в Codex, потому что это создало бы второй источник правды и новый drift после обновления Церена.
+
+Выбран вариант:
+
+- `Claude/Tseren skills` остаются canonical source-of-truth;
+- `Codex` получает тонкий adapter/bridge;
+- при командах вроде `закрой день`, `day close`, `открой день`, `run protocol`, `проверь как Claude` Codex должен читать соответствующий live skill из `/Users/alexander/Github/.claude/skills/`;
+- если Claude skill требует subagent verifier, а Codex не может или не должен запускать subagent, Codex локально воспроизводит тот же verifier prompt/checklist и явно называет это `R23-style verification`.
+
+Первый установленный adapter:
+
+- `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`
+
+Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь.
 
 ## Что осталось
 
