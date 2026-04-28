@@ -21,6 +21,13 @@
 
 <!-- Captures добавляются ниже этой строки -->
 
+### Update must verify settings hook targets [source: Codex 2026-04-28]
+**Домен:** exocortex-engineering
+**Тип:** fm
+**Контент:**
+После обновления до v0.29.11 workspace .claude/settings.json ссылался на .claude/hooks/precompact-checkpoint.sh, но сам hook не был скопирован в workspace, потому что update.sh пропагировал только new/updated files. Проверка кастомных настроек должна включать: распарсить settings.json hooks[].command и проверить, что каждый target существует и executable.
+
+
 ### Runtime update to Tseren v0.29.11 [source: Codex 2026-04-28]
 **Домен:** exocortex-engineering
 **Тип:** incident
