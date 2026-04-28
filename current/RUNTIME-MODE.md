@@ -1,6 +1,6 @@
 ---
 type: runtime-mode
-updated: 2026-04-28 23:59:41
+updated: 2026-04-29 00:00:38
 provider_policy: codex
 provider_preference: codex
 runtime_policy: split
@@ -18,7 +18,7 @@ cloud_takeover_scope: product-only
 
 ## Runtime Plane
 
-- Local control plane: `available` (`launchctl_scheduler_loaded`)
+- Local control plane: `degraded` (`status_dir_present_scheduler_missing`)
 - Cloud RAG status: `unknown` (`health_url_not_configured`)
 - Cloud bot runtime: `vps`
 - Runtime policy: `split`
