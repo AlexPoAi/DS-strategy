@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-29 00:41
+**Последнее обновление:** 2026-04-29 00:43
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,9 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** открыт новый инженерный контур `WP-127`
-**Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
-**Следующий шаг:** зафиксировать extractor full-loop recovery в `WP-127`, затем добить `strategist-note-review stale` и обновить итоговый verdict по совпадению с Цереном.
+**Статус:** открыт новый инженерный контур `WP-128`
+**Активный РП:** `WP-128` — `Доска выбора` и `Scout`: truthful freshness и verdict
+**Следующий шаг:** truthfully решить статус `Scout` как active/stale/archival; `Доска выбора` уже переведена в fresh через штатный beacon refresh.
 
 ---
 
@@ -38,6 +38,8 @@
 - ✅ Восстановлен полный `Extractor` bridge между Obsidian-мозгом и canonical queue: `session-watcher` теперь материализуется в `.iwe-runtime`, ставится через тот же `install.sh`, читает live `Творческий конвеер/Сессия стратегирования`, создаёт `DS-strategy/inbox/pending-sessions/` и не хватает governance-файлы `Strategic Session ...`.
 - ✅ Подтверждён live full-loop recovery: две реальные Obsidian-сессии (`2026-02-03`, `2026-02-16`) прошли маршрут `Obsidian -> pending-sessions -> session-import -> captures.md -> session-tasks -> INBOX-TASKS.md -> processed-sessions -> chain-report`.
 - ✅ `chain-report` и prompts выровнены на текущий human-layer: fallback больше не смотрит только в legacy `System/Сессии стратегирования`, а human snapshot честно показывает `Банк экстрактора`.
+- ✅ Сверка `selection board` показала: это не upstream core Церена и не отдельный Claude skill-route; текущий yellow вызван stale beacon `updated: 2026-04-27`, а не сломанным runtime.
+- ✅ Сверка `Scout` показала: локальный контур существует в `DS-agent-workspace/scout`, но последний раз обновлялся в марте (`analytics.md` → `2026-03-23`, файлы → `2026-03-26`), поэтому truthfully не считается свежим active слоем.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.

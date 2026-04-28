@@ -2,6 +2,7 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 128 | Exocortex: truthful freshness для Доски выбора и verdict по Scout | DS-strategy + Obsidian + DS-agent-workspace | 0.5-1.5h | in_progress | High | human-layer |
 | 127 | Exocortex: единый маршрут Claude/Codex/runtime по эталону Церена | DS-strategy + FMT-exocortex-template | 1-2h | in_progress | Critical | runtime |
 | 121 | Личный DS: энергия, питание, weekly slot саморазвития | DS-strategy / Obsidian | 1-1.5h | pending | Medium | wellbeing |
 | 120 | Финансовый консультант и контур cash-discipline | DS-strategy + DS-finance-private | 1.5-2.5h | partial | High | finance |
