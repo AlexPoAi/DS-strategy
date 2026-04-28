@@ -39,6 +39,14 @@ approved: true
 - именно этот verifier возвращает формат `PASS / PASS WITH WARNINGS / FAIL`;
 - `Codex` раньше шёл через manual/protocol route и не читал Claude skill как canonical method, поэтому выдавал другой формат.
 
+Для `Extractor` подтверждено отдельное различение:
+
+- root skill `/Users/alexander/Github/.claude/skills/экстрактор/SKILL.md` сейчас отсутствует;
+- canonical template skill есть в `/Users/alexander/Github/FMT-exocortex-template/.claude/skills/экстрактор/SKILL.md`;
+- skill `экстрактор` отвечает за применение KE/extraction-report через `roles/extractor/prompts/apply-ke-report.md`;
+- создание отчёта (`inbox-check`, `session-close`, `session-import`) живёт в runtime route `roles/extractor/scripts/extractor.sh` и prompt-файлах `roles/extractor/prompts/`;
+- truthful acceptance для Codex/Claude должен сверяться с `roles/extractor/ACCEPTANCE.md`.
+
 ## Сверка с Цереном
 
 Проверить и удерживать:
@@ -140,12 +148,13 @@ Truthful результат после пересборки:
 - при командах вроде `закрой день`, `day close`, `открой день`, `run protocol`, `проверь как Claude` Codex должен читать соответствующий live skill из `/Users/alexander/Github/.claude/skills/`;
 - если Claude skill требует subagent verifier, а Codex не может или не должен запускать subagent, Codex локально воспроизводит тот же verifier prompt/checklist и явно называет это `R23-style verification`.
 - для `day-open` Codex должен следовать Claude route: первым действием `date`, затем ordered Day Open steps, запись DayPlan, checks, commit/push и compact dashboard.
+- для `extractor` Codex должен держать два режима раздельно: report-generation через runtime/prompts и report-application через skill `экстрактор`; если root skill отсутствует, читать template skill и назвать это route drift, а не создавать Codex-only extractor flow.
 
 Первый установленный adapter:
 
 - `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`
 
-Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь. На 2026-04-29 bridge явно покрывает `day-close` и `day-open`.
+Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь. На 2026-04-29 bridge явно покрывает `day-close`, `day-open` и `extractor`.
 
 ## Что осталось
 
