@@ -412,3 +412,9 @@
 3. `Ии ассистенты для проработки.md`
 
 Действие: открыть эти 3 заметки, определить их домен и либо переработать в карточки/РП, либо зафиксировать как отдельные задачи в нужных Pack.
+
+### VPS runtime: утренний Strategist не автономен без рабочего LLM provider [source: engineering check 2026-04-28]
+**Домен:** Exocortex / Agent Runtime
+**Тип:** blocker
+**Контент:**
+Проверка автономности при выключенном ноутбуке показала: на VPS `72.56.4.61` есть активный `com.exocortex.scheduler.timer`, но утренний Strategist не может завершить `day-plan`. Runtime-слой исправлен: systemd теперь запускает `/root/Github/.iwe-runtime/roles/synchronizer/scripts/scheduler.sh`, `.iwe-runtime` собран, `DS-strategy` на VPS переведён из nongit-копии в git checkout, `daily-report` и `extractor` доходят до выполнения. Блокер остался в provider-plane: Codex CLI через ChatGPT websocket получает `403 Forbidden` от `chatgpt.com/backend-api/codex/responses`; Claude CLI с OAuth token показывает login, но запрос `-p` возвращает `API Error: 403 Request not allowed`. Дополнительный хвост: VPS `DS-strategy` не может запушить daily report без GitHub write auth. Вывод: если ноутбук выключен, morning Strategist на текущем VPS пока не гарантирован. Следующий инженерный шаг: выбрать один production-вариант — OpenAI API-key auth для Codex, разрешённый proxy/VPN для provider-доступа, или другой cloud runner с рабочим LLM-доступом и GitHub write auth.
