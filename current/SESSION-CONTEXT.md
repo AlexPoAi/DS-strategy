@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-28 23:45
+**Последнее обновление:** 2026-04-29 00:01
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт новый инженерный контур `WP-127`
 **Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
-**Следующий шаг:** добить runtime-check, чтобы ручной и автоматический контуры шли по одному и тому же route.
+**Следующий шаг:** проверить остаточные `stale` по `strategist-note-review` и `extractor-inbox-check`, теперь уже после восстановленного refresh-route.
 
 ---
 
@@ -29,6 +29,7 @@
 - ✅ `~/.iwe-paths` регенерирован через canonical `install-iwe-paths.sh` и снова экспортирует `IWE_RUNTIME` и `IWE_GOVERNANCE_REPO`.
 - ✅ Root hook scripts успешно запускаются из `DS-strategy`, то есть базовый manual route для `Claude/Codex` уже выровнен.
 - ✅ Первый verification pass `23:51` показал, что `health-check` и `scheduler status` идут по тому же canonical route: `launchd` загружен, protocol route зелёный, `strategist-morning/week-review` и `synchronizer-*` успешны, а вчерашний `{{IWE_RUNTIME}} not found` больше не воспроизводится.
+- ✅ Второй verification pass `23:59` выявил отдельный локальный drift: в `daily-report.sh` после update выпал refresh-route `--refresh-status-artifacts`, хотя на него продолжали опираться `daily-telegram-report`, `AGENTS-STATUS` и `SESSION-OPEN`. Refresh-layer восстановлен, `RUNTIME-MODE`, `AGENTS-STATUS` и `SESSION-OPEN` снова materialize штатно.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
@@ -36,7 +37,7 @@
 - ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
 - 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
 - ✅ Root memory/protocol route repaired: `MEMORY.md` и `memory/protocol-*.md` снова указывают в живой project-memory.
-- 🟡 Остаточные хвосты verification pass: `selection board stale`, `extractor-inbox-check stale after reboot`, `AGENTS-STATUS.md` ещё не пересобран под новый pass.
+- 🟡 Остаточные хвосты verification pass: `selection board stale`, `strategist-note-review stale`, `extractor-inbox-check stale after reboot`; path/env drift как primary root-cause больше не воспроизводится.
 
 ---
 

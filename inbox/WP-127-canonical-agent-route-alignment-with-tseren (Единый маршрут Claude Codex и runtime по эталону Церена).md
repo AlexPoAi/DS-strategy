@@ -94,9 +94,38 @@ approved: true
 
 ## Что осталось
 
-1. Пересобрать status-артефакты (`AGENTS-STATUS`, при необходимости `SESSION-OPEN`) после нового verification pass.
+## Второй verification pass (2026-04-28 23:59)
+
+Выявлен и сразу закрыт ещё один drift внутри локального synchronizer-layer:
+
+- история `DS-strategy` и `daily-telegram-report.sh` продолжали считать каноническим маршрут `daily-report.sh --refresh-status-artifacts`;
+- в текущем `FMT-exocortex-template/roles/synchronizer/scripts/daily-report.sh` после update этот refresh-route фактически выпал;
+- из-за этого `AGENTS-STATUS.md` и `SESSION-OPEN` не пересобирались штатным путём, хотя health/runtime verdict уже был новым.
+
+Что сделано:
+
+- в `daily-report.sh` восстановлен refresh-layer `--refresh-status-artifacts` и materialization `AGENTS-STATUS.md`, `SESSION-OPEN`, `RUNTIME-MODE.md`;
+- при этом сохранён нынешний portable env-route через `IWE_WORKSPACE` / `IWE_GOVERNANCE_REPO`, чтобы не откатываться широко назад;
+- после live-run `daily-report.sh --refresh-status-artifacts` status-артефакты снова materialize штатно.
+
+Truthful результат после пересборки:
+
+- `Canonical protocol route` — `🟢`;
+- `Runtime arbiter` — `🟢`;
+- `Provider plane` — `primary=codex`, `codex=available`, `claude=available`;
+- `Статус-артефакты` — снова materialize штатно и согласованы с runtime mode;
+- полный мозг экзокортекса остаётся `🟡`, потому что `strategist-note-review` и `extractor-inbox-check` сейчас truthful `stale`, а не из-за route/path defect.
+
+Сверка с Цереном по этому месту:
+
+- сам `daily-report` refresh-layer является локальным расширением, а не прямым upstream-файлом `upstream/main`;
+- значит, тут не было задачи «вернуться один в один к Церену», а была задача не потерять локально принятый канонический route, который уже использует `daily-telegram-report` и инженерный протокол.
+
+## Что осталось
+
+1. Проверить, является ли `strategist-note-review stale` нормальным состоянием окна на `23:59` или это отдельный scheduling-tail.
 2. Проверить, почему `extractor-inbox-check` остаётся stale после reboot, если route уже зелёный.
-3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое отклонение.
+3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое локальное расширение.
 
 ## Критерий завершения
 
