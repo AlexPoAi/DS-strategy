@@ -20,6 +20,13 @@
 ---
 
 <!-- Captures добавляются ниже этой строки -->
+
+### Extractor: session-watcher не должен хранить незамененные path placeholders [source: Agent 2026-04-28] [analyzed 2026-04-28]
+**Домен:** Экзокортекс / Extractor
+**Тип:** fm
+**Контент:**
+Сбой: source-скрипт session-watcher.sh содержал {{WORKSPACE_DIR}} и {{HOME_DIR}}, поэтому launchd запускал корректный plist, но сам watcher пытался создавать директории с буквальными шаблонами и писал ошибки Read-only file system. Паттерн фикса: runtime-скрипты должны сами резолвить workspace через resolve-workspace.sh, а prompt runner должен заменять и WORKSPACE_DIR, и HOME_DIR.
+
 ### Сессия стратегирования 26 апреля: собрать полную картину по экосистеме [source: User 2026-04-26] [analyzed 2026-04-26]
 **Домен:** DS-strategy
 **Тип:** wp

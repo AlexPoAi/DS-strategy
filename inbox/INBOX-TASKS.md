@@ -3,6 +3,16 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [done] 2026-04-28: Формализовать runtime contract Extractor против path-placeholder drift
+  - Контекст: extracted from inbox-check 2026-04-28, кандидат #1
+  - Источник: Extractor: session-watcher не должен хранить незамененные path placeholders [source: Agent 2026-04-28]
+  - Outcome: backlog_task
+  - Почему не Pack: это runtime/implementation hardening конкретного Extractor-стека и launchd-сценария, а не переносимое Pack-knowledge
+  - Следующий шаг: зафиксировать инцидент, проверить extractor runtime scripts и prompt runners на self-resolution `WORKSPACE_DIR`/`HOME_DIR`, и добавить guard против повторного placeholder drift
+  - Приоритет: medium
+  - Бюджет: 30-60 мин
+  - Результат: исправлено в `FMT-exocortex-template`; контекст и проверка зафиксированы в `ENG.WP.031 Slice 10`.
+
 - [pending] 2026-04-27: Исследовать онлайн-доходный проект с потенциалом `300k+`
   - Контекст: extracted from inbox-check 2026-04-27, кандидат #3
   - Источник: Поиск онлайн заработка или проекта который может заработа...

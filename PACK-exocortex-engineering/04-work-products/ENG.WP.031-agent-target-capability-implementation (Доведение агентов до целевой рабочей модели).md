@@ -311,6 +311,38 @@ Live evidence on 2026-04-09:
   - затем `setup-vps-agent-runtime.sh` на VPS;
 - это снижает риск ручного drift'а, когда сервер снова станет доступен по SSH.
 
+## Slice 10 — Extractor hot-capture and placeholder drift hardening
+
+Дата: 2026-04-28
+
+Сверка с Цереном / upstream:
+- upstream `TserenTserenov/FMT-exocortex-template` обновлён до `dd2433c`;
+- у Церена текущий эталон для runtime layer:
+  - substituted/generated runtime не должен исполнять source-файлы с literal `{{...}}`;
+  - `extractor.sh` считает pending captures только по заголовкам `###`, а не grep-ом по всему файлу;
+  - `protocol-work.md` содержит `capture_autonomy` и рубежную инициативу capture.
+
+Разрыв у нас:
+- локальный `session-watcher.sh` исполнялся как source-файл и содержал literal `{{WORKSPACE_DIR}}` / `{{HOME_DIR}}`;
+- из-за этого launchd мог стартовать правильный plist, но сам watcher писал ошибки `Read-only file system` по путям `{{...}}`;
+- pending-count в `extractor.sh` был чувствителен к статусным словам в теле captures и к шаблону `### [Название знания]`;
+- рубежный capture был описан в протоколе, но не имел короткого механического entrypoint для записи в `DS-strategy/inbox/captures.md`.
+
+Что исправлено:
+- `session-watcher.sh` переведён на `resolve-workspace.sh`, без literal placeholders в runtime-переменных;
+- `extractor.sh` теперь заменяет `{{HOME_DIR}}` в prompt'ах вместе с `{{WORKSPACE_DIR}}`;
+- добавлен bounded entrypoint `extractor.sh hot-capture <title> <domain> <type> <content> [source]`;
+- pending-count выровнен с upstream pattern: считаются только реальные capture-заголовки, статусные маркеры ищутся на строке заголовка, шаблон `### [Название знания]` исключается;
+- `protocol-work.md` и `CLAUDE.md` уточнены: KE-знание на рубеже должно оставлять след в `captures.md`, а не жить только в памяти сессии.
+
+Проверка:
+- `bash -n roles/extractor/scripts/extractor.sh` — pass;
+- `bash -n roles/extractor/scripts/session-watcher.sh` — pass;
+- ручной `session-watcher.sh` на пустой очереди — pass, без новых `{{HOME_DIR}}/{{WORKSPACE_DIR}}` ошибок;
+- `extractor.sh hot-capture ...` создал запись в `DS-strategy/inbox/captures.md`;
+- `extractor.sh inbox-check` после обработки показывает `SKIP: No pending captures in inbox (total=57, processed=0, analyzed=57, duplicate=0, defer=0, rejected=0)`;
+- последний status artifact: `extractor-inbox-check STATUS=success`, `EVIDENCE_STATUS=verified`.
+
 ## Acceptance
 
 - `Extractor` хотя бы в одном живом сценарии выполняет полный loop без потери элемента;
