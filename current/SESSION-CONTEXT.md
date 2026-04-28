@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-29 00:13
+**Последнее обновление:** 2026-04-29 00:26
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -17,7 +17,7 @@
 ## Что делаем прямо сейчас
 **Статус:** открыт новый инженерный контур `WP-127`
 **Активный РП:** `WP-127` — единый маршрут `Claude/Codex/runtime` по эталону Церена
-**Следующий шаг:** проверить, что новый Codex bridge-skill реально срабатывает в следующем `day-open/day-close/extractor`, затем добить `strategist-note-review` и `extractor-inbox-check` stale.
+**Следующий шаг:** проверить, что новый Codex bridge-skill реально срабатывает в следующем `day-open/day-close/extractor`, затем добить `strategist-note-review stale` и пересобрать статус-артефакты уже без extractor-tail.
 
 ---
 
@@ -32,6 +32,9 @@
 - ✅ Второй verification pass `23:59` выявил отдельный локальный drift: в `daily-report.sh` после update выпал refresh-route `--refresh-status-artifacts`, хотя на него продолжали опираться `daily-telegram-report`, `AGENTS-STATUS` и `SESSION-OPEN`. Refresh-layer восстановлен, `RUNTIME-MODE`, `AGENTS-STATUS` и `SESSION-OPEN` снова materialize штатно.
 - ✅ Найдена причина различия Day Close отчётов Claude/Codex: Claude идёт через `.claude/skills/day-close/SKILL.md` и verifier-subagent `Haiku R23`, а Codex ранее шёл через manual/protocol route. Установлен локальный Codex bridge-skill `/Users/alexander/.codex/skills/iwe-claude-route-bridge/SKILL.md`, который заставляет Codex читать live Claude skills как canonical method вместо копирования skills; bridge теперь явно покрывает и `day-open`.
 - ✅ Bridge расширен на `Extractor`: Codex должен читать template skill `FMT-exocortex-template/.claude/skills/экстрактор/SKILL.md`, `roles/extractor/ACCEPTANCE.md` и runtime prompts/scripts, разделяя создание extraction-report и применение KE-report.
+- ✅ Найдена и закрыта причина `extractor-inbox-check stale after reboot`: живой `LaunchAgent` уже шёл по правильному runtime path, но в отличие от остального агентного контура оставался на `RunAtLoad=false`. После reboot/login он не стартовал сразу, и health-layer успевал видеть `stale`, хотя сам `extractor.sh` был рабочим.
+- ✅ `com.extractor.inbox-check.plist` выровнен с логикой остальных агентов и с историческим контуром `RunAtLoad для агентов`: в template и `.iwe-runtime` включён `RunAtLoad=true`, затем агент переустановлен через `roles/extractor/install.sh`.
+- ✅ Свежий `health-check` в `2026-04-29 00:25` подтвердил: `extractor-inbox-check status=success`; старый хвост `stale after reboot` больше не воспроизводится. Остался только `selection board stale`.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
@@ -39,7 +42,7 @@
 - ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
 - 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
 - ✅ Root memory/protocol route repaired: `MEMORY.md` и `memory/protocol-*.md` снова указывают в живой project-memory.
-- 🟡 Остаточные хвосты verification pass: `selection board stale`, `strategist-note-review stale`, `extractor-inbox-check stale after reboot`; path/env drift как primary root-cause больше не воспроизводится.
+- 🟡 Остаточные хвосты verification pass: `selection board stale`; `strategist-note-review` и `extractor-inbox-check` как path/runtime tails больше не являются primary issue.
 
 ---
 

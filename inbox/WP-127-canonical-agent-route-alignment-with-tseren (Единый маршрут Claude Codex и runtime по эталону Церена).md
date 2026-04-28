@@ -4,7 +4,7 @@ id: WP-127
 status: in_progress
 priority: critical
 created: 2026-04-28
-updated: 2026-04-28
+updated: 2026-04-29
 owner: Engineer
 domain: exocortex
 approved: true
@@ -156,10 +156,34 @@ Truthful результат после пересборки:
 
 Это локальная Codex-настройка вне git; в этом WP зафиксирован её смысл и путь. На 2026-04-29 bridge явно покрывает `day-close`, `day-open` и `extractor`.
 
+## Extractor reboot-tail closed (2026-04-29 00:25)
+
+Проверка причины `extractor-inbox-check stale after reboot` показала:
+
+- активный `~/Library/LaunchAgents/com.extractor.inbox-check.plist` уже указывал на правильный runtime script `/Users/alexander/Github/.iwe-runtime/roles/extractor/scripts/extractor.sh`;
+- сам `extractor.sh` успешно materialize status-artifact и на `2026-04-28 20:31` давал `success: no pending captures in inbox`;
+- проблема была не в route/path исполнении, а в startup-policy: `com.extractor.inbox-check.plist` оставался на `RunAtLoad=false`;
+- после reboot/login агент не стартовал сразу и ждал свой `StartInterval=10800`, поэтому health-layer успевал видеть stale-окно, несмотря на рабочий runtime;
+- это расходилось и с соседними агентами (`strategist-morning`, `health-check`, live `session-watcher`), и с вашим историческим контуром `RunAtLoad для агентов`.
+
+Что сделано:
+
+- в `FMT-exocortex-template/roles/extractor/scripts/launchd/com.extractor.inbox-check.plist` включён `RunAtLoad=true`;
+- то же изменение внесено в live runtime-copy `.iwe-runtime/roles/extractor/scripts/launchd/com.extractor.inbox-check.plist`;
+- `roles/extractor/install.sh` переустановил `LaunchAgent`, так что live `~/Library/LaunchAgents/com.extractor.inbox-check.plist` тоже стал `RunAtLoad=true`;
+- после переустановки launchd сразу materialized новый status-artifact `2026-04-29 00:25:24` с `STATUS=success`, `SUMMARY='outside work hours'`;
+- свежий `health-check.sh` в `2026-04-29 00:25:35` подтвердил: `extractor-inbox-check status=success`.
+
+Truthful вывод:
+
+- `Extractor` у нас падал не как сценарий, а как startup-contract после reboot;
+- path/env drift для него уже был закрыт раньше;
+- текущий remaining yellow по `WP-127` больше не связан с `extractor-inbox-check`.
+
 ## Что осталось
 
 1. Проверить, является ли `strategist-note-review stale` нормальным состоянием окна на `23:59` или это отдельный scheduling-tail.
-2. Проверить, почему `extractor-inbox-check` остаётся stale после reboot, если route уже зелёный.
+2. Пересобрать итоговые status-артефакты после закрытия extractor reboot-tail.
 3. Зафиксировать итоговый verdict: что совпадает с Цереном, а где есть минимальное допустимое локальное расширение.
 
 ## Критерий завершения
