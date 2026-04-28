@@ -2,6 +2,13 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 121 | Личный DS: энергия, питание, weekly slot саморазвития | DS-strategy / Obsidian | 1-1.5h | pending | Medium | wellbeing |
+| 120 | Финансовый консультант и контур cash-discipline | DS-strategy + DS-finance-private | 1.5-2.5h | partial | High | finance |
+| 101 | Exocortex: единый authority daily Telegram | DS-strategy + FMT-exocortex-template | 1-2h | open | High | runtime |
+| 95 | Новый операционный менеджер и bounded handoff | DS-strategy + VK-offee | 1.5-3h | partial | High | operating-model |
+| 73 | Парк: официальное движение по трубе, подача и tracking | DS-strategy + VK-offee | 1.5-2h | partial | High | official-track |
+| 16 | Самокиша: макет/согласование вывески и следующий видимый ход | DS-strategy + VK-offee | 1-2h | in_progress | Medium | visual-signal |
+| 14 | Кухня Тургенева: bounded шаг по ремонту/переезду | DS-strategy + VK-offee | 1.5-3h | pending | High | cash-engine |
 | 126 | Каркасная структура DS-finance | DS-strategy | 0.5-1h | done | High | structure |
 | 124 | DS-finance и агент финансового консультанта | DS-strategy + DS-agent-workspace | 1-2h | done | High | architecture |
 | 94 | Strategist week-review: recovery provider path (Codex primary) | FMT-exocortex-template + DS-strategy | 0.5h | done | Critical | critical |

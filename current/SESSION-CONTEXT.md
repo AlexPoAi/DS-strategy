@@ -1,13 +1,13 @@
 # Контекст текущей сессии
 
 > **Читать при обрыве.** Это живой handoff-файл, а не исторический лог.
-> Последнее обновление: 2026-04-27
+> Последнее обновление: 2026-04-28
 > Полный архив старого хвоста: `archive/session-context-log/SESSION-CONTEXT-archive-through-2026-04-08 (Архив SESSION-CONTEXT до 08 апреля 2026).md`
 
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-27 21:54
+**Последнее обновление:** 2026-04-28 23:45
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,20 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** день закрывается по каноническому `protocol-close`
-**Активный РП:** W18 / `WP-95` операционный менеджер + `WP-73` Парк
-**Следующий шаг:** завтра продолжить от двух явных хвостов: `WP-73` подача в `Воду Крыма`; `WP-95` карточка роли операционного менеджера от опорной точки Жанны.
+**Статус:** день закрыт truthfully, экзокортекс остаётся `🟡`
+**Активный РП:** W18 / runtime recovery после update из upstream Церена + governance closeout
+**Следующий шаг:** завтра продолжить от `WP-73`, `WP-95`, `WP-120` и отдельного runtime tail по `WP-101`.
+
+---
+
+## Что сделано сегодня (2026-04-28)
+- ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
+- ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
+- ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.
+- ✅ Все dirty repos в `~/Github` доведены до `clean + pushed`.
+- ✅ Day Close выполнен с truthful verdict: planned daily WPs не притворены закрытыми, а runtime состояние экзокортекса явно оставлено `🟡`.
+- 🟡 `SchedulerReport 2026-04-28` показывает незакрытый runtime drift: ссылки на `{{IWE_RUNTIME}}/...` и `403 Forbidden` в Codex websocket.
+- 🟡 Root memory/protocol route broken: `MEMORY.md` указывает в пустой `memory/`, поэтому installation audit не даёт зелёный verdict.
 
 ---
 
