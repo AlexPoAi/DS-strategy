@@ -71,6 +71,10 @@
 
 ## Внешние ресурсы (Google Drive / Sheets)
 
+**Маршрут доступа:** перед Drive/Calendar/Gmail действиями читать
+`DS-strategy/PACK-agent-skills/03-skills/AGENT.SKILL.004-google-workspace-operating-contract (Скилл работы агентов с Google Workspace контурами).md`.
+Claude и Codex идут одним Google Workspace route; tool/MCP/connector — адаптер.
+
 | Ресурс | Ссылка | Назначение |
 |--------|--------|-----------|
 | Google Drive — папка для бота (VK-offee) | [1sGGcG1DBHIMMhZFvPGd_gGOesncQwhiq](https://drive.google.com/drive/folders/1sGGcG1DBHIMMhZFvPGd_gGOesncQwhiq) | Жанна загружает отчёты Сабы: Каталог_, Накладные_, Продажи_ |

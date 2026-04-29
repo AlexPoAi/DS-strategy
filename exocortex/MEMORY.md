@@ -46,6 +46,12 @@
 **Pack = source-of-truth.** Downstream меняется вслед за Pack.
 **Агент работает по протоколам CLAUDE.md — не по своим дефолтам.**
 
+**Google Workspace route:** Google Drive / Calendar / Gmail задачи идут через
+`DS-strategy/PACK-agent-skills/03-skills/AGENT.SKILL.004-google-workspace-operating-contract (Скилл работы агентов с Google Workspace контурами).md`.
+Claude и Codex используют один процессный маршрут; конкретный MCP/tool/connector
+— только адаптер. Нет активного tool-доступа при наличии разрешений/контракта =
+`route drift`, который нужно фиксировать в engineering context.
+
 ---
 
 ## БЛОКИРУЮЩИЕ (проверяй ВСЕГДА)
@@ -182,3 +188,4 @@
 | **Инженерный ритуал post-dev** | `memory/feedback-eng-post-dev-verification.md` — после любого фикса в экзокортексе обязательна диагностика итога |
 | **Google Drive — сразу давать ссылки** | `memory/feedback_google_drive_links.md` — при листинге файлов/папок Drive сразу показывать кликабельные ссылки |
 | **Drive-ссылки в Pack-артефактах** | `memory/feedback_drive_links_in_pack.md` — при заполнении Pack вставлять ссылку на Drive-папку прямо в карточку |
+| **DS-finance-private — только локально** | `memory/feedback_ds_finance_private_local.md` — не пушить в git, только локальное сохранение |
