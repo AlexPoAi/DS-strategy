@@ -1,7 +1,7 @@
 ---
 type: work-product
 id: WP-129
-status: in_progress
+status: done
 priority: high
 created: 2026-04-29
 updated: 2026-04-29
@@ -49,9 +49,8 @@ approved: true
 
 ## Следующий шаг
 
-1. Проверить текущий route запуска и review-маршрут `Scout`.
-2. Описать целевой контракт `Scout` как input-layer.
-3. Довести это до рабочего локального решения без конкуренции с ядром Церена.
+1. Если нужен отдельный operational run, открыть новый bounded WP под `Scout runbook / launcher`.
+2. Не расширять этот WP за пределы уже закрытого контрактного slice.
 
 ## Progress (2026-04-29)
 
@@ -66,5 +65,21 @@ approved: true
 
 Следующий кусок после этого:
 
-- решить, нужен ли `Scout` отдельный ручной runbook/launcher;
+- решить отдельным WP, нужен ли `Scout` ручной runbook/launcher;
 - или для локального контура достаточно review ritual + bounded on-demand run.
+
+## Финальное решение
+
+- `Scout` закреплён как `review/input` слой, а не competing priority layer.
+- Его выходы идут только через review в ядро Церена: `Strategist -> DayPlan / WeekPlan / Требует внимания`.
+- Для текущего bounded slice не требуется live runtime recovery или отдельный launchd-service.
+
+## Итог
+
+РП закрыт как `done`.
+
+Главный результат:
+
+- контракт `Scout` materialized в `DS-agent-workspace/scout/README.md`;
+- repo-level различение зафиксировано в `DS-agent-workspace/CLAUDE.md`;
+- дальнейший operational launcher, если вообще нужен, выносится в отдельный WP, а не раздувает этот.

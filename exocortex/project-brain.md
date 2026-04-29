@@ -18,11 +18,11 @@
 
 ## Архитектурные решения
 
-**Wrapper для strategist:** `strategist-wrapper.sh` переопределяет `CLAUDE_PATH` (FMT хардкодит путь).
+**Wrapper для strategist:** `strategist-wrapper.sh` — совместимая точка входа; provider/workspace резолвит шаблонный `strategist.sh`.
 
 **Scheduler — диспетчер:** Координирует агентов через маркеры в `~/.local/state/exocortex/`.
 
-**.nocloud не пушится:** Obsidian vault = сырые мысли (локально). Очищенное → `creativ-convector` (GitHub).
+**Obsidian-vault не пушится:** человеческий мозг системы живёт локально в `Творческий конвеер`. Governance-след и work products materialize в `DS-strategy`.
 
 **Pack = source-of-truth:** VK-offee — единственное место формализованных знаний. Downstream следует за Pack.
 
@@ -39,7 +39,7 @@
 | `extractor.session-watcher` | ✅ | каждые 5 мин |
 | `health-check` | ✅ | каждый час |
 
-**Критично:** Агентный слой больше не `Claude-only`. Runtime provider выбирается policy-слоем: если `Codex` доступен, протоколы `open/work/close` и локальные агенты могут работать через `Codex` без `claude /login`. `claude /login` требуется только для Claude-specific route или когда runtime-arbiter truthfully показывает, что доступен только Claude-path.
+**Критично:** Агентный слой больше не `Claude-only`. Runtime provider выбирается policy-слоем: если `Codex` доступен, протоколы `open/work/close` и локальные агенты могут работать через `Codex` без `claude auth login`. `claude auth login` требуется только для Claude-specific route или когда runtime-arbiter truthfully показывает, что доступен только Claude-path.
 
 **Мониторинг:** `health-check` проверяет статус всех агентов каждый час. При ошибках отправляет уведомления (macOS + Telegram). Логи: `~/logs/health-check/`.
 

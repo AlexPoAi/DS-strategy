@@ -7,7 +7,7 @@
 ---
 
 ## Где мы находимся
-**Последнее обновление:** 2026-04-29 13:50
+**Последнее обновление:** 2026-04-29 14:45
 **Сессия:** W18, активная неделя 2026-04-27 → 2026-05-03
 **Агент:** Codex (GPT-5)
 **Рабочий терминал:** ~/Github/
@@ -15,9 +15,16 @@
 ---
 
 ## Что делаем прямо сейчас
-**Статус:** выполнен новый day-open на `2026-04-29`
-**Активный РП:** `WP-129` — `Scout` как review-input слой для ядра Церена
-**Следующий шаг:** вернуть `Scout` в рабочий контур как input/review слой, не создавая параллельный слой приоритетов.
+**Статус:** `WP-129` закрыт вручную по canonical close-route; `close-task.sh` truthfully заблокирован своим gate после archive-step
+**Активный РП:** закрытый bounded slice `WP-129` — `Scout` как review-input слой для ядра Церена
+**Следующий шаг:** если понадобится operational-возврат `Scout`, открыть отдельный WP под runbook/launcher; не раздувать уже закрытый контрактный slice.
+
+---
+
+## Что сделано сегодня (2026-04-29)
+- ✅ [2026-04-29 14:45] `WP-129` закрыт как отдельный bounded result: `Scout` закреплён как review/input слой для ядра Церена без competing priority layer.
+- ✅ [2026-04-29 14:45] `WP-129` архивирован в `archive/wp-contexts/`; `WeekPlan W18`, `WP-REGISTRY`, `ACTIVE-WP` и live `MEMORY.md` обновлены под close-state.
+- 🟡 [2026-04-29 14:45] `day-close-safe.sh` всё ещё даёт legacy warning `backup=fail` из-за старого `MEMORY_SRC`; scoped `close-task.sh` также truthfully заблокирован, потому что его gate ожидает `approved: true` и живой WP-file в `inbox/`, а закрытие уже переведено в archive-state.
 
 ---
 
