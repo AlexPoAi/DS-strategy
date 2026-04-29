@@ -42,6 +42,7 @@
 - ✅ Сверка `Scout` показала: локальный контур существует в `DS-agent-workspace/scout`, но последний раз обновлялся в марте (`analytics.md` → `2026-03-23`, файлы → `2026-03-26`), поэтому truthfully не считается свежим active слоем.
 - ✅ `WP-127` закрыт: canonical route `Claude/Codex/runtime` подтверждён как единый, а remaining deviations перечислены как осознанные локальные расширения, а не defects.
 - ✅ `WP-128` закрыт: `Доска выбора` сведена к freshness beacon, `Scout` классифицирован как local optional stale layer.
+- ✅ В `WP-129` уже materialized первый контрактный slice: в `DS-agent-workspace` добавлен `scout/README.md`, а `CLAUDE.md` теперь явно закрепляет, что `Scout` — это input/review слой для ядра Церена, а не второй центр приоритетов.
 - ✅ В `FMT-exocortex-template` применён update из upstream Церена `v0.29.11`.
 - ✅ После update выправлены runtime agents: восстановлены prompt/runtime routes, codex-first execution и health-check слой.
 - ✅ В `DS-strategy` зафиксированы recovery captures по runtime drift и codex-first evidence.

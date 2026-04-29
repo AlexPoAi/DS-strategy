@@ -52,3 +52,19 @@ approved: true
 1. Проверить текущий route запуска и review-маршрут `Scout`.
 2. Описать целевой контракт `Scout` как input-layer.
 3. Довести это до рабочего локального решения без конкуренции с ядром Церена.
+
+## Progress (2026-04-29)
+
+Первый truthy slice уже materialized:
+
+- подтверждено, что живого template/runtime script для `Scout` сейчас нет;
+- значит, на этом шаге его нельзя честно называть обязательным live service;
+- в `DS-agent-workspace/scout/README.md` зафиксирован явный контракт `Scout` как review/input слоя;
+- в `DS-agent-workspace/CLAUDE.md` добавлено то же различение на уровне репозитория:
+  - `Scout -> report/candidates -> Strategist review -> DayPlan / WeekPlan / Требует внимания`
+  - без competing priority layer и без прямой записи в `DayPlan`/`WeekPlan`/`MEMORY.md`.
+
+Следующий кусок после этого:
+
+- решить, нужен ли `Scout` отдельный ручной runbook/launcher;
+- или для локального контура достаточно review ritual + bounded on-demand run.
