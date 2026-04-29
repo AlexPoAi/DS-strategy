@@ -2,6 +2,7 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 129 | Scout как review-input слой для ядра Церена | DS-strategy + DS-agent-workspace | 1-2h | in_progress | High | scout |
 | 128 | Exocortex: truthful freshness для Доски выбора и verdict по Scout | DS-strategy + Obsidian + DS-agent-workspace | 0.5-1.5h | done | High | human-layer |
 | 127 | Exocortex: единый маршрут Claude/Codex/runtime по эталону Церена | DS-strategy + FMT-exocortex-template | 1-2h | done | Critical | runtime |
 | 121 | Личный DS: энергия, питание, weekly slot саморазвития | DS-strategy / Obsidian | 1-1.5h | pending | Medium | wellbeing |
