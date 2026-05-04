@@ -3,7 +3,7 @@ type: work-plan
 wp_id: 120
 title: Финансовый консультант и контур cash-discipline
 created: 2026-04-26
-status: pending
+status: done
 owner: Strategist
 support:
   - finance
