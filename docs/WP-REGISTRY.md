@@ -2,6 +2,8 @@
 
 | # | WP | Repo | Budget | Status | Priority | Result |
 |---|----|------|--------|--------|----------|--------|
+| 133 | VK Coffee — дизайн холодных стаканов и обновление меню | DS-strategy + VK-offee | 1-1.5h | pending | Medium | brand-marketing |
+| 132 | Парк / ООО Терра — заявление в Крым Энерго и договорный контур | DS-strategy + VK-offee | 1-1.5h | pending | High | park-utilities |
 | 131 | Экзокортекс — архитектура и интеграции | DS-strategy | 3-4h | pending | High | architecture |
 | 130 | Экзокортекс — видимость и здоровье | DS-strategy | 2-2.5h | pending | High | health |
 | 129 | Scout как review-input слой для ядра Церена | DS-strategy + DS-agent-workspace | 1-2h | done | High | scout |
