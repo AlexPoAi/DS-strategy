@@ -6,6 +6,8 @@
 | 132 | Парк / ООО Терра — заявление в Крым Энерго и договорный контур | DS-strategy + VK-offee | 1-1.5h | pending | High | park-utilities |
 | 131 | Экзокортекс — архитектура и интеграции | DS-strategy | 3-4h | pending | High | architecture |
 | 130 | Экзокортекс — видимость и здоровье | DS-strategy | 2-2.5h | pending | High | health |
+| 135 | Codex + Telegram + VPS + AI слой (оплата OpenAI API) | DS-strategy + DS-agent-workspace | 1-2h | backlog | Medium | runtime-recovery |
+| 134 | Инвестиционный verdict: Парк + стекляшка (капитал и риск) | DS-strategy + VK-offee | 1-1.5h | backlog | High | investment |
 | 129 | Scout как review-input слой для ядра Церена | DS-strategy + DS-agent-workspace | 1-2h | done | High | scout |
 | 128 | Exocortex: truthful freshness для Доски выбора и verdict по Scout | DS-strategy + Obsidian + DS-agent-workspace | 0.5-1.5h | done | High | human-layer |
 | 127 | Exocortex: единый маршрут Claude/Codex/runtime по эталону Церена | DS-strategy + FMT-exocortex-template | 1-2h | done | Critical | runtime |
