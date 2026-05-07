@@ -1,68 +1,116 @@
-# Протокол Close (Закрытие сессии)
-
-> **Триггер:** «закрываю», «всё», «закрывай», или РП завершён.
-> **«Закрывай» = push сразу без вопросов.**
-> **Runtime contract:** закрытие provider-agnostic. Если текущий агент работает в `Codex`, протокол выполняется прямо там. `claude /login` нужен только для Claude-specific route и не должен блокировать close в `Codex`.
-> **Анти-петля (блокирующее):** если получен ответ `Not logged in · Please run /login`, ЗАПРЕЩЕНО повторять тот же slash-route. Агент обязан сразу перейти на manual execution этого протокола по шагам в текущем рабочем агенте.
-
 ---
+name: protocol-close
+description: Slim-ядро протокола Close — триггеры, маршрутизация, Quick Close inline
+type: reference
+valid_from: 2026-04-13
+originSessionId: b5655b53-7d87-478a-aad9-437479e81691
 
-## Exit Protocol (ОБЯЗАТЕЛЬНО)
-
-| # | Шаг | Что |
-|---|-----|-----|
-| 1 | **Артефакт** | Зафиксировать результат (коммит, файл) |
-| 2 | **Статус** | Обновить трекер (WeekPlan, `memory/MEMORY.md`) |
-| 3 | **Уведомление** | Сообщить пользователю |
-
+horizon: warm
+domains: [protocol]
+status: active
+owner: user
+schema_version: 1
 ---
+# Протокол Close (ОРЗ-фрактал)
 
-## Алгоритм Close
+> **Три масштаба:** Сессия (Quick Close), День (Day Close), Неделя (Week Close).
+> **Точка входа:** Вызвать Skill `run-protocol` с нужным аргументом (см. таблицу ниже).
+> **Принцип:** Quick Close = «не потерять» (inline, без TodoWrite, ~3 мин). Day/Week Close = через SKILL.md + TodoWrite (принудительное исполнение).
 
-0. **Auth-independent entrypoint (обязательно):**
-   - `bash ~/Github/FMT-exocortex-template/scripts/day-close-safe.sh`
-   - Этот шаг не требует `claude /login` и не использует slash-route.
-1. **Runtime preflight:** если `Claude` не залогинен, но текущий агент/`Codex` работает — продолжать в текущем агенте. Truthful blocker только если нет ни одного рабочего аутентифицированного runtime.
+## Маршрутизация
 
-2. **Pull:** `cd DS-strategy && git pull --rebase`
-3. **Knowledge Extraction:**
-   - Собрать captures
-   - Классифицировать → маршрутизировать
-   - Показать Extraction Report → одобрение
-   - Применить (accept → Pack/CLAUDE.md/memory)
-4. **Обновить SESSION-CONTEXT.md:**
-   - "Где мы находимся" → timestamp
-   - "Что делаем" → статус РП
-   - "Следующий шаг" → что делать дальше
-   - Добавить: `- 🔒 [HH:MM] Сессия закрыта`
-5. **Обновить `memory/MEMORY.md`** (статус РП)
-6. **Закоммитить** (с подтверждением)
-7. **Обновить WeekPlan** (статусы РП)
-8. **Backup:** `memory/ + CLAUDE.md → DS-strategy/exocortex/`
-9. **WP Context File:**
-   - in_progress + ≥2 сессий → обновить `inbox/WP-{N}-{slug}.md`
-   - done → `mv inbox/WP-{N}-*.md → archive/wp-contexts/`
+| Триггер | Аргумент | Skill |
+|---------|---------|-------|
+| «закрываю сессию» / «всё» / «закрывай» | `close` или `close session` | Quick Close (ниже, inline) |
+| «закрываю день» / «итоги дня» | `close day` | `.claude/skills/day-close/SKILL.md` |
+| «закрываю неделю» / «итоги недели» | `week-close` | `.claude/skills/week-close/SKILL.md` |
 
-> Этот список шагов и есть канонический route. `/run-protocol *` и Claude-route не являются обязательными.
+> **`close` без уточнения** → Quick Close (сессия) по умолчанию.
 
----
 
-## Шаблон отчёта
+## Quick Close (сессия, inline)
+
+> **Роль:** R6 Кодировщик. **Бюджет:** ~3 мин. **Без TodoWrite** — намеренно, цель минимальный барьер.
+> «Закрывай» = push сразу без вопросов (пользователь дал согласие словом).
+> **Day Close ≠ Quick Close.** Day Close самодостаточен — Quick Close внутри него не повторять.
+
+### Шаги (4 обязательных)
+
+1. **Pre-commit checks → Commit + Push**
+
+   **1a. Pre-commit checks (БЛОКИРУЮЩЕЕ).** `bash .claude/scripts/load-extensions.sh protocol-close checks` — exit 0 → `Read` каждый файл из вывода (alphabetic) → выполнить. Exit 1 → пропустить. Поддерживает `extensions/protocol-close.checks.md` И `extensions/protocol-close.checks.<suffix>.md`. **При ❌ commit запрещён** — исправить, повторить checks, только потом 1b. Семантика идентична Day/Week Close (см. `run-protocol/SKILL.md` Шаг 1b).
+
+   **1b. Commit + Push.** После прохождения checks все изменения зафиксированы и запушены.
+
+2. **WP Context File** — обновить секцию «Осталось» (structured формат):
+   - in_progress → structured handoff
+   - done → пометить `status: done`
+   - Незавершённое → context file. Идея → `MAPSTRATEGIC.md`. Зерно → `drafts/draft-list.md`
+
+2.5. **KE** — прочитать поле «Что узнали» в «Осталось». Маршрутизировать СЕЙЧАС:
+   - правило (1-3 строки) → `CLAUDE.md` или `distinctions.md`
+   - доменное знание → Pack (конкретный файл)
+   - урок → `memory/lessons_*.md` + строка в MEMORY.md
+   - нет нового знания → пропустить молча (анонс не нужен)
+   Анонс при маршрутизации: *«Capture: [что] → [куда]»*
+
+3. **MEMORY.md** — обновить статус РП (одна строка: `in_progress` / `done`)
+
+### Формат «Осталось»
+
+```markdown
+## Осталось
+
+**Что пробовали:** [краткий итог сессии — 1-2 предложения]
+**Что узнали:** [решения, инсайты, изменения контекста]
+  → memory: [обновить: <что именно> / не нужно]
+**Что дальше:**
+- [ ] [конкретный следующий шаг]
+- [ ] [следующий за ним]
+**Следующий шаг:** [первый unchecked из списка выше]
+**Контекст для следующей сессии:** [файлы, решения, блокеры]
+```
+
+> **Правило `→ memory:`** (обязательное поле): агент явно отвечает на вопрос «нужно ли обновить MEMORY.md или memory/*.md?». Триггеры обновления: блокер снят, внешний факт изменился (чужой деплой, встреча прошла, Паша что-то починил), статус РП сменился. Если обновление нужно — сделать СЕЙЧАС, не откладывать на Day Close.
+
+### Отчёт Quick Close
 
 ```
 **РП:** #N — [название]
 **Статус:** done / in_progress
-
-**Что сделано:**
-- [артефакт 1]
-- [артефакт 2]
-
-**Что осталось:**
-- [задача 1]
-
-**Следующий шаг:** [что делать]
+**Git:** закоммичено + запушено ✅
+**EXTENSION POINT (protocol-close after):** `bash .claude/scripts/load-extensions.sh protocol-close after` — exit 0 → `Read` каждый файл из вывода (alphabetic) → выполнить. Exit 1 → пропустить. Поддерживает `extensions/protocol-close.after.md` И `extensions/protocol-close.after.<suffix>.md`.
+**Handoff:** → WP context «Осталось» обновлён / done
 ```
 
----
+### Верификация Quick Close (Haiku R23)
 
-**Обновлено:** 2026-03-14
+> Условный шаг: если `params.yaml → verify_quick_close: false` → пропустить.
+> Исключения: сессия ≤15 мин, сессия-вопрос без изменений файлов.
+
+Запустить sub-agent Haiku в роли R23 (context isolation). Передать: чеклист, WP context «Осталось», `git diff --name-only`.
+
+### Чеклист Quick Close
+
+- [ ] Всё закоммичено и запушено
+- [ ] WP Context: «Осталось» записано (или done помечен)
+- [ ] KE: «Что узнали» маршрутизировано (или «нет нового знания»)
+- [ ] MEMORY.md: статус РП обновлён
+- [ ] Decision log: прочитать записи сессии в `decisions/decision-log-YYYY-MM.md`, скорректировать если неточно
+- [ ] **Docs Gate (условный):** РП затрагивал поведение онбординга (skills, MCP-сервисы, бот `/start`)? → обновить онбординг-документацию в governance-репо + `/verify` обновлённый файл. Владелец: пользователь. Если не затрагивал → пропустить молча.
+
+
+## Deferred (отложены до Day Close)
+
+> Quick Close намеренно не включает: DayPlan, WP-REGISTRY, Verification Gate, отчёт.
+> KE включён (шаг 2.5) — знание теряется при откладывании на Day Close.
+> Причина (ADR-207): атомарные шаги выполняются всегда > длинный список, из которого половина пропускается.
+
+
+## Exit Protocol (при завершении любой роли)
+
+| # | Шаг | Что делать |
+|---|-----|-----------|
+| 1 | **Артефакт** | Зафиксировать результат (коммит, файл, запись) |
+| 2 | **Статус** | Обновить трекер (MEMORY.md, WP context) |
+| 3 | **Уведомление** | Сообщить следующему (пользователь, агент, Стратег) |
