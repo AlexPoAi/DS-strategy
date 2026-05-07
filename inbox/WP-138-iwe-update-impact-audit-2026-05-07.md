@@ -10,15 +10,22 @@
 
 ## Наш факт
 
-Обновление запущено, затем открыта рабочая сессия. Нужно подтвердить влияние апдейта через проверочный прогон Exocortex и зафиксировать truthfully.
+- `IWE 0.29.32` применён (`update.sh --yes`), runtime пересобран, platform-space обновлён.
+- В первичной проверке после апдейта поймали регрессии:
+  - legacy wording в `memory/protocol-open.md` и `memory/checklists.md` (ломал opening-contract gate);
+  - `notify`-контракт `strategist/week-review` ломался из-за placeholder-шаблона;
+  - из runtime выпали `session-watcher` и `obsidian-fleeting-intake` контуры экстрактора;
+  - `extractor-inbox-check` не обновлял status-файл.
+- Все найденные регрессии по текущему scope исправлены и перепроверены.
 
 ## Разрыв / Gap
 
-Пока нет итогового post-update verdict с конкретными метриками и наблюдаемыми рисками.
+Остался только operational warning human-layer: `selection board stale`; это не критичный runtime-блокер.
 
 ## Решение по текущему фиксу
 
-1. Проверка `update.sh --check`.
-2. Проверка launchd-агентов и логов intake.
-3. Прогон health/report слоя Exocortex.
-4. Фиксация результата в `SESSION-CONTEXT` + carry-over в `INBOX-TASKS` при необходимости.
+1. Выполнен `update.sh --yes` и пересборка runtime.
+2. Восстановлены extractor контуры (`session-watcher`, `obsidian-fleeting-intake`) в template + overlay + install.
+3. Починен `notify.sh` и health-check для placeholder-шаблонов.
+4. Добавлена запись status-артефакта в `extractor.sh inbox-check`.
+5. Финальный `health-check`: критичных ошибок нет; `extractor-inbox-check=success`; остаётся 1 предупреждение + 1 stale-норма.

@@ -2,7 +2,8 @@
 id: WP-138
 title: Проверка влияния обновления IWE на Exocortex
 status: in_progress
-approved: true
+approved: consumed
+approval_consumed_at: 2026-05-07 12:41
 approved_at: 2026-05-07
 approved_by: user
 sensitive_scope:
@@ -12,6 +13,7 @@ sensitive_scope:
   - DS-strategy:inbox/INBOX-TASKS.md
   - DS-strategy:inbox/extraction-reports/
   - DS-strategy:current/RUNTIME-MODE.md
+  - FMT-exocortex-template:*
 ---
 
 # ACTIVE-WP — WP-138
