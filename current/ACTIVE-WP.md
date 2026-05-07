@@ -1,41 +1,35 @@
 ---
-id: WP-137
-title: Закрытие хвоста изменений workspace и регистрация в рабочих продуктах
+id: WP-138
+title: Проверка влияния обновления IWE на Exocortex
 status: in_progress
-approved: consumed
-approval_consumed_at: 2026-05-07 11:51
+approved: true
 approved_at: 2026-05-07
 approved_by: user
 sensitive_scope:
-  - DS-strategy:current/
-  - DS-strategy:inbox/
-  - FMT-exocortex-template:update.sh
-  - VK-offee:PACK-management/
-  - VK-offee:PACK-park-development/
-  - VK-offee:PACK-service/
-  - VK-offee:PACK-telegram/
-  - VK-offee:content/3.ManagementTeam/3.3.Operations/roles/job-descriptions/waiter-job-description.md
-  - VK-offee:ops/roles/job-descriptions/waiter-job-description.md
-  - VK-offee:knowledge-base/Протокол планерки.md
-  - DS-agent-workspace:scheduler/reports/
+  - DS-strategy:current/ACTIVE-WP.md
+  - DS-strategy:current/SESSION-CONTEXT.md
+  - DS-strategy:inbox/WP-138-iwe-update-impact-audit-2026-05-07.md
+  - DS-strategy:inbox/INBOX-TASKS.md
+  - DS-strategy:inbox/extraction-reports/
+  - DS-strategy:current/RUNTIME-MODE.md
 ---
 
-# ACTIVE-WP — WP-137
+# ACTIVE-WP — WP-138
 
-Bounded slice на закрытие вчерашнего хвоста изменений и честную регистрацию результата.
+Bounded slice на проверку последствий обновления IWE для рабочего контура Exocortex.
 
 ## Что делаем
 
-- Протокольно закрываем оставшийся dirty-tree хвост в `VK-offee`, `DS-strategy`, `FMT-exocortex-template`, `DS-agent-workspace`.
-- Фиксируем выполненную вчера работу в рабочих продуктах и session-context.
-- Сохраняем carry-over на следующий рабочий день без потери артефактов.
+- Проверяем актуальность IWE через `update.sh --check`.
+- Прогоняем контур проверки Exocortex после обновления (агенты, health, status-артефакты, extractor следы).
+- Фиксируем verdict и наблюдаемые риски в рабочих продуктах.
 
 ## Что уже подтверждено
 
-- Все четыре репозитория с хвостом доступны по remote (`pull` проходит без ошибок).
-- Причина “невидимого хвоста” подтверждена: прошлый `scoped close` пропустил whole-worktree clean verification.
+- IWE обновление запущено и подтянуто до upstream `0.29.32`.
+- Контур утреннего открытия сессии подтвердил, что extractor-агенты загружены (`obsidian-fleeting-intake`, `session-watcher`, `inbox-check`).
 
 ## Следующий шаг
 
-1. Выполнить `close-task.sh --scope-file ...` по полному списку dirty-файлов.
-2. Убедиться, что закрытие зафиксировало артефакты в `SESSION-CONTEXT` и рабочих продуктах.
+1. Снять честный post-update verdict по Exocortex.
+2. Зафиксировать carry-over задачи по найденным отклонениям (если будут).

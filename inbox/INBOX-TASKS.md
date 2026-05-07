@@ -3,6 +3,17 @@ type: inbox
 created: 2026-03-04
 ---
 
+- [pending] 2026-05-07: [WP-138] Применить IWE `0.29.32` и повторно снять Exocortex verdict
+  - Контекст: `update.sh --check` показал доступное обновление до `0.29.32` (11 новых + 81 обновлённый файл), но оно ещё не применено.
+  - Что сделать:
+    1. Выполнить `bash FMT-exocortex-template/update.sh` в apply-режиме.
+    2. Пересобрать runtime/агенты по каноническому пути update.
+    3. Повторить `health-check` и `daily-report --refresh-status-artifacts`.
+    4. Зафиксировать итоговый post-update verdict в `SESSION-CONTEXT`.
+  - Почему не Pack: это platform/runtime maintenance экзокортекса, а не предметное знание.
+  - Приоритет: high
+  - Бюджет: 30-60 мин
+
 - [pending] 2026-05-05: Codex + Telegram + VPS + AI слой без блокировки по оплате API
   - Контекст: пользователь хочет завтра, `2026-05-06`, обсудить, работает ли сейчас Codex с Telegram и как сделать 24/7 Telegram-бота на VPS с ИИ-слоем, если карта не проходит для оплаты OpenAI API.
   - Источник: разговор 2026-05-05 перед закрытием дня
